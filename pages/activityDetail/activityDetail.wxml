@@ -1,0 +1,71 @@
+<view class='container radius10 kl'>
+  <view class='item column bg' bindtap='binddetail'>
+    <view class='ft30 h60'>活动组1</view>
+    <view class='start'>
+      <image class='icon mr5' src='../../img/ad1.png' mode='widthFix'></image>
+      <view class='ft26 cc'>西溪商圈</view>
+    </view>
+    <view class='wrap cc'>dsssssssssssssssssssssssssss</view>
+    <view class='start ft28 bb h60'>
+      <view class='mr15'>团单数量: 12</view>
+      <view class='mr15'>可参与: 12</view>
+      <view class='mr15'>正在参与: 12</view>
+    </view>
+  </view>
+</view>
+
+<view class='content column'>
+  <view class='item pd20 borb start' bindtap='bindGropDetail'>
+    <view>
+      <image class='t1' src='../../img/t1.png' mode='widthFix'></image>
+    </view>
+    <view class='detailContent column'>
+      <view class='between ft28'>
+        <view>团单1</view>
+        <view class='c2'>有效期至: 3019-52-23</view>
+      </view>
+      <view class='wrap cc ft26'>sssssddddddssssssddddddssssssddddddssssssdddddds</view>
+      <view class='between h40'>
+        <view class='start h40'>
+          <image class='icon1 mr5' src='../../img/k1.png' mode='widthFix'></image>
+          <view class='ft26 bb'>西溪商圈</view>
+        </view>
+        <view class='start ft26 cc'>
+          <view>3301购买 | 2020人到店</view>
+        </view>
+      </view>
+      <view class='between h40'>
+        <view class='start h40'>
+          <image class='icon1 mr5' src='../../img/k1.png' mode='widthFix'></image>
+          <view class='ft26 bb'>西溪商圈</view>
+        </view>
+        <view class='start ft26 cc'>
+          <view>3301购买 | 2020人到店</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='item pd20 borb start gray'>
+    <view>
+      <image class='t1' src='../../img/t1.png' mode='widthFix'></image>
+    </view>
+    <view class='detailContent column'>
+      <view class='between ft28'>
+        <view>团单1</view>
+        <view class='c2'>已下架</view>
+      </view>
+      <view class='wrap cc ft26'>sssssddddddssssssddddddssssssddddddssssssdddddds</view>
+      <view class='between h40'>
+        <view class='start h40'>
+          <image class='icon1 mr5' src='../../img/k1.png' mode='widthFix'></image>
+          <view class='ft26 bb'>西溪商圈</view>
+        </view>
+        <view class='start ft26 cc'>
+          <view>3301购买 | 2020人到店</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>

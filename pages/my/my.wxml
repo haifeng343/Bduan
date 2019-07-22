@@ -1,0 +1,80 @@
+<view class='content pd25'>
+  <view class='start'>
+    <image class='avator' src='../../img/avator.png' mode='widthFix'></image>
+    <view class='column'>
+      <view class='ft32 mt30 h40'>杭州古迪科技有限公司</view>
+      <view class='start h50'>
+        <view class='ft26 mr15'>账号: 1804545145</view>
+        <text class='tag'>管理员</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class='content content1 ft30 mt20'>
+  <view class='between h80 borb' bindtap='bindStore'>
+    <view class='start h80'>
+      <image class='icon2' src='../../img/m1.png' mode='widthFix'></image>
+      <view>我的门店</view>
+    </view>
+    <image class='go' src='../../img/go.png' mode='widthFix'></image>
+  </view>
+  <view class='between h80 borb' bindtap='bindGroup'>
+    <view class='start h80'>
+      <image class='icon2' src='../../img/m2.png' mode='widthFix'></image>
+      <view>我的活动组</view>
+    </view>
+    <image class='go' src='../../img/go.png' mode='widthFix'></image>
+  </view>
+  <view class='between h80 borb' bindtap='bindCourse'>
+    <view class='start h80'>
+      <image class='icon2' src='../../img/m3.png' mode='widthFix'></image>
+      <view>我的课程</view>
+    </view>
+    <image class='go' src='../../img/go.png' mode='widthFix'></image>
+  </view>
+</view>
+
+<view class='content content1 ft30 mt20' bindtap='bindAccountMent'>
+  <view class='between h80 borb'>
+    <view class='start h80'>
+      <image class='icon2' src='../../img/m4.png' mode='widthFix'></image>
+      <view>账户管理</view>
+    </view>
+    <image class='go' src='../../img/go.png' mode='widthFix'></image>
+  </view>
+  <view class='between h80 borb' bindtap='bindTeachers'>
+    <view class='start h80'>
+      <image class='icon2' src='../../img/m5.png' mode='widthFix'></image>
+      <view>师资管理</view>
+    </view>
+    <image class='go' src='../../img/go.png' mode='widthFix'></image>
+  </view>
+</view>
+
+<view class='content content1 ft30 mt20'>
+  <view class='between h80 borb'>
+    <view class='start h80'>
+      <image class='icon2' src='../../img/m6.png' mode='widthFix'></image>
+      <view>设置</view>
+    </view>
+    <image class='go' src='../../img/go.png' mode='widthFix'></image>
+  </view>
+</view>
+
+<view class='content content1 ft30 mt20'>
+  <view class='between h80 borb'>
+    <view class='start h80'>
+      <image class='icon2' src='../../img/m7.png' mode='widthFix'></image>
+      <view>关于我们</view>
+    </view>
+    <image class='go' src='../../img/go.png' mode='widthFix'></image>
+  </view>
+  <view class='between h80 borb' bindtap='bindCallUs'>
+    <view class='start h80'>
+      <image class='icon2' src='../../img/m8.png' mode='widthFix'></image>
+      <view>联系我们</view>
+    </view>
+    <image class='go' src='../../img/go.png' mode='widthFix'></image>
+  </view>
+</view>

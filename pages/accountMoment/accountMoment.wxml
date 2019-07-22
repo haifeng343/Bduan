@@ -1,0 +1,57 @@
+<view class='address' hidden='{{hasAddress}}'>
+  <image class='noads' src='../../img/zanwu.png' mode='widthFix' lazy-load='true'></image>
+  <view class='nohave'>暂无账户</view>
+  <view class='haveto'>点击下方按钮进行添加</view>
+  <view class='add'>+新增账户</view>
+</view>
+<view class='address'>
+  <view class='nohasLog' wx:if="{{items.length==0}}">
+    <image class='noImg' src='../../img/zanwu.png' mode='widthFix' lazy-load='true'></image>
+    <view>暂无账户，点击下方按钮去添加</view>
+  </view>
+  <view wx:else>
+    <!-- <view class="container">
+      <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:for="{{items}}" wx:key="">
+        <view class="content between">
+          <view class='column'>
+            <view class='start'>
+              <view class='name'>{{item.AddressName}}</view>
+              <view class='home' wx:if="{{item.Tag=='家'}}">家</view>
+              <view class='company' wx:if="{{item.Tag=='公司'}}">公司</view>
+              <view class='home' wx:if="{{item.Tag=='学校'}}">学校</view>
+            </view>
+            <view class='addressDetail' wx:if="{{item.DoorNumber=='' || item.DoorNumber==null}}">{{item.AddressDetails}}</view>
+            <view class='addressDetail' wx:else>{{item.DoorNumber}}</view>
+          </view>
+          <image class='edit' bindtap='edit' data-title='{{item.AddressName}}' data-lat="{{item.Latitude}}" data-lng="{{item.Longitude}}" data-address="{{item.AddressDetails}}" data-DoorNumber="{{item.DoorNumber}}" data-tag="{{item.Tag}}" data-addressId="{{item.AddressId}}" src='../../img/edit.png' mode='widthFix' lazy-load='true'></image>
+        </view>
+        <view class="del" bindtap="del" data-Id="{{item.AddressId}}">删除</view>
+      </view>
+    </view> -->
+    <view class="container">
+      <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:for="{{items}}" wx:key="">
+        <view class="content between">
+          <view class='column pb20'>
+            <view class='start'>
+              <image src='../../img/avator.png' class='avator mt35'></image>
+              <view class='column'>
+                <view class='between mt40'>
+                  <view>账户名: 1384785478</view>
+                  <view>普通账户</view>
+              </view>
+              <view class='between ft24'>
+                  <view>手机号: 1384785478</view>
+                  <view class='cc'>创建时间: 2019-12-12</view>
+              </view>
+              </view>
+            </view>
+          </view>
+          <image class='edit' bindtap='edit' data-title='{{item.AddressName}}' data-lat="{{item.Latitude}}" data-lng="{{item.Longitude}}" data-address="{{item.AddressDetails}}" data-DoorNumber="{{item.DoorNumber}}" data-tag="{{item.Tag}}" data-addressId="{{item.AddressId}}"
+            src='../../img/edit.png' mode='widthFix' lazy-load='true'></image>
+        </view>
+        <view class="del" bindtap="del" data-Id="{{item.AddressId}}">删除</view>
+      </view>
+    </view>
+  </view>
+  <view class='add' data-ids="{{ids}}" bindtap='bindAddAccount'>新增账户</view>
+</view>

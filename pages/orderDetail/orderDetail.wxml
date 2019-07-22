@@ -1,0 +1,95 @@
+<view class='container'>
+  <view class='content radius10'>
+    <view class='item column'>
+      <view class='between h60'>
+        <view class='ft26'>订单编号: 23155555555555555</view>
+        <view class='ft30 bold'>部分使用</view>
+      </view>
+      <view class='between h60'>
+        <view class='start h60'>
+          购买账户:
+          <image class='icon2 ml5 mr5' src='../../img/ava2.png' mode='widthFix'></image>
+          <view>小草 (135644878)</view>
+        </view>
+        <image class='icon2' src='../../img/call.png' bindtap='bindCall' mode='widthFix'></image>
+      </view>
+      <view class='between h60'>
+        <view class='start ft30 h60'>创建订单:
+          <text class='h60 ml5 ft30'>2019-54-415</text>
+        </view>
+      </view>
+      <view class='between h60'>
+        <view class='start ft30 h60'>支付时间:
+          <text class='h60 ml5 ft30'>2019-54-415</text>
+        </view>
+      </view>
+      <view class='between h60 borb'>
+        <view class='start ft30 h60'>有效期至:
+          <text class='h60 ml5 ft30'>2019-54-415</text>
+        </view>
+      </view>
+      <view class='between h60'>
+        <view class='start ft30 h60'>购买类型:
+          <text class='h60 ml5 ft30'>团购（团单名称1）</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class='container'>
+  <view class='content radius10 mt20 gray'>
+    <view class='item column'>
+      <view class='start'>
+        <image class='d1' src='../../img/d1.png'></image>
+        <view class='column'>
+          <view class='ft28 bold h60'>英语课</view>
+          <image class='use' src='../../img/expired.png' mode='widthFix'></image>
+          <view class='column'>
+            <view class='start h40'>
+              <image class='icon2' src='../../img/b2.png'></image>
+              <view class='ft24'>共有1节课</view>
+              <image class='icon2 ml20' src='../../img/time.png'></image>
+              <view class='ft24'>共有1节课</view>
+            </view>
+            <view class='start h40'>
+              <image class='icon2' src='../../img/b3.png'></image>
+              <view class='ft24'>门店1</view>
+            </view>
+            <view class='start h40'>
+              <image class='icon2' src='../../img/b1.png'></image>
+              <view class='ft24'>活动组1</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='content radius10 mt20'>
+    <view class='item column'>
+      <view class='start'>
+        <image class='d1' src='../../img/d1.png'></image>
+        <view class='column'>
+          <view class='ft28 bold h60'>英语课</view>
+          <image class='use' src='../../img/used.png' mode='widthFix'></image>
+          <view class='column'>
+            <view class='start h40'>
+              <image class='icon2' src='../../img/b2.png'></image>
+              <view class='ft24'>共有1节课</view>
+              <image class='icon2 ml20' src='../../img/time.png'></image>
+              <view class='ft24'>共有1节课</view>
+            </view>
+            <view class='start h40'>
+              <image class='icon2' src='../../img/b3.png'></image>
+              <view class='ft24'>门店1</view>
+            </view>
+            <view class='start h40'>
+              <image class='icon2' src='../../img/b1.png'></image>
+              <view class='ft24'>活动组1</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

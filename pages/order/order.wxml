@@ -1,0 +1,80 @@
+<view class='searchClass'>
+  <input class='seachTo' bindtap='bindSearch' placeholder='订单号/账户号'></input>
+</view>
+<view class='List List1'>
+  <view class='item column'>
+    <view class='between'>
+      <view class='ft24 bb'>订单号： 6854641614584</view>
+      <view class='ft30'>未使用</view>
+    </view>
+    <view class='ft28'>购买时间: 2019-02-10</view>
+    <view class='ft28'>购买账户: 鸟叔(13654584874)</view>
+    <view class='between h60'>
+      <view class='start'>
+        <image class='icon1 mr5' src='../../img/k1.png' mode='widthFix'></image>
+        <view class='ft26'>语文课 (门店1)</view>
+      </view>
+      <image class='icon2' src='../../img/gou.png' mode='widthFix'></image>
+    </view>
+  </view>
+  <view class='item column'>
+    <view class='between'>
+      <view class='ft24 bb'>订单号： 6854641614584</view>
+      <view class='ft30'>未使用</view>
+    </view>
+    <view class='ft28'>购买时间: 2019-02-10</view>
+    <view class='ft28'>购买账户: 鸟叔(13654584874)</view>
+    <view class='between h60'>
+      <view class='start'>
+        <image class='icon1 mr5' src='../../img/k1.png' mode='widthFix'></image>
+        <view class='ft26'>语文课 (门店1)</view>
+      </view>
+      <image class='icon2' src='../../img/gou.png' mode='widthFix'></image>
+    </view>
+  </view>
+  <view class='item column'>
+    <view class='between'>
+      <view class='ft24 bb'>订单号： 6854641614584</view>
+      <view class='ft30'>未使用</view>
+    </view>
+    <view class='ft28'>购买时间: 2019-02-10</view>
+    <view class='ft28'>购买账户: 鸟叔(13654584874)</view>
+    <view class='between h60'>
+      <view class='start'>
+        <image class='icon1 mr5' src='../../img/k1.png' mode='widthFix'></image>
+        <view class='ft26'>语文课 (门店1)</view>
+      </view>
+      <image class='icon2' src='../../img/gou.png' mode='widthFix'></image>
+    </view>
+  </view>
+  <view class='item column'>
+    <view class='between'>
+      <view class='ft24 bb'>订单号： 6854641614584</view>
+      <view class='ft30'>未使用</view>
+    </view>
+    <view class='ft28'>购买时间: 2019-02-10</view>
+    <view class='ft28'>购买账户: 鸟叔(13654584874)</view>
+    <view class='between h60'>
+      <view class='start'>
+        <image class='icon1 mr5' src='../../img/k1.png' mode='widthFix'></image>
+        <view class='ft26'>语文课 (门店1)</view>
+      </view>
+      <image class='icon2' src='../../img/gou.png' mode='widthFix'></image>
+    </view>
+  </view>
+  <view class='item column'>
+    <view class='between'>
+      <view class='ft24 bb'>订单号： 6854641614584</view>
+      <view class='ft30'>未使用</view>
+    </view>
+    <view class='ft28'>购买时间: 2019-02-10</view>
+    <view class='ft28'>购买账户: 鸟叔(13654584874)</view>
+    <view class='between h60'>
+      <view class='start'>
+        <image class='icon1 mr5' src='../../img/k1.png' mode='widthFix'></image>
+        <view class='ft26'>语文课 (门店1)</view>
+      </view>
+      <image class='icon2' src='../../img/gou.png' mode='widthFix'></image>
+    </view>
+  </view>
+</view>

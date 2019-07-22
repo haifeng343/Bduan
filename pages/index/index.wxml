@@ -1,0 +1,194 @@
+<view class='container radius'>
+  <view class='content flex around'>
+    <view bindtap='bindInputCode'>
+      <image class='addImg' src='../../img/a1.png' mode='widthFix'></image>
+      <view class='ft30'>输码验证</view>
+    </view>
+    <view bindtap='clickSaoma'>
+      <image class='addImg' src='../../img/a2.png' mode='widthFix'></image>
+      <view class='ft30'>扫码验证</view>
+    </view>
+    <view bindtap='navtoVercation'>
+      <image class='addImg' src='../../img/a3.png' mode='widthFix'></image>
+      <view class='ft30'>验证记录</view>
+    </view>
+  </view>
+</view>
+
+<view class='content bg'>
+  <view class='between pd30'>
+    <view class='ft30 bold h60'>经营统计</view>
+    <view class='relative'>
+      <view class='ft28 start h60' bindtap='changeSelect'>全部门店
+        <image class='selectImg' src='../../img/select.png' mode='widthFix'></image>
+      </view>
+      <view class="select {{showSelect==true?'':'none'}}">
+        <view class='option active {{showId == item.id ? "active" : ""}}'>全部门店</view>
+        <view class='option'>门店一</view>
+        <view class='option'>门店一</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class='content'>
+  <!-- <view class='start timeTitle'>
+    <view wx:for="{{navTabs}}" wx:key class='ft30 mr40 active {{showId == item.id ? "active" : ""}}'>{{item.name}}</view>
+  </view> -->
+  <view class='start timeTitle'>
+    <view class='ft30 mr40 active {{showId == item.id ? "active" : ""}}'>今天</view>
+    <view class='ft30 mr40'>昨天</view>
+    <view class='ft30 mr40'>最近7天</view>
+    <view class='ft30 mr40'>最近1月</view>
+    <view class='ft30 mr40'>自定义</view>
+  </view>
+
+  <view class='selectTime around none'>
+    <picker mode="date" value="{{date1}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange1">
+      <view class="picker">
+        {{date1==''?"开始时间":date1}}
+      </view>
+    </picker>
+    <picker mode="date" value="{{date2}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange2">
+      <view class="picker">
+        {{date2==''?"结束时间":date2}}
+      </view>
+    </picker>
+  </view>
+
+  <view class='statistics start mt40 pb40'>
+    <view class='mr10b'>
+      <view class='ft50 theme'>3000</view>
+      <view class='ft28'>到店人数</view>
+    </view>
+    <view>
+      <view class='ft50 theme'>3000</view>
+      <view class='ft28'>购买数</view>
+    </view>
+  </view>
+</view>
+
+<view class='moment bort mt20'>
+  <view class='content between bg borb pd20' bindtap='bindGroup'>
+    <view class='ft30 pd20 bold'>正在参与的活动</view>
+    <image class='go pd20 mt5' src='../../img/go.png' mode='widthFix'></image>
+  </view>
+  <view class='List'>
+    <view class='item column' bindtap='binddetail'>
+      <view class='ft30'>活动组1</view>
+      <view class='start'>
+        <image class='icon mr5' src='../../img/ad1.png' mode='widthFix'></image>
+        <view class='ft26 cc'>西溪商圈</view>
+      </view>
+      <view class='wrap cc'>dsssssssssssssssssssssssssssssdsssssssssssssssssssssssssssssdsssssssssssssssssssssssssssss</view>
+      <view class='start ft28 bb'>
+        <view class='mr15'>团单数量: 12</view>
+        <view class='mr15'>可参与: 12</view>
+        <view class='mr15'>正在参与: 12</view>
+      </view>
+    </view>
+    <view class='item column'>
+      <view class='ft30'>活动组1</view>
+      <view class='start'>
+        <image class='icon mr5' src='../../img/ad1.png' mode='widthFix'></image>
+        <view class='ft26 cc'>西溪商圈</view>
+      </view>
+      <view class='wrap cc'>dsssssssssssssssssssssssssssssdsssssssssssssssssssssssssssssdsssssssssssssssssssssssssssss</view>
+      <view class='start ft28 bb'>
+        <view class='mr15'>团单数量: 12</view>
+        <view class='mr15'>可参与: 12</view>
+        <view class='mr15'>正在参与: 12</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class='moment bort mt20'>
+  <view class='content between bg pd20' bindtap='bindNavtoOrder'>
+    <view class='ft30 pd20 bold'>订单状态</view>
+    <image class='go pd20 mt5' src='../../img/go.png' mode='widthFix'></image>
+  </view>
+  <view class='List List1'>
+    <view class='item column' bindtap='bindOrderDetail'>
+      <view class='between'>
+        <view class='ft24 bb'>订单号： 6854641614584</view>
+        <view class='ft30'>未使用</view>
+      </view>
+      <view class='ft28'>购买时间: 2019-02-10</view>
+      <view class='ft28'>购买账户: 鸟叔(13654584874)</view>
+      <view class='between h60'>
+        <view class='start'>
+          <image class='icon1 mr5' src='../../img/k1.png' mode='widthFix'></image>
+          <view class='ft26'>语文课 (门店1)</view>
+        </view>
+        <image class='icon2' src='../../img/gou.png' mode='widthFix'></image>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+
+
+
+
+<!--输入券验证弹出框-->
+<view class="zan-dialog {{ showLog ? 'zan-dialog--show' : 'none' }}" catchtouchmove="ture">
+  <view class="zan-dialog__mask" bindtap="toggleDialog" />
+  <view class="zan-dialog__container">
+    <view class='zan-title bold ft30 left pl20'>请输入券码</view>
+    <input value='{{code}}' bindinput='setCode' class='codeInput'></input>
+    <view class='zan-footer'>
+      <view class='flex center br' bindtap='closeCodeLog'>取消</view>
+      <view class='flex center'>确认</view>
+    </view>
+  </view>
+</view>
+
+<!--确认订单信息弹出框-->
+<view class="zan-dialog {{ showSure ? 'zan-dialog--show' : 'none' }}" catchtouchmove="ture">
+  <view class="zan-dialog__mask" bindtap="toggleDialog" />
+  <view class="zan-dialog__container">
+    <view class='column'>
+      <view class='zan-title bold ft30 left bort pl5 pr5'>确认订单信息</view>
+      <view class='between pl5 pr5 h60'>
+        <view class='ft28'>订单号:16146146146341</view>
+        <view class='ft30'>部分使用</view>
+      </view>
+      <view class='ft28 left pl5 pr5'>购买时间:16146146146341</view>
+      <view class='ft28 left pl5 pr5 bort pb20'>购买账户:16146146146341</view>
+    </view>
+    <view class='List'>
+      <checkbox-group>
+        <view class=' start h80 pl5 pr5 bort between'>
+          <view class='start h80'>
+            <image class='icon' src='../../img/ad1.png' mode='widthFix'></image>
+            <view class='cc ft30'>语文课（门店1）</view>
+          </view>
+        </view>
+        <view class=' start h80 pl5 pr5 bort between'>
+          <view class='start h80'>
+            <image class='icon' src='../../img/ad1.png' mode='widthFix'></image>
+            <view class='ft30'>语文课（门店1）</view>
+          </view>
+          <checkbox class='h80'></checkbox>
+        </view>
+      </checkbox-group>
+    </view>
+    <view class='zan-footer'>
+      <view class='flex center br' bindtap='closeCodeSure'>取消</view>
+      <view class='flex center' bindtap='submitSure'>确认</view>
+    </view>
+  </view>
+</view>
+
+<!--验券成功提示弹出框-->
+<view class="zan-dialog {{ showSuccessd ? 'zan-dialog--show' : 'none' }}" catchtouchmove="ture">
+  <view class="zan-dialog__mask" bindtap="toggleDialog" />
+  <view class="zan-dialog__container">
+    <image class='successImg mt40' src='../../img/checked.png' mode='widthFix'></image>
+    <view class='h60 bold center'>验券成功</view>
+    <view class='zan-content mb10'>恭喜您！验券成功</view>
+    <view class='know h80 bort center theme' bindtap='closeds'>知道了</view>
+  </view>
+</view>

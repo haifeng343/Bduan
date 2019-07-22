@@ -1,0 +1,26 @@
+.item{
+  width: 100%;
+  height: auto;
+  padding: 0 5%;
+  box-sizing: border-box;
+  font-size: 28rpx;
+}
+.item label{
+  width: 120rpx;
+}
+.item input{
+  width: 550rpx;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

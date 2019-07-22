@@ -1,0 +1,43 @@
+.List{
+  width: 100%;
+  height: auto;
+  background-color: #fff;
+}
+.item{
+  width: 95%;
+  height: auto;
+  margin-left: 5%;
+  border-bottom: 1rpx solid #F3F3F3;
+  padding: 25rpx 5% 25rpx 0;
+  box-sizing: border-box;
+}
+.item .start{
+  height: 50rpx;
+  line-height: 50rpx;
+  display: flex;
+  align-items: center;
+}
+.item .wrap{
+  height: 35rpx;
+  line-height: 35rpx;
+  font-size: 28rpx;
+  padding-bottom: 40rpx;
+}
+.List1 .item{
+  width: 100%;
+  padding-left: 5%;
+  margin-left: 0;
+}
+.codeInput{
+  width: 95%;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 28rpx;
+  margin: 0rpx 2.5%;
+  margin-bottom: 20rpx;
+  text-align: left;
+  padding-left: 5%;
+  box-sizing: border-box;
+  border-radius: 8rpx;
+  border:1rpx solid #CACACA;
+}

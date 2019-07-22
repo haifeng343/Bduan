@@ -1,0 +1,138 @@
+const app = getApp();
+const netUtil = require('../../utils/request.js');
+Page({
+  data: {
+    date1: '', //开始时间
+    date2: '', //结束时间 
+    showSuccess: false, //扫码成功
+    showLog: false, //输码弹窗
+    code: '', //券码
+    showSure: false, //确认订单信息
+    showSuccessd: false, //验券成功
+    showSelect: false, //门店选择
+    navTabs:[
+      {id:1,name:'今天'},
+      { id: 2, name: '昨天' },
+      { id: 3, name: '最近7天' },
+      { id: 4, name: '最近1月' },
+      { id: 5, name: '自定义' },
+    ],
+  },
+  onLoad: function(options) {
+    this.getData();
+  },  
+  navtoVercation:function(){
+    wx.navigateTo({
+      url: '/pages/vercationLog/vercationLog',
+    })
+  },
+  //弹窗隐藏
+  toggleDialog: function() {
+    this.setData({
+      showSuccess: !this.data.showSuccess
+    })
+  },
+  //输入扫码
+  bindInputCode: function() {
+    this.setData({
+      showLog: !this.data.showLog
+    })
+  },
+  //关闭确认订单信息弹出框
+  closeCodeSure: function() {
+    this.setData({
+      showSure: !this.data.showSure
+    })
+  },
+  //发送订单信息确定
+  submitSure: function() {
+
+  },
+  //关闭成功弹窗
+  closeds: function() {
+    this.setData({
+      showSuccessd: !this.data.showSuccessd
+    })
+  },
+  //设置券码
+  setCode: function(e) {
+    this.setData({
+      code: e.detail.value
+    })
+  },
+  //关闭弹窗
+  closeCodeLog: function() {
+    this.setData({
+      showLog: !this.data.showLog
+    })
+  },
+  //开始时间
+  bindDateChange1: function(e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      date1: e.detail.value
+    })
+  },
+  //结束时间 
+  bindDateChange2: function(e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      date2: e.detail.value
+    })
+  },
+  //弹出门店下拉选择
+  changeSelect: function() {
+    this.setData({
+      showSelect: !this.data.showSelect
+    })
+  },
+  //扫描二维码
+  clickSaoma: function() {
+    wx.scanCode({
+      onlyFromCamera: false,
+      scanType:['qrCode','barCode'],
+      success: (res) => {
+        console.log(res)
+        // this.show = "结果:" + res.result + "二维码类型:" + res.scanType + "字符集:" + res.charSet + "路径:" + res.path;
+        // // 显示消息提示框
+        // wx.showToast({
+        //   title: '成功',
+        //   icon: 'success',
+        //   duration: 2000
+        // });
+        
+      }
+    })
+  },
+  //获取用户信息
+  getData:function() {
+    let that = this;
+    var url = 'account/info';
+    var params = {
+    }
+    netUtil.postRequest(url, params, function (res) { //onSuccess成功回调
+        console.log(res)
+
+    })
+  },
+  binddetail:function(){
+    wx.navigateTo({
+      url: '/pages/activityDetail/activityDetail',
+    })
+  },
+  bindGroup:function() {
+    wx.navigateTo({
+      url: '/pages/myGroup/myGroup',
+    })
+  },
+  bindNavtoOrder:function() {
+    wx.switchTab({
+      url: '/pages/order/order',
+    })
+  },
+  bindOrderDetail:function() {
+    wx.navigateTo({
+      url: '/pages/orderDetail/orderDetail',
+    })
+  },
+})

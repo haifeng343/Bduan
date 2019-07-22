@@ -1,0 +1,77 @@
+.content1{
+  width: 100%;
+  padding-right: 0;
+}
+.icon2{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+}
+.between{
+  padding-right: 5%;
+}
+.go{
+  margin-right: 5%；
+}
+.keep{
+  background-color: #fff;
+  width: 97%;
+  margin:15rpx 1.5% 0;
+  padding: 20rpx 2%;
+  border-radius: 10rpx;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.well{
+  padding: 0;
+}
+.courseRow {
+  width: 65%;
+}
+.courseRow .start{
+  width: 90%;
+}
+.leftImg{
+  width: 22%;
+  margin-right: 15rpx;
+}
+.right{
+  right: 78%;
+  overflow: hidden;
+}
+.activity{
+  font-size: 28rpx;
+  font-weight: 600;
+  word-break: keep-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.topImg{
+  width: 150rpx;
+  height: 128rpx;
+  border-radius: 10rpx;
+}
+.courseRow{
+  width: 100%;
+  font-size: 24rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  box-sizing: border-box;
+}
+.courseRow:last-child{
+  border: none;
+}
+.rowImg{
+  width: 40rpx;
+  height: 34rpx;
+  margin-right: 5rpx;
+  margin-top: 0rpx;
+}
+.courseRow .start{
+  width: 60%;
+}
+.startd{
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,0 +1,11 @@
+<view class='startd start mt20'>
+  <view class='poab start cc h60' bindtap='changeVal'>{{status}}
+    <image class='selectImg' src='../../img/select.png' mode='widthFix'></image>
+  </view>
+  <view class='selectOption' wx:if="{{show}}">  
+    <view class='center' bindtap='change1'>订单号搜索</view>
+    <view class='center' bindtap='change2'>账户名搜索</view>
+  </view>
+  <input class='searchInput ft26' value='{{value}}' placeholder='{{status}}' bindinput='bindSearch'></input>
+  <view class='ft28 searchRight bold' bindtap='search'>搜索</view>
+</view>

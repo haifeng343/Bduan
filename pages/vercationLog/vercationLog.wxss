@@ -1,0 +1,10 @@
+.content{
+  padding: 0;
+}
+.start{
+  padding: 0 5%;
+  box-sizing: border-box;
+}
+.go{
+  margin-left: 10rpx;
+}

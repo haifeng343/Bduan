@@ -1,0 +1,28 @@
+.d1{
+  width: 180rpx;
+  height: 180rpx;
+}
+.content{
+  padding: 20rpx 5%;
+}
+.container{
+  background-color: transparent;
+}
+.item{
+  position: relative;
+}
+.use{
+  width: 90rpx;
+  height: 90rpx;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  background-color: #fff;
+}
+
+
+
+
+
+

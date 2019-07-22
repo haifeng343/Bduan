@@ -1,0 +1,195 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"autoAudits": false,
+		"coverView": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.7.4",
+	"appid": "wx2f3dec049ff8db97",
+	"projectname": "B%E7%AB%AF%E5%B0%8F%E7%A8%8B%E5%BA%8F",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 20,
+			"list": [
+				{
+					"id": -1,
+					"name": "index",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "order",
+					"pathName": "pages/order/order",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "my",
+					"pathName": "pages/my/my",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "vercationLog",
+					"pathName": "pages/vercationLog/vercationLog",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "activityDetail",
+					"pathName": "pages/activityDetail/activityDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "search",
+					"pathName": "pages/search/search",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "gropDetail",
+					"pathName": "pages/gropDetail/gropDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "authorization",
+					"pathName": "pages/authorization/authorization",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "login",
+					"pathName": "pages/login/login",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "orderDetail",
+					"pathName": "pages/orderDetail/orderDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "forgetPassword",
+					"pathName": "pages/forgetPassword/forgetPassword",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "myGroup",
+					"pathName": "pages/myGroup/myGroup",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "courseDetail",
+					"pathName": "pages/courseDetail/courseDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "allTeacher",
+					"pathName": "pages/allTeacher/allTeacher",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "callUs",
+					"pathName": "pages/callUs/callUs",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "accountMoment",
+					"pathName": "pages/accountMoment/accountMoment",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "addAccount",
+					"pathName": "pages/addAccount/addAccount",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "myCourse",
+					"pathName": "pages/myCourse/myCourse",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "myTeachers",
+					"pathName": "pages/myTeachers/myTeachers",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "addTeacher",
+					"pathName": "pages/addTeacher/addTeacher",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "myStore",
+					"pathName": "pages/myStore/myStore",
+					"query": "",
+					"scene": null
+				}
+			]
+		}
+	}
+}

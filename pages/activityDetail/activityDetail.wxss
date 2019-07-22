@@ -1,0 +1,15 @@
+.kl{
+  padding: 20rpx 5%;
+  box-sizing: border-box;
+}
+.t1{
+  width: 110rpx;
+  height: 110rpx;
+  margin-right: 10rpx;
+}
+.detailContent{
+  width: 88%;
+  height: auto;
+}
+
+

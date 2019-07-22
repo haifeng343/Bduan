@@ -1,0 +1,31 @@
+<view class='container radius'>
+  <view class='item start borb h80'>
+    <label>账户名</label>
+    <input ></input>
+  </view>
+  <view class='item start borb h80'>
+    <label>手机号</label>
+    <input ></input>
+  </view>
+  <view class='item start borb h80'>
+    <label>密码</label>
+    <input ></input>
+  </view>
+  <view class='item start borb h80'>
+    <label style='width:250rpx'>再次输入密码</label>
+    <input ></input>
+  </view>
+  <view class='item start borb h80'>
+    <label>账户类型</label>
+    <radio-group class="ml20">
+      <radio>普通账户</radio>
+      <radio class='ml20'>管理员账户</radio>
+    </radio-group>
+  </view>
+  <view class='item start borb h80'>
+   <label>头像</label>
+   <image class='upload pd20' src='../../img/upload.png' mode='widthFix' bindtap='bindUpload'></image>
+  </view>
+</view>
+
+<view class='submit'>提交</view>

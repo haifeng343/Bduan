@@ -1,0 +1,57 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/order/order",
+    "pages/my/my",
+    "pages/vercationLog/vercationLog",
+    "pages/activityDetail/activityDetail",
+    "pages/search/search",
+    "pages/gropDetail/gropDetail",
+    "pages/authorization/authorization",
+    "pages/login/login",
+    "pages/orderDetail/orderDetail",
+    "pages/forgetPassword/forgetPassword",
+    "pages/myGroup/myGroup",
+    "pages/allTeacher/allTeacher",
+    "pages/courseDetail/courseDetail",
+    "pages/callUs/callUs",
+    "pages/accountMoment/accountMoment",
+    "pages/addAccount/addAccount",
+    "pages/myCourse/myCourse",
+    "pages/myTeachers/myTeachers",
+    "pages/addTeacher/addTeacher",
+    "pages/myStore/myStore"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#DBDBDB",
+    "selectedColor": "#29D9D5",
+    "borderStyle": "black",
+    "list": [
+      {
+        "selectedIconPath": "img/index.png",
+        "iconPath": "img/index1.png",
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "selectedIconPath": "img/order.png",
+        "iconPath": "img/order1.png",
+        "pagePath": "pages/order/order",
+        "text": "订单"
+      },
+      {
+        "selectedIconPath": "img/my.png",
+        "iconPath": "img/my1.png",
+        "pagePath": "pages/my/my",
+        "text": "我的"
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+.avator{
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.tag{
+  font-size: 24rpx;
+  background-color: #E1F9F9;
+  color: #5EE3E4;
+  height: 45rpx;
+  line-height: 45rpx;
+  padding: 0 15rpx;
+  border-radius: 5rpx;
+}
+.content1{
+  width: 100%;
+  padding-right: 0;
+}
+.icon2{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+}
+.between{
+  padding-right: 5%;
+}
+.go{
+  margin-right: 5%；
+}

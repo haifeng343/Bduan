@@ -1,0 +1,91 @@
+<view class='keep start' bindtap='bindCourseDetail'>
+  <view class='leftImg'>
+    <image class='topImg' src='../../img/t1.png' mode='widthFix' lazy-load='true'></image>
+  </view>
+  <view class='right'>
+    <view class='column'>
+      <view class='between h40'>
+        <view class='ft28'>课程1</view>
+      </view>
+      <view class='start ft24'>
+        <view class='start h40'>
+          <image class='icon2' src='../../img/b2.png' mode='widthFix'></image>
+          <view>课程数量1节</view>
+        </view>
+        <view class='start h40 ml20'>
+          <image class='icon2' src='../../img/time.png' mode='widthFix'></image>
+          <view>单节课时 60 min</view>
+        </view>
+      </view>
+      <view class='start h40 ft24'>
+        <view class='start'>
+          <image class='icon2' src='../../img/b3.png' mode='widthFix'></image>
+          <view>门店1</view>
+        </view>
+      </view>
+      <view class='start h40 ft24'>
+        <view class='start'>
+          <image class='icon2' src='../../img/b1.png' mode='widthFix'></image>
+          <view>活动组1</view>
+        </view>
+      </view>
+      <view class='start ft24 h40'>
+          <view>所属团单: 团单1</view>
+      </view>
+      <view class='start ft24 h40'>
+          <view>已购人数: 3800</view>
+          <view class='ml20'>到店人数: 3800</view>
+      </view>
+      <view class='start ft24 h40'>
+          <view>预计招生: 3800</view>
+          <view class='ml20'>到店服务费: 3800</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class='keep start'>
+  <view class='leftImg'>
+    <image class='topImg' src='../../img/t1.png' mode='widthFix' lazy-load='true'></image>
+  </view>
+  <view class='right'>
+    <view class='column'>
+      <view class='between h40'>
+        <view class='ft28'>课程2</view>
+      </view>
+      <view class='start ft24'>
+        <view class='start h40'>
+          <image class='icon2' src='../../img/b2.png' mode='widthFix'></image>
+          <view>课程数量1节</view>
+        </view>
+        <view class='start h40 ml20'>
+          <image class='icon2' src='../../img/time.png' mode='widthFix'></image>
+          <view>单节课时 60 min</view>
+        </view>
+      </view>
+      <view class='start h40 ft24'>
+        <view class='start'>
+          <image class='icon2' src='../../img/b3.png' mode='widthFix'></image>
+          <view>门店1</view>
+        </view>
+      </view>
+      <view class='start h40 ft24'>
+        <view class='start'>
+          <image class='icon2' src='../../img/b1.png' mode='widthFix'></image>
+          <view>活动组1</view>
+        </view>
+      </view>
+      <view class='start ft24 h40'>
+          <view>所属团单: 团单1</view>
+      </view>
+      <view class='start ft24 h40'>
+          <view>已购人数: 3800</view>
+          <view class='ml20'>到店人数: 3800</view>
+      </view>
+      <view class='start ft24 h40'>
+          <view>预计招生: 3800</view>
+          <view class='ml20'>到店服务费: 3800</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,9 @@
+page{
+  background-color: #fff;
+}
+.right{
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 5%;
+}
+
