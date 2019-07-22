@@ -1,0 +1,93 @@
+<view class='content'>
+  <view class='item pd20 start'>
+    <image src='../../img/avator.png' mode='widthFix' class='avator'></image>
+    <view class='column'>
+      <view class='start h60'>
+        <view class='ft28'>Apri</view>
+        <view class='ft24 cc ml20'>旅游英语 | 五年教龄</view>
+      </view>
+      <view class='ft24 bb left'>度搜案件萨拉米假丝酵母；末的发生的大你大家都在发大家都在发大家都在发大家都在发</view>
+      <view class='end ft24 cc h40'>绑定时间: 2019-10-12</view>
+    </view>
+  </view>
+  <view class='item pd20 start'>
+    <image src='../../img/avator.png' mode='widthFix' class='avator'></image>
+    <view class='column'>
+      <view class='start h60'>
+        <view class='ft28'>Apri</view>
+        <view class='ft24 cc ml20'>旅游英语 | 五年教龄</view>
+      </view>
+      <view class='ft24 bb left'>度搜案件萨拉米假丝酵母；末的发生的大你大家都在发大家都在发大家都在发大家都在发</view>
+      <view class='end ft24 cc h40'>绑定时间: 2019-10-12</view>
+    </view>
+  </view>
+</view>
+
+<!--分配弹出框-->
+<view class="zan-dialog {{ showSuccess ? 'zan-dialog--show' : 'none' }}" catchtouchmove="ture">
+  <view class="zan-dialog__mask" bindtap="toggleDialog" />
+  <view class="zan-dialog__container">
+    <view class='h60 bold center pd20'>分配师资</view>
+    <view class='dialogList'>
+      <checkbox-group>
+        <view class='dialogItem start'>
+          <checkbox class='chebox'></checkbox>
+          <image class='avator1' src='../../img/avator.png' mode='widthFix'></image>
+          <view class='column'>
+            <view class='start h50'>
+              <view class='ft26'>Apri</view>
+              <view class='ft22 cc ml20'>旅游英语 | 五年教龄</view>
+            </view>
+            <view class='ft22 bb left'>度搜案件萨拉米假丝酵母；末的发生的大你大家都在发大家都在发大家都在发大家都在发</view>
+            <view class='end ft22 cc h30'>绑定时间: 2019-10-12</view>
+          </view>
+        </view>
+
+        <view class='dialogItem start'>
+          <checkbox class='chebox'></checkbox>
+          <image class='avator1' src='../../img/avator.png' mode='widthFix'></image>
+          <view class='column'>
+            <view class='start h50'>
+              <view class='ft26'>Apri</view>
+              <view class='ft22 cc ml20'>旅游英语 | 五年教龄</view>
+            </view>
+            <view class='ft22 bb left'>度搜案件萨拉米假丝酵母；末的发生的大你大家都在发大家都在发大家都在发大家都在发</view>
+            <view class='end ft22 cc h30'>绑定时间: 2019-10-12</view>
+          </view>
+        </view>
+
+        <view class='dialogItem start'>
+          <checkbox class='chebox'></checkbox>
+          <image class='avator1' src='../../img/avator.png' mode='widthFix'></image>
+          <view class='column'>
+            <view class='start h50'>
+              <view class='ft26'>Apri</view>
+              <view class='ft22 cc ml20'>旅游英语 | 五年教龄</view>
+            </view>
+            <view class='ft22 bb left'>度搜案件萨拉米假丝酵母；末的发生的大你大家都在发大家都在发大家都在发大家都在发</view>
+            <view class='end ft22 cc h30'>绑定时间: 2019-10-12</view>
+          </view>
+        </view>
+
+        <view class='dialogItem start'>
+          <checkbox class='chebox'></checkbox>
+          <image class='avator1' src='../../img/avator.png' mode='widthFix'></image>
+          <view class='column'>
+            <view class='start h50'>
+              <view class='ft26'>Apri</view>
+              <view class='ft22 cc ml20'>旅游英语 | 五年教龄</view>
+            </view>
+            <view class='ft22 bb left'>度搜案件萨拉米假丝酵母；末的发生的大你大家都在发大家都在发大家都在发大家都在发</view>
+            <view class='end ft22 cc h30'>绑定时间: 2019-10-12</view>
+          </view>
+        </view>
+      </checkbox-group>
+    </view>
+    <view class='know h80 bort between'>
+      <view class='cancel' bindtap='bindCancel'>取消</view>
+      <view class='cancel'>确认</view>
+    </view>
+  </view>
+</view>
+
+<view class='add'>分配师资</view>

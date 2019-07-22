@@ -20,7 +20,10 @@
     "pages/myCourse/myCourse",
     "pages/myTeachers/myTeachers",
     "pages/addTeacher/addTeacher",
-    "pages/myStore/myStore"
+    "pages/myStore/myStore",
+    "pages/storeAccount/storeAccount",
+    "pages/storeTeacher/storeTeacher",
+    "pages/storeManag/storeManag"
   ],
   "window": {
     "backgroundTextStyle": "dark",
