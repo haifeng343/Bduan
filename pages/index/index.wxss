@@ -60,6 +60,9 @@
 .List{
   width: 100%;
   height: auto;
+  max-height: 1306rpx;
+  overflow-y: scroll;
+  box-sizing: border-box;
   background-color: #fff;
 }
 .item{
@@ -67,7 +70,7 @@
   height: auto;
   margin-left: 5%;
   border-bottom: 1rpx solid #F3F3F3;
-  padding: 25rpx 5% 25rpx 0;
+  padding: 20rpx 5% 20rpx 0;
   box-sizing: border-box;
 }
 .item .start{

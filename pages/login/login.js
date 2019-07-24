@@ -34,7 +34,6 @@ Page({
       Password: utilMd5.hexMD5(that.data.value),
     }
     netUtil.postRequest(url, params, function (res) { //onSuccess成功回调
-    console.log(res)
       wx.setStorageSync('userInfo', res.Data);
       wx.switchTab({
         url: '/pages/index/index',

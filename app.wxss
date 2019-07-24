@@ -9,6 +9,10 @@ page {
   margin-top: 80rpx;
   margin-bottom: 60rpx;
 }
+.expire{
+  width: 72rpx;
+  height: 60rpx;
+}
 .submit{
   width: 97%;
   margin-left: 1.5%;

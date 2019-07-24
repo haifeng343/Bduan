@@ -23,7 +23,10 @@
     "pages/myStore/myStore",
     "pages/storeAccount/storeAccount",
     "pages/storeTeacher/storeTeacher",
-    "pages/storeManag/storeManag"
+    "pages/storeManag/storeManag",
+    "pages/setting/setting",
+    "pages/modifyPhone/modifyPhone",
+    "pages/modifyPassword/modifyPassword"
   ],
   "window": {
     "backgroundTextStyle": "dark",

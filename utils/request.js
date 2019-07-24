@@ -27,7 +27,7 @@ const baseUrl = "https://test.guditech.com/rocketseller/";
 function request(url, params, method, onSuccess, onFailed) {
   let moment = {};
   var that = this;
-  var usertoken = wx.getStorageSync('usertoken');//wx.getStorageSync(key)，获取本地缓存
+  var usertoken = wx.getStorageSync('userInfo').UserToken;//wx.getStorageSync(key)，获取本地缓存
 
   wx.request({
     url: baseUrl + url,

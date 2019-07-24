@@ -52,7 +52,7 @@
   </view>
 </view>
 
-<view class='content content1 ft30 mt20'>
+<view class='content content1 ft30 mt20' bindtap='bindSetting'>
   <view class='between h80 borb'>
     <view class='start h80'>
       <image class='icon2' src='../../img/m6.png' mode='widthFix'></image>

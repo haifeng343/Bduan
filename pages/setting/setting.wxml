@@ -1,0 +1,24 @@
+<view class='content mt20 h101' bindtap='modifyPhone'>
+  <view class='between'>
+    <view class='ft28'>修改手机号</view>
+    <view class='end h100'>
+      <view class='mr15 bb ft24'>135545748</view>
+      <image src='../../img/go.png' mode='widthFix' class='go'></image>
+    </view>
+  </view>
+</view>
+<view class='content mt20 h101' bindtap='modifyPassword'>
+  <view class='between'>
+    <view class='ft28'>修改密码</view>
+    <view class='end h100'>
+      <image src='../../img/go.png' mode='widthFix' class='go'></image>
+    </view>
+  </view>
+</view>
+<view class='content mt20 h101'>
+  <view class='center red ft28'>退出登录</view>
+</view>
+
+<!-- <view class='content mt20 h101'>
+  <view class='center theme ft28'>登录</view>
+</view> -->
