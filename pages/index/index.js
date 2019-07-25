@@ -34,9 +34,28 @@ Page({
     QuanInfo: {}, //订单信息
     checked: false,
     checkList: [], //勾选的数组
+    groupList:[],
   },
   onLoad: function (options) {
 
+  },
+  //正在参与的活动
+  getGroupList:function() {
+    let that = this;
+    var url = 'account/activitygroup/list';
+    var params = {
+      Type: 2,
+      PageCount:5,
+      PageIndex:1,
+    }
+    netUtil.postRequest(url, params, function (res) { //onSuccess成功回调
+
+      that.setData({
+        QuanInfo: res.Data,
+        showSure: true,
+        showLog: false,
+      })
+    })
   },
   navtoVercation: function () {
     wx.navigateTo({
@@ -149,14 +168,11 @@ Page({
       onlyFromCamera: false,
       scanType: ['qrCode', 'barCode'],
       success: (res) => {
+        that.setData({
+          code: res.result
+        });
         that.bindOrderCode(res.result);
-        // this.show = "结果:" + res.result + "二维码类型:" + res.scanType + "字符集:" + res.charSet + "路径:" + res.path;
-        // // 显示消息提示框
-        // wx.showToast({
-        //   title: '成功',
-        //   icon: 'success',
-        //   duration: 2000
-        // });
+
       }
     })
   },

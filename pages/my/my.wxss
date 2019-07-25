@@ -16,6 +16,7 @@
 .content1{
   width: 100%;
   padding-right: 0;
+  font-size: 28rpx;
 }
 .icon2{
   width: 40rpx;

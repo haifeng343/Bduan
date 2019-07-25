@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 26,
+			"current": 22,
 			"list": [
 				{
 					"id": -1,
@@ -190,24 +190,24 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 21,
 					"name": "storeAccount",
 					"pathName": "pages/storeAccount/storeAccount",
-					"query": "",
+					"query": "Id=31",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 22,
 					"name": "storeTeacher",
 					"pathName": "pages/storeTeacher/storeTeacher",
-					"query": "",
+					"query": "Id=31",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 23,
 					"name": "storeManag",
 					"pathName": "pages/storeManag/storeManag",
-					"query": "",
+					"query": "Id=31",
 					"scene": null
 				},
 				{
@@ -228,6 +228,7 @@
 					"id": -1,
 					"name": "modifyPassword",
 					"pathName": "pages/modifyPassword/modifyPassword",
+					"query": "",
 					"scene": null
 				}
 			]

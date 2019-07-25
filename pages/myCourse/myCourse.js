@@ -1,28 +1,40 @@
-// pages/myCourse/myCourse.js
+var netUtil = require("../../utils/request.js"); //require引入
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    List:[],
+    SheetList:'',
   },
-
+  onLoad:function() {
+    this.init();
+  },
   bindCourseDetail:function() {
     wx.navigateTo({
       url: '/pages/courseDetail/courseDetail',
     })
   },
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
+  init() {
+    this.getData();
   },
-
-  /**
-   * 用户点击右上角分享
-   */
+  //我的师资列表
+  getData: function () {
+    let that = this;
+    var url = 'account/item/list';
+    var params = {
+      
+    }
+    netUtil.postRequest(url, params, function (res) { //onSuccess成功回调
+      console.log(res)
+      that.setData({
+        List: res.Data,
+        SheetList: (res.Data[0].SheetList).toString().replace(/,/g, '/')
+      })
+      console.log(that.data.SheetList)
+    })
+  },
   onShareAppMessage: function () {
 
   }

@@ -1,11 +1,25 @@
 <view class='content pd25'>
-  <view class='start'>
-    <image class='avator' src='../../img/avator.png' mode='widthFix'></image>
+  <view class='start' wx:if="{{usertoken}}">
+    <view>
+      <image class='avator' src='{{userInfo.HeadUrl}}' mode='aspectFill'></image>
+    </view>
     <view class='column'>
-      <view class='ft32 mt30 h40'>杭州古迪科技有限公司</view>
+      <view class='ft32 mt30 h40'>{{userInfo.NickName}}</view>
       <view class='start h50'>
-        <view class='ft26 mr15'>账号: 1804545145</view>
-        <text class='tag'>管理员</text>
+        <view class='ft28 mr15'>账号: {{userInfo.Mobile}}</view>
+        <text class='tag' wx:if="{{userInfo.IsAdministrator==true}}">管理员</text>
+      </view>
+    </view>
+  </view>
+  <view class='start' wx:else>
+    <view>
+      <image class='avator' src='../../img/userIcon.png' mode='aspectFill'></image>
+    </view>
+    <view class='column'>
+      <view class='ft32 mt30 h40'>去登陆</view>
+      <view class='start h50'>
+        <view class='ft28 mr15'>账号: 1804545145</view>
+        <!-- <text class='tag'>管理员</text> -->
       </view>
     </view>
   </view>

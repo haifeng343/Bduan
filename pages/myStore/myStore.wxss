@@ -31,6 +31,11 @@
 .courseRow {
   width: 65%;
 }
+.name{
+  width: 100%;
+  text-align: left;
+  color: #5b5b5b;
+}
 .courseRow .start{
   width: 90%;
 }

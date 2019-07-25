@@ -270,24 +270,12 @@ page {
   font-size: 24rpx;
 }
 
-.ft26 {
-  font-size: 26rpx;
-}
-
 .ft28 {
   font-size: 28rpx;
 }
 
-.ft30 {
-  font-size: 30rpx;
-}
-
 .ft32 {
   font-size: 32rpx;
-}
-
-.ft34 {
-  font-size: 34rpx;
 }
 
 .ft36 {
@@ -346,27 +334,20 @@ image {
   color: #595959;
 }
 .h30 {
-  height: 30rpx;
   line-height: 30rpx;
   display: flex;
-  align-items: center;
 }
 .h40 {
-  height: 40rpx;
   line-height: 40rpx;
   display: flex;
-  align-items: center;
 }
 
 .h50 {
-  height: 50rpx;
   line-height: 50rpx;
   display: flex;
-  align-items: center;
 }
 
 .h60 {
-  height: 60rpx;
   line-height: 60rpx;
   display: flex;
   align-items: center;
@@ -377,17 +358,14 @@ image {
 }
 
 .h80 {
-  height: 80rpx;
   line-height: 80rpx;
   display: flex;
   align-items: center;
 }
 
 .h100 {
-  height: 100rpx;
   line-height: 100rpx;
   display: flex;
-  align-items: center;
 }
 
 .icon {

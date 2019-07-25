@@ -44,7 +44,7 @@ Page({
     usertoken: ""
   },
   onShow() {
-    let usertoken = wx.getStorageSync('usertoken');
+    let usertoken = wx.getStorageSync('userInfo').UserToken;
     this.setData({
       usertoken: usertoken
     });
@@ -83,7 +83,7 @@ Page({
   },
   getData: function () {
     let that = this;
-    var url = 'order/list';
+    var url = 'account/activitygroup/list';
     var params = {
       Status: that.data.navbarActiveIndex + 1,
       PageCount: 5,

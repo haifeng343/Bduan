@@ -5,6 +5,9 @@
   box-sizing: border-box;
   overflow: hidden;
 }
+.start{
+  text-align: left;
+}
 .well{
   padding: 0;
 }
@@ -15,11 +18,11 @@
   width: 90%;
 }
 .leftImg{
-  width: 25%;
+  width: 23%;
   margin-right: 15rpx;
 }
 .right{
-  right: 75%;
+  width: 77%;
   overflow: hidden;
 }
 .activity{
@@ -82,7 +85,10 @@
   flex-direction: column;
 }
 .teacherItem{
-  margin-top: 40rpx;
+  margin-top: 20rpx;
+  border-bottom: 1rpx solid #f9f9f9;
+  padding-bottom: 20rpx;
+  box-sizing: border-box;
 }
 .avator{
   width: 150rpx;

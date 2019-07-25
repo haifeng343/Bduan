@@ -5,28 +5,36 @@
   <view class='right'>
     <view class='column'>
       <view class='between h40'>
-        <view class='ft30'>好的是的</view>
+        <view class='ft32'>好的是的</view>
         <view class='cc ft24'>201954</view>
       </view>
-      <view class='start ft26'>
+      <view class='start ft28'>
         <view class='start h40'>
-          <image class='icon2' src='../../img/b2.png' mode='widthFix'></image>
+          <view>
+            <image class='icon1' src='../../img/b2.png' mode='widthFix'></image>
+          </view>
           <view>课程数量1节</view>
         </view>
         <view class='start h40 ml20'>
-          <image class='icon2' src='../../img/time.png' mode='widthFix'></image>
+          <view>
+            <image class='icon1' src='../../img/time.png' mode='widthFix'></image>
+          </view>
           <view>单节课时 60 min</view>
         </view>
       </view>
-      <view class='start h40 ft26'>
+      <view class='start h40 ft28'>
         <view class='start'>
-          <image class='icon2' src='../../img/b3.png' mode='widthFix'></image>
+          <view>
+            <image class='icon1' src='../../img/b3.png' mode='widthFix'></image>
+          </view>
           <view>门店1</view>
         </view>
       </view>
-      <view class='start h40 ft26'>
+      <view class='start h40 ft28'>
         <view class='start'>
-          <image class='icon2' src='../../img/b1.png' mode='widthFix'></image>
+          <view>
+            <image class='icon1' src='../../img/b1.png' mode='widthFix'></image>
+          </view>
           <view>活动组1</view>
         </view>
       </view>

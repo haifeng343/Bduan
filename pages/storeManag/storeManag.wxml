@@ -1,62 +1,59 @@
-<view class='keep start' bindtap='bindCourseDetail'>
+<view class='keep start'>
   <view class='leftImg'>
-    <image class='topImg' src='../../img/kk1.png' mode='widthFix' lazy-load='true'></image>
+    <image class='topImg' src='../../img/kk1.png' mode='aspectFill' lazy-load='true'></image>
   </view>
   <view class='right w100'>
     <view class='column w100'>
       <view class='between h40 w100'>
-        <view class='ft28'>英孚教育1店</view>
-        <view class='cc ft24'>2019-10-12</view>
+        <view class='ft28'>{{Info.StoreName}}</view>
+        <!-- <view class='cc ft24'>2019-10-12</view> -->
       </view>
-      <view class='start ft24'>
-        <view class='start h40'>
-          <image class='icon1' src='../../img/b2.png' mode='widthFix'></image>
-          <view>课程数量1节</view>
+      <view class='start h40 ft24'>
+        <view class='start'>
+          <image class='icon1' src='../../img/ad1.png' mode='aspectFill'></image>
+          <view class='name'>{{Info.Address}}</view>
         </view>
-        <view class='start h40 ml20'>
-          <image class='icon1' src='../../img/time.png' mode='widthFix'></image>
-          <view>单节课时 60 min</view>
+      </view>
+      <view class='start h40 ft24' wx:for="{{Info.StoreMobile}}" wx:key wx:for-item="k">
+        <view class='start'>
+          <image class='icon1' src='../../img/cal.png' mode='aspectFill'></image>
+          <view class='name'>{{k}}</view>
         </view>
       </view>
       <view class='start h40 ft24'>
         <view class='start'>
-          <image class='icon1' src='../../img/b3.png' mode='widthFix'></image>
-          <view>门店1</view>
+          <image class='icon1' src='../../img/people.png' mode='aspectFill'></image>
+          <view class='name'>{{Info.Leader}}</view>
         </view>
       </view>
       <view class='start h40 ft24'>
         <view class='start'>
-          <image class='icon1' src='../../img/b1.png' mode='widthFix'></image>
-          <view>活动组1</view>
+          <view class='name'>门店品类: {{CategoryList}}</view>
         </view>
       </view>
-      <view class='start ft24 h40'>
-        <view>所属团单: 团单1</view>
-      </view>
-      <view class='start ft24 h40'>
-        <view>已购人数: 3800</view>
-        <view class='ml20'>到店人数: 3800</view>
-      </view>
-      <view class='start ft24 h40'>
-        <view>预计招生: 3800</view>
-        <view class='ml20'>到店服务费: 3800</view>
+      <view class='start h40 ft24'>
+        <view class='start'>
+          <view class='name' wx:if="{{Info.BusinessStatus==1}}">营业状态: 营业中</view>
+          <view class='name' wx:if="{{Info.BusinessStatus==2}}">营业状态: 已关门</view>
+          <view class='name' wx:if="{{Info.BusinessStatus==3}}">营业状态: 筹建中</view>
+          <view class='name' wx:if="{{Info.BusinessStatus==4}}">营业状态: 暂停营业</view>
+        </view>
       </view>
     </view>
   </view>
 </view>
 
-
-<view class='content content1 ft30 mt20'>
-  <view class='between h80 borb' bindtap='navtoStoreAccount'>
+<view class='content content1 ft28 mt20'>
+  <view class='between h80 borb' data-Id="{{Id}}" bindtap='navtoStoreAccount'>
     <view class='start h80'>
-      <image class='icon2' src='../../img/m4.png' mode='widthFix'></image>
+      <image class='icon1' src='../../img/m4.png' mode='widthFix'></image>
       <view>门店账户</view>
     </view>
     <image class='go' src='../../img/go.png' mode='widthFix'></image>
   </view>
-  <view class='between h80 borb' bindtap='navtoStoreTeacher'>
+  <view class='between h80' data-Id="{{Id}}" bindtap='navtoStoreTeacher'>
     <view class='start h80'>
-      <image class='icon2' src='../../img/m5.png' mode='widthFix'></image>
+      <image class='icon1' src='../../img/m5.png' mode='widthFix'></image>
       <view>门店师资</view>
     </view>
     <image class='go' src='../../img/go.png' mode='widthFix'></image>

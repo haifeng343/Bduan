@@ -1,24 +1,13 @@
 <view class='content'>
-  <view class='item pd20 start'>
-    <image src='../../img/avator.png' mode='widthFix' class='avator'></image>
+  <view class='item pd20 start' wx:for="{{List}}" wx:key>
+    <image src='{{item.HeadUrl}}' mode='aspectFill' class='avator'></image>
     <view class='column'>
       <view class='start h60'>
-        <view class='ft28'>Apri</view>
-        <view class='ft24 cc ml20'>旅游英语 | 五年教龄</view>
+        <view class='ft28'>{{item.Name}}</view>
+        <view class='ft24 cc ml20'>{{item.Titles}} | {{item.TeachingAge}}教龄</view>
       </view>
-      <view class='ft24 bb left'>度搜案件萨拉米假丝酵母；末的发生的大你大家都在发大家都在发大家都在发大家都在发</view>
-      <view class='end ft24 cc h40'>绑定时间: 2019-10-12</view>
-    </view>
-  </view>
-  <view class='item pd20 start'>
-    <image src='../../img/avator.png' mode='widthFix' class='avator'></image>
-    <view class='column'>
-      <view class='start h60'>
-        <view class='ft28'>Apri</view>
-        <view class='ft24 cc ml20'>旅游英语 | 五年教龄</view>
-      </view>
-      <view class='ft24 bb left'>度搜案件萨拉米假丝酵母；末的发生的大你大家都在发大家都在发大家都在发大家都在发</view>
-      <view class='end ft24 cc h40'>绑定时间: 2019-10-12</view>
+      <view class='ft24 bb left'>{{item.Honor}}</view>
+      <!-- <view class='end ft24 cc h40'>绑定时间: 2019-10-12</view> -->
     </view>
   </view>
 </view>
@@ -90,4 +79,4 @@
   </view>
 </view>
 
-<view class='add'>分配师资</view>
+<view class='add' bindtap='fenpei'>分配师资</view>

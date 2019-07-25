@@ -19,25 +19,33 @@
     <view class='ft32'>课程1</view>
     <view class='cc ft24'>201954</view>
   </view>
-  <view class='start ft26'>
-    <view class='start h60'>
-      <image class='icon2' src='../../img/b2.png' mode='widthFix'></image>
+  <view class='start ft28'>
+    <view class='start h40'>
+      <view>
+      <image class='icon1' src='../../img/b2.png' mode='widthFix'></image>
+      </view>
       <view>课程数量1节</view>
     </view>
-    <view class='start h60 ml50'>
-      <image class='icon2' src='../../img/time.png' mode='widthFix'></image>
-      <view>单节课时 60 min</view>
+    <view class='start h40 ml50'>
+      <view>
+        <image class='icon1' src='../../img/time.png' mode='widthFix'></image>
+      </view>
+      <view>单节课时60min</view>
     </view>
   </view>
-  <view class='start h60 ft26'>
-    <view class='start h60'>
-      <image class='icon2' src='../../img/b3.png' mode='widthFix'></image>
+  <view class='start h40 ft28'>
+    <view class='start h40'>
+      <view>
+      <image class='icon1' src='../../img/b3.png' mode='widthFix'></image>
+      </view>
       <view>门店1</view>
     </view>
   </view>
-  <view class='start h60 ft26'>
-    <view class='start h60'>
-      <image class='icon2' src='../../img/b1.png' mode='widthFix'></image>
+  <view class='start h40 ft28'>
+    <view class='start h40'>
+      <view>
+      <image class='icon1' src='../../img/b1.png' mode='widthFix'></image>
+      </view>
       <view>活动组1</view>
     </view>
   </view>
@@ -53,23 +61,23 @@
       <view class='teaName'>{{item.Name}}</view>
     </view> -->
     <view class='teachers' wx:key>
-      <image class='teaImg' src='../../img/tt1.png' lazy-load='true'></image>
+      <image class='teaImg' src='../../img/tt1.png' mode='aspectFill' lazy-load='true'></image>
       <view class='teaName'>张老师</view>
     </view>
     <view class='teachers' wx:key>
-      <image class='teaImg' src='../../img/tt1.png' lazy-load='true'></image>
+      <image class='teaImg' src='../../img/tt1.png' mode='aspectFill' lazy-load='true'></image>
       <view class='teaName'>李老师</view>
     </view>
     <view class='teachers' wx:key>
-      <image class='teaImg' src='../../img/tt1.png' lazy-load='true'></image>
+      <image class='teaImg' src='../../img/tt1.png' mode='aspectFill' lazy-load='true'></image>
       <view class='teaName'>罗老师</view>
     </view>
     <view class='teachers' wx:key>
-      <image class='teaImg' src='../../img/tt1.png' lazy-load='true'></image>
+      <image class='teaImg' src='../../img/tt1.png' mode='aspectFill' lazy-load='true'></image>
       <view class='teaName'>罗老师</view>
     </view>
     <view class='teachers' wx:key>
-      <image class='teaImg' src='../../img/tt1.png' lazy-load='true'></image>
+      <image class='teaImg' src='../../img/tt1.png' mode='aspectFill' lazy-load='true'></image>
       <view class='teaName'>罗老师</view>
     </view>
   </view>

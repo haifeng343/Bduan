@@ -5,14 +5,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    userInfo:'',
+    usertoken:'',
+  },
+  onShow:function() {
+    // let userInfo = wx.getStorageSync('userInfo');
+    // let usertoken = wx.getStorageSync('userInfo').UserToken;
+    this.setData({
+      userInfo: wx.getStorageSync('userInfo') || '',
+      usertoken: wx.getStorageSync('userInfo').UserToken || ''
+    })
+    console.log(this.data.userInfo)
   },
   bindGroup:function() {
     wx.navigateTo({
       url: '/pages/myGroup/myGroup',
     })
   },
-  bindCallUs:function() {
+  bindCallUs:function() { 
     wx.navigateTo({
       url: '/pages/callUs/callUs',
     })

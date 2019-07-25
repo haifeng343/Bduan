@@ -84,6 +84,9 @@ swiper-item {
 button{
   padding: 0;
 }
+.content{
+  padding: 20rpx 5%;
+}
 .end{
   display: flex;
   justify-content: flex-end;

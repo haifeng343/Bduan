@@ -36,11 +36,7 @@
     <view wx:for="{{navTabs}}" wx:key class='ft30 mr40 active {{showId == item.id ? "active" : ""}}'>{{item.name}}</view>
   </view> -->
   <view class='start timeTitle'>
-    <view class='ft30 mr40 active {{showId == item.id ? "active" : ""}}'>今天</view>
-    <view class='ft30 mr40'>昨天</view>
-    <view class='ft30 mr40'>最近7天</view>
-    <view class='ft30 mr40'>最近1月</view>
-    <view class='ft30 mr40'>自定义</view>
+    <view class='ft28 mr40 {{showId == item.id ? "active" : ""}}' wx:for="{{navTabs}}" wx:key>{{item.name}}</view>
   </view>
 
   <view class='selectTime around none'>
@@ -69,16 +65,18 @@
 </view>
 
 <view class='moment bort mt20'>
-  <view class='content between bg borb pd20' bindtap='bindGroup'>
-    <view class='ft30 pd20 bold'>正在参与的活动</view>
-    <image class='go pd20 mt5' src='../../img/go.png' mode='widthFix'></image>
+  <view class='content between bg borb pd20 h60' bindtap='bindGroup'>
+    <view class='ft32 pd20 bold'>正在参与的活动</view>
+    <image class='go pd20' src='../../img/go.png' mode='widthFix'></image>
   </view>
   <view class='List'>
 
     <view class='item column' bindtap='binddetail'>
-      <view class='ft30'>活动组1</view>
+      <view class='ft28'>活动组1</view>
       <view class='start'>
-        <image class='icon mr5' src='../../img/ad1.png' mode='widthFix'></image>
+        <view>
+          <image class='icon1 mr5 mt5' src='../../img/ad1.png' mode='widthFix'></image>
+        </view>
         <view class='ft26 cc'>西溪商圈</view>
       </view>
       <view class='wrap cc'>dsssssssssssssssssssssssssssssdsssssssssssssssssssssssssssssdsssssssssssssssssssssssssssss</view>

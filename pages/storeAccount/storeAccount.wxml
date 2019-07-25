@@ -1,27 +1,17 @@
 <view class='content'>
-  <view class='item pd20 start'>
-    <image src='../../img/avator.png' mode='widthFix' class='avator'></image>
-    <view class='column w100'>
-      <view class='between w100 ft28 h40'>
-        <view>账户名: 135684847</view>
-        <view>普通账户</view>
-      </view>
-      <view class='between w100 ft24 h40'>
-        <view>手机号: 135684847</view>
-        <view class='cc'>绑定时间: 2019-5241-474</view>
-      </view>
+  <view class='item pd20 start' wx:for="{{List}}" wx:key>
+    <view>
+      <image src='{{item.HeadUrl}}' mode='aspectFill' class='avator'></image>
     </view>
-  </view>
-  <view class='item pd20 start'>
-    <image src='../../img/avator.png' mode='widthFix' class='avator'></image>
     <view class='column w100'>
       <view class='between w100 ft28 h40'>
-        <view>账户名: 135684847</view>
-        <view>普通账户</view>
+        <view>账户名: {{item.UserName}}</view>
+        <view wx:if="{{item.IsAdministrator==true}}">管理员</view>
+        <view wx:else>普通账户</view>
       </view>
       <view class='between w100 ft24 h40'>
-        <view>手机号: 135684847</view>
-        <view class='cc'>绑定时间: 2019-5241-474</view>
+        <view>手机号: {{item.Mobile}}</view>
+        <!-- <view class='cc'>绑定时间: 2019-5241-474</view> -->
       </view>
     </view>
   </view>
@@ -33,89 +23,33 @@
   <view class="zan-dialog__container">
     <view class='h60 bold center pd20'>分配师资</view>
     <view class='dialogList'>
-      <checkbox-group>
-        <view class='dialogItem pd20 start'>
-          <checkbox></checkbox>
-          <image src='../../img/avator.png' mode='widthFix' class='avator'></image>
+      <checkbox-group bindchange="checkedChange">
+        <view class='dialogItem pd20 start' wx:for="{{accountList}}" wx:key>
+          <checkbox value='{{item.AccountId}}' checked='{{item.AccountId}}'></checkbox>
+          <view>
+            <image src='{{item.HeadUrl}}' mode='aspectFill' class='avator'></image>
+          </view>
           <view class='column w100'>
             <view class='between w100 ft28 h40'>
-              <view>账户名: 135684847</view>
-              <view>普通账户</view>
+              <view>账户名: {{item.UserName}}</view>
+              <view wx:if="{{item.IsAdministrator==true}}">管理员</view>
+              <view wx:else>普通账户</view>
             </view>
             <view class='between w100 ft24 h40'>
-              <view>手机号: 135684847</view>
-              <view class='cc'>绑定时间: 2019-5241-474</view>
+              <view>手机号: {{item.Mobile}}</view>
+              <!-- <view class='cc'>绑定时间: 2019-5241-474</view> -->
             </view>
           </view>
         </view>
 
-        <view class='dialogItem pd20 start'>
-          <checkbox></checkbox>
-          <image src='../../img/avator.png' mode='widthFix' class='avator'></image>
-          <view class='column w100'>
-            <view class='between w100 ft28 h40'>
-              <view>账户名: 135684847</view>
-              <view>普通账户</view>
-            </view>
-            <view class='between w100 ft24 h40'>
-              <view>手机号: 135684847</view>
-              <view class='cc'>绑定时间: 2019-5241-474</view>
-            </view>
-          </view>
-        </view>
-
-        <view class='dialogItem pd20 start'>
-          <checkbox></checkbox>
-          <image src='../../img/avator.png' mode='widthFix' class='avator'></image>
-          <view class='column w100'>
-            <view class='between w100 ft28 h40'>
-              <view>账户名: 135684847</view>
-              <view>普通账户</view>
-            </view>
-            <view class='between w100 ft24 h40'>
-              <view>手机号: 135684847</view>
-              <view class='cc'>绑定时间: 2019-5241-474</view>
-            </view>
-          </view>
-        </view>
-
-        <view class='dialogItem pd20 start'>
-          <checkbox></checkbox>
-          <image src='../../img/avator.png' mode='widthFix' class='avator'></image>
-          <view class='column w100'>
-            <view class='between w100 ft28 h40'>
-              <view>账户名: 135684847</view>
-              <view>普通账户</view>
-            </view>
-            <view class='between w100 ft24 h40'>
-              <view>手机号: 135684847</view>
-              <view class='cc'>绑定时间: 2019-5241-474</view>
-            </view>
-          </view>
-        </view>
-
-        <view class='dialogItem pd20 start'>
-          <checkbox></checkbox>
-          <image src='../../img/avator.png' mode='widthFix' class='avator'></image>
-          <view class='column w100'>
-            <view class='between w100 ft28 h40'>
-              <view>账户名: 135684847</view>
-              <view>普通账户</view>
-            </view>
-            <view class='between w100 ft24 h40'>
-              <view>手机号: 135684847</view>
-              <view class='cc'>绑定时间: 2019-5241-474</view>
-            </view>
-          </view>
-        </view>
 
       </checkbox-group>
     </view>
     <view class='know h80 bort between'>
       <view class='cancel' bindtap='bindCancel'>取消</view>
-      <view class='cancel'>确认</view>
+      <view class='cancel' bindtap='bindSure'>确认</view>
     </view>
   </view>
 </view>
 
-<view class='add'>分配账户</view>
+<view class='add' bindtap='fenpei'>分配账户</view>

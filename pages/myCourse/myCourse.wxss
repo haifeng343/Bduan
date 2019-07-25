@@ -13,6 +13,9 @@
 .courseRow {
   width: 65%;
 }
+.start {
+  text-align: left;
+}
 .courseRow .start{
   width: 90%;
 }

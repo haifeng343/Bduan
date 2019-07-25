@@ -5,6 +5,11 @@
 .w100{
   width: 100%;
 }
+.icon2{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+}
 .between{
   padding-right: 5%;
 }
@@ -25,6 +30,11 @@
 }
 .courseRow {
   width: 65%;
+}
+.name{
+  width: 100%;
+  text-align: left;
+  color: #5b5b5b;
 }
 .courseRow .start{
   width: 90%;
