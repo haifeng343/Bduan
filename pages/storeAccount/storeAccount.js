@@ -6,22 +6,23 @@ Page({
    */
   data: {
     showSuccess: false,
+    IsShow:'',
     Id: '',
     List: [], //我的门店杭虎列表
     accountList: [], //所有门店列表
     checkArr: [],
   },
   onLoad: function(options) {
+    let IsShow = wx.getStorageSync('userInfo').IsAdministrator;
     this.setData({
-      Id: options.Id
+      Id: options.Id,
+      IsShow: IsShow
     })
+    console.log(this.data.IsShow)
     this.init();
   },
-  init() {
-    this.getData();
-  },
   //我的门店账户列表
-  getData: function() {
+  init: function() {
     let that = this;
     var url = 'account/storeaccount/list';
     var params = {

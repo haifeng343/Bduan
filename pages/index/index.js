@@ -125,7 +125,8 @@ Page({
     netUtil.postRequest(url, params, function (res) { //onSuccess成功回调
       that.setData({
         showSuccessd: true,
-        showSure: false
+        showSure: false,
+        code:'',
       })
     })
   },

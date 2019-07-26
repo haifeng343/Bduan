@@ -38,15 +38,15 @@
         </view>
       </view>
       <view class='start ft24 h40'>
-        <view>所属团单: 团单1</view>
+        <view>所属团单: {{SheetList}}</view>
       </view>
       <view class='start ft24 h40'>
-        <view>已购人数: 3800</view>
-        <view class='ml20'>到店人数: 3800</view>
+        <view>已购人数: {{item.BuyCount}}</view>
+        <view class='ml20'>到店人数: {{item.ArrivalCount}}</view>
       </view>
       <view class='start ft24 h40'>
-        <view>预计招生: 3800</view>
-        <view class='ml20'>到店服务费: 3800</view>
+        <view>预计招生: {{item.MaxNumber}}</view>
+        <!-- <view class='ml20'>到店服务费: 3800</view> -->
       </view>
     </view>
   </view>
