@@ -32,14 +32,11 @@
 </view>
 
 <view class='content'>
-  <!-- <view class='start timeTitle'>
-    <view wx:for="{{navTabs}}" wx:key class='ft30 mr40 active {{showId == item.id ? "active" : ""}}'>{{item.name}}</view>
-  </view> -->
   <view class='start timeTitle'>
-    <view class='ft28 mr40 {{showId == item.id ? "active" : ""}}' wx:for="{{navTabs}}" wx:key>{{item.name}}</view>
+    <view class='ft28 mr40 {{showId == item.id ? "active" : ""}}' data-id="{{item.id}}" bindtap='changeShowId' wx:for="{{navTabs}}" wx:key>{{item.name}}</view>
   </view>
 
-  <view class='selectTime around none'>
+  <view class='selectTime around' wx:if="{{showId == 5}}">
     <picker mode="date" value="{{date1}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange1">
       <view class="picker">
         {{date1==''?"开始时间":date1}}
@@ -184,7 +181,15 @@
     </view>
   </view>
 </view>
-
+  <modal hidden="{{hiddenmodalput}}" title="确定推荐人" confirm-text="确认" cancel-text="取消" bindcancel="cancelM" bindconfirm="confirmM">
+  <view class='mg'>手机号: {{Info.Mobile}}</view>
+  <view class='mg mg1'>昵称: {{item.NickName}}</view>
+  <view class='start mg mg1'>头像:
+    <image class='top' src='{{Info.HeadUrl}}' mode='widthFix' lazy-load='true'></image>
+    <image class='top' src='{{Info.HeadUrl}}' mode='widthFix' lazy-load='true'></image>
+  </view>
+  <text class='t1'>温馨提示：推荐人只允许设置一次，设置成功后不可修改</text>
+</modal>
 <!--确认订单信息弹出框-->
 <view class="zan-dialog {{ showSure ? 'zan-dialog--show' : 'none' }}" catchtouchmove="ture">
   <view class="zan-dialog__mask" bindtap="toggleDialog" />
@@ -200,6 +205,12 @@
       </view>
       <view class='ft28 left pl5 h60 pr5'>购买时间: {{QuanInfo.BuyTime}}</view>
       <view class='ft28 left pl5 pr5 h60'>购买账户: {{QuanInfo.BuyAccountName}}({{QuanInfo.BuyAccountMobile}})</view>
+      <view class='ft28 left pl5 pr5 h60'>购买账户: {{QuanInfo.BuyAccountName}}({{QuanInfo.BuyAccountMobile}})</view>
+      <view class='ft28 left pl5 pr5 h60'>购买账户: {{QuanInfo.BuyAccountName}}({{QuanInfo.BuyAccountMobile}})</view>
+      <view class='ft28 left pl5 pr5 h60'>购买账户: {{QuanInfo.BuyAccountName}}({{QuanInfo.BuyAccountMobile}})</view>
+      <view class='ft28 left pl5 pr5 h60'>购买账户: {{QuanInfo.BuyAccountName}}({{QuanInfo.BuyAccountMobile}})</view>
+      <view class='ft28 left pl5 pr5 h60'>购买账户: {{QuanInfo.BuyAccountName}}({{QuanInfo.BuyAccountMobile}})</view>
+      <view class='ft28 left pl5 pr5 h60'>购买账户: {{QuanInfo.BuyAccountName}}({{QuanInfo.BuyAccountMobile}})</view>
     </view>
     <view class='List'>
       <checkbox-group bindchange="checkdChange">
@@ -208,7 +219,7 @@
             <image class='icon1' src='../../img/k1.png' mode='widthFix'></image>
             <view class="{{k.UseStatus==2?'cc':''}} ft28">{{k.ItemName}}（{{k.StoreName}}）</view>
           </view>
-           <checkbox value='{{k.RelId}}' wx:if='{{QuanInfo.OrderStatus!=3 && !QuanInfo.OrderStatus!=4 && k.UseStatus!=2}}' checked='{{k.RelId}}'></checkbox>
+           <checkbox value='{{k.RelId}}' wx:if='{{QuanInfo.OrderStatus!=3 && !QuanInfo.OrderStatus!=4 && k.UseStatus!=2}}'></checkbox>
            <image src='../../img/expire.png' wx:if="{{QuanInfo.OrderStatus==4}}" mode='widthFix' class='expire'></image>
         </view>
       </checkbox-group>

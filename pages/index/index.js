@@ -10,6 +10,8 @@ Page({
     showSure: false, //确认订单信息
     showSuccessd: false, //验券成功
     showSelect: false, //门店选择
+    hiddenmodalput:true,
+    showId:1,
     navTabs: [{
       id: 1,
       name: '今天'
@@ -60,6 +62,12 @@ Page({
   navtoVercation: function () {
     wx.navigateTo({
       url: '/pages/vercationLog/vercationLog',
+    })
+  },
+  //点击切换选中样式
+  changeShowId:function(e) {
+    this.setData({
+      showId : e.currentTarget.dataset.id
     })
   },
   //弹窗隐藏
@@ -144,17 +152,21 @@ Page({
   },
   //开始时间
   bindDateChange1: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       date1: e.detail.value
     })
+    if (this.data.date1 && this.data.date2){
+
+    }
   },
   //结束时间 
   bindDateChange2: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       date2: e.detail.value
     })
+    if (this.data.date1 && this.data.date2) {
+      
+    }
   },
   //弹出门店下拉选择
   changeSelect: function () {

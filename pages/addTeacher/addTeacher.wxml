@@ -22,7 +22,7 @@
   <view class='item column borb'>
     <label class=' h80'>教师图片</label>
     <!-- <image class='upload1 pd20 ml20' src='../../img/upload.png' mode='widthFix' bindtap='bindUpload1'></image> -->
-    <view style='background-color:#fff;height:400rpx;'>
+    <view style='background-color:#fff;'>
       <view class="image" wx:for="{{imgs}}" wx:for-item="item" wx:key="*this">
         <!-- 图片预览 -->
         <image src="{{item}}" class='onload' data-index="{{index}}" bindtap="previewImg" mode='widthFix' lazy-load='true'></image>

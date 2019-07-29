@@ -25,7 +25,7 @@
     <view class='dialogList'>
       <checkbox-group bindchange="checkedChange">
         <view class='dialogItem pd20 start' wx:for="{{accountList}}" wx:key>
-          <checkbox value='{{item.AccountId}}' checked='{{item.AccountId}}'></checkbox>
+          <checkbox value='{{item.AccountId}}'></checkbox>
           <view>
             <image src='{{item.HeadUrl}}' mode='aspectFill' class='avator'></image>
           </view>

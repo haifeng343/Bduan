@@ -11,6 +11,9 @@
   padding: 25rpx 5% 25rpx 0;
   box-sizing: border-box;
 }
+.ft26{
+  font-size: 28rpx;
+}
 .item .start{
   height: 50rpx;
   line-height: 50rpx;
