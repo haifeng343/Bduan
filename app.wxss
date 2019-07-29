@@ -360,12 +360,12 @@ image {
 .h80 {
   line-height: 80rpx;
   display: flex;
-  align-items: center;
 }
 
 .h100 {
   line-height: 100rpx;
   display: flex;
+  align-items: center;
 }
 
 .icon {
@@ -419,6 +419,9 @@ image {
 .go {
   width: 12rpx;
   height: 22rpx;
+  display: flex;
+  align-items: center;
+  margin: auto 0;
 }
 
 .selectImg {
