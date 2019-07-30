@@ -7,5 +7,5 @@
     <view class='center' bindtap='change2'>账户名搜索</view>
   </view>
   <input class='searchInput ft26' value='{{value}}' placeholder='{{status}}' bindinput='bindSearch'></input>
-  <view class='ft28 searchRight bold' bindtap='search'>搜索</view>
+  <view class='ft28 searchRight' bindtap='search'>搜索</view>
 </view>

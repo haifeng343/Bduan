@@ -1,5 +1,5 @@
 <view class='searchClass'>
-  <input class='seachTo' bindtap='bindSearch' placeholder='订单号/账户号'></input>
+  <input class='seachTo' bindtap='bindSearch' disabled placeholder='订单号/账户号'></input>
 </view>
 <view class='List List1'>
   <view class='item column'>
