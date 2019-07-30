@@ -1,11 +1,12 @@
 var netUtil = require("../../utils/request.js"); //require引入
 let baseUrl = "https://test.guditech.com/rocketclient/";
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
+    name:'',//教师姓名
+    headImg: '',//教师头像
+    type: '',//授课类型
+    jobTitle: '',//教师职称
+    description: '',//教师描述
     imgs: [],
     plusShow: true,
   },

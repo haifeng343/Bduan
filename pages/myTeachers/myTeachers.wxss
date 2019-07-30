@@ -7,47 +7,6 @@ page {
   padding: 0rpx 0rpx 50rpx;
 }
 
-.touch-item {
-  font-size: 14px;
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid #f9f9f9;
-  width: 100%;
-  overflow: hidden;
-}
-
-.content {
-  position: relative;
-  width: 100%;
-  padding: 10px;
-  line-height: 22px;
-  margin-right: 0;
-  -webkit-transition: all 0.4s;
-  transition: all 0.4s;
-  -webkit-transform: translateX(90px);
-  transform: translateX(90px);
-  margin-left: -90px;
-}
-
-.del {
-  background-color: orangered;
-  width: 90px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  -webkit-transform: translateX(90px);
-  transform: translateX(90px);
-  -webkit-transition: all 0.4s;
-  transition: all 0.4s;
-}
-
-.touch-move-active .content, .touch-move-active .del {
-  -webkit-transform: translateX(0);
-  transform: translateX(0);
-}
-
 .address{
   width: 100%;
   background-color: #fff;
@@ -90,20 +49,21 @@ page {
   color: #A19B9B;
 }
 .avator{
-  width: 150rpx;
-  height: 150rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
   margin-right: 15rpx;
 }
 .column{
   position: relative;
 }
 .between{
-  width:560rpx;
+  width:540rpx;
 }
 .edit{
-  position: absolute;
-  width: 50rpx;
-  height: 50rpx;
-  top: 45rpx;
-  right: -24%;
+  display: flex;
+  align-items: center;
+  margin: auto 15rpx;
+  width: 34rpx;
+  height: 34rpx;
 }

@@ -1,8 +1,8 @@
 <view class='content mt20 h101' bindtap='modifyPhone'>
   <view class='between h101'>
-    <view class='ft28'>修改手机号</view>
+    <view class='ft28'>{{name}}</view>
     <view class='end'>
-      <view class='mr15 bb ft24'>135545748</view>
+      <view class='mr15 bb ft24'>{{mobile}}</view>
       <image src='../../img/go.png' mode='widthFix' class='go'></image>
     </view>
   </view>

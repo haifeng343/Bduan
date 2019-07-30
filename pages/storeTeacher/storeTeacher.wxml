@@ -1,4 +1,8 @@
-<view class='content'>
+<view class='noHas' wx:if="{{List.length<=0}}">
+  <image src='../../img/zanwu.png' mode='widthFix' class='noList'></image>
+  <!-- <view class='zanwu'>暂无数据</view> -->
+</view>
+<view class='content' wx:else>
   <view class='item pd20 start' wx:for="{{List}}" wx:key>
     <image src='{{item.HeadUrl}}' mode='aspectFill' class='avator'></image>
     <view class='column'>
@@ -13,7 +17,28 @@
 </view>
 
 <!--分配弹出框-->
-<view class="zan-dialog {{ showSuccess ? 'zan-dialog--show' : 'none' }}" catchtouchmove="ture">
+<modal hidden="{{showLog}}" title="分配师资" confirm-text="确认" cancel-text="取消" bindcancel="bindCancel" bindconfirm="bindSure" catchtouchmove="true">
+  <view class='dialogList'>
+      <checkbox-group bindchange="checkedChange">
+        <view class='dialogItem start' wx:for="{{accountList}}" wx:key>
+          <checkbox class='chebox' value='{{item.Id}}'></checkbox>
+          <view>
+          <image class='avator1' src='{{item.HeadUrl}}' mode='aspectFill'></image>
+          </view>
+          <view class='column'>
+            <view class='start h50'>
+              <view class='ft26'>{{item.Name}}</view>
+              <view class='ft22 cc ml20'>{{item.Titles}} | {{item.TeachingAge}}教龄</view>
+            </view>
+            <view class='ft22 bb left'>{{item.Honor}}</view>
+            <!-- <view class='end ft22 cc h30'>绑定时间: 2019-10-12</view> -->
+          </view>
+        </view>
+      </checkbox-group>
+    </view>
+</modal>
+
+<!-- <view class="zan-dialog {{ showSuccess ? 'zan-dialog--show' : 'none' }}" catchtouchmove="ture">
   <view class="zan-dialog__mask" bindtap="toggleDialog" />
   <view class="zan-dialog__container">
     <view class='h60 bold center pd20'>分配师资</view>
@@ -77,6 +102,6 @@
       <view class='cancel'>确认</view>
     </view>
   </view>
-</view>
+</view> -->
 
 <view class='add' bindtap='fenpei'>分配师资</view>

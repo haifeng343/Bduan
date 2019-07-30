@@ -29,8 +29,8 @@ swiper-item {
 
 .dot {
   position: absolute;
-  bottom: 60rpx;
-  right: 70rpx;
+  bottom: 10rpx;
+  right: 50rpx;
   background: rgba(0, 0, 0, 0.1);
   color: #fff;
   font-size: 24rpx;
@@ -117,11 +117,15 @@ button{
   font-size: 32rpx;
   font-weight: 600;
 }
+.icon{
+  margin-top: 7rpx;
+}
 .teaList{
   display: flex;
   flex-direction: row;
   width: 100%;
   overflow-x: scroll;
+  padding-bottom:20rpx; 
 }
 .teaList::-webkit-scrollbar {
   width: 0;

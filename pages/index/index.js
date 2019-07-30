@@ -5,12 +5,11 @@ Page({
     date1: '', //开始时间
     date2: '', //结束时间 
     showSuccess: false, //扫码成功
-    showLog: false, //输码弹窗
+    showLog: true, //输码弹窗
     code: '', //券码
-    showSure: false, //确认订单信息
+    showSure: true, //确认订单信息
     showSuccessd: false, //验券成功
     showSelect: false, //门店选择
-    hiddenmodalput:true,
     showId:1,
     navTabs: [{
       id: 1,
@@ -39,7 +38,6 @@ Page({
     groupList:[],
   },
   onLoad: function (options) {
-
   },
   //正在参与的活动
   getGroupList:function() {
@@ -95,8 +93,8 @@ Page({
     netUtil.postRequest(url, params, function (res) { //onSuccess成功回调
       that.setData({
         QuanInfo: res.Data,
-        showSure: true,
-        showLog: false,
+        showSure: false,
+        showLog: true,
       })
     })
   },
@@ -132,9 +130,17 @@ Page({
     }
     netUtil.postRequest(url, params, function (res) { //onSuccess成功回调
       that.setData({
-        showSuccessd: true,
-        showSure: false,
+        showSure: true,
         code:'',
+      })
+      wx.showModal({
+        title: '验券成功',
+        cancelColor:'#29d9d6',
+        showCancel:false,
+        cancelText:'知道了',
+        success:function() {
+
+        }
       })
     })
   },
@@ -181,6 +187,7 @@ Page({
       onlyFromCamera: false,
       scanType: ['qrCode', 'barCode'],
       success: (res) => {
+        console.log(res)
         that.setData({
           code: res.result
         });

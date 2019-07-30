@@ -1,30 +1,30 @@
-<view class='container radius'>
-  <view class='item start borb h80'>
-    <label>手机号</label>
-    <input maxlength='11'></input>
-  </view>
-  <view class='item start borb h80'>
-    <label>手机号验证码</label>
-    <input class='code'></input>
-    <view class='yan'>获取验证码</view>
+<view class="container radius">
+  <view class="accountLogin">
+    <view class="loginInput">
+      <view class="subtitle">手机号</view>
+      <input type="number" placeholder="请输入新手机号" value="{{Mobile}}" bindinput="getCode" />
+      <image src='../../img/clear.png' wx:if="{{Mobile}}" bindtap='clear' class='cleard'></image>
+    </view>
+    <view class="loginInput">
+      <view class="subtitle">验证码</view>
+      <input type="number" placeholder="请输入验证码" value="{{VerifyCode}}" cursor-spacing='120rpx' bindinput='cendCode' />
+      <button class="imgCoded" bindtap='codeyan' wx:if="{{NumberCountDown==0}}" disabled='{{notEdit}}'>{{btntext}}</button>
+      <view class="imgCoded" wx:if="{{NumberCountDown==-1}}">次数已到</view>
+    </view>
   </view>
 </view>
-
-<!--验券成功提示弹出框-->
-<view class="zan-dialog {{ showSuccess ? 'zan-dialog--show' : 'none' }}" catchtouchmove="ture">
-  <view class="zan-dialog__mask" bindtap="toggleDialog" />
+  <button class="loginBtn loginBtnState" bindtap="SMSVerifyCodeLogin">提交</button>
+<!-- 图形验证码弹框 -->
+<view class="masks" wx:if="{{imgCodeShow}}">
   <view class="imgCode">
     <view class="imgCodeTitle">
       请输入图片验证码
       <icon class="delete" type="clear" size="15" bindtap="closeAlert" />
     </view>
     <view class="inputBox">
-      <input type="text" class='codeNumber' placeholder="请输入" value="{{PicVerifycode}}" bindinput='codeText' placeholder-style="color:#ccc;" />
-      <image src="https://file.guditech.com/ValidateCode/20190723182900249_8e731b4d34724158a162de63057b3391.png" class='codeImg' alt="failed" bindtap="codeyan" alt=""></image>
+      <input type="text" class='codeNumber' placeholder="请输入" value="{{PicVerifycode}}" bindinput='codeText' cursor-spacing='118rpx' placeholder-style="color:#ccc;" />
+      <image src="{{PicUrl}}" class='codeImg' alt="failed" bindtap="codeyan" alt=""></image>
     </view>
     <view class="loginBtns" bindtap="getSMSCode">确定</view>
   </view>
 </view>
-
-
-<view class='submit'>提交</view>

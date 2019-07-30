@@ -1,15 +1,15 @@
 /**
  * 供外部post请求调用
  */
-function post(url, params, onStart, onSuccess, onFailed) {
-  request(url, params, "POST", onStart, onSuccess, onFailed);
+function post(url, params, onSuccess, onFailed, isShowLoading = true, isShowError = true, isnavigateToLogin = true) {
+  request(url, params, "POST", onSuccess, onFailed, isShowLoading, isShowError, isnavigateToLogin);
 }
 
 /**
  * 供外部get请求调用
  */
-function get(url, params, onStart, onSuccess, onFailed) {
-  request(url, params, "GET", onStart, onSuccess, onFailed);
+function get(url, params, onSuccess, onFailed, isShowLoading = true, isShowError = true, isnavigateToLogin = true) {
+  request(url, params, "GET", onSuccess, onFailed, isShowLoading, isShowError, isnavigateToLogin);
 }
 
 /**
@@ -24,10 +24,16 @@ function get(url, params, onStart, onSuccess, onFailed) {
 
 const baseUrl = "https://test.guditech.com/rocketseller/";
 
-function request(url, params, method, onSuccess, onFailed) {
+function request(url, params, method, onSuccess, onFailed, isShowLoading, isShowError, isnavigateToLogin) {
+  if (isShowLoading) {
+    wx.showLoading({
+      title: '玩命加载中...',
+    });
+  }
+
   let moment = {};
   var that = this;
-  var usertoken = wx.getStorageSync('userInfo').UserToken;//wx.getStorageSync(key)，获取本地缓存
+  var usertoken = wx.getStorageSync('usertoken'); //wx.getStorageSync(key)，获取本地缓存
 
   wx.request({
     url: baseUrl + url,
@@ -40,16 +46,23 @@ function request(url, params, method, onSuccess, onFailed) {
       'userToken': usertoken,
     },
     success: function (res) {
+      if (isShowLoading) {
+        wx.hideLoading();
+      }
+
       if (res.data) {
         /** start 根据需求 接口的返回状态码进行处理 */
         if (res.data.ErrorCode == 0) {
-          onSuccess(res.data); //request success
-
-        } else if (res.data.ErrorCode == 301){
+          if (onSuccess) {
+            onSuccess(res.data); //request success
+          }
+        } else if (res.data.ErrorCode == 301) {
+          if (isnavigateToLogin) {
             wx.navigateTo({
               url: '/pages/login/login',
             })
-        } else {
+          }
+        } else if (isShowError) {
           wx.showToast({
             icon: 'none',
             title: res.data.ErrorMessage,
@@ -60,7 +73,20 @@ function request(url, params, method, onSuccess, onFailed) {
     },
 
     fail: function (error) {
-      onFailed(""); //failure for other reasons
+      if (isShowLoading) {
+        wx.hideLoading();
+      }
+
+      if (isShowError) {
+        wx.showToast({
+          icon: 'none',
+          title: '网络错误',
+        }) //failure for other reasons
+      }
+
+      if (onFailed) {
+        onFailed(error);
+      }
     }
   })
 }

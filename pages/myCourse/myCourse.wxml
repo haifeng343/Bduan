@@ -1,52 +1,57 @@
-<view class='keep start' bindtap='bindCourseDetail' wx:for="{{List}}" wx:key wx:if="{{List.length>0}}">
-  <view class='leftImg'>
-    <image class='topImg' src='{{item.ItemCoverImg}}' mode='widthFix' lazy-load='true'></image>
-  </view>
-  <view class='right'>
-    <view class='column'>
-      <view class='between h40'>
-        <view class='ft28'>{{item.ItemName}}</view>
-      </view>
-      <view class='start ft24'>
-        <view class='start h40'>
-          <view>
-            <image class='icon1' src='../../img/b2.png' mode='widthFix'></image>
-          </view>
-          <view>课程数量{{item.CoursesNumber}}节</view>
+<view class='noHas' wx:if="{{List.length<=0}}">
+  <image src='../../img/zanwu.png' mode='widthFix' class='noList'></image>
+</view>
+<view wx:else>
+  <view class='keep start' data-id="{{item.RelId}}" bindtap='bindCourseDetail' wx:for="{{List}}" wx:key>
+    <view class='leftImg'>
+      <image class='topImg' src='{{item.ItemCoverImg}}' mode='widthFix' lazy-load='true'></image>
+    </view>
+    <view class='right'>
+      <view class='column'>
+        <view class='between h40'>
+          <view class='ft28'>{{item.ItemName}}</view>
         </view>
-        <view class='start h40 ml20'>
-          <view>
-            <image class='icon1' src='../../img/time.png' mode='widthFix'></image>
+        <view class='start ft24'>
+          <view class='start h40'>
+            <view>
+              <image class='icon' src='../../img/b2.png' mode='widthFix'></image>
+            </view>
+            <view>课程数量{{item.CoursesNumber}}节</view>
           </view>
-          <view>单节课时{{item.SingleTime}}min</view>
-        </view>
-      </view>
-      <view class='start h40 ft24'>
-        <view class='start'>
-          <view>
-            <image class='icon1' src='../../img/b3.png' mode='widthFix'></image>
+          <view class='start h40 ml20'>
+            <view>
+              <image class='icon' src='../../img/time.png' mode='widthFix'></image>
+            </view>
+            <view>单节课时{{item.SingleTime}}min</view>
           </view>
-          <view>{{item.StoreName}}</view>
         </view>
-      </view>
-      <view class='start h40 ft24'>
-        <view class='start'>
-          <view>
-            <image class='icon1' src='../../img/b1.png' mode='widthFix'></image>
+        <view class='start h40 ft24'>
+          <view class='start'>
+            <view>
+              <image class='icon' src='../../img/b3.png' mode='widthFix'></image>
+            </view>
+            <view>{{item.StoreName}}</view>
           </view>
-          <view>{{item.ActivityGroupName}}</view>
         </view>
-      </view>
-      <view class='start ft24 h40'>
-        <view>所属团单: {{SheetList}}</view>
-      </view>
-      <view class='start ft24 h40'>
-        <view>已购人数: {{item.BuyCount}}</view>
-        <view class='ml20'>到店人数: {{item.ArrivalCount}}</view>
-      </view>
-      <view class='start ft24 h40'>
-        <view>预计招生: {{item.MaxNumber}}</view>
-        <!-- <view class='ml20'>到店服务费: 3800</view> -->
+        <view class='start h40 ft24'>
+          <view class='start'>
+            <view>
+              <image class='icon' src='../../img/b1.png' mode='widthFix'></image>
+            </view>
+            <view>{{item.ActivityGroupName}}</view>
+          </view>
+        </view>
+        <view class='start ft24 h40'>
+          <view>所属团单: {{SheetList}}</view>
+        </view>
+        <view class='start ft24 h40'>
+          <view>已购人数: {{item.BuyCount}}</view>
+          <view class='ml20'>到店人数: {{item.ArrivalCount}}</view>
+        </view>
+        <view class='start ft24 h40'>
+          <view>预计招生: {{item.MaxNumber}}</view>
+          <!-- <view class='ml20'>到店服务费: 3800</view> -->
+        </view>
       </view>
     </view>
   </view>

@@ -1,7 +1,7 @@
 <view class='container radius'>
   <view class='item start borb h80'>
     <label>教师姓名</label>
-    <input></input>
+    <input value='{{name}}' bindinput='bindName'></input>
   </view>
   <view class='item start borb h80'>
     <label>教师头像</label>
@@ -9,15 +9,15 @@
   </view>
   <view class='item start borb h80'>
     <label>授课类型</label>
-    <input placeholder='例：旅游英语'></input>
+    <input value='{{type}}' bindinput='bindType' placeholder='例：旅游英语'></input>
   </view>
   <view class='item start borb h80'>
     <label>教师职称</label>
-    <input placeholder='请填写教师职称'></input>
+    <input value='{{jobTitle}}' bindinput='bindNJobTitle' placeholder='请填写教师职称'></input>
   </view>
   <view class='item column borb h80'>
     <label style='width:100%'>教师描述</label>
-    <textarea class='textarea pb10'></textarea>
+    <textarea value='{{description}}' bindinput='bindDescription' class='textarea pb10'></textarea>
   </view>
   <view class='item column borb'>
     <label class=' h80'>教师图片</label>

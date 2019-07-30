@@ -1,66 +1,57 @@
-// pages/modifyPassword/modifyPassword.js
+var netUtil = require("../../utils/request.js"); //require引入
+var utilMd5 = require('../../utils/md5.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    password: '',
+    password1: '',
+    password2: '',
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  bindpd: function(e) {
+    this.setData({
+      password: e.detail.value
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  bindpd1: function(e) {
+    this.setData({
+      password1: e.detail.value
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  bindpd2: function(e) {
+    this.setData({
+      password2: e.detail.value
+    })
   },
+  submit: function() {
+    let that = this;
+    //获取图片验证码
+    if (that.data.password1 != that.data.password2){
+      wx.showToast({
+        icon:'none',
+        title: '密码不一致',
+      })
+      return;
+    }
+    var url = 'account/password/modify';
+    var params = {
+      OldPassword: utilMd5.hexMD5(that.data.password),
+      NewPassword: utilMd5.hexMD5(that.data.password1),
+    }
+    netUtil.postRequest(url, params, function(res) { //onSuccess成功回调
+     wx.showModal({
+       title: '成功修改密码',
+       content: '',
+       showCancel:false,
+       success:function() {
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+       }
+     })
+    }); 
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

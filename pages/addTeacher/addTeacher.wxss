@@ -56,8 +56,8 @@
 }
 
 .jiatupian image {
-  width: 180rpx;
-  height: 150rpx;
+  width: 136rpx;
+  height: 136rpx;
 }
 
 .image {

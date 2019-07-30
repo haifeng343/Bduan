@@ -1,84 +1,64 @@
 <view class='banner'>
   <swiper bindanimationfinish="swiperChange" indicatorDots='{{indicatorDots}}' current='{{current}}' autoplay='{{autoplay}}' interval='{{interval}}' duration='{{duration}}' circular='{{circular}}' display-multiple-items='1' next-margin='35rpx' previous-margin='35rpx'>
-    <block wx:for="{{imgUrls}}" wx:key>
+    <block wx:for="{{List.ItemImgList}}" wx:key wx:for-item="item">
       <swiper-item>
         <view class='box'>
-          <image class='img1' src='{{item.img}}' mode="widthFix" lazy-load="true"></image>
+          <image class='img1' src='{{item}}' mode="aspectFill" lazy-load="true"></image>
         </view>
       </swiper-item>
     </block>
   </swiper>
   <view class="dots">
-    <block wx:for="{{imgUrls}}" wx:key>
-      <view class="dot{{index == currentSwiper ? ' active' : ''}}">{{current+1}}/{{imgUrls.length}}</view>
+    <block wx:for="{{List.ItemImgList}}" wx:key>
+      <view class="dot{{index == currentSwiper ? ' active' : ''}}">{{current+1}}/{{List.ItemImgList.length}}</view>
     </block>
   </view>
 </view>
 <view class='content column'>
   <view class='between h60'>
-    <view class='ft32'>课程1</view>
-    <view class='cc ft24'>201954</view>
+    <view class='ft32'>{{List.ItemName}}</view>
+    <!-- <view class='cc ft24'>201954</view> -->
   </view>
   <view class='start ft28'>
     <view class='start h40'>
       <view>
-      <image class='icon1' src='../../img/b2.png' mode='widthFix'></image>
+      <image class='icon mr5' src='../../img/b2.png' mode='widthFix'></image>
       </view>
-      <view>课程数量1节</view>
+      <view>共有{{List.CoursesNumber}}节</view>
     </view>
     <view class='start h40 ml50'>
       <view>
-        <image class='icon1' src='../../img/time.png' mode='widthFix'></image>
+        <image class='icon mr5' src='../../img/time.png' mode='widthFix'></image>
       </view>
-      <view>单节课时60min</view>
+      <view>{{List.SingleTime}}min/课时</view>
     </view>
   </view>
   <view class='start h40 ft28'>
     <view class='start h40'>
       <view>
-      <image class='icon1' src='../../img/b3.png' mode='widthFix'></image>
+      <image class='icon mr5' src='../../img/b3.png' mode='widthFix'></image>
       </view>
-      <view>门店1</view>
+      <view>{{List.StoreName}}</view>
     </view>
   </view>
   <view class='start h40 ft28'>
     <view class='start h40'>
       <view>
-      <image class='icon1' src='../../img/b1.png' mode='widthFix'></image>
+      <image class='icon mr5' src='../../img/b1.png' mode='widthFix'></image>
       </view>
-      <view>活动组1</view>
+      <view>{{List.ActivityGroupName}}</view>
     </view>
   </view>
 </view>
-<view class='teacherList boxd' bindtap='allTeacher'>
+<view class='teacherList boxd' data-id="{{List.RelId}}" bindtap='allTeacher'>
   <view class='tearcherTitle between h80'>
-    <view class='teaNumber'>师资力量 ({{List.TeacherCount}}5)</view>
+    <view class='teaNumber'>师资力量 ({{List.TeacherList.length}})</view>
     <image src='../../img/go.png' class='go' mode='widthFix' lazy-load='true'></image>
   </view>
   <view class='teaList'>
-    <!-- <view class='teachers' wx:for="{{teaList}}" wx:key>
-      <image class='teaImg' src='{{item.HeadUrl}}' lazy-load='true'></image>
+    <view class='teachers' wx:for="{{List.TeacherList}}" wx:key>
+      <image class='teaImg' src='{{item.HeadUrl}}' mode='aspectFill' lazy-load='true'></image>
       <view class='teaName'>{{item.Name}}</view>
-    </view> -->
-    <view class='teachers' wx:key>
-      <image class='teaImg' src='../../img/tt1.png' mode='aspectFill' lazy-load='true'></image>
-      <view class='teaName'>张老师</view>
-    </view>
-    <view class='teachers' wx:key>
-      <image class='teaImg' src='../../img/tt1.png' mode='aspectFill' lazy-load='true'></image>
-      <view class='teaName'>李老师</view>
-    </view>
-    <view class='teachers' wx:key>
-      <image class='teaImg' src='../../img/tt1.png' mode='aspectFill' lazy-load='true'></image>
-      <view class='teaName'>罗老师</view>
-    </view>
-    <view class='teachers' wx:key>
-      <image class='teaImg' src='../../img/tt1.png' mode='aspectFill' lazy-load='true'></image>
-      <view class='teaName'>罗老师</view>
-    </view>
-    <view class='teachers' wx:key>
-      <image class='teaImg' src='../../img/tt1.png' mode='aspectFill' lazy-load='true'></image>
-      <view class='teaName'>罗老师</view>
     </view>
   </view>
 </view>

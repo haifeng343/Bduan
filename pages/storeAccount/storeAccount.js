@@ -5,12 +5,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    showSuccess: false,
+    showLog: true,
     IsShow:'',
     Id: '',
     List: [], //我的门店杭虎列表
     accountList: [], //所有门店列表
-    checkArr: [],
+    checkArr: [],//勾选中的checkbox
   },
   onLoad: function(options) {
     let IsShow = wx.getStorageSync('userInfo').IsAdministrator;
@@ -18,7 +18,6 @@ Page({
       Id: options.Id,
       IsShow: IsShow
     })
-    console.log(this.data.IsShow)
     this.init();
   },
   //我的门店账户列表
@@ -29,10 +28,13 @@ Page({
       Id: that.data.Id
     }
     netUtil.postRequest(url, params, function(res) { //onSuccess成功回调
-      console.log(res)
       that.setData({
         List: res.Data,
       })
+      // that.data.List.forEach(item=>{
+      //   that.data.checkedArr = that.data.checkedArr.concat(item.AccountId)
+      //   console.log(that.data.checkedArr)
+      // })
     })
   },
   //获取商户账户列表
@@ -43,7 +45,6 @@ Page({
       Id: that.data.Id
     }
     netUtil.postRequest(url, params, function(res) { //onSuccess成功回调
-      console.log(res)
       that.setData({
         accountList: res.Data,
       })
@@ -51,16 +52,14 @@ Page({
   },
   //切换
   checkedChange: function(e) {
-    // console.log(e);
     this.setData({
       checkArr: e.detail.value
     })
-    console.log(this.data.checkArr)
   },
   //取消分配
   bindCancel: function() {
     this.setData({
-      showSuccess: false
+      showLog: true
     })
   },
   //确认分配
@@ -72,15 +71,19 @@ Page({
       AccountId: that.data.checkArr
     }
     netUtil.postRequest(url, params, function(res) { //onSuccess成功回调
-      console.log(res)
       that.setData({
-        showSuccess: false
+        showLog: true
       })
+      wx.showToast({
+        icon: 'none',
+        title: '已分配完成',
+      })
+      that.init();
     })
   },
   fenpei: function() {
     this.setData({
-      showSuccess: !this.data.showSuccess
+      showLog: !this.data.showLog
     })
     this.getAccountList();
   },

@@ -1,3 +1,4 @@
 {
-  "navigationBarTitleText": "师资管理"
+  "navigationBarTitleText": "师资管理",
+  "enablePullDownRefresh": true
 }

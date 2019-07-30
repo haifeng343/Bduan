@@ -5,51 +5,55 @@ Page({
   data: {
     Id:"",//Id，
     page:1,
-    pageCount:20,
-    otherList:{},
+    pageCount:5,
     teacherList:[],
-    TeacherCount:'',
   },
   onLoad: function (options) {
     let that = this;
     that.setData({
-      // Id: options.Id
+      Id: options.Id
     })
-    // that.getData(1);
+    that.getData();
   },
-  // getData: function () {
-  //   var that = this;
-  //   //获取项目全部师资信息
-  //   var url = 'sheet/item/teachers';
-  //   var params = {
-  //     Longitude: 0,
-  //     Latitude: 0,
-  //     Id: that.data.Id,
-  //     PageCount:that.data.pageCount,
-  //     PageIndex:that.data.page,
-  //   }
-  //   netUtil.postRequest(url, params, function (res) { //onSuccess成功回调、
-  //     that.setData({
-  //       otherList: res.Data.SheetItemInfo,
-  //       TeacherCount: res.Data.TeacherCount,
-  //       teacherList: res.Data.TeacherList,
-  //     })
-  //     console.log(that.data.teaList);
-  //   }, function (msg) { //onFailed失败回调
-  //     wx.hideLoading();
-  //     if (msg) {
-  //       wx.showToast({
-  //         title: msg,
-  //       })
-  //     }
-  //   }); //调用get方法情就是户数
-  // },
+  getData: function () {
+    var that = this;
+    //获取项目全部师资信息
+    var url = 'account/item/teachers';
+    var params = {
+      Id: that.data.Id,
+      PageCount:that.data.pageCount,
+      PageIndex:that.data.page,
+    }
+    netUtil.postRequest(url, params, function (res) { //onSuccess成功回调、
+      let arr = res.Data;
+      let arr1 = that.data.teacherList;
+      if(that.data.page ==1){
+        arr1 = arr
+      } else{
+        arr1 = arr1.concat(arr);
+      }
+      that.setData({
+        teacherList: arr1
+      })
+    });
+  },
+  onPullDownRefresh:function() {
+    this.setData({
+      page: 1
+    });
+    this.getData();
+    wx.stopPullDownRefresh();
+  },
   //上拉刷新
   onReachBottom: function () {
-    let that = this;
-    // that.getData(1);
+    let temp = this.data.page;
+    temp++
+    this.setData({
+      page: temp
+    })
+    this.getData();
+    wx.stopPullDownRefresh();
   },
-
   onShareAppMessage: function () {
 
   }

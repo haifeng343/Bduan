@@ -91,8 +91,15 @@ Page({
     // this.getData();
   },
   bindShowEor: function () {
-    this.setData({
-      showEor: true
+    wx.showModal({
+      title: '验券失败',
+      content: '失败原因:',
+      cancelColor:'#29d9d6',
+      showCancel:false,
+      cancelText:'知道了',
+      success:function(res){
+        
+      }
     })
   },
   closeds: function () {

@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    showSuccess: false,
+    showLog: true,
     Id: '',
     List: [],//我的门店杭虎列表
     accountList: [],//所有门店列表
@@ -23,7 +23,7 @@ Page({
   //我的师资列表
   getData: function () {
     let that = this;
-    var url = 'account/sellerteacher/list';
+    var url = 'account/storeteacher/list';
     var params = {
       Id: that.data.Id
     }
@@ -37,12 +37,12 @@ Page({
   //获取商户账户列表
   getAccountList: function () {
     let that = this;
-    var url = 'account/selleraccount/list';
+    var url = 'account/sellerteacher/list';
     var params = {
-      Id: that.data.Id
+      Id: that.data.Id,
+      Status:1
     }
-    netUtil.postRequest(url, params, function (res) { //onSuccess成功回调
-      console.log(res)
+    netUtil.postRequest(url, params, function (res) {
       that.setData({
         accountList: res.Data,
       })
@@ -50,36 +50,39 @@ Page({
   },
   //切换
   checkedChange: function (e) {
-    // console.log(e);
+    console.log(e)
     this.setData({
       checkArr: e.detail.value
     })
-    console.log(this.data.checkArr)
   },
   //取消分配
   bindCancel: function () {
     this.setData({
-      showSuccess: false
+      showLog: true
     })
   },
   //确认分配
   bindSure: function () {
     let that = this;
-    var url = 'account/storeaccount/set';
+    var url = 'account/storeteacher/set';
     var params = {
       StoreId: that.data.Id,
-      AccountId: that.data.checkArr
+      TeacherId: that.data.checkArr
     }
-    netUtil.postRequest(url, params, function (res) { //onSuccess成功回调
-      console.log(res)
+    netUtil.postRequest(url, params, function (res) {
       that.setData({
-        showSuccess: false
+        showLog: true
       })
+      wx.showToast({
+        icon: 'none',
+        title: '已分配完成',
+      })
+      that.init();
     })
   },
   fenpei: function () {
     this.setData({
-      showSuccess: !this.data.showSuccess
+      showLog: !this.data.showLog
     })
     this.getAccountList();
   },

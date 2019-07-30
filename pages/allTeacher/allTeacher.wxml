@@ -1,4 +1,4 @@
-<view class='keep start'>
+<!-- <view class='keep start'>
   <view class='leftImg'>
     <image class='topImg' src='../../img/t1.png' mode='widthFix' lazy-load='true'></image>
   </view>
@@ -11,13 +11,13 @@
       <view class='start ft28'>
         <view class='start h40'>
           <view>
-            <image class='icon1' src='../../img/b2.png' mode='widthFix'></image>
+            <image class='icon mr5' src='../../img/b2.png' mode='widthFix'></image>
           </view>
           <view>课程数量1节</view>
         </view>
         <view class='start h40 ml20'>
           <view>
-            <image class='icon1' src='../../img/time.png' mode='widthFix'></image>
+            <image class='icon mr5' src='../../img/time.png' mode='widthFix'></image>
           </view>
           <view>单节课时 60 min</view>
         </view>
@@ -25,7 +25,7 @@
       <view class='start h40 ft28'>
         <view class='start'>
           <view>
-            <image class='icon1' src='../../img/b3.png' mode='widthFix'></image>
+            <image class='icon mr5' src='../../img/b3.png' mode='widthFix'></image>
           </view>
           <view>门店1</view>
         </view>
@@ -33,18 +33,18 @@
       <view class='start h40 ft28'>
         <view class='start'>
           <view>
-            <image class='icon1' src='../../img/b1.png' mode='widthFix'></image>
+            <image class='icon mr5' src='../../img/b1.png' mode='widthFix'></image>
           </view>
           <view>活动组1</view>
         </view>
       </view>
     </view>
   </view>
-</view>
+</view> -->
 <view class='teacher boxd'>
-  <view class='content pd25 start'>授课老师
+  <!-- <view class='content pd25 start'>授课老师
     <view class='gray'> ({{TeacherCount}}5)</view>
-  </view>
+  </view> -->
   <view class='teacherList content'>
     <!-- <view class='teacherItem start' wx:for="{{teacherList}}" wx:key>
       <image src='{{item.HeadUrl}}' class='avator' mode='widthFix' lazy-load='true'></image>
@@ -56,54 +56,14 @@
         <view class='mylogText'>{{item.Honor}}</view>
       </view>
     </view> -->
-    <view class='teacherItem start'>
-      <image src='../../img/tt1.png' class='avator' mode='widthFix' lazy-load='true'></image>
+    <view class='teacherItem start' wx:for="{{teacherList}}" wx:key>
+      <image src='{{item.HeadUrl}}' class='avator' mode='aspectFill' lazy-load='true'></image>
       <view class='teaRight'>
         <view class='start mylog mt10'>
-          <view class='name'>李老师</view>
-          <view class='profession'>英语领域 | 5年教龄</view>
+          <view class='name'>{{item.Name}}</view>
+          <view class='profession'>{{item.Titles}} | {{item.TeachingAge}}教龄</view>
         </view>
-        <view class='mylogText'>自己经常有写博客 常与教授交流</view>
-      </view>
-    </view>
-    <view class='teacherItem start'>
-      <image src='../../img/tt1.png' class='avator' mode='widthFix' lazy-load='true'></image>
-      <view class='teaRight'>
-        <view class='start mylog mt10'>
-          <view class='name'>李老师</view>
-          <view class='profession'>英语领域 | 5年教龄</view>
-        </view>
-        <view class='mylogText'>自己经常有写博客 常与教授交流</view>
-      </view>
-    </view>
-    <view class='teacherItem start'>
-      <image src='../../img/tt1.png' class='avator' mode='widthFix' lazy-load='true'></image>
-      <view class='teaRight'>
-        <view class='start mylog mt10'>
-          <view class='name'>李老师</view>
-          <view class='profession'>英语领域 | 5年教龄</view>
-        </view>
-        <view class='mylogText'>自己经常有写博客 常与教授交流</view>
-      </view>
-    </view>
-    <view class='teacherItem start'>
-      <image src='../../img/tt1.png' class='avator' mode='widthFix' lazy-load='true'></image>
-      <view class='teaRight'>
-        <view class='start mylog mt10'>
-          <view class='name'>李老师</view>
-          <view class='profession'>英语领域 | 5年教龄</view>
-        </view>
-        <view class='mylogText'>自己经常有写博客 常与教授交流</view>
-      </view>
-    </view>
-    <view class='teacherItem start'>
-      <image src='../../img/tt1.png' class='avator' mode='widthFix' lazy-load='true'></image>
-      <view class='teaRight'>
-        <view class='start mylog mt10'>
-          <view class='name'>李老师</view>
-          <view class='profession'>英语领域 | 5年教龄</view>
-        </view>
-        <view class='mylogText'>自己经常有写博客 常与教授交流</view>
+        <view class='mylogText'>{{item.Honor}}</view>
       </view>
     </view>
   </view>

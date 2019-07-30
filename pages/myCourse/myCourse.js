@@ -11,9 +11,9 @@ Page({
   onLoad:function() {
     this.init();
   },
-  bindCourseDetail:function() {
+  bindCourseDetail:function(e) {
     wx.navigateTo({
-      url: '/pages/courseDetail/courseDetail',
+      url: '/pages/courseDetail/courseDetail?id=' + e.currentTarget.dataset.id,
     })
   },
   init() {

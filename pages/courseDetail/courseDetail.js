@@ -4,13 +4,6 @@ Page({
   data: {
     Id:'',//sellid
     List:{},
-    Price:'',
-    mobile:'',
-    teaList:[],
-    imgUrls: [
-      { img:'https://file.guditech.com/Item/Imgs/20190720101917156_044d7ac765b5420abe30114e5ce6a356.png'},
-      { img:'https://file.guditech.com/Item/Imgs/20190720101920109_05df882ca9bc45bb8cd0b8cdc256adba.png'}
-    ],
     autoplay: true, //是否自动播放
     indicatorDots: false, //指示点
     circular: true,
@@ -19,11 +12,12 @@ Page({
     current: 0, //初始化时第一个显示的图片 下标值（从0）index
   }, 
   onLoad:function(options) {
+    console.log(options)
     let that = this;
     that.setData({
-      // Id : options.Id
+      Id : options.id
     })
-    // that.getData();
+    that.getData();
   },
   callPhone:function() {
     let that = this;
@@ -31,31 +25,25 @@ Page({
     //   phoneNumber: that.data.mobile,
     // })
   },
-  // getData:function(){
-  //   var that = this;
-  //   var url = 'sheet/item/details';
-  //   var params = {
-  //     Longitude: 0,
-  //     Latitude: 0,
-  //     Id: that.data.Id
-  //   }
-  //   netUtil.postRequest(url, params, function (res) { //onSuccess成功回调、
-  //     that.setData({
-  //       List : res.Data,
-  //       mobile: res.Data.Mobile,
-  //       Price: res.Data.Price*1.0/100,
-  //       teaList: res.Data.TeacherList,
-  //       imgUrls: res.Data.ItemImgList
-  //     })
-  //   }, function (msg) { //onFailed失败回调
-  //     wx.hideLoading();
-  //     if (msg) {
-  //       wx.showToast({
-  //         title: msg,
-  //       })
-  //     }
-  //   }); //调用get方法情就是户数
-  // },
+  getData:function(){
+    var that = this;
+    var url = 'account/item/details';
+    var params = {
+      Id: that.data.Id
+    }
+    netUtil.postRequest(url, params, function (res) { //onSuccess成功回调、
+      that.setData({
+        List : res.Data,
+      })
+    }, function (msg) { //onFailed失败回调
+      wx.hideLoading();
+      if (msg) {
+        wx.showToast({
+          title: msg,
+        })
+      }
+    }); //调用get方法情就是户数
+  },
   swiperChange: function (e) {
     this.setData({
       current: e.detail.current

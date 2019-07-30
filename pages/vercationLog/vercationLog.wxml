@@ -36,12 +36,12 @@
 
 
   <!--验券成功提示弹出框-->
-  <view class="zan-dialog {{ showEor ? 'zan-dialog--show' : 'none' }}" catchtouchmove="ture">
+  <!-- <view class="zan-dialog {{ showEor ? 'zan-dialog--show' : 'none' }}" catchtouchmove="ture">
     <view class="zan-dialog__mask" bindtap="toggleDialog" />
     <view class="zan-dialog__container">
       <view class='h60 bold center'>验券失败</view>
       <view class='zan-content mb10'>失败原因</view>
       <view class='know h80 bort center theme' bindtap='closeds'>知道了</view>
     </view>
-  </view>
+  </view> -->
 </view>

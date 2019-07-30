@@ -10,19 +10,19 @@
       </view>
       <view class='start h40 ft24'>
         <view class='start'>
-          <image class='icon1' src='../../img/ad1.png' mode='aspectFill'></image>
+          <image class='icon' src='../../img/ad1.png' mode='aspectFill'></image>
           <view class='name'>{{Info.Address}}</view>
         </view>
       </view>
       <view class='start h40 ft24' wx:for="{{Info.StoreMobile}}" wx:key wx:for-item="k">
         <view class='start'>
-          <image class='icon1' src='../../img/cal.png' mode='aspectFill'></image>
+          <image class='icon' src='../../img/cal.png' mode='aspectFill'></image>
           <view class='name'>{{k}}</view>
         </view>
       </view>
       <view class='start h40 ft24'>
         <view class='start'>
-          <image class='icon1' src='../../img/people.png' mode='aspectFill'></image>
+          <image class='icon' src='../../img/people.png' mode='aspectFill'></image>
           <view class='name'>{{Info.Leader}}</view>
         </view>
       </view>

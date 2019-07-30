@@ -45,7 +45,6 @@
 }
 .right{
   right: 78%;
-  overflow: hidden;
 }
 .activity{
   font-size: 28rpx;

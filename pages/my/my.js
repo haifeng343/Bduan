@@ -15,7 +15,6 @@ Page({
       userInfo: wx.getStorageSync('userInfo') || '',
       usertoken: wx.getStorageSync('userInfo').UserToken || ''
     })
-    console.log(this.data.userInfo)
   },
   bindGroup:function() {
     wx.navigateTo({

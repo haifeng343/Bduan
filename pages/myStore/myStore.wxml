@@ -1,29 +1,35 @@
-<view class='keep start' data-Id="{{item.StoreId}}" bindtap='bindStoreManag' wx:for="{{List}}" wx:key>
-  <view class='leftImg'>
-    <image class='topImg' src='../../img/kk1.png' mode='aspectFill' lazy-load='true'></image>
-  </view>
-  <view class='right w100'>
-    <view class='column w100'>
-      <view class='between h40 w100'>
-        <view class='ft28'>{{item.StoreName}}</view>
-        <!-- <view class='cc ft24'>2019-10-12</view> -->
-      </view>
-      <view class='start h40 ft24'>
-        <view class='start'>
-          <image class='icon1' src='../../img/ad1.png' mode='aspectFill'></image>
-          <view class='name'>{{item.Address}}</view>
+<view class='noHas' wx:if="{{List.length<=0}}">
+  <image src='../../img/zanwu.png' mode='widthFix' class='noList'></image>
+  <!-- <view class='zanwu'>暂无数据</view> -->
+</view>
+<view wx:else>
+  <view class='keep start' data-Id="{{item.StoreId}}" bindtap='bindStoreManag' wx:for="{{List}}" wx:key>
+    <view class='leftImg'>
+      <image class='topImg' src='../../img/kk1.png' mode='aspectFill' lazy-load='true'></image>
+    </view>
+    <view class='right w100'>
+      <view class='column w100'>
+        <view class='between h40 w100'>
+          <view class='ft28'>{{item.StoreName}}</view>
+          <!-- <view class='cc ft24'>2019-10-12</view> -->
         </view>
-      </view>
-      <view class='start h40 ft24' wx:for="{{item.StoreMobile}}" wx:key wx:for-item="k">
-        <view class='start'>
-          <image class='icon1' src='../../img/cal.png' mode='aspectFill'></image>
-          <view class='name'>{{k}}</view>
+        <view class='start h40 ft24'>
+          <view class='start'>
+            <image class='icon' src='../../img/ad1.png' mode='aspectFill'></image>
+            <view class='name'>{{item.Address}}</view>
+          </view>
         </view>
-      </view>
-      <view class='start h40 ft24'>
-        <view class='start'>
-          <image class='icon1' src='../../img/people.png' mode='aspectFill'></image>
-          <view class='name'>{{item.Leader}}</view>
+        <view class='start h40 ft24' wx:for="{{item.StoreMobile}}" wx:key wx:for-item="k">
+          <view class='start'>
+            <image class='icon' src='../../img/cal.png' mode='aspectFill'></image>
+            <view class='name'>{{k}}</view>
+          </view>
+        </view>
+        <view class='start h40 ft24'>
+          <view class='start'>
+            <image class='icon' src='../../img/people.png' mode='aspectFill'></image>
+            <view class='name'>{{item.Leader}}</view>
+          </view>
         </view>
       </view>
     </view>

@@ -1,3 +1,5 @@
 {
-  "navigationBarTitleText": "账户管理"
+  "navigationBarTitleText": "账户管理",
+  "enablePullDownRefresh": true
+
 }

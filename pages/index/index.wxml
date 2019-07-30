@@ -72,7 +72,7 @@
       <view class='ft28'>活动组1</view>
       <view class='start'>
         <view>
-          <image class='icon1 mr5 mt5' src='../../img/ad1.png' mode='widthFix'></image>
+          <image class='icon mr5 mt5' src='../../img/ad1.png' mode='widthFix'></image>
         </view>
         <view class='ft26 cc'>西溪商圈</view>
       </view>
@@ -170,7 +170,7 @@
 
 
 <!--输入券验证弹出框-->
-<view class="zan-dialog {{ showLog ? 'zan-dialog--show' : 'none' }}" catchtouchmove="ture">
+<!-- <view class="zan-dialog {{ showLog ? 'zan-dialog--show' : 'none' }}" catchtouchmove="ture">
   <view class="zan-dialog__mask" bindtap="toggleDialog" />
   <view class="zan-dialog__container">
     <view class='zan-title bold ft30 left pl20'>请输入券码</view>
@@ -180,18 +180,40 @@
       <view class='flex center' bindtap='getCode'>确认</view>
     </view>
   </view>
-</view>
-  <modal hidden="{{hiddenmodalput}}" title="确定推荐人" confirm-text="确认" cancel-text="取消" bindcancel="cancelM" bindconfirm="confirmM">
-  <view class='mg'>手机号: {{Info.Mobile}}</view>
-  <view class='mg mg1'>昵称: {{item.NickName}}</view>
-  <view class='start mg mg1'>头像:
-    <image class='top' src='{{Info.HeadUrl}}' mode='widthFix' lazy-load='true'></image>
-    <image class='top' src='{{Info.HeadUrl}}' mode='widthFix' lazy-load='true'></image>
+</view> -->
+<!--输入券验证弹出框-->
+<modal hidden="{{showLog}}" title="输码验券" confirm-text="确认" cancel-text="取消" bindcancel="closeCodeLog" bindconfirm="getCode" catchtouchmove="true">
+  <input value='{{code}}' bindinput='setCode' placeholder='请输入券码' class='codeInput'></input>
+</modal>
+<modal hidden="{{showSure}}" title="确认订单信息" confirm-text="确认" cancel-text="取消" bindcancel="closeCodeSure" bindconfirm="submitSure" catchtouchmove="true">
+  <view class='showsure'>
+    <view class='column'>
+      <view class='between pl5 pr5 h60'>
+        <view class='ft28'>订单号: {{QuanInfo.OrderSN}}</view>
+        <view class='ft30' wx:if="{{QuanInfo.OrderStatus==1}}">未使用</view>
+        <view class='ft30' wx:if="{{QuanInfo.OrderStatus==2}}">部分使用</view>
+        <view class='ft30' wx:if="{{QuanInfo.OrderStatus==3}}">已完成</view>
+        <view class='ft30' wx:if="{{QuanInfo.OrderStatus==4}}">已过期</view>
+      </view>
+      <view class='ft28 left pl5 h60 pr5'>购买时间: {{QuanInfo.BuyTime}}</view>
+      <view class='ft28 left pl5 pr5 h60'>购买账户: {{QuanInfo.BuyAccountName}}({{QuanInfo.BuyAccountMobile}})</view>
+    </view>
+    <view class='List noBg'>
+      <checkbox-group bindchange="checkdChange">
+        <view class=' start h80 pl5 pr5 bort between' wx:for="{{QuanInfo.ItemList}}" wx:key wx:for-item="k">
+          <view class='start h80'>
+            <image class='icon1' src='../../img/k1.png' mode='widthFix'></image>
+            <view class="{{k.UseStatus==2?'cc':''}} ft28">{{k.ItemName}}（{{k.StoreName}}）</view>
+          </view>
+          <checkbox value='{{k.RelId}}' wx:if='{{QuanInfo.OrderStatus!=3 && !QuanInfo.OrderStatus!=4 && k.UseStatus!=2}}'></checkbox>
+          <image src='../../img/expire.png' wx:if="{{QuanInfo.OrderStatus==4}}" mode='widthFix' class='expire'></image>
+        </view>
+      </checkbox-group>
+    </view>
   </view>
-  <text class='t1'>温馨提示：推荐人只允许设置一次，设置成功后不可修改</text>
 </modal>
 <!--确认订单信息弹出框-->
-<view class="zan-dialog {{ showSure ? 'zan-dialog--show' : 'none' }}" catchtouchmove="ture">
+<!-- <view class="zan-dialog {{ showSure ? 'zan-dialog--show' : 'none' }}" catchtouchmove="ture">
   <view class="zan-dialog__mask" bindtap="toggleDialog" />
   <view class="zan-dialog__container">
     <view class='column'>
@@ -229,10 +251,10 @@
       <view class='flex center' bindtap='submitSure'>确认</view>
     </view>
   </view>
-</view>
+</view> -->
 
 <!--验券成功提示弹出框-->
-<view class="zan-dialog {{ showSuccessd ? 'zan-dialog--show' : 'none' }}" catchtouchmove="ture">
+<!-- <view class="zan-dialog {{ showSuccessd ? 'zan-dialog--show' : 'none' }}" catchtouchmove="ture">
   <view class="zan-dialog__mask" bindtap="toggleDialog" />
   <view class="zan-dialog__container">
     <image class='successImg mt40' src='../../img/checked.png' mode='widthFix'></image>
@@ -240,4 +262,4 @@
     <view class='zan-content mb10'>恭喜您！验券成功</view>
     <view class='know h80 bort center theme' bindtap='closeds'>知道了</view>
   </view>
-</view>
+</view> -->
