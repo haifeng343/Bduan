@@ -33,7 +33,11 @@ function request(url, params, method, onSuccess, onFailed, isShowLoading, isShow
 
   let moment = {};
   var that = this;
-  var usertoken = wx.getStorageSync('usertoken'); //wx.getStorageSync(key)，获取本地缓存
+  let usertoken = '';
+  var userInfo = wx.getStorageSync('userInfo'); //wx.getStorageSync(key)，获取本地缓存
+  if (userInfo) {
+    usertoken = userInfo.UserToken;
+  }
 
   wx.request({
     url: baseUrl + url,

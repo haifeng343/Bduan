@@ -7,7 +7,10 @@
   <view class='content mt40 relative'>
     <label class='name'>密码</label>
     <input class='nameInput borb mt30 ft28' type="{{InputType}}" value='{{value}}' bindinput='bindPassword'></input>
-    <image class='icon1 eye' src='{{eyeImg}}' bindtap='changeEyeImg' mode='widthFix'></image>
+    <cover-view class='eye'>
+      <cover-image class='icon1' style='margin-left: 0;' src='{{InputType == "password" ? eyesImg : eyeImg}}' catchtap='changeEyeImg'></cover-image>
+    </cover-view>
+    <!-- <image class='icon1 eye' src='{{eyeImg}}' catchtap='changeEyeImg'></image> -->
   </view>
     <view class='h60 ft28 theme right' bindtap='forget'>忘记密码？</view>
 </view>

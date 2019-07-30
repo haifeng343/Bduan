@@ -45,8 +45,20 @@ Page({
       Id: that.data.Id
     }
     netUtil.postRequest(url, params, function(res) { //onSuccess成功回调
+      let arr = [];
+      for (let v of res.Data) {
+        let obj = that.data.List.find(x => {
+          return x.AccountId == v.AccountId;
+        });
+        if (obj) {
+          arr.push(v.AccountId);
+        } else {
+          arr.push(0);
+        }
+      }
       that.setData({
         accountList: res.Data,
+        checkedArr: arr,
       })
     })
   },

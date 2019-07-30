@@ -9,7 +9,8 @@ Page({
     name: '',
     value: '',
     InputType: 'password',
-    eyeImg: '../../img/eyes.png'
+    eyesImg: '../../img/eyes.png',
+    eyeImg: '../../img/eye.png',
   },
   bindName: function(e) {
     this.setData({
@@ -25,6 +26,12 @@ Page({
     wx.navigateTo({
       url: '/pages/forgetPassword/forgetPassword',
     })
+  },
+  changeEyeImg: function() {
+    console.log(this.data.InputType);
+    let t = this.data.InputType == 'password' ? 'text' : 'password';
+    console.log(t);
+    this.setData({ InputType: t });
   },
   submitBtn:function() {
     let that = this;
