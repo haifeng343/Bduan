@@ -14,6 +14,7 @@ Page({
     imgs: [],
     plusShow: true,
     Id: '',
+    imgsArr: [],
   },
   onLoad: function(options) {
     this.setData({
@@ -41,6 +42,10 @@ Page({
       Id: that.data.Id
     }
     netUtil.postRequest(url, params, function(res) {
+      let arr = [];
+      for (let v of res.Data.ImgList) {
+        arr.push(v.HeadUrl);
+      }
       that.setData({
         item: res.Data,
         name: res.Data.Name,
@@ -50,7 +55,8 @@ Page({
         headPath: res.Data.Head,
         old: res.Data.TeachingAge,
         description: res.Data.Honor,
-        imgs: res.Data.ImgList
+        imgs: res.Data.ImgList,
+        imgsArr: arr,
       })
     });
   },
@@ -166,7 +172,6 @@ Page({
   },
   chooseImg: function(e) {
     var that = this;
-    var imgs = that.data.imgs; //存图片地址的变量
     wx.chooseImage({
       count: 1,
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
@@ -174,12 +179,10 @@ Page({
       success: function(res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         var tempFilePaths = res.tempFilePaths;
-        console.log(res)
-        imgs.push(tempFilePaths[0]);
+        let arr = that.data.imgs;
+        arr.push({ HeadUrl: tempFilePaths[0] });
+        that.setData({ imgs: arr });
         that.upLoadImg(tempFilePaths[0]);
-        that.setData({
-          imgs: imgs
-        });
         that.showHide();
       }
     });
@@ -189,12 +192,29 @@ Page({
   */
   deleteImg: function(e) {
     var imgs = this.data.imgs;
+    var arr = this.data.imgsArr;
     var index = e.currentTarget.dataset.index;
+    if (imgs[index].ImgId) {
+      this.delImg(imgs[index].ImgId);
+    }
     imgs.splice(index, 1);
+    arr.splice(index, 1);
     this.setData({
-      imgs: imgs
+      imgs: imgs,
+      imgsArr: arr,
     });
     this.showHide();
+  },
+  //删除
+  delImg: function(id) {
+    var that = this;
+    var urls = 'account/sellerteacher/img/delete';
+    var params = {
+      Id: id,
+    }
+    netUtil.postRequest(urls, params, function (res) {
+      
+    });
   },
   /*
       预览图片
@@ -245,11 +265,7 @@ Page({
       name: 'Teacher.Imgs',
       success: (res) => {
         var ttt = JSON.parse(res.data)
-        var temp = that.data.urlImgs;
-        temp.push(ttt.Data.ImgPath);
-        that.setData({
-          urlImgs: temp
-        })
+        that.addImg(ttt.Data.ImgPath);
       },
       fail: (res) => {
         wx.showToast({
@@ -259,7 +275,22 @@ Page({
       },
     });
   },
-
+  //添加
+  addImg: function(url) {
+    var that = this;
+    var urls = 'account/sellerteacher/img/add';
+    var params = {
+      TeacherId: this.data.Id,
+      ImgUrl: url,
+    }
+    netUtil.postRequest(urls, params, function (res) {
+      var temp = that.data.imgsArr || [];
+      temp.push(url);
+      that.setData({
+        imgsArr: temp
+      })
+    });
+  },
   //添加商户师资/编辑
   submit:function() {
     let that = this;
@@ -271,7 +302,7 @@ Page({
       TeachingAge:that.data.old,
       TitlesId: that.data.checkedArr,
       Experience: that.data.description,
-      ImgUrlList:that.data.imgs
+      ImgUrlList:that.data.imgsArr
     }
     if (!that.data.name || !that.data.jobTitle || !that.data.old || !that.data.headPath || !that.data.description){
       wx.showToast({
