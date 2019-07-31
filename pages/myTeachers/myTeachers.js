@@ -56,11 +56,11 @@ Page({
       }
     })
   },
-  // bindAddAccount: function () {
-  //   wx.navigateTo({
-  //     url: '/pages/addAccount/addAccount',
-  //   })
-  // },
+  bindAddTeacher: function () {
+    wx.navigateTo({
+      url: '/pages/addTeacher/addTeacher',
+    })
+  },
   onPullDownRefresh: function () {
     this.init();
     wx.stopPullDownRefresh();

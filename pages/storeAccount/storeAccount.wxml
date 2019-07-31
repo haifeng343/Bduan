@@ -22,7 +22,7 @@
 </view>
 
 <!--分配弹出框-->
-<modal hidden="{{showLog}}" title="分配账户" confirm-text="确认" cancel-text="取消" bindcancel="bindCancel" bindconfirm="bindSure" bindtouchmove="touchmove">
+<modal hidden="{{showLog}}" title="分配账户" confirm-text="确认" cancel-text="取消" bindcancel="bindCancel" bindconfirm="bindSure">
   <view class='dialogList'>
     <checkbox-group bindchange="checkedChange">
       <view class='dialogItem pd20 start' wx:for="{{accountList}}" wx:key>

@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 21,
+			"current": 19,
 			"list": [
 				{
 					"id": -1,
@@ -179,7 +179,7 @@
 					"id": 19,
 					"name": "addTeacher",
 					"pathName": "pages/addTeacher/addTeacher",
-					"query": "id=66",
+					"query": "id=68",
 					"scene": null
 				},
 				{

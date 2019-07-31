@@ -29,7 +29,13 @@ Page({
       url: '/pages/modifyPassword/modifyPassword',
     })
   },
-
+  //清空本地缓存退出登录
+  clearStore:function() {
+    wx.clearStorageSync('userInfo');
+    wx.redirectTo({
+      url: '/pages/login/login',
+    })
+  },
   onShareAppMessage: function () {
 
   }

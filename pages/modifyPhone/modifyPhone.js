@@ -119,7 +119,7 @@ Page({
       that.setData({
         ActionCode: res.Data
       })
-    }); //调用get方法情就是户数
+    });
   },
   getSMSCode: function() {
     //检查图片验证码是否正确
@@ -143,10 +143,7 @@ Page({
         that.codetime();
         that.sendCode();
       }
-    }); //调用get方法情就是户数
-    // that.setData({
-    //   imgCodeShow: false,
-    // })
+    });
   },
   //绑定
   SMSVerifyCodeLogin: function() {

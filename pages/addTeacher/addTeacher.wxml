@@ -5,19 +5,21 @@
   </view>
   <view class='item start borb h80'>
     <label>教师头像</label>
-    <image class='upload pd20 ml20' src='../../img/upload.png' mode='widthFix' bindtap='bindUpload'></image>
-  </view>
-  <view class='item start borb h80'>
-    <label>授课类型</label>
-    <input value='{{type}}' bindinput='bindType' placeholder='例：旅游英语'></input>
+    <image class='upload pd20 ml20' wx:if="{{headImg}}" src='{{headImg}}' mode='widthFix' bindtap='bindUpload'></image>
+    <image class='upload pd20 ml20' wx:else src='../../img/upload.png' mode='widthFix' bindtap='bindUpload'></image>
   </view>
   <view class='item start borb h80'>
     <label>教师职称</label>
-    <input value='{{jobTitle}}' bindinput='bindNJobTitle' placeholder='请填写教师职称'></input>
+    <!-- <input value='{{jobTitle}}' bindinput='bindNJobTitle' placeholder='请填写教师职称'></input> -->
+    <view class='jobTitle' bindtap='changeTitle'>{{jobTitle}}</view>
+  </view>
+  <view class='item start borb h80'>
+    <label>授课教龄</label>
+    <input value='{{old}}' bindinput='bindold' placeholder='例：5年'></input>
   </view>
   <view class='item column borb h80'>
     <label style='width:100%'>教师描述</label>
-    <textarea value='{{description}}' bindinput='bindDescription' class='textarea pb10'></textarea>
+    <textarea value='{{description}}' bindinput='bindDescription' placeholder='请填写教师所获荣誉和个人经历' class='textarea pb10'></textarea>
   </view>
   <view class='item column borb'>
     <label class=' h80'>教师图片</label>
@@ -39,5 +41,18 @@
 </view>
 
 <view class='fixed'>
-  <view class='submit'>提交</view>
+  <view class='submit' bindtap='submit'>提交</view>
 </view>
+<!-- 教师职称弹窗 -->
+<modal hidden="{{showLog}}" title="教师职称" confirm-text="确认" cancel-text="取消" bindcancel="closeCodeLog" bindconfirm="getCode">
+  <view class='titleList'>
+    <checkbox-group bindchange="changeTitles">
+      <view class='item1 column' wx:for="{{TitlesList}}" wx:key>
+        <view class='start h60'>
+        <checkbox value='{{item.TitlesId}}' checked='{{item.checked}}'></checkbox>
+        <view>{{item.TitlesName}}</view>
+        </view>
+      </view>
+    </checkbox-group>
+  </view>
+</modal>

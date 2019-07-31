@@ -28,9 +28,7 @@ Page({
     })
   },
   changeEyeImg: function() {
-    console.log(this.data.InputType);
     let t = this.data.InputType == 'password' ? 'text' : 'password';
-    console.log(t);
     this.setData({ InputType: t });
   },
   submitBtn:function() {

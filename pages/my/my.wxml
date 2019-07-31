@@ -11,14 +11,14 @@
       </view>
     </view>
   </view>
-  <view class='start' wx:else>
+  <view class='start' wx:else bindtap='bindLogin'>
     <view>
       <image class='avator' src='../../img/userIcon.png' mode='aspectFill'></image>
     </view>
     <view class='column'>
-      <view class='ft32 mt30 h40'>去登陆</view>
+      <view class='ft32 mt30 h40'>去登录</view>
       <view class='start h50'>
-        <view class='ft28 mr15'>账号: 1804545145</view>
+        <view class='ft28 mr15'>登录后查看详情</view>
         <!-- <text class='tag'>管理员</text> -->
       </view>
     </view>

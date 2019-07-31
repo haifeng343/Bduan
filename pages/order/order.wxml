@@ -11,7 +11,9 @@
     <view class='ft28'>购买账户: 鸟叔(13654584874)</view>
     <view class='between h60'>
       <view class='start'>
-        <image class='icon1 mr5' src='../../img/k1.png' mode='widthFix'></image>
+        <view>
+        <image class='icon mr5' src='../../img/b2.png' mode='widthFix'></image>
+        </view>
         <view class='ft26'>语文课 (门店1)</view>
       </view>
       <image class='icon2' src='../../img/gou.png' mode='widthFix'></image>
@@ -26,7 +28,7 @@
     <view class='ft28'>购买账户: 鸟叔(13654584874)</view>
     <view class='between h60'>
       <view class='start'>
-        <image class='icon1 mr5' src='../../img/k1.png' mode='widthFix'></image>
+        <image class='icon mr5' src='../../img/k1.png' mode='widthFix'></image>
         <view class='ft26'>语文课 (门店1)</view>
       </view>
       <image class='icon2' src='../../img/gou.png' mode='widthFix'></image>
@@ -41,7 +43,7 @@
     <view class='ft28'>购买账户: 鸟叔(13654584874)</view>
     <view class='between h60'>
       <view class='start'>
-        <image class='icon1 mr5' src='../../img/k1.png' mode='widthFix'></image>
+        <image class='icon mr5' src='../../img/k1.png' mode='widthFix'></image>
         <view class='ft26'>语文课 (门店1)</view>
       </view>
       <image class='icon2' src='../../img/gou.png' mode='widthFix'></image>
@@ -56,7 +58,7 @@
     <view class='ft28'>购买账户: 鸟叔(13654584874)</view>
     <view class='between h60'>
       <view class='start'>
-        <image class='icon1 mr5' src='../../img/k1.png' mode='widthFix'></image>
+        <image class='icon mr5' src='../../img/k1.png' mode='widthFix'></image>
         <view class='ft26'>语文课 (门店1)</view>
       </view>
       <image class='icon2' src='../../img/gou.png' mode='widthFix'></image>
@@ -71,7 +73,7 @@
     <view class='ft28'>购买账户: 鸟叔(13654584874)</view>
     <view class='between h60'>
       <view class='start'>
-        <image class='icon1 mr5' src='../../img/k1.png' mode='widthFix'></image>
+        <image class='icon mr5' src='../../img/k1.png' mode='widthFix'></image>
         <view class='ft26'>语文课 (门店1)</view>
       </view>
       <image class='icon2' src='../../img/gou.png' mode='widthFix'></image>

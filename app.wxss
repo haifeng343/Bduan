@@ -600,7 +600,7 @@ radio .wx-radio-input.wx-radio-input-checked::before {
   box-sizing: border-box;
 }
 
-.zan-dialog__mask {
+.mask {
   width: 100%;
   height: 100vh;
   position: fixed;

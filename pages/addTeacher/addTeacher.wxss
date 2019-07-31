@@ -12,14 +12,32 @@
   width: 520rpx;
   margin-left: 20rpx;
 }
+.jobTitle{
+  width: 520rpx;
+  margin-left: 20rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  word-break: keep-all;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
 .upload1{
   width: 150rpx;
   height: 150rpx;
 }
 .textarea{
   width: 520rpx;
-  height: 100rpx;
-  line-height: 50rpx;
+  max-height: 100rpx;
+  line-height: 40rpx;
+}
+.titleList{
+  width: 100%;
+  max-height: 666rpx;
 }
 .fixed{
   width: 100%;
@@ -67,6 +85,7 @@
 
 .image image {
   width: 136rpx;
+  height: 136rpx;
   margin: 10px;
   float: left;
 }

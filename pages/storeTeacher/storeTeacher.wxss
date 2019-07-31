@@ -42,7 +42,7 @@
 }
 .dialogList{
   width: 100%;
-  max-height: 400rpx;
+  max-height: 666rpx;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 }

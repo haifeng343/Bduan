@@ -51,9 +51,12 @@ Page({
       url: '/pages/setting/setting',
     })
   },
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
+  bindLogin:function() {
+    wx.navigateTo({
+      url: '/pages/login/login',
+    })
+  },
+
   onPullDownRefresh: function () {
 
   },

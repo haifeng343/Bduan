@@ -7,4 +7,6 @@ page{
   padding-right: 5%;
   margin-top:10rpx;
 }
-
+label{
+  font-size: 28rpx;
+}

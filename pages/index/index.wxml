@@ -17,15 +17,14 @@
 
 <view class='content bg'>
   <view class='between pd20'>
-    <view class='ft30 bold h60'>经营统计</view>
+    <view class='ft32 bold h60'>经营统计</view>
     <view class='relative'>
-      <view class='ft28 start h60' bindtap='changeSelect'>全部门店
+      <view class='ft28 start h60' bindtap='changeSelect'>{{storeName}}
         <image class='selectImg' src='../../img/select.png' mode='widthFix'></image>
       </view>
       <view class="select {{showSelect==true?'':'none'}}">
-        <view class='option active {{showId == item.id ? "active" : ""}}'>全部门店</view>
-        <view class='option'>门店一</view>
-        <view class='option'>门店一</view>
+        <view class='option active {{showId == item.id ? "active" : ""}}' bindtap='allStore'>全部门店</view>
+        <view class='option' wx:for="{{storeList}}" wx:key data-id="{{item.StoreId}}" data-name="{{item.StoreName}}" bindtap='changeStore'>{{item.StoreName}}</view>
       </view>
     </view>
   </view>
@@ -37,12 +36,12 @@
   </view>
 
   <view class='selectTime around' wx:if="{{showId == 5}}">
-    <picker mode="date" value="{{date1}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange1">
+    <picker mode="date" value="{{date1}}" bindchange="bindDateChange1">
       <view class="picker">
         {{date1==''?"开始时间":date1}}
       </view>
     </picker>
-    <picker mode="date" value="{{date2}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange2">
+    <picker mode="date" value="{{date2}}" bindchange="bindDateChange2">
       <view class="picker">
         {{date2==''?"结束时间":date2}}
       </view>
@@ -51,11 +50,11 @@
 
   <view class='statistics start mt40 pb20'>
     <view class='mr10b'>
-      <view class='ft50 theme'>3000</view>
+      <view class='ft50 theme'>{{arrivalCount}}</view>
       <view class='ft28'>到店人数</view>
     </view>
     <view>
-      <view class='ft50 theme'>3000</view>
+      <view class='ft50 theme'>{{buyCount}}</view>
       <view class='ft28'>购买数</view>
     </view>
   </view>
@@ -158,7 +157,7 @@
       <view class='ft28'>购买账户: 鸟叔(13654584874)</view>
       <view class='between h60'>
         <view class='start'>
-          <image class='icon1 mr5' src='../../img/k1.png' mode='widthFix'></image>
+          <image class='icon mr5' src='../../img/b2.png' mode='widthFix'></image>
           <view class='ft26'>语文课 (门店1)</view>
         </view>
         <image class='icon2' src='../../img/gou.png' mode='widthFix'></image>
@@ -186,7 +185,7 @@
   <input value='{{code}}' bindinput='setCode' placeholder='请输入券码' class='codeInput'></input>
 </modal>
 <modal hidden="{{showSure}}" title="确认订单信息" confirm-text="确认" cancel-text="取消" bindcancel="closeCodeSure" bindconfirm="submitSure" catchtouchmove="true">
-  <view class='showsure'>
+  <view class='showsure' catchtouchmove="return">
     <view class='column'>
       <view class='between pl5 pr5 h60'>
         <view class='ft28'>订单号: {{QuanInfo.OrderSN}}</view>

@@ -17,7 +17,7 @@
             </view>
           </view>
           <view class='between ft28'>
-            <view class='cc'>{{item.Honor}}</view>
+            <view class='cc'>{{item.Experience}}</view>
           </view>
         </view>
         <image class='edit' bindtap='edit' data-id="{{item.Id}}" src='../../img/more.png' mode='widthFix' lazy-load='true'></image>

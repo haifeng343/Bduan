@@ -9,7 +9,7 @@ Page({
     Id: '',
     List: [],//我的门店杭虎列表
     accountList: [],//所有门店列表
-    checkArr: [],
+    checkedArr: [],
   },
   onLoad: function (options) {
     this.setData({
@@ -17,18 +17,14 @@ Page({
     })
     this.init();
   },
-  init() {
-    this.getData();
-  },
   //我的师资列表
-  getData: function () {
+  init: function () {
     let that = this;
     var url = 'account/storeteacher/list';
     var params = {
       Id: that.data.Id
     }
-    netUtil.postRequest(url, params, function (res) { //onSuccess成功回调
-      console.log(res)
+    netUtil.postRequest(url, params, function (res) {
       that.setData({
         List: res.Data,
       })
@@ -43,8 +39,20 @@ Page({
       Status:1
     }
     netUtil.postRequest(url, params, function (res) {
+      let arr = [];
+      for (let v of res.Data) {
+        let obj = that.data.List.find(x => {
+          return x.Id == v.Id;
+        });
+        if (obj) {
+          arr.push(v.Id);
+        } else {
+          arr.push(0);
+        }
+      }
       that.setData({
         accountList: res.Data,
+        checkedArr: arr,
       })
     })
   },
@@ -52,7 +60,7 @@ Page({
   checkedChange: function (e) {
     console.log(e)
     this.setData({
-      checkArr: e.detail.value
+      checkedArr: e.detail.value
     })
   },
   //取消分配
@@ -67,7 +75,7 @@ Page({
     var url = 'account/storeteacher/set';
     var params = {
       StoreId: that.data.Id,
-      TeacherId: that.data.checkArr
+      TeacherId: that.data.checkedArr
     }
     netUtil.postRequest(url, params, function (res) {
       that.setData({
@@ -85,6 +93,10 @@ Page({
       showLog: !this.data.showLog
     })
     this.getAccountList();
+  },
+  onPullDownRefresh:function(){
+    this.init();
+    wx.stopPullDownRefresh();
   },
   onShareAppMessage: function () {
 

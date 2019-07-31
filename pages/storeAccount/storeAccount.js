@@ -31,10 +31,6 @@ Page({
       that.setData({
         List: res.Data,
       })
-      // that.data.List.forEach(item=>{
-      //   that.data.checkedArr = that.data.checkedArr.concat(item.AccountId)
-      //   console.log(that.data.checkedArr)
-      // })
     })
   },
   //获取商户账户列表
@@ -98,6 +94,10 @@ Page({
       showLog: !this.data.showLog
     })
     this.getAccountList();
+  },
+  onPullDownRefresh:function() {
+    this.init();
+    wx.stopPullDownRefresh();
   },
   onShareAppMessage: function() {
 

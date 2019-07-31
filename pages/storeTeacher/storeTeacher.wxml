@@ -17,11 +17,11 @@
 </view>
 
 <!--分配弹出框-->
-<modal hidden="{{showLog}}" title="分配师资" confirm-text="确认" cancel-text="取消" bindcancel="bindCancel" bindconfirm="bindSure" catchtouchmove="true">
+<modal hidden="{{showLog}}" title="分配师资" confirm-text="确认" cancel-text="取消" bindcancel="bindCancel" bindconfirm="bindSure">
   <view class='dialogList'>
       <checkbox-group bindchange="checkedChange">
         <view class='dialogItem start' wx:for="{{accountList}}" wx:key>
-          <checkbox class='chebox' value='{{item.Id}}'></checkbox>
+          <checkbox class='chebox' value='{{item.Id}}' checked='{{item.Id == checkedArr[index]}}'></checkbox>
           <view>
           <image class='avator1' src='{{item.HeadUrl}}' mode='aspectFill'></image>
           </view>

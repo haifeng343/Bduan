@@ -16,7 +16,7 @@
   </view>
 </view>
 <view class='content mt20 h101'>
-  <view class='center red ft28'>退出登录</view>
+  <view class='center red ft28' bindtap='clearStore'>退出登录</view>
 </view>
 
 <!-- <view class='content mt20 h101'>

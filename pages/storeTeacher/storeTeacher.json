@@ -1,3 +1,4 @@
 {
-  "navigationBarTitleText": "门店师资"
+  "navigationBarTitleText": "门店师资",
+  "enablePullDownRefresh": true
 }

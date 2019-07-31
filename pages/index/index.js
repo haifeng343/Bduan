@@ -10,87 +10,153 @@ Page({
     showSure: true, //确认订单信息
     showSuccessd: false, //验券成功
     showSelect: false, //门店选择
-    showId:1,
+    showId: 1,
     navTabs: [{
-      id: 1,
-      name: '今天'
-    },
-    {
-      id: 2,
-      name: '昨天'
-    },
-    {
-      id: 3,
-      name: '最近7天'
-    },
-    {
-      id: 4,
-      name: '最近1月'
-    },
-    {
-      id: 5,
-      name: '自定义'
-    },
+        id: 1,
+        name: '今天'
+      },
+      {
+        id: 2,
+        name: '昨天'
+      },
+      {
+        id: 3,
+        name: '最近7天'
+      },
+      {
+        id: 4,
+        name: '最近1月'
+      },
+      {
+        id: 5,
+        name: '自定义'
+      },
     ],
+    storeList:[],//门店列表
     QuanInfo: {}, //订单信息
     checked: false,
     checkList: [], //勾选的数组
-    groupList:[],
+    groupList: [],//活动组列表
+    storeId:'0',//门店Id
+    storeName:'全部门店',//门店名称
+    arrivalCount: '',//到店数
+    buyCount: '',//购买数
+    usertoken: '',
   },
-  onLoad: function (options) {
+  onLoad: function(options) {
+    let userInfo = wx.getStorageSync('userInfo');
+    this.setData({
+      usertoken: userInfo.UserToken
+    })
+    this.init();
+  },
+  init: function() {
+    if (this.data.usertoken) {
+      this.getStore();
+      this.getGroupList();
+      this.getOperating();
+    }
+  },
+  //获取所有门店列表
+  getStore: function() {
+    let that = this;
+    var url = 'account/store/list';
+    var params = {}
+    netUtil.postRequest(url, params, function(res) {
+      that.setData({
+        storeList: res.Data
+      })
+    })
+  },
+  //更换门店
+  changeStore:function(e) {
+    this.setData({
+      storeId:e.currentTarget.dataset.id,
+      storeName:e.currentTarget.dataset.name,
+      showSelect:false
+    })
+    this.getOperating();
+  },
+  //点击全部门店
+  allStore:function() {
+    this.setData({
+      storeId:0,
+      storeName:'全部门店',
+      showSelect: false
+    })
+  },
+  //获取经营统计数据
+  getOperating:function() {
+    let that = this;
+    var url = 'account/operating/statistics';
+    var params = {
+      Type: that.data.showId,
+      StartTime: that.data.date1,
+      EndTime: that.data.date2,
+      StoreId:that.data.storeId
+    }
+    netUtil.postRequest(url, params, function (res) {
+      that.setData({
+        buyCount: res.Data.BuyCount,
+        arrivalCount: res.Data.ArrivalCount,
+        date1: res.Data.StartTime,
+        date2: res.Data.EndTime,
+      })
+    })
   },
   //正在参与的活动
-  getGroupList:function() {
+  getGroupList: function() {
     let that = this;
     var url = 'account/activitygroup/list';
     var params = {
       Type: 2,
-      PageCount:5,
-      PageIndex:1,
+      PageCount: 5,
+      PageIndex: 1,
     }
-    netUtil.postRequest(url, params, function (res) { //onSuccess成功回调
-
+    netUtil.postRequest(url, params, function(res) {
       that.setData({
         QuanInfo: res.Data,
-        showSure: true,
-        showLog: false,
       })
     })
   },
-  navtoVercation: function () {
+  //验证记录
+  navtoVercation: function() {
     wx.navigateTo({
       url: '/pages/vercationLog/vercationLog',
     })
   },
   //点击切换选中样式
-  changeShowId:function(e) {
+  changeShowId: function(e) {
     this.setData({
-      showId : e.currentTarget.dataset.id
+      showId: e.currentTarget.dataset.id,
+      date1:'',
+      date2:'',
     })
+    this.getOperating();
   },
   //弹窗隐藏
-  toggleDialog: function () {
+  toggleDialog: function() {
     this.setData({
       showSuccess: !this.data.showSuccess
     })
   },
   //输入扫码
-  bindInputCode: function () {
+  bindInputCode: function() {
     this.setData({
       showLog: !this.data.showLog
     })
   },
-  getCode:function() {
+  getCode: function() {
     this.bindOrderCode(this.data.code);
   },
   //输入订单号搜索
-  bindOrderCode: function (code) {
+  bindOrderCode: function(code) {
     let that = this;
     var url = 'order/info/ticketnumber';
     var params = {
       TicketNumber: code,
     }
-    netUtil.postRequest(url, params, function (res) { //onSuccess成功回调
+    netUtil.postRequest(url, params, function(res) { //onSuccess成功回调
       that.setData({
         QuanInfo: res.Data,
         showSure: false,
@@ -99,7 +165,7 @@ Page({
     })
   },
   //勾选
-  checkdChange: function (e) {
+  checkdChange: function(e) {
     let arrs = []
     this.setData({
       checkList: e.detail.value
@@ -108,80 +174,80 @@ Page({
     console.log(this.data.checkList)
   },
   //关闭订单验券弹窗
-  closeCodeLog: function () {
+  closeCodeLog: function() {
     this.setData({
       showLog: !this.data.showLog,
       code: '',
     })
   },
   //关闭确认订单信息弹出框
-  closeCodeSure: function () {
+  closeCodeSure: function() {
     this.setData({
       showSure: !this.data.showSure
     })
   },
   //发送订单信息确定
-  submitSure: function () {
+  submitSure: function() {
     let that = this;
     var url = 'account/order/check';
     var params = {
       TicketNumber: that.data.code,
       RelId: this.data.checkList[0]
     }
-    netUtil.postRequest(url, params, function (res) { //onSuccess成功回调
+    netUtil.postRequest(url, params, function(res) { //onSuccess成功回调
       that.setData({
         showSure: true,
-        code:'',
+        code: '',
       })
       wx.showModal({
         title: '验券成功',
-        cancelColor:'#29d9d6',
-        showCancel:false,
-        cancelText:'知道了',
-        success:function() {
+        cancelColor: '#29d9d6',
+        showCancel: false,
+        cancelText: '知道了',
+        success: function() {
 
         }
       })
     })
   },
   //关闭成功弹窗
-  closeds: function () {
+  closeds: function() {
     this.setData({
       showSuccessd: !this.data.showSuccessd
     })
   },
   //设置券码
-  setCode: function (e) {
+  setCode: function(e) {
     this.setData({
       code: e.detail.value
     })
   },
   //开始时间
-  bindDateChange1: function (e) {
+  bindDateChange1: function(e) {
     this.setData({
       date1: e.detail.value
     })
-    if (this.data.date1 && this.data.date2){
-
+    if (this.data.date1 && this.data.date2) {
+      this.getOperating();
     }
   },
   //结束时间 
-  bindDateChange2: function (e) {
+  bindDateChange2: function(e) {
     this.setData({
       date2: e.detail.value
     })
     if (this.data.date1 && this.data.date2) {
-      
+      this.getOperating();
     }
   },
   //弹出门店下拉选择
-  changeSelect: function () {
+  changeSelect: function() {
     this.setData({
       showSelect: !this.data.showSelect
     })
   },
   //扫描二维码
-  clickSaoma: function () {
+  clickSaoma: function() {
     let that = this;
     wx.scanCode({
       onlyFromCamera: false,
@@ -207,24 +273,29 @@ Page({
 
   //   })
   // },
-  binddetail: function () {
+  binddetail: function() {
     wx.navigateTo({
       url: '/pages/activityDetail/activityDetail',
     })
   },
-  bindGroup: function () {
+  bindGroup: function() {
     wx.navigateTo({
       url: '/pages/myGroup/myGroup',
     })
   },
-  bindNavtoOrder: function () {
+  bindNavtoOrder: function() {
     wx.switchTab({
       url: '/pages/order/order',
     })
   },
-  bindOrderDetail: function () {
+  bindOrderDetail: function() {
     wx.navigateTo({
       url: '/pages/orderDetail/orderDetail',
     })
   },
+
+  onPullDownRefresh: function() {
+    this.init();
+    wx.stopPullDownRefresh();
+  }
 })
