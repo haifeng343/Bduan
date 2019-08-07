@@ -1,30 +1,38 @@
 var netUtil = require("../../utils/request.js"); //require引入
-const baseUrl = "https://test.guditech.com/rocketseller/";
+const app = getApp().globalData;
+const baseUrl = app.baseUrl;
 var utilMd5 = require('../../utils/md5.js');
 Page({
 
   data: {
     Id: '',
-    item: {},//页面数据
-    name: '',//账户名
-    mobile: '',//手机号
-    password: '',//密码
-    password1: '',//再次输入密码
-    headerImg: '',//头像
-    items:[
-      {id:1,value:'普通账户',checked:true},
-      // {id:2,value:'管理员'},
-    ],
-    IsAdministrator: '',//是否为管理员
-    headerImgPath: '',//上传头像地址
+    item: {}, //页面数据
+    name: '', //账户名
+    mobile: '', //手机号
+    password: '', //密码
+    password1: '', //再次输入密码
+    headerImg: '', //头像
+    showId: 1, //是否为管理
+    IsAdministrator: '', //是否为管理员
+    AdminPower: '', //是否为超级管理员
+    headerImgPath: '', //上传头像地址
   },
-  onLoad: function (options) {
+  onLoad: function(options) {
+    let IsAdministrator = wx.getStorageSync('userInfo').IsAdministrator;
+    let AdminPower = wx.getStorageSync('userInfo').AdminPower
     this.setData({
       Id: options.id || '',
+      IsAdministrator: IsAdministrator,
+      AdminPower: AdminPower
     })
+    if (this.data.AdminPower == 1) {
+      this.setData({
+
+      })
+    }
     this.init();
   },
-  init: function () {
+  init: function() {
     if (this.data.Id) {
       this.getData();
       wx.setNavigationBarTitle({
@@ -36,13 +44,13 @@ Page({
       })
     }
   },
-  getData: function () {
+  getData: function() {
     let that = this;
     var url = 'account/selleraccount/details';
     var params = {
       Id: that.data.Id
     }
-    netUtil.postRequest(url, params, function (res) {
+    netUtil.postRequest(url, params, function(res) {
       that.setData({
         item: res.Data,
         name: res.Data.UserName,
@@ -53,13 +61,13 @@ Page({
     });
   },
   //绑定姓名
-  bindName: function (e) {
+  bindName: function(e) {
     this.setData({
       name: e.detail.value
     })
   },
   //上传图片
-  bindUpload: function (e) {
+  bindUpload: function(e) {
     let that = this;
     wx.chooseImage({
       success(res) {
@@ -93,70 +101,91 @@ Page({
     })
   },
   //单选框切换
-  changeRadio: function (e) {
+  changeRadio: function(e) {
     console.log(e)
   },
   //输入密码
-  bindPassword: function (e) {
+  bindPassword: function(e) {
     this.setData({
-      password:e.detail.value
+      password: e.detail.value
     })
   },
   //确认密码
-  bindPassword1: function (e) {
+  bindPassword1: function(e) {
     this.setData({
-      password1:e.detail.value
+      password1: e.detail.value
     })
   },
   //绑定手机号
-  bindMobile:function(e) {
+  bindMobile: function(e) {
     this.setData({
-      mobile:e.detail.value
+      mobile: e.detail.value
     })
   },
   //编辑账户
-  edit: function () {
+  edit: function() {
     let that = this;
     var url = 'account/selleraccount/modify';
     var params = {
       AccountId: that.data.Id,
       Head: that.data.headerImgPath,
       UserName: that.data.name,
-      Password: utilMd5.hexMD5(that.data.password),
+      IsAdministrator: this.data.showId,
       Mobile: that.data.mobile,
     }
-    netUtil.postRequest(url, params, function (res) {
-      console.log(res)
+    netUtil.postRequest(url, params, function(res) {
+      wx.showModal({
+        title: '编辑成功',
+        content: '',
+        showCancel: false,
+        success: function (res) {
+          if (res.confirm) {
+            let pages = getCurrentPages(); //当前页面
+            let prevPage = pages[pages.length - 2]; //上一页面
+            prevPage.init();
+            wx.navigateBack({
+              
+            })
+          }
+        }
+      })
     });
   },
   //添加账户
-  add: function () {
+  add: function() {
     let that = this;
     var url = 'account/selleraccount/add';
-    if (that.data.name){
+    if (!that.data.name) {
       wx.showToast({
-        icon:'none',
+        icon: 'none',
         title: '请输入用户名',
       })
-      return ;
+      return;
     }
-    if (that.data.mobile){
+    if (!that.data.mobile) {
       wx.showToast({
-        icon:'none',
+        icon: 'none',
         title: '请输入手机号',
       })
       return;
     }
-    if (that.data.password){
+    if (!app.mobileReg.test(that.data.mobile)) {
       wx.showToast({
-        icon:'none',
+        icon: 'none',
+        title: '请输入正确的手机号',
+      })
+      return;
+    }
+    if (!that.data.password) {
+      wx.showToast({
+        icon: 'none',
         title: '请输入密码',
       })
       return;
     }
-    if (that.data.password1){
+    if (!that.data.password1) {
       wx.showToast({
-        icon:'none',
+        icon: 'none',
         title: '请再次输入密码',
       })
       return;
@@ -169,36 +198,40 @@ Page({
       return;
     }
     var params = {
-      AccountId: that.data.Id,
       Head: that.data.headerImgPath,
       UserName: that.data.name,
       Password: utilMd5.hexMD5(that.data.password),
+      IsAdministrator: this.data.showId,
       Mobile: that.data.mobile,
     }
-    netUtil.postRequest(url, params, function (res) {
-   
+    netUtil.postRequest(url, params, function(res) {
+      wx.showModal({
+        title: '创建成功',
+        content: '',
+        showCancel:false,
+        success: function(res) {
+          if (res.confirm) {
+            let pages = getCurrentPages(); //当前页面
+            let prevPage = pages[pages.length - 2]; //上一页面
+            prevPage.init();
+            wx.navigateBack({
+              
+            })
+          }
+        }
+      })
     });
   },
 
   //提交
-  submit: function () {
+  submit: function() {
     if (this.data.Id) {
       this.edit();
     } else {
       this.add();
     }
-    let pages = getCurrentPages(); //当前页面
-    let prevPage = pages[pages.length - 2]; //上一页面
-    prevPage.init();
-    wx/wx.navigateBack({
-      delta: 1,
-    })
-    wx.showToast({
-      icon: 'none',
-      title: this.data.Id ? '编辑成功' : '创建成功',
-    })
   },
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

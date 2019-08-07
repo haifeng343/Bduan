@@ -1,5 +1,6 @@
 var netUtil = require("../../utils/request.js"); //require引入
-let baseUrl = "https://test.guditech.com/rocketseller/";
+const app = getApp().globalData;
+const baseUrl = app.baseUrl;
 Page({
   data: {
     name: '', //课程姓名

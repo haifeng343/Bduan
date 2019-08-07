@@ -1,5 +1,6 @@
 var netUtil = require("../../utils/request.js"); //require引入
-let baseUrl = "https://test.guditech.com/rocketseller/";
+const app = getApp().globalData;
+const baseUrl = app.baseUrl;
 Page({
   data: {
     name: '', //教师姓名
@@ -11,10 +12,8 @@ Page({
     description: '', //教师描述
     TitlesList: [], //所有教师职称列表
     checkedArr: [], //选中的教师职称
-    imgs: [],
     plusShow: true,
     Id: '',
-    imgsArr: [],
   },
   onLoad: function(options) {
     this.setData({
@@ -43,9 +42,9 @@ Page({
     }
     netUtil.postRequest(url, params, function(res) {
       let arr = [];
-      for (let v of res.Data.ImgList) {
-        arr.push(v.HeadUrl);
-      }
+      // for (let v of res.Data.ImgList) {
+      //   arr.push(v.HeadUrl);
+      // }
       that.setData({
         item: res.Data,
         name: res.Data.Name,
@@ -55,8 +54,6 @@ Page({
         headPath: res.Data.Head,
         old: res.Data.TeachingAge,
         description: res.Data.Experience,
-        imgs: res.Data.ImgList,
-        imgsArr: arr,
       })
     });
   },
@@ -170,127 +167,6 @@ Page({
       }
     })
   },
-  chooseImg: function(e) {
-    var that = this;
-    wx.chooseImage({
-      count: 1,
-      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-      success: function(res) {
-        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-        var tempFilePaths = res.tempFilePaths;
-        let arr = that.data.imgs;
-        arr.push({ HeadUrl: tempFilePaths[0] });
-        that.setData({ imgs: arr });
-        that.upLoadImg(tempFilePaths[0]);
-        that.showHide();
-      }
-    });
-  },
-  /*
-      删除图片
-  */
-  deleteImg: function(e) {
-    var imgs = this.data.imgs;
-    var arr = this.data.imgsArr;
-    var index = e.currentTarget.dataset.index;
-    if (imgs[index].ImgId) {
-      this.delImg(imgs[index].ImgId);
-    }
-    imgs.splice(index, 1);
-    arr.splice(index, 1);
-    this.setData({
-      imgs: imgs,
-      imgsArr: arr,
-    });
-    this.showHide();
-  },
-  //删除
-  delImg: function(id) {
-    var that = this;
-    var urls = 'account/sellerteacher/img/delete';
-    var params = {
-      Id: id,
-    }
-    netUtil.postRequest(urls, params, function (res) {
-      
-    });
-  },
-  /*
-      预览图片
-  */
-  previewImg: function(e) {
-    //获取当前图片的下标
-    var index = e.currentTarget.dataset.index;
-    //所有图片
-    var imgs = this.data.imgs;
-    wx.previewImage({
-      //当前显示图片
-      current: imgs[index],
-      //所有图片
-      urls: imgs
-    })
-  },
-  /*
-      控制添加图片按钮是否显示出来
-  */
-  showHide: function(e) {
-    if (this.data.imgs.length == 1) {
-      this.setData({
-        plusShow: true
-      });
-    } else if (this.data.imgs.length < 6) {
-      this.setData({
-        plusShow: true
-      });
-    } else if (this.data.imgs.length == 6) {
-      this.setData({
-        plusShow: false
-      });
-    }
-  },
-  //上传图片
-  upLoadImg: function(data) {
-    var that = this;
-    let usertoken = wx.getStorageSync('userInfo').UserToken;
-    wx.uploadFile({
-      url: baseUrl + 'img/upload',
-      filePath: data,
-      header: {
-        "Content-Type": "multipart/form-data", //记得设置
-        'channelCode': 'wechat',
-        'appVersion': '1.0.1',
-        "userToken": usertoken,
-      },
-      name: 'Teacher.Imgs',
-      success: (res) => {
-        var ttt = JSON.parse(res.data)
-        that.addImg(ttt.Data.ImgPath);
-      },
-      fail: (res) => {
-        wx.showToast({
-          icon: 'none',
-          title: res.data.ErrorMessage,
-        })
-      },
-    });
-  },
-  //添加
-  addImg: function(url) {
-    var that = this;
-    var urls = 'account/sellerteacher/img/add';
-    var params = {
-      TeacherId: this.data.Id,
-      ImgUrl: url,
-    }
-    netUtil.postRequest(urls, params, function (res) {
-      var temp = that.data.imgsArr || [];
-      temp.push(url);
-      that.setData({
-        imgsArr: temp
-      })
-    });
-  },
   //添加商户师资/编辑
   submit:function() {
     let that = this;
@@ -314,7 +190,6 @@ Page({
       TeachingAge:that.data.old,
       TitlesId: that.data.checkedArr,
       Experience: that.data.description,
-      ImgUrlList:that.data.imgsArr
     }
     if (!that.data.name || !that.data.jobTitle || !that.data.old || !that.data.headPath || !that.data.description){
       wx.showToast({

@@ -13,6 +13,18 @@ page {
   color: #b2c7ed!important;
   border: 1rpx solid #b2c7ed!important;
 }
+.statu{
+  width: 136rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 24rpx;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  bottom: 0;
+  left: 20rpx;
+  text-align: center;
+}
 .noWrap{
   width: 100%;
   overflow-x: scroll;

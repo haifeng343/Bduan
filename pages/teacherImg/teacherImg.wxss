@@ -1,0 +1,54 @@
+
+.jiatupian {
+  width: 180rpx;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.jiatupian image {
+  width: 136rpx;
+  height: 136rpx;
+}
+.imgs{
+  width: 100%;
+  padding: 20rpx 5%;
+  box-sizing: border-box;
+  background-color:#fff;
+  position:relative;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.image {
+  width: 33%;
+  height: 156rpx;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.image image {
+  width: 136rpx;
+  height: 136rpx;
+  margin: 10px;
+  box-sizing: border-box;
+}
+
+.deleteImage {
+  width: 15px;
+  height: 15px;
+  font-size: 15px;
+  position: absolute;
+  right: 20%;
+  top: 0;
+}
+
+.deleteImage image {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: -15rpx;
+  right: -15rpx;
+}

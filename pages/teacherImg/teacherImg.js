@@ -19,21 +19,21 @@ Page({
     this.getTitlesList();
   },
   //失败弹窗
-  clickEor:function(e) {
+  clickEor: function (e) {
     wx.showModal({
       title: '审核失败',
-      content: '失败原因'+e.currentTarget.dataset.content,
-      showCancel:false,
-      cancelText:'知道了',
-      success:function() {
-        
+      content: '失败原因' + e.currentTarget.dataset.content,
+      showCancel: false,
+      cancelText: '知道了',
+      success: function () {
+
       }
     })
   },
   //图片列表
   getTitlesList: function () {
     let that = this;
-    var url = 'account/selleritem/img/list';
+    var url = 'account/sellerteacher/img/list';
     var params = {
       Id: that.data.Id
     }
@@ -91,7 +91,7 @@ Page({
   //删除
   delImg: function (id) {
     var that = this;
-    var urls = 'account/selleritem/img/delete';
+    var urls = 'account/sellerteacher/img/delete';
     var params = {
       Id: id,
     }
@@ -148,7 +148,7 @@ Page({
       name: 'Teacher.Imgs',
       success: (res) => {
         var ttt = JSON.parse(res.data);
-        console.log(ttt); 
+        console.log(ttt);
         if (ttt.Data) {
           let arr = this.data.imgsArr;
           arr.push(ttt.Data.ImgPath)
@@ -171,7 +171,7 @@ Page({
   //添加
   submit: function (url) {
     var that = this;
-    var urls = 'account/selleritem/img/add';
+    var urls = 'account/sellerteacher/img/add';
     var params = {
       ItemId: this.data.Id,
       ImgUrl: this.data.imgsArr,
@@ -180,10 +180,10 @@ Page({
       wx.showModal({
         title: '提交成功',
         content: '',
-        success:function(res) {
-          if(res.confirm){
+        success: function (res) {
+          if (res.confirm) {
             wx.navigateBack({
-              
+
             })
           }
         }

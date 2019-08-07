@@ -31,6 +31,18 @@ Page({
       })
     });
   },
+  //错误弹窗
+  clickEor: function (e) {
+    wx.showModal({
+      title: '审核失败',
+      content: '失败原因' + e.currentTarget.dataset.content,
+      showCancel: false,
+      cancelText: '知道了',
+      success: function () {
+
+      }
+    })
+  },
   //编辑
   edit: function (e) {
     let that = this;
@@ -38,25 +50,45 @@ Page({
       Id: e.currentTarget.dataset.id,
       name:e.currentTarget.dataset.name,
       status: e.currentTarget.dataset.status
-    })
+    });
+    let state = that.data.status == 2 || that.data.status == 4;
     wx.showActionSheet({
-      itemList: (that.data.status == 2 || that.data.status == 4) ? ['课程图片', '刪除'] : ['编辑', '课程图片', '刪除'],
+      itemList: state ? ['课程图片', '刪除'] : ['编辑', '课程图片', '刪除'],
       success: function (e) {
-        if (e.tapIndex == 0) {
+        if (state) {
+          if (e.tapIndex == 0) {
+            fn2();
+          }
+          if (e.tapIndex == 1) {
+            fn3();
+          }
+        } else {
+          if (e.tapIndex == 0) {
+            fn1();
+          }
+          if (e.tapIndex == 1) {
+            fn2();
+          }
+          if (e.tapIndex == 2) {
+            fn3();
+          }
+        }
+
+        function fn1() {
           wx.navigateTo({
             url: '/pages/addCourse/addCourse?id=' + that.data.Id,
           })
         }
-        if (e.tapIndex == 1) {
+        function fn2() {
           wx.navigateTo({
-            url: '/pages/courseImg/courseImg?id='+that.data.Id,
+            url: '/pages/courseImg/courseImg?id=' + that.data.Id,
           })
         }
-        if (e.tapIndex == 2) {
+        function fn3() {
           wx.showModal({
-            title: '确认删除'+that.data.name+'吗？',
+            title: '确认删除' + that.data.name + '吗？',
             content: '',
-            success:function(res) {
+            success: function (res) {
               if (res.confirm) {
                 var url = 'account/selleritem/delete';
                 var params = {
@@ -82,11 +114,20 @@ Page({
     })
   },
   onPullDownRefresh: function () {
+    this.setData({
+      page: 1
+    })
     this.init();
     wx.stopPullDownRefresh();
   },
-  onReachBottom:function() {
-    
+
+  onReachBottom: function () {
+    let temp = this.data.page;
+    temp++;
+    this.setData({
+      page: temp
+    })
+    this.init();
   },
   onShareAppMessage: function () {
 

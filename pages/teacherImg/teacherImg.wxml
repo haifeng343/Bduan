@@ -15,4 +15,5 @@
     <image class='upload1' src='../../img/upload.png' mode='aspectFill' lazy-load='true'></image>
   </view>
 </view>
+
 <view class='submit' bindtap='submit'>提交</view>

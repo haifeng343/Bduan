@@ -47,18 +47,7 @@
   height: 100rpx;
   padding-top: 20rpx;
 }
-.status{
-  width: 136rpx;
-  height: 40rpx;
-  line-height: 40rpx;
-  font-size: 24rpx;
-  color: #fff;
-  background: rgba(0, 0, 0, 0.1);
-  position: absolute;
-  bottom: 0;
-  left: 20rpx;
-  text-align: center;
-}
+
 .md {
   width: 95%;
   margin-left: 2.5%;

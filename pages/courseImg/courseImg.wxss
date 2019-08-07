@@ -10,6 +10,9 @@
   height: 136rpx;
 }
 .imgs{
+  width: 100%;
+  padding: 20rpx 5%;
+  box-sizing: border-box;
   background-color:#fff;
   position:relative;
   display: flex;
@@ -37,7 +40,9 @@
   width: 15px;
   height: 15px;
   font-size: 15px;
-  float: left;
+  position: absolute;
+  right: 20%;
+  top: 0;
 }
 
 .deleteImage image {

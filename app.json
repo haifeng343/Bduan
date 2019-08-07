@@ -29,7 +29,8 @@
     "pages/modifyPassword/modifyPassword",
     "pages/aboutUs/aboutUs",
     "pages/addCourse/addCourse",
-    "pages/courseImg/courseImg"
+    "pages/courseImg/courseImg",
+    "pages/teacherImg/teacherImg"
   ],
   "window": {
     "backgroundTextStyle": "dark",

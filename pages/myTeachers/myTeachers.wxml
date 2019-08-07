@@ -14,13 +14,19 @@
             <view class='start'>
               <view class='ft28 bold'>{{item.Name}}</view>
               <view class='ml20 ft24 cc'>{{item.Titles}} | {{item.TeachingAge}}教龄</view>
+              <view class='status'>
+              <view class='ft28' wx:if="{{item.ExamineStatus==1}}">等待审核</view>
+              <view class='ft28' wx:if="{{item.ExamineStatus==2}}">审核中</view>
+              <view class='ft28 red' wx:if="{{item.ExamineStatus==3}}" data-content="{{item.ExamineStatusDes}}" bindtap="clickEor">审核失败?</view>
+              <view class='ft28' wx:if="{{item.ExamineStatus==4}}">审核成功</view>
+            </view>
             </view>
           </view>
           <view class='between ft28'>
-            <view class='cc'>{{item.Experience}}</view>
+            <view class='cc'>{{item.Titles}}</view>
           </view>
           <view class='between ft28'>
-            <view class='cc'>创建时间:{{item.Experience}}</view>
+            <view class='cc'>创建时间:{{item.CreateTime}}</view>
           </view>
         </view>
         <view>

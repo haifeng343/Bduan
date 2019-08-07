@@ -18,9 +18,9 @@
   <view class='item start borb h80'>
     <label>账户类型</label>
     <radio-group class="ml20" bindchange="changeRadio">
-      <label wx:for="{{items}}" wx:key>
-        <radio value='{{item.id}}' checked='{{item.checked}}'>{{item.value}}</radio>
-        <!-- <radio class='ml20'>管理员账户</radio> -->
+      <label>
+        <radio value='1' checked='{{ showId ==1}}'>普通账户</radio>
+        <radio value='2' wx:if="{{AdminPower==2}}" checked='{{ showId ==2}}'>管理员</radio>
       </label>
     </radio-group>
   </view>

@@ -4,13 +4,18 @@ Page({
   data: {
     Id:'',
     items:[],
-    IsAdministrator:'',
+    IsAdministrator:'',//是否为管理员
+    AdminPower: '',//是否为超级管理员
     name:'',
+    pageCount:20,
+    page:1,
   },
   onLoad:function(){
     let IsAdministrator = wx.getStorageSync('userInfo').IsAdministrator;
+    let AdminPower = wx.getStorageSync('userInfo').AdminPower
     this.setData({
-      IsAdministrator: IsAdministrator
+      IsAdministrator: IsAdministrator,
+      AdminPower: AdminPower
     })
     this.init();
   },
@@ -18,6 +23,8 @@ Page({
     let that = this;
     var url = 'account/selleraccount/list';
     var params = {
+      PageCount:that.data.pageCount,
+      PageIndex:that.data.page,
     }
     netUtil.postRequest(url, params, function (res) {
       console.log(res);

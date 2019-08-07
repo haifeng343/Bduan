@@ -21,23 +21,6 @@
     <label style='width:100%'>教师描述</label>
     <textarea value='{{description}}' bindinput='bindDescription' placeholder='请填写教师所获荣誉和个人经历' class='textarea pb10'></textarea>
   </view>
-  <view class='item column borb'>
-    <label class=' h80'>教师图片</label>
-    <!-- <image class='upload1 pd20 ml20' src='../../img/upload.png' mode='widthFix' bindtap='bindUpload1'></image> -->
-    <view style='background-color:#fff;'>
-      <view class="image" wx:for="{{imgs}}" wx:for-item="item" wx:key="*this">
-        <!-- 图片预览 -->
-        <image src="{{item.HeadUrl}}" class='onload' data-index="{{index}}" bindtap="previewImg" mode='widthFix' lazy-load='true'></image>
-        <view class="deleteImage" data-index="{{index}}" catchtap="deleteImg">
-          <!-- 图片删除 -->
-          <image src='../../img/cha.png' class='cha' mode='widthFix' lazy-load='true'></image>
-        </view>
-      </view>
-      <view class='jiatupian' bindtap="chooseImg" wx:if="{{plusShow}}">
-        <image class='upload1' src='../../img/upload.png' mode='widthFix' lazy-load='true'></image>
-      </view>
-    </view>
-  </view>
 </view>
 
 <view class='fixed'>
@@ -49,8 +32,8 @@
     <checkbox-group bindchange="changeTitles">
       <view class='item1 column' wx:for="{{TitlesList}}" wx:key>
         <view class='start h60'>
-        <checkbox value='{{item.TitlesId}}' checked='{{item.checked}}'></checkbox>
-        <view>{{item.TitlesName}}</view>
+          <checkbox value='{{item.TitlesId}}' checked='{{item.checked}}'></checkbox>
+          <view>{{item.TitlesName}}</view>
         </view>
       </view>
     </checkbox-group>
