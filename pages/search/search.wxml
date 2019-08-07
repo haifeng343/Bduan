@@ -1,11 +1,48 @@
-<view class='startd start mt20'>
+<view class="mask" catchtouchmove="show" bindtap='hideFixed' wx:if="{{show}}"></view>
+<view class="selectOption" wx:if="{{show==true}}">
+  <view class='center' bindtap='change1'>订单号搜索</view>
+  <view class='center bort' bindtap='change2'>账户名搜索</view>
+</view>
+<view class='startd start'>
   <view class='poab start cc h60' bindtap='changeVal'>{{status}}
     <image class='selectImg' src='../../img/select.png' mode='widthFix'></image>
   </view>
-  <view class='selectOption' wx:if="{{show}}">  
-    <view class='center' bindtap='change1'>订单号搜索</view>
-    <view class='center' bindtap='change2'>账户名搜索</view>
-  </view>
-  <input class='searchInput ft26' value='{{value}}' placeholder='{{status}}' bindinput='bindSearch'></input>
+  <input class='searchInput' value='{{value}}' placeholder='{{status}}' bindinput='bindSearch'></input>
   <view class='ft28 searchRight' bindtap='search'>搜索</view>
+  <cover-view class='clearDiv'>
+    <image src='../../img/clear.png' class='cleard' wx:if="{{value}}" bindtap='clear' mode='widthFix'></image>
+  </cover-view>
+</view>
+
+<!-- <view class='searchHistory' wx:if="{{showHistory}}">
+  <view class='historyTop between' wx:if="{{searchRecord.length>0 || value}}">
+    <view class='histitle'>历史搜索</view>
+    <image class='delete' bindtap='deleteHistory' src='../../img/delete.png' mode='widthFix' lazy-load='true'></image>
+  </view>
+  <view class='historyList'>
+    <text class='historyItem' wx:for="{{searchRecord}}" wx:key="{{item}}" data-item="{{item}}" bindtap='searchTo'>{{item.value}}</text>
+  </view>
+</view> -->
+
+<view class='List List1'>
+  <view class='item column' wx:for="{{List}}" data-id="{{item.OrderId}}" bindtap='bindDetail' wx:key>
+    <view class='between'>
+      <view class='ft24 bb'>订单号： {{item.OrderSN}}</view>
+      <view class='ft30' wx:if="{{item.OrderStatus==1}}">未使用</view>
+      <view class='ft30' wx:if="{{item.OrderStatus==2}}">部分使用</view>
+      <view class='ft30' wx:if="{{item.OrderStatus==3}}">已完成</view>
+      <view class='ft30' wx:if="{{item.OrderStatus==4}}">已过期</view>
+    </view>
+    <view class='ft28'>购买时间: {{item.BuyTime}}</view>
+    <view class='ft28'>购买账户: {{item.BuyAccountName}}({{item.BuyAccountMobile}})</view>
+    <view class='between klp' wx:for="{{item.ItemList}}" wx:key wx:for-item="k">
+      <view class='start'>
+        <view>
+          <image class='icon mr5' src='../../img/b2.png' mode='widthFix'></image>
+        </view>
+        <view class='ft28'>{{k.ItemName}} ({{k.StoreName}})</view>
+      </view>
+      <image class='icon2' wx:if="{{k.UseStatus==2}}" src='../../img/gou.png' mode='widthFix'></image>
+    </view>
+  </view>
 </view>

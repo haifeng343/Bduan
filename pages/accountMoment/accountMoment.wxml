@@ -1,24 +1,35 @@
 <view class='address'>
   <view class='noHas' wx:if="{{List.length<=0}}">
     <image src='../../img/zanwu.png' mode='widthFix' class='noList'></image>
+    <view class='notext'>暂无账户</view>
   </view>
   <view wx:else>
     <view class="container">
       <view class='column item pb20' wx:for="{{items}}" wx:key>
         <view class='start'>
-          <image src='{{item.HeadUrl}}' mode='aspectFill' class='avator'></image>
+          <view>
+            <image src='{{item.HeadUrl}}' mode='aspectFill' class='avator'></image>
+          </view>
           <view class='column'>
-            <view class='between ft28 mt15'>
-              <view>账户名: {{item.UserName}}</view>
-              <view wx:if="{{item.IsAdministrator==false}}">普通账户</view>
-              <view wx:else>管理员</view>
+            <view class='between ft28'>
+              <view>账户名: {{item.UserName}}
+                <text wx:if="{{item.IsAdministrator==false}}" class='tag tag1'>普通账户</text>
+                <text wx:else class='tag'>管理员</text>
+              </view>
             </view>
             <view class='between ft24'>
               <view>手机号: {{item.Mobile}}</view>
-              <!-- <view class='cc'>创建时间: 2019-12-12</view> -->
             </view>
+            <view class='between ft24'>
+              <view>
+                <view class=''>创建时间: 2019-12-12</view>
+              </view>
+            </view>
+
           </view>
-          <image class='edit' bindtap='edit' data-id="{{item.AccountId}}" src='../../img/more.png' mode='widthFix' lazy-load='true'></image>
+          <view>
+            <image class='edit' bindtap='edit' data-name="{{item.UserName}}" data-id="{{item.AccountId}}" src='../../img/more.png' mode='aspectFill' lazy-load='true'></image>
+          </view>
         </view>
       </view>
     </view>

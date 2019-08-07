@@ -1,6 +1,6 @@
 <view class='noHas' wx:if="{{items.length<=0}}">
   <image src='../../img/zanwu.png' mode='widthFix' class='noList'></image>
-  <!-- <view class='zanwu'>暂无数据</view> -->
+  <view class='notext'>暂无师资</view>
 </view>
 <view wx:else>
   <view class="container">
@@ -19,10 +19,15 @@
           <view class='between ft28'>
             <view class='cc'>{{item.Experience}}</view>
           </view>
+          <view class='between ft28'>
+            <view class='cc'>创建时间:{{item.Experience}}</view>
+          </view>
         </view>
-        <image class='edit' bindtap='edit' data-id="{{item.Id}}" src='../../img/more.png' mode='widthFix' lazy-load='true'></image>
+        <view>
+          <image class='edit' bindtap='edit' data-status="{{item.ExamineStatus}}" data-name="{{item.Name}}" data-id="{{item.Id}}" src='../../img/more.png' mode='aspectFill' lazy-load='true'></image>
+        </view>
       </view>
     </view>
   </view>
-  <view class='add' wx:if="{{IsAdministrator}}" bindtap='bindAddTeacher'>+添加老师</view>
 </view>
+<view class='add' wx:if="{{IsAdministrator==true}}" bindtap='bindAddTeacher'>+添加老师</view>

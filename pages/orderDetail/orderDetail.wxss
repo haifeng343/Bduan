@@ -1,28 +1,67 @@
-.d1{
-  width: 180rpx;
-  height: 180rpx;
+.d1 {
+  width: 133rpx;
+  height: 170rpx;
+  border-radius: 15rpx;
 }
-.content{
+
+.content {
   padding: 20rpx 5%;
+  box-sizing: border-box;
 }
-.container{
+
+.container {
   background-color: transparent;
 }
-.item{
+
+.item {
   position: relative;
 }
-.use{
-  width: 90rpx;
-  height: 90rpx;
+
+.icon {
+  margin-top: 0;
+}
+
+.use {
+  width: 100rpx;
+  height: 100rpx;
   position: absolute;
-  right: 0;
   top: 0;
+  right:0;
   z-index: 1;
   background-color: #fff;
 }
 
+.avator {
+  width: 60rpx;
+  height: 50rpx;
+  margin-left: 10rpx;
+}
 
+.avator1 {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+}
 
+.start text:first-child, .between text:first-child {
+  width: 130rpx;
+}
 
+.status {
+  font-size: 28rpx;
+  color: #000;
+  width: 140rpx;
+  text-align: right;
+  word-break: keep-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
+.itemLeft {
+  width: 23%;
+}
 
+.bort {
+  margin-top: 20rpx;
+  padding-top: 20rpx;
+}

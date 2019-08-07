@@ -1,0 +1,19 @@
+<view class='imgs'>
+  <view class="image" wx:for="{{imgs}}" wx:for-item="item" wx:key="*this">
+    <!-- 图片预览 -->
+    <image src="{{item.ImgShowUrl}}" class='onload' data-index="{{index}}" bindtap="previewImg" mode='aspectFill' lazy-load='true'></image>
+    <view class='status' wx:if="{{item.ExamineStatus==1}}">等待审核</view>
+    <view class='status' wx:if="{{item.ExamineStatus==2}}">审核中</view>
+    <view class='status' wx:if="{{item.ExamineStatus==3}}">审核失败</view>
+    <view class='status' wx:if="{{item.ExamineStatus==4}}">审核成功</view>
+    <view class="deleteImage" data-index="{{index}}" catchtap="deleteImg">
+      <!-- 图片删除 -->
+      <image src='../../img/cha.png' class='cha' mode='aspectFill' lazy-load='true'></image>
+    </view>
+  </view>
+  <view class='jiatupian' bindtap="chooseImg" wx:if="{{plusShow}}">
+    <image class='upload1' src='../../img/upload.png' mode='aspectFill' lazy-load='true'></image>
+  </view>
+</view>
+
+<view class='submit' bindtap='submit'>提交</view>

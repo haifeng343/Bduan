@@ -7,13 +7,16 @@ Page({
   data: {
     showLog: true,
     Id: '',
+    IsShow:false,
     List: [],//我的门店杭虎列表
     accountList: [],//所有门店列表
     checkedArr: [],
   },
   onLoad: function (options) {
+    let IsShow = wx.getStorageSync('userInfo').IsAdministrator;
     this.setData({
-      Id: options.Id
+      Id: options.Id,
+      IsShow: IsShow
     })
     this.init();
   },

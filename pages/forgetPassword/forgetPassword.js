@@ -11,8 +11,8 @@ Page({
     code:'',
     InputType: 'password',
     InputType1: 'password',
-    eyesImg: '../../img/eyes.png',
-    eyeImg: '../../img/eye.png',
+    showEye: true,
+    showEye1: true,
     password1:'',//新密码
     password2:'',//确认密码
     btntext:'获取验证码',
@@ -26,12 +26,14 @@ Page({
 
   },
   changeEyeImg: function () {
-    let t = this.data.InputType == 'password' ? 'text' : 'password';
-    this.setData({ InputType: t });
+    this.setData({
+      showEye: !this.data.showEye,
+    })
   },
   changeEyeImg1: function () {
-    let t = this.data.InputType1 == 'password' ? 'text' : 'password';
-    this.setData({ InputType1: t });
+    this.setData({
+      showEye1: !this.data.showEye1,
+    })
   },
   //获取图片验证码
   codeyan: function () {
@@ -197,7 +199,7 @@ Page({
         cancelColor:'#29d9d6',
         cancelText:'知道了',
         success:function(res){
-          wx.redirectTo({
+          wx.reLaunch({
             url: '/pages/login/login',
           })
         }

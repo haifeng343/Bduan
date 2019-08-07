@@ -6,7 +6,7 @@ Page({
    */
   data: {
     showLog: true,
-    IsShow:'',
+    IsShow:false,
     Id: '',
     List: [], //我的门店杭虎列表
     accountList: [], //所有门店列表

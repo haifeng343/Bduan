@@ -11,6 +11,10 @@ Page({
     password: '',//密码
     password1: '',//再次输入密码
     headerImg: '',//头像
+    items:[
+      {id:1,value:'普通账户',checked:true},
+      // {id:2,value:'管理员'},
+    ],
     IsAdministrator: '',//是否为管理员
     headerImgPath: '',//上传头像地址
   },
@@ -129,6 +133,41 @@ Page({
   add: function () {
     let that = this;
     var url = 'account/selleraccount/add';
+    if (that.data.name){
+      wx.showToast({
+        icon:'none',
+        title: '请输入用户名',
+      })
+      return ;
+    }
+    if (that.data.mobile){
+      wx.showToast({
+        icon:'none',
+        title: '请输入手机号',
+      })
+      return;
+    }
+    if (that.data.password){
+      wx.showToast({
+        icon:'none',
+        title: '请输入密码',
+      })
+      return;
+    }
+    if (that.data.password1){
+      wx.showToast({
+        icon:'none',
+        title: '请再次输入密码',
+      })
+      return;
+    }
+    if (that.data.password != that.data.password1) {
+      wx.showToast({
+        icon: 'none',
+        title: '密码不一致请重试',
+      })
+      return;
+    }
     var params = {
       AccountId: that.data.Id,
       Head: that.data.headerImgPath,

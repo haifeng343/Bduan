@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 19,
+			"current": 29,
 			"list": [
 				{
 					"id": -1,
@@ -71,10 +71,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 4,
 					"name": "activityDetail",
 					"pathName": "pages/activityDetail/activityDetail",
-					"query": "",
+					"query": "id=24",
 					"scene": null
 				},
 				{
@@ -85,10 +85,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 6,
 					"name": "gropDetail",
 					"pathName": "pages/gropDetail/gropDetail",
-					"query": "",
+					"query": "id=20",
 					"scene": null
 				},
 				{
@@ -106,10 +106,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 9,
 					"name": "orderDetail",
 					"pathName": "pages/orderDetail/orderDetail",
-					"query": "",
+					"query": "id=372",
 					"scene": null
 				},
 				{
@@ -229,6 +229,27 @@
 					"name": "modifyPassword",
 					"pathName": "pages/modifyPassword/modifyPassword",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "myCourse",
+					"pathName": "pages/myCourse/myCourse",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "addCourse",
+					"pathName": "pages/addCourse/addCourse",
+					"query": "id=68",
+					"scene": null
+				},
+				{
+					"id": 29,
+					"name": "courseImg",
+					"pathName": "pages/courseImg/courseImg",
+					"query": "id=68",
 					"scene": null
 				}
 			]

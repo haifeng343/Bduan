@@ -26,6 +26,11 @@ Page({
       url: '/pages/callUs/callUs',
     })
   },
+  bindAboutUs:function() { 
+    wx.navigateTo({
+      url: '/pages/aboutUs/aboutUs',
+    })
+  },
   bindAccountMent:function() {
     wx.navigateTo({
       url: '/pages/accountMoment/accountMoment',
@@ -52,7 +57,7 @@ Page({
     })
   },
   bindLogin:function() {
-    wx.navigateTo({
+    wx.reLaunch({
       url: '/pages/login/login',
     })
   },

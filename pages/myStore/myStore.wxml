@@ -1,6 +1,6 @@
 <view class='noHas' wx:if="{{List.length<=0}}">
   <image src='../../img/zanwu.png' mode='widthFix' class='noList'></image>
-  <!-- <view class='zanwu'>暂无数据</view> -->
+  <view class='zanwu'>暂无门店</view>
 </view>
 <view wx:else>
   <view class='keep start' data-Id="{{item.StoreId}}" bindtap='bindStoreManag' wx:for="{{List}}" wx:key>
@@ -15,20 +15,26 @@
         </view>
         <view class='start h40 ft24'>
           <view class='start'>
-            <image class='icon' src='../../img/ad1.png' mode='aspectFill'></image>
-            <view class='name'>{{item.Address}}</view>
+            <view>
+              <image class='icon' src='../../img/ad1.png' mode='aspectFill'></image>
+            </view>
+            <view class='name ml5'>{{item.Address}}</view>
           </view>
         </view>
         <view class='start h40 ft24' wx:for="{{item.StoreMobile}}" wx:key wx:for-item="k">
           <view class='start'>
-            <image class='icon' src='../../img/cal.png' mode='aspectFill'></image>
-            <view class='name'>{{k}}</view>
+            <view>
+              <image class='icon' src='../../img/cal.png' mode='aspectFill'></image>
+            </view>
+            <view class='name ml5'>{{k}}</view>
           </view>
         </view>
         <view class='start h40 ft24'>
           <view class='start'>
-            <image class='icon' src='../../img/people.png' mode='aspectFill'></image>
-            <view class='name'>{{item.Leader}}</view>
+            <view>
+              <image class='icon' src='../../img/people.png' mode='aspectFill'></image>
+            </view>
+            <view class='name ml5'>{{item.Leader}}</view>
           </view>
         </view>
       </view>

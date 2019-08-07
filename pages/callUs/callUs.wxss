@@ -40,9 +40,11 @@
   box-sizing: border-box;
   border-bottom: 1rpx solid #F9F9F9;
 }
-.name{
-  color:#D7D7D7;
+.contentd{
+  font-size: 28rpx;
 }
-.content{
-  font-size: 26rpx;
-}
+
+
+
+
+

@@ -1,24 +1,24 @@
 <view class='content pd25'>
-  <view class='start' wx:if="{{usertoken}}">
+  <view class='start ccl' wx:if="{{usertoken}}">
     <view>
       <image class='avator' src='{{userInfo.HeadUrl}}' mode='aspectFill'></image>
     </view>
     <view class='column'>
-      <view class='ft32 mt30 h40'>{{userInfo.NickName}}</view>
+      <view class='ft32 mt32 h40'>{{userInfo.NickName}}</view>
       <view class='start h50'>
-        <view class='ft28 mr15'>账号: {{userInfo.Mobile}}</view>
+        <view class='ft28 mr15 more'>账号: {{userInfo.UserName}}</view>
         <text class='tag' wx:if="{{userInfo.IsAdministrator==true}}">管理员</text>
       </view>
     </view>
   </view>
-  <view class='start' wx:else bindtap='bindLogin'>
+  <view class='start ccl' wx:else bindtap='bindLogin'>
     <view>
       <image class='avator' src='../../img/userIcon.png' mode='aspectFill'></image>
     </view>
     <view class='column'>
-      <view class='ft32 mt30 h40'>去登录</view>
+      <view class='ft32 mt30 h40'>未登录</view>
       <view class='start h50'>
-        <view class='ft28 mr15'>登录后查看详情</view>
+        <view class='ft28 mr15 more'>点击登录更精彩</view>
         <!-- <text class='tag'>管理员</text> -->
       </view>
     </view>
@@ -40,20 +40,13 @@
     </view>
     <image class='go' src='../../img/go.png' mode='widthFix'></image>
   </view>
+</view>
+
+<view class='content content1 ft30 mt20' wx:if="{{userInfo.IsAdministrator==true}}">
   <view class='between h80 borb' bindtap='bindCourse'>
     <view class='start h80'>
       <image class='icon2' src='../../img/m3.png' mode='widthFix'></image>
-      <view>我的课程</view>
-    </view>
-    <image class='go' src='../../img/go.png' mode='widthFix'></image>
-  </view>
-</view>
-
-<view class='content content1 ft30 mt20' bindtap='bindAccountMent'>
-  <view class='between h80 borb'>
-    <view class='start h80'>
-      <image class='icon2' src='../../img/m4.png' mode='widthFix'></image>
-      <view>账户管理</view>
+      <view>课程管理</view>
     </view>
     <image class='go' src='../../img/go.png' mode='widthFix'></image>
   </view>
@@ -61,6 +54,13 @@
     <view class='start h80'>
       <image class='icon2' src='../../img/m5.png' mode='widthFix'></image>
       <view>师资管理</view>
+    </view>
+    <image class='go' src='../../img/go.png' mode='widthFix'></image>
+  </view>
+  <view class='between h80 borb' bindtap='bindAccountMent'>
+    <view class='start h80'>
+      <image class='icon2' src='../../img/m4.png' mode='widthFix'></image>
+      <view>账户管理</view>
     </view>
     <image class='go' src='../../img/go.png' mode='widthFix'></image>
   </view>
@@ -77,7 +77,7 @@
 </view>
 
 <view class='content content1 ft30 mt20'>
-  <view class='between h80 borb'>
+  <view class='between h80 borb' bindtap='bindAboutUs'>
     <view class='start h80'>
       <image class='icon2' src='../../img/m7.png' mode='widthFix'></image>
       <view>关于我们</view>

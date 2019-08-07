@@ -54,7 +54,7 @@ Page({
         headImg: res.Data.HeadUrl,
         headPath: res.Data.Head,
         old: res.Data.TeachingAge,
-        description: res.Data.Honor,
+        description: res.Data.Experience,
         imgs: res.Data.ImgList,
         imgsArr: arr,
       })
@@ -295,6 +295,18 @@ Page({
   submit:function() {
     let that = this;
     var url = that.data.Id ? 'account/sellerteacher/modify' :'account/sellerteacher/add';
+    if (that.data.name){
+      wx.showToast({
+        icon:'none',
+        title: '请输入教师姓名',
+      })
+    }
+    if (that.data.headPath){
+      wx.showToast({
+        icon:'none',
+        title: '请选择教师头像',
+      })
+    }
     var params = {
       TeacherId:that.data.Id,
       TeacherName:that.data.name,

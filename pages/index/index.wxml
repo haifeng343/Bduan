@@ -1,3 +1,6 @@
+<view class="mask" catchtouchmove="showSelect" bindtap='hideFixed' wx:if="{{showSelect}}">
+</view>
+<!-- 头部验证 -->
 <view class='container radius'>
   <view class='content flex around'>
     <view bindtap='bindInputCode'>
@@ -15,11 +18,12 @@
   </view>
 </view>
 
+<!-- 经营统计 -->
 <view class='content bg'>
   <view class='between pd20'>
-    <view class='ft32 bold h60'>经营统计</view>
-    <view class='relative'>
-      <view class='ft28 start h60' bindtap='changeSelect'>{{storeName}}
+    <view class='ft32 bold'>经营统计</view>
+    <view class='relative' wx:if="{{storeList.length>1}}">
+      <view class='ft28 start' bindtap='changeSelect'>{{storeName}}
         <image class='selectImg' src='../../img/select.png' mode='widthFix'></image>
       </view>
       <view class="select {{showSelect==true?'':'none'}}">
@@ -30,6 +34,7 @@
   </view>
 </view>
 
+<!-- 切换经营统计时间 -->
 <view class='content'>
   <view class='start timeTitle'>
     <view class='ft28 mr40 {{showId == item.id ? "active" : ""}}' data-id="{{item.id}}" bindtap='changeShowId' wx:for="{{navTabs}}" wx:key>{{item.name}}</view>
@@ -41,6 +46,7 @@
         {{date1==''?"开始时间":date1}}
       </view>
     </picker>
+    -
     <picker mode="date" value="{{date2}}" bindchange="bindDateChange2">
       <view class="picker">
         {{date2==''?"结束时间":date2}}
@@ -60,148 +66,86 @@
   </view>
 </view>
 
-<view class='moment bort mt20'>
-  <view class='content between bg borb pd20 h60' bindtap='bindGroup'>
+<!-- 正在参与的活动 -->
+<view class='moment bort mt20' wx:if="{{activeList.length>0}}">
+  <view class='content between bg borb pd20' bindtap='bindGroup'>
     <view class='ft32 pd20 bold'>正在参与的活动</view>
     <image class='go pd20' src='../../img/go.png' mode='widthFix'></image>
   </view>
   <view class='List'>
-
-    <view class='item column' bindtap='binddetail'>
-      <view class='ft28'>活动组1</view>
+    <view class='item column' data-id="{{item.ActivityGroupId}}" bindtap='binddetail' wx:for="{{activeList}}" wx:key>
+      <view class='ft28'>{{item.ActivityGroupName}}</view>
       <view class='start'>
-        <view>
-          <image class='icon mr5 mt5' src='../../img/ad1.png' mode='widthFix'></image>
-        </view>
-        <view class='ft26 cc'>西溪商圈</view>
+        <view class='ft26 cc'>{{item.TradingareaName}}</view>
       </view>
-      <view class='wrap cc'>dsssssssssssssssssssssssssssssdsssssssssssssssssssssssssssssdsssssssssssssssssssssssssssss</view>
+      <view class='wrap cc'>{{item.Descption}}</view>
       <view class='start ft28 bb'>
-        <view class='mr15'>团单数量: 12</view>
-        <view class='mr15'>可参与: 12</view>
-        <view class='mr15'>正在参与: 12</view>
+        <view class='mr15'>团单数量 {{item.SheetCount}},</view>
+        <view class='mr15'>可参与 {{item.ParticipatorySheetCount}},</view>
+        <view class='mr15'>正在参与 {{item.ParticipatingSheetCount}}</view>
       </view>
     </view>
-
-    <view class='item column'>
-      <view class='ft30'>活动组1</view>
-      <view class='start'>
-        <image class='icon mr5' src='../../img/ad1.png' mode='widthFix'></image>
-        <view class='ft26 cc'>西溪商圈</view>
-      </view>
-      <view class='wrap cc'>dsssssssssssssssssssssssssssssdsssssssssssssssssssssssssssssdsssssssssssssssssssssssssssss</view>
-      <view class='start ft28 bb'>
-        <view class='mr15'>团单数量: 12</view>
-        <view class='mr15'>可参与: 12</view>
-        <view class='mr15'>正在参与: 12</view>
-      </view>
-    </view>
-
-    <view class='item column'>
-      <view class='ft30'>活动组1</view>
-      <view class='start'>
-        <image class='icon mr5' src='../../img/ad1.png' mode='widthFix'></image>
-        <view class='ft26 cc'>西溪商圈</view>
-      </view>
-      <view class='wrap cc'>dsssssssssssssssssssssssssssssdsssssssssssssssssssssssssssssdsssssssssssssssssssssssssssss</view>
-      <view class='start ft28 bb'>
-        <view class='mr15'>团单数量: 12</view>
-        <view class='mr15'>可参与: 12</view>
-        <view class='mr15'>正在参与: 12</view>
-      </view>
-    </view>
-
-    <view class='item column'>
-      <view class='ft30'>活动组1</view>
-      <view class='start'>
-        <image class='icon mr5' src='../../img/ad1.png' mode='widthFix'></image>
-        <view class='ft26 cc'>西溪商圈</view>
-      </view>
-      <view class='wrap cc'>dsssssssssssssssssssssssssssssdsssssssssssssssssssssssssssssdsssssssssssssssssssssssssssss</view>
-      <view class='start ft28 bb'>
-        <view class='mr15'>团单数量: 12</view>
-        <view class='mr15'>可参与: 12</view>
-        <view class='mr15'>正在参与: 12</view>
-      </view>
-    </view>
-
-    <view class='item column'>
-      <view class='ft30'>活动组1</view>
-      <view class='start'>
-        <image class='icon mr5' src='../../img/ad1.png' mode='widthFix'></image>
-        <view class='ft26 cc'>西溪商圈</view>
-      </view>
-      <view class='wrap cc'>dsssssssssssssssssssssssssssssdsssssssssssssssssssssssssssssdsssssssssssssssssssssssssssss</view>
-      <view class='start ft28 bb'>
-        <view class='mr15'>团单数量: 12</view>
-        <view class='mr15'>可参与: 12</view>
-        <view class='mr15'>正在参与: 12</view>
-      </view>
-    </view>
-
   </view>
 </view>
 
-<view class='moment bort mt20'>
-  <view class='content between bg pd20' bindtap='bindNavtoOrder'>
-    <view class='ft30 pd20 bold'>订单状态</view>
+<!-- 订单状态 -->
+<view class='moment bort mt20' wx:if="{{orderList.length>0}}">
+  <view class='content between bg pd20 borb' bindtap='bindNavtoOrder'>
+    <view class='ft32 pd20 bold'>订单动态</view>
     <image class='go pd20 mt5' src='../../img/go.png' mode='widthFix'></image>
   </view>
   <view class='List List1'>
-    <view class='item column' bindtap='bindOrderDetail'>
+    <view class='item column' data-id="{{item.OrderId}}" bindtap='bindOrderDetail' wx:for="{{orderList}}" wx:key>
       <view class='between'>
-        <view class='ft24 bb'>订单号： 6854641614584</view>
-        <view class='ft30'>未使用</view>
+        <view class='ft28'>订单号：{{item.OrderSN}}</view>
+        <view class='ft28' wx:if="{{item.OrderStatus==1}}">未使用</view>
+        <view class='ft28' wx:if="{{item.OrderStatus==2}}">部分使用</view>
+        <view class='ft28' wx:if="{{item.OrderStatus==3}}">已完成</view>
+        <view class='ft28' wx:if="{{item.OrderStatus==4}}">已过期</view>
       </view>
-      <view class='ft28'>购买时间: 2019-02-10</view>
-      <view class='ft28'>购买账户: 鸟叔(13654584874)</view>
-      <view class='between h60'>
-        <view class='start'>
-          <image class='icon mr5' src='../../img/b2.png' mode='widthFix'></image>
-          <view class='ft26'>语文课 (门店1)</view>
+      <view class='ft28'>购买时间：{{item.BuyTime}}</view>
+      <view class='ft28'>购买账户：{{item.BuyAccountName}}({{item.BuyAccountMobile}})</view>
+      <view class='between' wx:for="{{item.ItemList}}" wx:key wx:for-item="k">
+        <view class='start ft28'>
+          <view class='center'>
+            <image class='icon mr5' src='../../img/b2.png' mode='widthFix'></image>
+          </view>
+          <view class='ft28'>{{k.ItemName}} ({{k.StoreName}})</view>
         </view>
-        <image class='icon2' src='../../img/gou.png' mode='widthFix'></image>
+        <view class='center'>
+          <image wx:if="{{k.UseStatus==2}}" class='icon' src='../../img/gou.png' mode='widthFix'></image>
+        </view>
       </view>
     </view>
   </view>
 </view>
 
-
-
-<!--输入券验证弹出框-->
-<!-- <view class="zan-dialog {{ showLog ? 'zan-dialog--show' : 'none' }}" catchtouchmove="ture">
-  <view class="zan-dialog__mask" bindtap="toggleDialog" />
-  <view class="zan-dialog__container">
-    <view class='zan-title bold ft30 left pl20'>请输入券码</view>
-    <input value='{{code}}' bindinput='setCode' class='codeInput'></input>
-    <view class='zan-footer'>
-      <view class='flex center br' bindtap='closeCodeLog'>取消</view>
-      <view class='flex center' bindtap='getCode'>确认</view>
-    </view>
-  </view>
-</view> -->
 <!--输入券验证弹出框-->
 <modal hidden="{{showLog}}" title="输码验券" confirm-text="确认" cancel-text="取消" bindcancel="closeCodeLog" bindconfirm="getCode" catchtouchmove="true">
-  <input value='{{code}}' bindinput='setCode' placeholder='请输入券码' class='codeInput'></input>
+  <input value='{{code}}' bindinput='setCode' type='number' placeholder='请输入券码' class='codeInput'></input>
 </modal>
+
+<!-- 确认订单信息弹出框 -->
 <modal hidden="{{showSure}}" title="确认订单信息" confirm-text="确认" cancel-text="取消" bindcancel="closeCodeSure" bindconfirm="submitSure" catchtouchmove="true">
   <view class='showsure' catchtouchmove="return">
     <view class='column'>
       <view class='between pl5 pr5 h60'>
-        <view class='ft28'>订单号: {{QuanInfo.OrderSN}}</view>
+        <view class='ft28'>订单号：{{QuanInfo.OrderSN}}</view>
         <view class='ft30' wx:if="{{QuanInfo.OrderStatus==1}}">未使用</view>
         <view class='ft30' wx:if="{{QuanInfo.OrderStatus==2}}">部分使用</view>
         <view class='ft30' wx:if="{{QuanInfo.OrderStatus==3}}">已完成</view>
         <view class='ft30' wx:if="{{QuanInfo.OrderStatus==4}}">已过期</view>
       </view>
-      <view class='ft28 left pl5 h60 pr5'>购买时间: {{QuanInfo.BuyTime}}</view>
-      <view class='ft28 left pl5 pr5 h60'>购买账户: {{QuanInfo.BuyAccountName}}({{QuanInfo.BuyAccountMobile}})</view>
+      <view class='ft28 left pl5 pr5 h60'>购买账户：{{QuanInfo.BuyAccountName}}({{QuanInfo.BuyAccountMobile}})</view>
+      <view class='ft28 left pl5 h60 pr5'>购买时间：{{QuanInfo.BuyTime}}</view>
     </view>
     <view class='List noBg'>
       <checkbox-group bindchange="checkdChange">
         <view class=' start h80 pl5 pr5 bort between' wx:for="{{QuanInfo.ItemList}}" wx:key wx:for-item="k">
           <view class='start h80'>
-            <image class='icon1' src='../../img/k1.png' mode='widthFix'></image>
+            <view>
+              <image class='icon1' src='../../img/k1.png' mode='widthFix'></image>
+            </view>
             <view class="{{k.UseStatus==2?'cc':''}} ft28">{{k.ItemName}}（{{k.StoreName}}）</view>
           </view>
           <checkbox value='{{k.RelId}}' wx:if='{{QuanInfo.OrderStatus!=3 && !QuanInfo.OrderStatus!=4 && k.UseStatus!=2}}'></checkbox>
@@ -211,54 +155,3 @@
     </view>
   </view>
 </modal>
-<!--确认订单信息弹出框-->
-<!-- <view class="zan-dialog {{ showSure ? 'zan-dialog--show' : 'none' }}" catchtouchmove="ture">
-  <view class="zan-dialog__mask" bindtap="toggleDialog" />
-  <view class="zan-dialog__container">
-    <view class='column'>
-      <view class='zan-title bold ft32 left pl5 pr5'>确认订单信息</view>
-      <view class='between pl5 pr5 h60'>
-        <view class='ft28'>订单号: {{QuanInfo.OrderSN}}</view>
-        <view class='ft30' wx:if="{{QuanInfo.OrderStatus==1}}">未使用</view>
-        <view class='ft30' wx:if="{{QuanInfo.OrderStatus==2}}">部分使用</view>
-        <view class='ft30' wx:if="{{QuanInfo.OrderStatus==3}}">已完成</view>
-        <view class='ft30' wx:if="{{QuanInfo.OrderStatus==4}}">已过期</view>
-      </view>
-      <view class='ft28 left pl5 h60 pr5'>购买时间: {{QuanInfo.BuyTime}}</view>
-      <view class='ft28 left pl5 pr5 h60'>购买账户: {{QuanInfo.BuyAccountName}}({{QuanInfo.BuyAccountMobile}})</view>
-      <view class='ft28 left pl5 pr5 h60'>购买账户: {{QuanInfo.BuyAccountName}}({{QuanInfo.BuyAccountMobile}})</view>
-      <view class='ft28 left pl5 pr5 h60'>购买账户: {{QuanInfo.BuyAccountName}}({{QuanInfo.BuyAccountMobile}})</view>
-      <view class='ft28 left pl5 pr5 h60'>购买账户: {{QuanInfo.BuyAccountName}}({{QuanInfo.BuyAccountMobile}})</view>
-      <view class='ft28 left pl5 pr5 h60'>购买账户: {{QuanInfo.BuyAccountName}}({{QuanInfo.BuyAccountMobile}})</view>
-      <view class='ft28 left pl5 pr5 h60'>购买账户: {{QuanInfo.BuyAccountName}}({{QuanInfo.BuyAccountMobile}})</view>
-      <view class='ft28 left pl5 pr5 h60'>购买账户: {{QuanInfo.BuyAccountName}}({{QuanInfo.BuyAccountMobile}})</view>
-    </view>
-    <view class='List'>
-      <checkbox-group bindchange="checkdChange">
-        <view class=' start h80 pl5 pr5 bort between' wx:for="{{QuanInfo.ItemList}}" wx:key wx:for-item="k">
-          <view class='start h80'>
-            <image class='icon1' src='../../img/k1.png' mode='widthFix'></image>
-            <view class="{{k.UseStatus==2?'cc':''}} ft28">{{k.ItemName}}（{{k.StoreName}}）</view>
-          </view>
-           <checkbox value='{{k.RelId}}' wx:if='{{QuanInfo.OrderStatus!=3 && !QuanInfo.OrderStatus!=4 && k.UseStatus!=2}}'></checkbox>
-           <image src='../../img/expire.png' wx:if="{{QuanInfo.OrderStatus==4}}" mode='widthFix' class='expire'></image>
-        </view>
-      </checkbox-group>
-    </view>
-    <view class='zan-footer'>
-      <view class='flex center br' bindtap='closeCodeSure'>取消</view>
-      <view class='flex center' bindtap='submitSure'>确认</view>
-    </view>
-  </view>
-</view> -->
-
-<!--验券成功提示弹出框-->
-<!-- <view class="zan-dialog {{ showSuccessd ? 'zan-dialog--show' : 'none' }}" catchtouchmove="ture">
-  <view class="zan-dialog__mask" bindtap="toggleDialog" />
-  <view class="zan-dialog__container">
-    <image class='successImg mt40' src='../../img/checked.png' mode='widthFix'></image>
-    <view class='h60 bold center'>验券成功</view>
-    <view class='zan-content mb10'>恭喜您！验券成功</view>
-    <view class='know h80 bort center theme' bindtap='closeds'>知道了</view>
-  </view>
-</view> -->

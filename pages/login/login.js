@@ -8,9 +8,7 @@ Page({
   data: {
     name: '',
     value: '',
-    InputType: 'password',
-    eyesImg: '../../img/eyes.png',
-    eyeImg: '../../img/eye.png',
+    showEye:true,
   },
   bindName: function(e) {
     this.setData({
@@ -28,8 +26,9 @@ Page({
     })
   },
   changeEyeImg: function() {
-    let t = this.data.InputType == 'password' ? 'text' : 'password';
-    this.setData({ InputType: t });
+    this.setData({
+      showEye:!this.data.showEye,
+    })
   },
   submitBtn:function() {
     let that = this;

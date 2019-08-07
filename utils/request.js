@@ -62,7 +62,7 @@ function request(url, params, method, onSuccess, onFailed, isShowLoading, isShow
           }
         } else if (res.data.ErrorCode == 301) {
           if (isnavigateToLogin) {
-            wx.navigateTo({
+            wx.reLaunch({
               url: '/pages/login/login',
             })
           }

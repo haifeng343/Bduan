@@ -9,6 +9,12 @@ Page({
     password: '',
     password1: '',
     password2: '',
+    Id: '',
+  },
+  onLoad: function(options) {
+    this.setData({
+      Id: options.id
+    })
   },
   bindpd: function(e) {
     this.setData({
@@ -28,9 +34,9 @@ Page({
   submit: function() {
     let that = this;
     //获取图片验证码
-    if (that.data.password1 != that.data.password2){
+    if (that.data.password1 != that.data.password2) {
       wx.showToast({
-        icon:'none',
+        icon: 'none',
         title: '密码不一致',
       })
       return;
@@ -41,15 +47,20 @@ Page({
       NewPassword: utilMd5.hexMD5(that.data.password1),
     }
     netUtil.postRequest(url, params, function(res) { //onSuccess成功回调
-     wx.showModal({
-       title: '成功修改密码',
-       content: '',
-       showCancel:false,
-       success:function() {
-
-       }
-     })
-    }); 
+      wx.showModal({
+        title: '成功修改密码',
+        content: '',
+        showCancel: false,
+        success: function() {
+          let pages = getCurrentPages(); //当前页面
+          let prevPage = pages[pages.length - 2]; //上一页面
+          prevPage.init();
+          wx / wx.navigateBack({
+            delta: 1,
+          })
+        }
+      })
+    });
   },
   onShareAppMessage: function() {
 

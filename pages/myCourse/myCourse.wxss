@@ -1,65 +1,72 @@
-.keep{
+page {
+  background-color: white;
+}
+
+.container {
+  min-height: 100%;
+  padding: 0rpx 0rpx 50rpx;
+}
+
+.address{
+  width: 100%;
   background-color: #fff;
-  width: 97%;
-  margin:20rpx 1.5% 0;
-  padding: 20rpx 2%;
-  border-radius: 10rpx;
-  box-sizing: border-box;
-  overflow: hidden;
+  height: 100vh;
 }
-.well{
-  padding: 0;
-}
-.courseRow {
-  width: 65%;
-}
-.start {
-  text-align: left;
-}
-.courseRow .start{
-  width: 90%;
-}
-.leftImg{
-  width: 22%;
+.status{
+  width: 120rpx;
   margin-right: 15rpx;
 }
-.right{
-  right: 78%;
-  overflow: hidden;
-}
-.activity{
-  font-size: 28rpx;
-  font-weight: 600;
-  word-break: keep-all;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.topImg{
-  width: 150rpx;
-  height: 128rpx;
-  border-radius: 10rpx;
-}
-.courseRow{
-  width: 100%;
-  font-size: 24rpx;
-  height: 40rpx;
-  line-height: 40rpx;
-  box-sizing: border-box;
-}
-.courseRow:last-child{
-  border: none;
-}
-.rowImg{
-  width: 40rpx;
-  height: 34rpx;
-  margin-right: 5rpx;
-  margin-top: 0rpx;
-}
-.courseRow .start{
-  width: 60%;
-}
-.startd{
-  width: 80%;
+.noads{
+  width: 450rpx;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+.nohave{
+  font-size: 32rpx;
+  text-align: center;
+  line-height: 50rpx;
+}
+.haveto{
+  font-size: 28rpx;
+  text-align: center;
+}
+.List{
+  width: 100%;
+  height: 100vh;
+  padding: 0 0 0 5%;
+  box-sizing: border-box;
+  overflow-y: scroll;
+  padding-bottom: 100rpx;
+}
+.item{
+  width: 100%;
+  padding: 25rpx 0;
+  border-bottom:1rpx solid #F7F7F7;
+}
+.name{
+  font-size: 32rpx;
+}
+.addressDetail{
+  font-size: 26rpx;
+  color: #A19B9B;
+}
+.avator{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 15rpx;
+  margin-right: 15rpx;
+}
+.column{
+  position: relative;
+}
+.between{
+  width:540rpx;
+}
+.edit{
+  display: flex;
+  align-items: center;
+  width: 34rpx;
+  height: 34rpx;
 }

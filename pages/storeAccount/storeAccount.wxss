@@ -9,6 +9,9 @@
 .item:last-child{
   border-color: transparent;
 }
+.tag{
+  margin-left: 10rpx;
+}
 .w100{
   width: 100%;
 }

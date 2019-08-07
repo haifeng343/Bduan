@@ -1,6 +1,6 @@
 <view class='noHas' wx:if="{{List.length<=0}}">
   <image src='../../img/zanwu.png' mode='widthFix' class='noList'></image>
-  <!-- <view class='zanwu'>暂无数据</view> -->
+  <view class='zanwu'>暂无师资</view>
 </view>
 <view class='content' wx:else>
   <view class='item pd20 start' wx:for="{{List}}" wx:key>
@@ -18,90 +18,26 @@
 
 <!--分配弹出框-->
 <modal hidden="{{showLog}}" title="分配师资" confirm-text="确认" cancel-text="取消" bindcancel="bindCancel" bindconfirm="bindSure">
-  <view class='dialogList'>
-      <checkbox-group bindchange="checkedChange">
-        <view class='dialogItem start' wx:for="{{accountList}}" wx:key>
-          <checkbox class='chebox' value='{{item.Id}}' checked='{{item.Id == checkedArr[index]}}'></checkbox>
-          <view>
+  <view class='dialogList' wx:if="{{accountList.length>0}}">
+    <checkbox-group bindchange="checkedChange">
+      <view class='dialogItem start' wx:for="{{accountList}}" wx:key>
+        <checkbox class='chebox' value='{{item.Id}}' checked='{{item.Id == checkedArr[index]}}'></checkbox>
+        <view>
           <image class='avator1' src='{{item.HeadUrl}}' mode='aspectFill'></image>
-          </view>
-          <view class='column'>
-            <view class='start h50'>
-              <view class='ft26'>{{item.Name}}</view>
-              <view class='ft22 cc ml20'>{{item.Titles}} | {{item.TeachingAge}}教龄</view>
-            </view>
-            <view class='ft22 bb left'>{{item.Honor}}</view>
-            <!-- <view class='end ft22 cc h30'>绑定时间: 2019-10-12</view> -->
-          </view>
         </view>
-      </checkbox-group>
-    </view>
-</modal>
-
-<!-- <view class="zan-dialog {{ showSuccess ? 'zan-dialog--show' : 'none' }}" catchtouchmove="ture">
-  <view class="zan-dialog__mask" bindtap="toggleDialog" />
-  <view class="zan-dialog__container">
-    <view class='h60 bold center pd20'>分配师资</view>
-    <view class='dialogList'>
-      <checkbox-group>
-        <view class='dialogItem start'>
-          <checkbox class='chebox'></checkbox>
-          <image class='avator1' src='../../img/avator.png' mode='widthFix'></image>
-          <view class='column'>
-            <view class='start h50'>
-              <view class='ft26'>Apri</view>
-              <view class='ft22 cc ml20'>旅游英语 | 五年教龄</view>
-            </view>
-            <view class='ft22 bb left'>度搜案件萨拉米假丝酵母；末的发生的大你大家都在发大家都在发大家都在发大家都在发</view>
-            <view class='end ft22 cc h30'>绑定时间: 2019-10-12</view>
+        <view class='column'>
+          <view class='start h50'>
+            <view class='ft26'>{{item.Name}}</view>
+            <view class='ft22 cc ml20'>{{item.Titles}} | {{item.TeachingAge}}教龄</view>
           </view>
+          <view class='ft22 bb left'>{{item.Honor}}</view>
+          <!-- <view class='end ft22 cc h30'>绑定时间: 2019-10-12</view> -->
         </view>
-
-        <view class='dialogItem start'>
-          <checkbox class='chebox'></checkbox>
-          <image class='avator1' src='../../img/avator.png' mode='widthFix'></image>
-          <view class='column'>
-            <view class='start h50'>
-              <view class='ft26'>Apri</view>
-              <view class='ft22 cc ml20'>旅游英语 | 五年教龄</view>
-            </view>
-            <view class='ft22 bb left'>度搜案件萨拉米假丝酵母；末的发生的大你大家都在发大家都在发大家都在发大家都在发</view>
-            <view class='end ft22 cc h30'>绑定时间: 2019-10-12</view>
-          </view>
-        </view>
-
-        <view class='dialogItem start'>
-          <checkbox class='chebox'></checkbox>
-          <image class='avator1' src='../../img/avator.png' mode='widthFix'></image>
-          <view class='column'>
-            <view class='start h50'>
-              <view class='ft26'>Apri</view>
-              <view class='ft22 cc ml20'>旅游英语 | 五年教龄</view>
-            </view>
-            <view class='ft22 bb left'>度搜案件萨拉米假丝酵母；末的发生的大你大家都在发大家都在发大家都在发大家都在发</view>
-            <view class='end ft22 cc h30'>绑定时间: 2019-10-12</view>
-          </view>
-        </view>
-
-        <view class='dialogItem start'>
-          <checkbox class='chebox'></checkbox>
-          <image class='avator1' src='../../img/avator.png' mode='widthFix'></image>
-          <view class='column'>
-            <view class='start h50'>
-              <view class='ft26'>Apri</view>
-              <view class='ft22 cc ml20'>旅游英语 | 五年教龄</view>
-            </view>
-            <view class='ft22 bb left'>度搜案件萨拉米假丝酵母；末的发生的大你大家都在发大家都在发大家都在发大家都在发</view>
-            <view class='end ft22 cc h30'>绑定时间: 2019-10-12</view>
-          </view>
-        </view>
-      </checkbox-group>
-    </view>
-    <view class='know h80 bort between'>
-      <view class='cancel' bindtap='bindCancel'>取消</view>
-      <view class='cancel'>确认</view>
-    </view>
+      </view>
+    </checkbox-group>
   </view>
-</view> -->
-
-<view class='add' bindtap='fenpei'>分配师资</view>
+  <view wx:else>
+  <view class='zanwu'>暂无数据</view>
+  </view>
+</modal>
+<view class='add' bindtap='fenpei' wx:if="{{IsShow==true}}">分配师资</view>

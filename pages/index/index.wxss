@@ -1,66 +1,87 @@
-.container{
+.container {
   padding: 40rpx 0;
 }
-.timeTitle{
+
+.timeTitle {
   height: 60rpx;
   line-height: 60rpx;
 }
-.timeTitle .active{
+
+.timeTitle .active {
   border-bottom: 4rpx solid #000;
 }
-.timed{
-  font-size:20rpx;
-  line-height:20rpx;
-  position:relative;
-  top:13rpx;
+
+.timed {
+  font-size: 20rpx;
+  line-height: 20rpx;
+  position: relative;
+  top: 13rpx;
 }
-.showsure{
+
+.relative {
+  z-index: 22;
+}
+
+.showsure {
   max-height: 400rpx;
 }
-.mr10b{
+
+.mr10b {
   margin-right: 10%;
 }
-.selectTime{
+
+.selectTime {
   width: 500rpx;
-  height:50rpx;
+  height: 50rpx;
   line-height: 50rpx;
   text-align: center;
-  border: 1rpx solid #BDBDBD;
+  border: 1rpx solid #5b5b5b;
   border-radius: 4rpx;
   font-size: 28rpx;
-  color: #BDBDBD;
+  color: #5b5b5b;
   margin: 40rpx 0;
 }
 
-.select{
+.selectImg {
+  margin-top: 5rpx;
+  margin-left: 5rpx;
+}
+
+.select {
   font-size: 26rpx;
   width: 200rpx;
   height: auto;
-  box-shadow: 0 0 15rpx #E9E9E9;
+  box-shadow: 0 0 15rpx #e9e9e9;
   border-radius: 15rpx;
   text-align: center;
   position: absolute;
   background-color: #fff;
   right: 5%;
-  z-index: 1;
+  z-index: 2;
 }
-.select .options .active{
-  color: #28D6D7;
+
+.select .options .active {
+  color: #28d6d7;
 }
-.icon{
-  margin-top: 15rpx;
+
+.icon {
+  margin-top: 0rpx;
+  margin-right: 0;
 }
-.select .option{
+.select .option {
   width: 100%;
-  height: 60rpx;
-  line-height: 60rpx;
+  height: 80rpx;
+  line-height: 80rpx;
   box-sizing: border-box;
   border-bottom: 1rpx solid #f7f7f7;
+  z-index: 22;
 }
-.select .option:last-child{
+
+.select .option:last-child {
   border: none;
 }
-.addImg{
+
+.addImg {
   width: 75rpx;
   height: 75rpx;
   display: flex;
@@ -68,61 +89,51 @@
   margin: 0 auto;
   margin-bottom: 10rpx;
 }
-.List{
+
+.List {
   width: 100%;
   height: auto;
   box-sizing: border-box;
   background-color: #fff;
 }
-.item{
+
+.item {
   width: 95%;
   height: auto;
   margin-left: 5%;
-  border-bottom: 1rpx solid #F3F3F3;
+  border-bottom: 1rpx solid #f3f3f3;
   padding: 20rpx 5% 20rpx 0;
   box-sizing: border-box;
 }
-.item .start{
-  line-height: 50rpx;
+
+.item .start {
   display: flex;
   font-size: 28rpx;
 }
-.item .wrap{
+
+.item .wrap {
   line-height: 35rpx;
   font-size: 28rpx;
-  padding-bottom: 40rpx;
+  padding-bottom: 20rpx;
 }
-.List1 .item{
+
+.List1 .item {
   width: 100%;
   padding-left: 5%;
   margin-left: 0;
 }
-.codeInput{
+
+.codeInput {
   width: 95%;
-  height: 60rpx;
-  line-height: 60rpx;
-  font-size: 28rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 32rpx;
   margin: 20rpx 2.5%;
   margin-bottom: 20rpx;
   text-align: left;
   padding-left: 5%;
+  color: #000;
   box-sizing: border-box;
   border-radius: 8rpx;
-  border:1rpx solid #CACACA;
+  border: 1rpx solid #cacaca;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

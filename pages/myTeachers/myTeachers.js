@@ -5,67 +5,87 @@ Page({
     Id: '',
     items: [],
     IsAdministrator: '',
+    name:'',
+    status:'',
+    pageCount:20,
+    page:1,
   },
-  onLoad: function () {
+  onLoad: function(options) {
     let IsAdministrator = wx.getStorageSync('userInfo').IsAdministrator;
     this.setData({
-      IsAdministrator: IsAdministrator
+      IsAdministrator: IsAdministrator,
     })
     this.init();
   },
-  init: function () {
+  init: function() {
     let that = this;
     var url = 'account/sellerteacher/list';
     var params = {
-      Status:0
+      Status: 0,
+      PageCount:that.data.pageCount,
+      PageIndex: that.data.page
     }
-    netUtil.postRequest(url, params, function (res) {
-      console.log(res);
+    netUtil.postRequest(url, params, function(res) {
       that.setData({
         items: res.Data
       })
     });
   },
   //编辑
-  edit: function (e) {
+  edit: function(e) {
     let that = this;
     this.setData({
-      Id: e.currentTarget.dataset.id
+      Id: e.currentTarget.dataset.id,
+      name:e.currentTarget.dataset.name,
+      status: e.currentTarget.dataset.status
     })
     wx.showActionSheet({
-      itemList: ['编辑','刪除'],
-      success: function (e) {
+      itemList: (that.data.status == 2 || that.data.status == 4) ? ['师资图片', '刪除'] : ['编辑', '师资图片', '刪除'],
+      success: function(e) {
         if (e.tapIndex == 0) {
           wx.navigateTo({
             url: '/pages/addTeacher/addTeacher?id=' + that.data.Id,
           })
         }
         if (e.tapIndex == 1) {
-          var url = 'account/sellerteacher/delete';
-          var params = {
-            Id: that.data.Id
-          }
-          netUtil.postRequest(url, params, function (res) { //onSuccess成功回调
-            wx.showToast({
-              icon: "none",
-              title: '删除成功',
-            });
-            that.init();
-          });
+          wx.navigateTo({
+            url: '',
+          })
+        }
+        if (e.tapIndex == 2) {
+          wx.showModal({
+            title: '确认删除 ' + that.data.name + ' 老师？',
+            content: '',
+            success: function(res) {
+              if (res.confirm) {
+                var url = 'account/sellerteacher/delete';
+                var params = {
+                  Id: that.data.Id
+                }
+                netUtil.postRequest(url, params, function(res) {
+                  wx.showToast({
+                    icon: "none",
+                    title: '删除成功',
+                  });
+                  that.init();
+                });
+              }
+            }
+          })
         }
       }
     })
   },
-  bindAddTeacher: function () {
+  bindAddTeacher: function() {
     wx.navigateTo({
       url: '/pages/addTeacher/addTeacher',
     })
   },
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
     this.init();
     wx.stopPullDownRefresh();
   },
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   },
 

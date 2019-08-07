@@ -1,63 +1,52 @@
 <view class='content column'>
   <view class='item pd20 borb start' bindtap='bindGropDetail'>
     <view>
-      <image class='t1' src='../../img/t1.png' mode='widthFix'></image>
+      <image class='t1' src='{{Info.SheetCoverImgUrl}}' mode='aspectFill'></image>
     </view>
     <view class='detailContent column'>
       <view class='between ft28'>
-        <view>团单1</view>
-        <view class='c2'>3019-52-23</view>
+        <view>{{Info.SheetName}}</view>
+        <view class='bb ft28'>{{Info.SheetLowerTime}}</view>
       </view>
-      <view class='wrap cc ft26'>sssssddddddssssssddddddssssssddddddssssssdddddds</view>
-      <view class='between h40'>
+      <view class='wrap bb ft28'>{{Info.SheetDescription}}</view>
+      <view class='between h40' wx:for="{{Info.ItemList}}" wx:for-item="k" wx:key>
         <view class='start h40'>
-          <image class='icon1 mr5' src='../../img/k1.png' mode='widthFix'></image>
-          <view class='ft26 bb'>西溪商圈</view>
+          <view class='center'>
+            <image class='icon mr5' src='../../img/b2.png' mode='widthFix'></image>
+          </view>
+          <view class='ft28'>{{k.ItemName}} ({{k.StoreName}})</view>
         </view>
-        <view class='start ft26 cc'>
-          <view>3301购买 | 2020人到店</view>
+        <view class='start ft28 bb'>
+          <view>{{k.BuyCount}}购买 | {{k.ArrivalCount}}人到店</view>
         </view>
       </view>
     </view>
   </view>
 </view>
-<view class='searchClass'>
-  <input class='seachTo' bindtap='bindSearch' placeholder='订单号/账户号'></input>
+<view class='searchClass' wx:if="{{List.length>0}}">
+  <input class='seachTo' data-id="{{Id}}" data-name="{{Info.SheetName}}" disabled bindtap='bindSearch' placeholder='订单号/账户号'></input>
 </view>
-
+<!-- 订单列表 -->
 <view class='moment borb mt20 bg'>
   <view class='List List1'>
-    <view class='item column'>
+    <view class='item column' wx:for="{{List}}" data-id="{{item.OrderId}}" bindtap='bindDetail' wx:key>
       <view class='between'>
-        <view class='ft24 bb'>订单号： 6854641614584</view>
-        <view class='ft30'>未使用</view>
+        <view class='ft24 bb'>订单号： {{item.OrderSN}}</view>
+        <view class='ft28' wx:if="{{item.OrderStatus==1}}">未使用</view>
+        <view class='ft28' wx:if="{{item.OrderStatus==2}}">部分使用</view>
+        <view class='ft28' wx:if="{{item.OrderStatus==3}}">已完成</view>
+        <view class='ft28' wx:if="{{item.OrderStatus==4}}">已过期</view>
       </view>
-      <view class='ft28'>购买时间: 2019-02-10</view>
-      <view class='ft28'>购买账户: 鸟叔(13654584874)</view>
-      <view class='between h60'>
+      <view class='ft28'>购买时间: {{item.BuyTime}}</view>
+      <view class='ft28'>购买账户: {{item.BuyAccountName}}({{item.BuyAccountMobile}})</view>
+      <view class='between klp' wx:for="{{item.ItemList}}" wx:key wx:for-item="k">
         <view class='start'>
-          <image class='icon1 mr5' src='../../img/k1.png' mode='widthFix'></image>
-          <view class='ft26'>语文课 (门店1)</view>
+          <view>
+            <image class='icon mr5' src='../../img/b2.png' mode='widthFix'></image>
+          </view>
+          <view class='ft28'>{{k.ItemName}} ({{k.StoreName}})</view>
         </view>
-        <image class='icon2' src='../../img/gou.png' mode='widthFix'></image>
-      </view>
-    </view>
-  </view>
-
-  <view class='List List1'>
-    <view class='item column'>
-      <view class='between'>
-        <view class='ft24 bb'>订单号： 6854641614584</view>
-        <view class='ft30 red'>已使用</view>
-      </view>
-      <view class='ft28'>购买时间: 2019-02-10</view>
-      <view class='ft28'>购买账户: 鸟叔(13654584874)</view>
-      <view class='between h60'>
-        <view class='start'>
-          <image class='icon1 mr5' src='../../img/k1.png' mode='widthFix'></image>
-          <view class='ft26'>语文课 (门店1)</view>
-        </view>
-        <image class='icon2 none' src='../../img/gou.png' mode='widthFix'></image>
+        <image class='icon2' wx:if="{{k.UseStatus==2}}" src='../../img/gou.png' mode='widthFix'></image>
       </view>
     </view>
   </view>

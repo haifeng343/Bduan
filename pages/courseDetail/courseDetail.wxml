@@ -50,7 +50,7 @@
     </view>
   </view>
 </view>
-<view class='teacherList boxd' data-id="{{List.RelId}}" bindtap='allTeacher'>
+<view class='teacherList boxd' data-id="{{List.ItemId}}" wx:if="{{List.TeacherCount}}" bindtap='allTeacher'>
   <view class='tearcherTitle between h80'>
     <view class='teaNumber'>师资力量 ({{List.TeacherList.length}})</view>
     <image src='../../img/go.png' class='go' mode='widthFix' lazy-load='true'></image>

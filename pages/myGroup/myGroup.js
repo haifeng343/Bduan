@@ -41,7 +41,7 @@ Page({
     OrderSn: '',
     RefundTime: '',
     RefundArrivalTime: '',
-    usertoken: ""
+    usertoken: "",
   },
   onShow() {
     let usertoken = wx.getStorageSync('userInfo').UserToken;
@@ -52,11 +52,15 @@ Page({
       this.getData();
     }
   },
-  onLoad() {
-
+  onLoad:function(options) {
+    if (options.type){
+      this.setData({
+        navbarActiveIndex: parseInt(options.type)
+      })
+    }
   },
   bindLogin: function () {
-    wx.navigateTo({
+    wx.reLaunch({
       url: '/pages/login/login',
     })
   },
@@ -85,8 +89,8 @@ Page({
     let that = this;
     var url = 'account/activitygroup/list';
     var params = {
-      Status: that.data.navbarActiveIndex + 1,
-      PageCount: 5,
+      Type:that.data.navbarActiveIndex + 1,
+      PageCount: 20,
       PageIndex: that.data.modelList[that.data.navbarActiveIndex].pageIndex,
     }
     netUtil.postRequest(url, params, function (res) { //onSuccess成功回调
@@ -107,13 +111,7 @@ Page({
         modelList: tempModelList
       })
       wx.hideLoading();
-    }, function (msg) { //onFailed失败回调
-      if (msg) {
-        wx.showToast({
-          title: msg,
-        })
-      }
-    }); //调用get方法情就是户数
+    });
   },
   /**
    * 点击导航栏
@@ -162,9 +160,9 @@ Page({
   //     url: '/pages/orderDetail/orderDetail?Id=' + e.currentTarget.dataset.id + '&status=' + (this.data.navbarActiveIndex + 1) + '&kd=3',
   //   })
   // },
-  bindDetail:function() {
+  bindDetail:function(e) {
     wx.navigateTo({
-      url: '/pages/orderDetail/orderDetail',
+      url: '/pages/activityDetail/activityDetail?id='+e.currentTarget.dataset.id,
     })
   },
   Refund: function (e) {

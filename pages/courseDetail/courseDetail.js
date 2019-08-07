@@ -17,7 +17,7 @@ Page({
     that.setData({
       Id : options.id
     })
-    that.getData();
+    that.init();
   },
   callPhone:function() {
     let that = this;
@@ -25,7 +25,7 @@ Page({
     //   phoneNumber: that.data.mobile,
     // })
   },
-  getData:function(){
+  init:function(){
     var that = this;
     var url = 'account/item/details';
     var params = {
@@ -53,6 +53,10 @@ Page({
     wx.navigateTo({
       url: '/pages/allTeacher/allTeacher?Id='+e.currentTarget.dataset.id,
     })
+  },
+  onPullDownRefresh:function() {
+    this.init();
+    wx.stopPullDownRefresh();
   },
   onShareAppMessage: function() {
 

@@ -1,31 +1,44 @@
-// pages/orderDetail/orderDetail.js
+
+const netUtil = require('../../utils/request.js');
 Page({
-
-  /**
-   * 页面的初始数据
-   */
-  data: {
-
+  data: { 
+    Id:'',
+    Info:{},
+    mobile:'',
+  },
+  onLoad:function(options) {
+    this.setData({
+      Id:options.id
+    })
+    this.init();
+  },
+  init:function() {
+    let that = this;
+    var url = 'order/details';
+    var params = {
+      Id:that.data.Id
+    }
+    netUtil.postRequest(url, params, function (res) {
+      that.setData({
+        Info: res.Data,
+        mobile: res.Data.BuyAccountMobile
+      })
+    })
   },
   bindCall:function() {
     wx.makePhoneCall({
-      phoneNumber: '13501',
+      phoneNumber: this.data.mobile,
+    })
+  },
+  bindCause:function(e) {
+    wx.navigateTo({
+      url: '/pages/courseDetail/courseDetail?id='+e.currentTarget.dataset.id,
     })
   },
   onPullDownRefresh: function () {
 
-  },
+  },  
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage: function () {
 
   }

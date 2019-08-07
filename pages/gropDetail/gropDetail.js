@@ -1,33 +1,79 @@
-// pages/gropDetail/gropDetail.js
+const netUtil = require('../../utils/request.js');
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    Id: '',
+    Info: {},
+    List:[],
+    pageCount:20,
+    page:1,
   },
-  bindSearch:function() {
+  onLoad: function(options) {
+    this.setData({
+      Id: options.id
+    })
+    this.init();
+    this.getOrderList();
+  },
+  bindSearch: function(e) {
     wx.navigateTo({
-      url: '/pages/search/search',
+      url: '/pages/search/search?id=' + e.currentTarget.dataset.id+'&name='+e.currentTarget.dataset.name,
     })
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
+  getOrderList: function() {
+    let that = this;
+    var url = 'order/list';
+    var params = {
+      OrderSn: '',
+      BuyAccountName: '',
+      SheetId: that.data.Id,
+      PageCount: that.data.pageCount,
+      PageIndex: that.data.page,
+    }
+    netUtil.postRequest(url, params, function(res) {
+      let arr = res.Data;
+      let arr1 = [];
+      if (that.data.page == 1) {
+        arr1 = arr
+      } else {
+        arr1 = that.data.List;
+        arr1 = arr1.concat(res.Data)
+      }
+      that.setData({
+        List: arr1,
+      })
+    })
+  },
+  init: function() {
+    let that = this;
+    var url = 'account/sheet/details';
+    var params = {
+      Id: that.data.Id
+    }
+    netUtil.postRequest(url, params, function(res) {
+      that.setData({
+        Info: res.Data
+      })
+    })
+  },
   onPullDownRefresh: function () {
-
+    this.setData({
+      page: 1
+    })
+    this.getOrderList();
+    wx.stopPullDownRefresh();
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
   onReachBottom: function () {
-
+    let temp = this.data.page;
+    temp++;
+    this.setData({
+      page: temp
+    })
+    this.getOrderList();
   },
 
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

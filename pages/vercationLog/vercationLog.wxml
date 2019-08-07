@@ -1,47 +1,28 @@
-<view class='start h100 content bort borb header'>
-  <picker mode="multiSelector" value="{{date}}" range='{{array}}' start="{{dataStart}}" end="{{dataEnd}}" fields="month" bindchange="bindDateChange">
+<view class='start h80 content ft28 bort borb header'>
+  <picker mode="multiSelector" value="{{date2}}" range='{{array}}' start="{{dataStart}}" end="{{dataEnd}}" fields="month" bindchange="bindDateChange">
     <view class="picker">
       {{date?date:now}}
     </view>
   </picker>
-  <image src='../../img/go.png' class='go' mode='widthFix' lazy-load='true'></image>
+  <image src='../../img/select.png' class='select' mode='widthFix' lazy-load='true'></image>
 </view>
-
-<view class='content around'>
-  <view class='h100 ft28 bold'>券码</view>
-  <view class='h100 ft28 bold'>购买账户</view>
-  <view class='h100 ft28 bold'>验券状态</view>
-  <view class='h100 ft28 bold'>验证时间</view>
+<view class='noHas' wx:if="{{List.length<=0}}">
+  <image src='../../img/zanwu.png' mode='widthFix' class='noList'></image>
+  <view class='notext'>暂无验证记录</view>
 </view>
-
-<view class='content ft24'>
-  <view class='item around bord bort h100'>
-    <view>1375454484</view>
-    <view>1375454484</view>
-    <view class='red' bindtap='bindShowEor'>1375454484</view>
-    <view>1375454484</view>
+<view class='mtml' wx:else>
+  <view class='content between ft28'>
+    <!-- <view class='h100 ft28 bold'>券码</view> -->
+    <view class='item'>购买账户</view>
+    <view class='item'>项目名称</view>
+    <view class='item'>验证时间</view>
   </view>
-  <view class='item around bord bort h100'>
-    <view>1375454484</view>
-    <view>1375454484</view>
-    <view>1375454484</view>
-    <view>1375454484</view>
-  </view>
-  <view class='item around bord bort h100'>
-    <view>1375454484</view>
-    <view>1375454484</view>
-    <view>1375454484</view>
-    <view>1375454484</view>
-  </view>
-
-
-  <!--验券成功提示弹出框-->
-  <!-- <view class="zan-dialog {{ showEor ? 'zan-dialog--show' : 'none' }}" catchtouchmove="ture">
-    <view class="zan-dialog__mask" bindtap="toggleDialog" />
-    <view class="zan-dialog__container">
-      <view class='h60 bold center'>验券失败</view>
-      <view class='zan-content mb10'>失败原因</view>
-      <view class='know h80 bort center theme' bindtap='closeds'>知道了</view>
+  <view class='content ft24' wx:for="{{List}}" wx:key>
+    <view class='item between bord bort h100'>
+      <!-- <view>{{item.TicketNumber}}</view> -->
+      <view class='b1'>{{item.AccountName}}({{item.AccountMobile}})</view>
+      <view class='b2'>{{item.ItemName}}({{item.StoreName}})</view>
+      <view class='b3'>{{item.CheckTime}}</view>
     </view>
-  </view> -->
+  </view>
 </view>

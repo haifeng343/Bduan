@@ -32,7 +32,7 @@ Page({
   //清空本地缓存退出登录
   clearStore:function() {
     wx.clearStorageSync('userInfo');
-    wx.redirectTo({
+    wx.reLaunch({
       url: '/pages/login/login',
     })
   },

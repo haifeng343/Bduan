@@ -5,6 +5,9 @@
 .w100{
   width: 100%;
 }
+.icon{
+  margin-top: 2rpx;
+}
 .icon2{
   width: 40rpx;
   height: 40rpx;

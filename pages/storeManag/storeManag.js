@@ -31,6 +31,11 @@ Page({
       })
     })
   },
+  navtoClass:function() {
+    wx.navigateTo({
+      url: '/pages/storeAccount/storeAccount?Id=' + this.data.Id,
+    })
+  },
   navtoStoreAccount: function () {
     wx.navigateTo({
       url: '/pages/storeAccount/storeAccount?Id='+this.data.Id,

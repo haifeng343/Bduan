@@ -1,18 +1,22 @@
 <view>
-  <view class='title'>亲学宝商家版登录</view>
+  <view class='title'>亲学宝商家端登录</view>
   <view class='content'>
     <label class='name'>账户名</label>
-    <input class='nameInput borb mt30 ft28' value='{{name}}' bindinput='bindName'></input>
+    <input class='nameInput borb mt20 ft28' value='{{name}}' bindinput='bindName'></input>
   </view>
   <view class='content mt40 relative'>
     <label class='name'>密码</label>
-    <input class='nameInput borb mt30 ft28' type="{{InputType}}" value='{{value}}' bindinput='bindPassword'></input>
+    <input class='nameInput borb mt20 ft28' wx:if="{{showEye}}" type="password" value='{{value}}' bindinput='bindPassword'></input>
+    <input class='nameInput borb mt20 ft28' wx:else type="text" value='{{value}}' bindinput='bindPassword'></input>
     <cover-view class='eye'>
-      <cover-image class='icon1' style='margin-left: 0;' src='{{InputType == "password" ? eyesImg : eyeImg}}' catchtap='changeEyeImg'></cover-image>
+      <cover-image class='icon1' wx:if="{{showEye}}" style='margin-left: 0;' catchtap='changeEyeImg' src='../../img/eyes.png'></cover-image>
+      <cover-image class='icon1' wx:else style='margin-left: 0;' catchtap='changeEyeImg' src='../../img/eye.png'></cover-image>
     </cover-view>
     <!-- <image class='icon1 eye' src='{{eyeImg}}' catchtap='changeEyeImg'></image> -->
   </view>
-    <view class='h60 ft28 theme right' bindtap='forget'>忘记密码？</view>
+    <view class='right'>
+    <view class='h60 ft28 theme kl' bindtap='forget'>忘记密码？</view>
+    </view>
 </view>
 
 <view class='btn gray1' wx:if="{{name=='' || value==''}}">登录</view>

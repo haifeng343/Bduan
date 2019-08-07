@@ -10,25 +10,31 @@
       </view>
       <view class='start h40 ft24'>
         <view class='start'>
-          <image class='icon' src='../../img/ad1.png' mode='aspectFill'></image>
-          <view class='name'>{{Info.Address}}</view>
+          <view>
+            <image class='icon' src='../../img/ad1.png' mode='aspectFill'></image>
+          </view>
+          <view class='name ml5'>{{Info.Address}}</view>
         </view>
       </view>
       <view class='start h40 ft24' wx:for="{{Info.StoreMobile}}" wx:key wx:for-item="k">
         <view class='start'>
-          <image class='icon' src='../../img/cal.png' mode='aspectFill'></image>
-          <view class='name'>{{k}}</view>
+          <view>
+            <image class='icon' src='../../img/cal.png' mode='aspectFill'></image>
+          </view>
+          <view class='name ml5'>{{k}}</view>
         </view>
       </view>
       <view class='start h40 ft24'>
         <view class='start'>
-          <image class='icon' src='../../img/people.png' mode='aspectFill'></image>
-          <view class='name'>{{Info.Leader}}</view>
+          <view>
+            <image class='icon' src='../../img/people.png' mode='aspectFill'></image>
+          </view>
+          <view class='name ml5'>{{Info.Leader}}</view>
         </view>
       </view>
       <view class='start h40 ft24'>
         <view class='start'>
-          <view class='name'>门店品类: {{CategoryList}}</view>
+          <view class='name ml5'>门店品类: {{CategoryList}}</view>
         </view>
       </view>
       <view class='start h40 ft24'>
@@ -44,16 +50,33 @@
 </view>
 
 <view class='content content1 ft28 mt20'>
+  <view class='between h80 borb' data-Id="{{Id}}" bindtap='navtoClass'>
+    <view class='start h80'>
+      <view class='center'>
+        <image class='icon1' src='../../img/m9.png' mode='widthFix'></image>
+      </view>
+      <view>门店课程</view>
+    </view>
+    <image class='go' src='../../img/go.png' mode='widthFix'></image>
+  </view>
+</view>
+<view class='content content1 ft28 mt20'>
   <view class='between h80 borb' data-Id="{{Id}}" bindtap='navtoStoreAccount'>
     <view class='start h80'>
-      <image class='icon1' src='../../img/m4.png' mode='widthFix'></image>
+      <view class='center'>
+        <image class='icon1' src='../../img/m4.png' mode='widthFix'></image>
+      </view>
       <view>门店账户</view>
     </view>
     <image class='go' src='../../img/go.png' mode='widthFix'></image>
   </view>
+</view>
+<view class='content content1 ft28 mt20'>
   <view class='between h80' data-Id="{{Id}}" bindtap='navtoStoreTeacher'>
     <view class='start h80'>
-      <image class='icon1' src='../../img/m5.png' mode='widthFix'></image>
+      <view class='center'>
+        <image class='icon1' src='../../img/z2.png' mode='widthFix'></image>
+      </view>
       <view>门店师资</view>
     </view>
     <image class='go' src='../../img/go.png' mode='widthFix'></image>

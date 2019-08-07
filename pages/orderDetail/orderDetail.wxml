@@ -1,36 +1,56 @@
 <view class='container'>
   <view class='content radius10'>
     <view class='item column'>
-      <view class='between h60'>
-        <view class='ft26'>订单编号: 23155555555555555</view>
-        <view class='ft30 bold'>部分使用</view>
-      </view>
-      <view class='between h60'>
-        <view class='start h60'>
-          购买账户:
-          <image class='icon2 ml5 mr5' src='../../img/ava2.png' mode='widthFix'></image>
-          <view>小草 (135644878)</view>
+      <view class='between h50'>
+        <view class='ft28 start'>
+          <text>订单编号:</text>
+          <view class='ml5'>{{Info.OrderSN}}</view>
         </view>
-        <image class='icon2' src='../../img/call.png' bindtap='bindCall' mode='widthFix'></image>
+        <view class='ft28 status' wx:if="{{Info.OrderStatus==1}}">未使用</view>
+        <view class='ft28 status' wx:if="{{Info.OrderStatus==2}}">部分使用</view>
+        <view class='ft28 status' wx:if="{{Info.OrderStatus==3}}">已完成</view>
+        <view class='ft28 status' wx:if="{{Info.OrderStatus==4}}">已过期</view>
       </view>
-      <view class='between h60'>
-        <view class='start ft30 h60'>创建订单:
-          <text class='h60 ml5 ft30'>2019-54-415</text>
+      <view class='between h50 ft28'>
+        <view class='start h50'>
+          <text>购买账户:</text>
+          <view class='avator'>
+            <image class='avator1' src='{{Info.BuyAccountHeadUrl}}' mode='widthFix'></image>
+          </view>
+          <view>{{Info.BuyAccountName}} <text wx:if="{{Info.BuyAccountMobile}}">({{Info.BuyAccountMobile}})</text></view>
         </view>
-      </view>
-      <view class='between h60'>
-        <view class='start ft30 h60'>支付时间:
-          <text class='h60 ml5 ft30'>2019-54-415</text>
-        </view>
-      </view>
-      <view class='between h60 borb'>
-        <view class='start ft30 h60'>有效期至:
-          <text class='h60 ml5 ft30'>2019-54-415</text>
+        <view class='center'>
+          <image class='icon' src='../../img/call.png' bindtap='bindCall' mode='widthFix'></image>
         </view>
       </view>
-      <view class='between h60'>
-        <view class='start ft30 h60'>购买类型:
-          <text class='h60 ml5 ft30'>团购（团单名称1）</text>
+      <view class='between h50'>
+        <view class='start ft28 h50'>
+          <text>创建订单:</text>
+          <text class='h50 ml5 ft28'>{{Info.CreateTime}}</text>
+        </view>
+      </view>
+      <view class='between h50 ft28'>
+        <view class='start h50'>
+          <text>支付时间:</text>
+          <text class='h50 ml5'>{{Info.BuyTime}}</text>
+        </view>
+      </view>
+      <view class='between h50 ft28'>
+        <view class='start h50'>
+          <text>有效期至:</text>
+          <text class='h50 ml5 '>{{Info.ExpireTime}}</text>
+        </view>
+      </view>
+      <view class='between h50 ft28' wx:if="{{Info.RefundTime}}">
+        <view class='start h50'>
+          <text>退款时间:</text>
+          <text class='h50 ml5 '>{{Info.RefundTime}}</text>
+        </view>
+      </view>
+      <view class='between bort h50 ft28'>
+        <view class='start h50'>
+          <text>购买类型:</text>
+          <text class='h50 ml5 '><text wx:if="{{Info.BuyType==1}}">团购</text>（{{Info.SheetName}}）</text>
         </view>
       </view>
     </view>
@@ -38,53 +58,37 @@
 </view>
 
 <view class='container'>
-  <view class='content radius10 mt20 gray'>
-    <view class='item column'>
+  <view class="content radius10 mt20 {{Info.OrderStatus==4?'gray':''}}">
+    <view class='item column' wx:for="{{Info.ItemList}}" data-id="{{k.RelId}}" bindtap='bindCause' wx:key wx:for-item="k">
       <view class='start'>
-        <image class='d1' src='../../img/d1.png'></image>
-        <view class='column'>
-          <view class='ft28 bold h60'>英语课</view>
-          <image class='use' src='../../img/expired.png' mode='widthFix'></image>
-          <view class='column'>
-            <view class='start h40'>
-              <image class='icon2' src='../../img/b2.png'></image>
-              <view class='ft24'>共有1节课</view>
-              <image class='icon2 ml20' src='../../img/time.png'></image>
-              <view class='ft24'>共有1节课</view>
-            </view>
-            <view class='start h40'>
-              <image class='icon2' src='../../img/b3.png'></image>
-              <view class='ft24'>门店1</view>
-            </view>
-            <view class='start h40'>
-              <image class='icon2' src='../../img/b1.png'></image>
-              <view class='ft24'>活动组1</view>
-            </view>
-          </view>
+        <view class='itemLeft'>
+          <image class='d1' src='{{k.ItemCoverImgUrl}}' mode='aspectFill'></image>
         </view>
-      </view>
-    </view>
-  </view>
-  <view class='content radius10 mt20'>
-    <view class='item column'>
-      <view class='start'>
-        <image class='d1' src='../../img/d1.png'></image>
-        <view class='column'>
-          <view class='ft28 bold h60'>英语课</view>
-          <image class='use' src='../../img/used.png' mode='widthFix'></image>
+        <view class=''>
+          <view class='ft28'>{{k.ItemName}}</view>
+          <image class='use' wx:if="{{Info.OrderStatus==4}}" src='../../img/expired.png' mode='aspectFill'></image>
+          <image class='use' wx:if="{{Info.OrderStatus==2 || Info.OrderStatus==3}}" src='../../img/used.png' mode='aspectFill'></image>
           <view class='column'>
-            <view class='start h40'>
-              <image class='icon2' src='../../img/b2.png'></image>
-              <view class='ft24'>共有1节课</view>
-              <image class='icon2 ml20' src='../../img/time.png'></image>
-              <view class='ft24'>共有1节课</view>
+            <view class='start mt10'>
+              <view class='center'>
+                <image class='icon' src='../../img/b2.png'></image>
+              </view>
+              <view class='ft24'>共有{{k.CoursesNumber}}节课</view>
+              <view class='center'>
+                <image class='icon ml20' src='../../img/time.png'></image>
+              </view>
+              <view class='ft24'>单节课时{{k.SingleTime}}min</view>
             </view>
-            <view class='start h40'>
-              <image class='icon2' src='../../img/b3.png'></image>
-              <view class='ft24'>门店1</view>
+            <view class='start mt10'>
+              <view class='center'>
+                <image class='icon' src='../../img/b3.png'></image>
+              </view>
+              <view class='ft24'>{{k.StoreName}}</view>
             </view>
-            <view class='start h40'>
-              <image class='icon2' src='../../img/b1.png'></image>
+            <view class='start mt10'>
+              <view class='center'>
+                <image class='icon' src='../../img/b1.png'></image>
+              </view>
               <view class='ft24'>活动组1</view>
             </view>
           </view>

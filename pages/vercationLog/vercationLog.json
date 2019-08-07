@@ -1,3 +1,4 @@
 {
-  "navigationBarTitleText": "验证记录"
+  "navigationBarTitleText": "验证记录",
+  "enablePullDownRefresh": true
 }

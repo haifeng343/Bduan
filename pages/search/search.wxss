@@ -1,33 +1,56 @@
-.startd{
+.startd {
   width: 100%;
+  height: 100rpx;
   padding: 0 2.5%;
   box-sizing: border-box;
-  position: relative;
-  margin-top: 20rpx;
+  background-color: #f2f2f2;
+  position: fixed;
+  top: 0;
+  padding-top: 20rpx;
 }
-.searchInput{
+.clearDiv{
+  width: 60rpx;
+  height: 60rpx;
+  position: absolute;
+  right: 14%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  z-index: 2;
+}
+.cleard {
+  width: 28rpx;
+  height: 28rpx;
+  z-index: 2;
+}
+
+.searchInput {
   width: 88%;
   height: 60rpx;
+  padding-right: 7%;
   font-size: 28rpx;
   line-height: 60rpx;
   background-color: #fff;
   border-radius: 30rpx;
   padding-left: 40%;
   box-sizing: border-box;
-  padding-right: 20rpx;
   text-align: left;
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkVBMEVERDYyQTkwODExRTlCOEZFQkZCMEFEQzVGQjdEIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkVBMEVERDYzQTkwODExRTlCOEZFQkZCMEFEQzVGQjdEIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RUEwRURENjBBOTA4MTFFOUI4RkVCRkIwQURDNUZCN0QiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RUEwRURENjFBOTA4MTFFOUI4RkVCRkIwQURDNUZCN0QiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5P4a3iAAAByUlEQVR42uyWzyuDcRjAzSiOM3EgksJhJ63mwEWbXzvISVEr/ANyxI2Si4scRX6UHLhxQKRYo52muMyBHBz82IGUaT5PPStJa/u+azvYtz49ve+evZ/3eb/P+/2+tkQiUZSPUVyUp/H/xCXpJIVCIT9hDHqgXE8fwYbH41k1EdtSNRfCRhXU66kgRKEKuvTcB3i5gbOsiJEOEHbgAUa48MEfOW7CIrTBJDlzlsRc0EWIQJiLudOYimXCKATIX7fSXCfyCNORyiBP5j8Ea8Zdzd1LAzmhPcN+6dD/z5hWPAUvVBHOxEr+J+EQpk3FUumu4eu5olU7TOc4Yii+09hgKi41FNs1xk3EXzJlhuIWjVET8Rb0G4on4JFGezMRz8oaToMEMjGS30xognErK9clQRYPJ3f/nKb4nhAj32Vl5ZJXKgZPulGkEjpUWguv2dgkKglXUA0LsEQ1tz9+ryEMwzzInJ6DT3Yz8ryWtkUVbBKG9PBdq6qAsmSKPCFkcXJPdenc49hvSaxyqboTuqFO5ceyRCK4/pUb1G1SfvNZEmfY3TbChTbnNvLBnIhVbld5K+wj78vJxx6i5Op3A705q7jwXV0Qy/gWYAAirrBuNOgVXwAAAABJRU5ErkJggg==');
   background-size: 36rpx 36rpx;
   background-repeat: no-repeat;
   background-position: 42% 50%;
 }
-.searchRight{
+
+.searchRight {
   width: 12%;
   height: 60rpx;
   line-height: 60rpx;
   text-align: right;
+  z-index: 2;
 }
-.poab{
+
+.poab {
   width: 220rpx;
   display: flex;
   justify-content: center;
@@ -35,39 +58,112 @@
   height: 60rpx;
   line-height: 60rpx;
   font-size: 26rpx;
-  z-index: 1;
+  z-index: 2;
   border-right-color: #fff;
 }
-.poab::after{
+
+.poab::after {
   content: "";
   width: 2rpx;
   height: 35rpx;
-  background-color: #E7E7E7;
+  background-color: #e7e7e7;
   margin-left: 5rpx;
 }
-.selectOption{
-  position: absolute;
+
+.selectOption {
+  position: fixed;
   width: 200rpx;
-  height: 90rpx;
-  font-size: 26rpx;
+  height: 120rpx;
+  font-size: 28rpx;
   padding: 10rpx 0;
-  color: #949494;
+  color: #000;
   background-color: #fff;
   border-radius: 15rpx;
-  line-height: 45rpx;
-  top: 68rpx;
+  line-height: 60rpx;
+  top: 80rpx;
+  left:2%;
   text-align: center;
   box-shadow: 0 0 10rpx #f4f4f4;
+  z-index: 2;
 }
 
+.List {
+  width: 100%;
+  height: auto;
+  background-color: #fff;
+  margin-top: 100rpx;
+}
 
+.item {
+  width: 95%;
+  height: auto;
+  margin-left: 5%;
+  border-bottom: 1rpx solid #f3f3f3;
+  padding: 25rpx 5% 25rpx 0;
+  box-sizing: border-box;
+}
 
+.ft26 {
+  font-size: 28rpx;
+}
 
+.icon {
+  margin-top: 0;
+}
 
+.item .start {
+  line-height: 55rpx;
+  display: flex;
+  align-items: center;
+}
 
+.item .wrap {
+  height: 35rpx;
+  line-height: 35rpx;
+  font-size: 28rpx;
+  padding-bottom: 40rpx;
+}
 
+.List1 .item {
+  width: 100%;
+  height: auto;
+  padding-left: 5%;
+  margin-left: 0;
+}
 
+.historyTop {
+  margin-top: 100rpx;
+}
 
+.histitle {
+  font-size: 30rpx;
+  margin-bottom: 10rpx;
+}
 
+.delete {
+  width: 45rpx;
+  height: 45rpx;
+}
+.searchHistory{
+  width: 100%;
+  box-sizing: border-box;
+  padding:  0 5%;
+}
+.historyList {
+  padding: 0;
+  max-height: 300rpx;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 
-
+.historyItem {
+  font-size: 28rpx;
+  padding: 5rpx 15rpx;
+  border-radius: 4rpx;
+  background-color: #c3c3c3;
+  color: #7d7d7d;
+  margin-right: 30rpx;
+  margin-top: 25rpx;
+}

@@ -26,7 +26,10 @@
     "pages/storeManag/storeManag",
     "pages/setting/setting",
     "pages/modifyPhone/modifyPhone",
-    "pages/modifyPassword/modifyPassword"
+    "pages/modifyPassword/modifyPassword",
+    "pages/aboutUs/aboutUs",
+    "pages/addCourse/addCourse",
+    "pages/courseImg/courseImg"
   ],
   "window": {
     "backgroundTextStyle": "dark",

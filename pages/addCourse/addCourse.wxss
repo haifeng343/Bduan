@@ -1,0 +1,128 @@
+.item{
+  width: 100%;
+  height: auto;
+  padding: 0 5%;
+  box-sizing: border-box;
+  font-size: 28rpx;
+}
+.item label{
+  width: 120rpx;
+}
+.item input{
+  width: 520rpx;
+  margin-left: 20rpx;
+}
+.jobTitle{
+  width: 520rpx;
+  margin-left: 20rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  word-break: keep-all;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.upload1{
+  width: 150rpx;
+  height: 150rpx;
+}
+.textarea{
+  width: 520rpx;
+  max-height: 100rpx;
+  line-height: 40rpx;
+}
+.titleList{
+  width: 100%;
+  max-height: 666rpx;
+}
+.fixed{
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-color: #fff;
+  height: 100rpx;
+  padding-top: 20rpx;
+}
+.status{
+  width: 136rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 24rpx;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.1);
+  position: absolute;
+  bottom: 0;
+  left: 20rpx;
+  text-align: center;
+}
+.md {
+  width: 95%;
+  margin-left: 2.5%;
+  bottom: 20rpx;
+}
+
+.certificate {
+  font-size: 28rpx;
+}
+
+.nerong {
+  width: 90%;
+  height: 150px;
+  font-size: 16px;
+  margin-left: 5%;
+  margin-top: 15px;
+  overflow: auto;
+}
+
+.jiatupian {
+  width: 180rpx;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.jiatupian image {
+  width: 136rpx;
+  height: 136rpx;
+}
+.imgs{
+  background-color:#fff;
+  position:relative;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.image {
+  width: 33%;
+  height: 156rpx;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.image image {
+  width: 136rpx;
+  height: 136rpx;
+  margin: 10px;
+  box-sizing: border-box;
+}
+
+.deleteImage {
+  width: 15px;
+  height: 15px;
+  font-size: 15px;
+  float: left;
+}
+
+.deleteImage image {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: -15rpx;
+  right: -15rpx;
+}

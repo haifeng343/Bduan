@@ -1,0 +1,37 @@
+<view class='container radius'>
+  <view class='item start borb h80'>
+    <label>课程名称</label>
+    <input value='{{name}}' bindinput='bindName'></input>
+  </view>
+  <view class='item start borb h80'>
+    <label>课程图片</label>
+    <image class='upload pd20 ml20' wx:if="{{headImg}}" src='{{headImg}}' mode='aspectFill' bindtap='bindUpload'></image>
+    <image class='upload pd20 ml20' wx:else src='../../img/upload.png' mode='aspectFill' bindtap='bindUpload'></image>
+  </view>
+  <view class='item start borb h80'>
+    <label>课程类型</label>
+    <!-- <input value='{{jobTitle}}' bindinput='bindNJobTitle' placeholder='请填写教师职称'></input> -->
+    <view class='jobTitle' bindtap='changeTitle'>{{jobTitle}}</view>
+  </view>
+  <view class='item start borb h80'>
+    <label>课程描述</label>
+    <input value='{{old}}' bindinput='bindold' placeholder='例：5年'></input>
+  </view>
+</view>
+
+<view class='fixed'>
+  <view class='submit' bindtap='submit'>提交</view>
+</view>
+<!-- 课程类型弹窗 -->
+<modal hidden="{{showLog}}" title="课程类型" confirm-text="确认" cancel-text="取消" bindcancel="closeCodeLog" bindconfirm="getCode">
+  <view class='titleList'>
+    <checkbox-group bindchange="changeTitles">
+      <view class='item1 column' wx:for="{{TitlesList}}" wx:key>
+        <view class='start h60'>
+        <checkbox value='{{item.TypeId}}' checked='{{item.checked}}'></checkbox>
+        <view>{{item.TypeName}}</view>
+        </view>
+      </view>
+    </checkbox-group>
+  </view>
+</modal>

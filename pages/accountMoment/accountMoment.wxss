@@ -15,7 +15,6 @@ page {
   width: 100%;
   overflow: hidden;
 }
-
 .content {
   position: relative;
   width: 100%;
@@ -93,8 +92,8 @@ page {
   color: #A19B9B;
 }
 .avator{
-  width: 100rpx;
-  height: 100rpx;
+  width: 120rpx;
+  height: 120rpx;
   margin-right: 15rpx;
   border-radius: 50%;
 }
@@ -107,7 +106,6 @@ page {
 .edit{
   display: flex;
   align-items: center;
-  margin: auto 15rpx;
   width: 34rpx;
   height: 34rpx;
 }

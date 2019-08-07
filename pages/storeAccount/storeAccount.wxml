@@ -1,6 +1,6 @@
 <view class='noHas' wx:if="{{List.length<=0}}">
   <image src='../../img/zanwu.png' mode='widthFix' class='noList'></image>
-  <!-- <view class='zanwu'>暂无数据</view> -->
+  <view class='zanwu'>暂无账户</view>
 </view>
 <view class='content' wx:else>
   <view class='item pd20 start' wx:for="{{List}}" wx:key>
@@ -9,9 +9,10 @@
     </view>
     <view class='column w100'>
       <view class='between w100 ft28 h40'>
-        <view>账户名: {{item.UserName}}</view>
-        <view wx:if="{{item.IsAdministrator==true}}">管理员</view>
-        <view wx:else>普通账户</view>
+        <view>账户名: {{item.UserName}}
+        <text class='tag' wx:if="{{item.IsAdministrator==true}}">管理员</text>
+        <text class='tag tag1' wx:else>普通账户</text>
+        </view>
       </view>
       <view class='between w100 ft24 h40'>
         <view>手机号: {{item.Mobile}}</view>
@@ -23,7 +24,7 @@
 
 <!--分配弹出框-->
 <modal hidden="{{showLog}}" title="分配账户" confirm-text="确认" cancel-text="取消" bindcancel="bindCancel" bindconfirm="bindSure">
-  <view class='dialogList'>
+  <view class='dialogList' wx:if="{{accountList.length>0}}">
     <checkbox-group bindchange="checkedChange">
       <view class='dialogItem pd20 start' wx:for="{{accountList}}" wx:key>
         <!-- <checkbox value='{{item.AccountId}}'></checkbox> -->
@@ -34,8 +35,8 @@
         <view class='column w100'>
           <view class='between w100 ft28 h40'>
             <view>账户名: {{item.UserName}}</view>
-            <view wx:if="{{item.IsAdministrator==true}}">管理员</view>
-            <view wx:else>普通账户</view>
+            <view style='width:140rpx' wx:if="{{item.IsAdministrator==true}}">管理员</view>
+            <view style='width:140rpx' wx:else>普通账户</view>
           </view>
           <view class='between w100 ft24 h40'>
             <view>手机号: {{item.Mobile}}</view>
@@ -44,6 +45,9 @@
         </view>
       </view>
     </checkbox-group>
+  </view>
+  <view wx:else>
+    <view class='zanwu'>暂无数据</view>
   </view>
   <input value='{{code}}' bindinput='setCode' class='codeInput'></input>
 </modal>

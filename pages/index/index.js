@@ -32,30 +32,40 @@ Page({
         name: '自定义'
       },
     ],
-    storeList:[],//门店列表
+    storeList: [], //门店列表
     QuanInfo: {}, //订单信息
+    activeList: [], //正在参与的活动
     checked: false,
     checkList: [], //勾选的数组
-    groupList: [],//活动组列表
-    storeId:'0',//门店Id
-    storeName:'全部门店',//门店名称
-    arrivalCount: '',//到店数
-    buyCount: '',//购买数
+    groupList: [], //活动组列表
+    orderList: [], //订单列表
+    storeId: '0', //门店Id
+    storeName: '全部门店', //门店名称
+    arrivalCount: '', //到店数
+    buyCount: '', //购买数
     usertoken: '',
   },
   onLoad: function(options) {
     let userInfo = wx.getStorageSync('userInfo');
     this.setData({
-      usertoken: userInfo.UserToken
+      usertoken: userInfo.UserToken || ''
     })
     this.init();
   },
+  // 禁止屏幕滚动
+  preventTouchMove: function () {
+
+  },
+  hideFixed:function() {
+    this.setData({
+      showSelect:false,
+    })
+  },
   init: function() {
-    if (this.data.usertoken) {
-      this.getStore();
-      this.getGroupList();
-      this.getOperating();
-    }
+    this.getStore();
+    this.getGroupList();
+    this.getOrderList();
+    this.getOperating();
   },
   //获取所有门店列表
   getStore: function() {
@@ -69,33 +79,34 @@ Page({
     })
   },
   //更换门店
-  changeStore:function(e) {
+  changeStore: function(e) {
     this.setData({
-      storeId:e.currentTarget.dataset.id,
-      storeName:e.currentTarget.dataset.name,
-      showSelect:false
+      storeId: e.currentTarget.dataset.id,
+      storeName: e.currentTarget.dataset.name,
+      showSelect: false
     })
     this.getOperating();
   },
   //点击全部门店
-  allStore:function() {
+  allStore: function() {
     this.setData({
-      storeId:0,
-      storeName:'全部门店',
+      storeId: 0,
+      storeName: '全部门店',
       showSelect: false
     })
+    this.getOperating();
   },
   //获取经营统计数据
-  getOperating:function() {
+  getOperating: function() {
     let that = this;
     var url = 'account/operating/statistics';
     var params = {
       Type: that.data.showId,
       StartTime: that.data.date1,
       EndTime: that.data.date2,
-      StoreId:that.data.storeId
+      StoreId: that.data.storeId
     }
-    netUtil.postRequest(url, params, function (res) {
+    netUtil.postRequest(url, params, function(res) {
       that.setData({
         buyCount: res.Data.BuyCount,
         arrivalCount: res.Data.ArrivalCount,
@@ -115,7 +126,24 @@ Page({
     }
     netUtil.postRequest(url, params, function(res) {
       that.setData({
-        QuanInfo: res.Data,
+        activeList: res.Data,
+      })
+    })
+  },
+  //订单列表
+  getOrderList: function() {
+    let that = this;
+    var url = 'order/list';
+    var params = {
+      OrderSn: '',
+      BuyAccountName: '',
+      SheetId: '',
+      PageCount: 5,
+      PageIndex: 1,
+    }
+    netUtil.postRequest(url, params, function(res) {
+      that.setData({
+        orderList: res.Data,
       })
     })
   },
@@ -129,8 +157,8 @@ Page({
   changeShowId: function(e) {
     this.setData({
       showId: e.currentTarget.dataset.id,
-      date1:'',
-      date2:'',
+      date1: '',
+      date2: '',
     })
     this.getOperating();
   },
@@ -170,8 +198,6 @@ Page({
     this.setData({
       checkList: e.detail.value
     })
-
-    console.log(this.data.checkList)
   },
   //关闭订单验券弹窗
   closeCodeLog: function() {
@@ -198,6 +224,7 @@ Page({
       that.setData({
         showSure: true,
         code: '',
+        checkList:[],
       })
       wx.showModal({
         title: '验券成功',
@@ -243,7 +270,7 @@ Page({
   //弹出门店下拉选择
   changeSelect: function() {
     this.setData({
-      showSelect: !this.data.showSelect
+      showSelect: true
     })
   },
   //扫描二维码
@@ -273,14 +300,14 @@ Page({
 
   //   })
   // },
-  binddetail: function() {
+  binddetail: function(e) {
     wx.navigateTo({
-      url: '/pages/activityDetail/activityDetail',
+      url: '/pages/activityDetail/activityDetail?id=' + e.currentTarget.dataset.id,
     })
   },
   bindGroup: function() {
     wx.navigateTo({
-      url: '/pages/myGroup/myGroup',
+      url: '/pages/myGroup/myGroup?type=1',
     })
   },
   bindNavtoOrder: function() {
@@ -288,9 +315,9 @@ Page({
       url: '/pages/order/order',
     })
   },
-  bindOrderDetail: function() {
+  bindOrderDetail: function(e) {
     wx.navigateTo({
-      url: '/pages/orderDetail/orderDetail',
+      url: '/pages/orderDetail/orderDetail?id=' + e.currentTarget.dataset.id,
     })
   },
 

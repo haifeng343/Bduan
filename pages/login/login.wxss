@@ -10,3 +10,7 @@ page{
 label{
   font-size: 28rpx;
 }
+.kl{
+  text-align: right;
+  width: 140rpx;
+}
