@@ -1,0 +1,94 @@
+<view>
+  <view class='nohasLog' wx:if="{{groupList.length==0}}">
+    <image class='noImg' src='../../img/zanwu.png' mode='widthFix' lazy-load='true'></image>
+    <view class='notext'>暂无活动组</view>
+  </view>
+  <view wx:else>
+    <view class='List'>
+      <view class='item column' wx:for="{{groupList}}" wx:key>
+        <view class='ft32 w90'>{{item.ActivityGroupName}}</view>
+        <view class='start'>
+          <view class='ft28 w90 bb'>{{item.TradingareaName}}</view>
+        </view>
+        <view class='start'>
+          <view class='wrap cc'>{{item.Descption}}</view>
+        </view>
+        <view class='start ft28 bb'>
+          <view class='mr15'>团单数量：{{item.SheetCount}}</view>
+          <view class='mr15'>可参与：{{item.ParticipatorySheetCount}}</view>
+          <view class='mr15'>正在参与：{{item.ParticipatingSheetCount}}</view>
+        </view>
+        <view class='ft28 bb'>参与时间：{{item.CreateTime}}</view>
+        <view class='center'>
+          <image src='../../img/more.png' data-id="{{item.ActivityGroupId}}" data-item="{{item}}" bindtap='edit' class='edit' mode='apsectFill'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!--参与详情-->
+<modal hidden="{{!showDetail}}" title="参与详情" confirm-text="{{confimText}}" cancel-text="取消" bindcancel="bindDetail" bindconfirm="bindDetailSure" catchtouchmove="true">
+  <scroll-view scroll-y="true" class='dialogList'>
+    <checkbox-group bindchange="checkedChange">
+      <view class='start'>
+        <view class='labelTitle'>课程原价:</view>
+        <input class='put' value='{{money}}' bindinput='hasMonry' type='number'></input>
+        <view class='bb'>元</view>
+      </view>
+      <view class='start mt30'>
+        <view class='labelTitle'>课程数量:</view>
+        <input class='put' value='{{number}}' bindinput='hasNumber' type='number'></input>
+        <view class='bb'>节</view>
+      </view>
+      <view class='start mt30'>
+        <view class='labelTitle'>单节课时:</view>
+        <input class='put' value='{{timer}}' bindinput='hasTimer' type='number'></input>
+        <view class='bb'>分</view>
+      </view>
+      <view class='start mt30'>
+        <view class='labelTitle'>成交后减免:</view>
+        <input class='put' value='{{relief}}' bindinput='hasRelief' type='number'></input>
+        <view class='bb'>元</view>
+      </view>
+      <view class='start mt30'>
+        <view class='labelTitle'>单人购买数量:</view>
+        <input class='put' value='{{purchase}}' bindinput='hasPurchase' type='number'></input>
+        <view class='bb'>个</view>
+      </view>
+      <view class='start mt30'>
+        <view class='labelTitle'>{{peoText}}:</view>
+        <input class='put' value='{{people}}' bindinput='hasPeople' type='number'></input>
+        <view class='bb'>人</view>
+      </view>
+    </checkbox-group>
+  </scroll-view>
+</modal>
+
+<!--选择活动组-->
+<modal hidden="{{!showLog}}" title="选择活动组" confirm-text="确认" cancel-text="取消" bindcancel="bindCancel" bindconfirm="bindSure" catchtouchmove="true">
+  <scroll-view scroll-y="true" class='dialogList' wx:if="{{canGroupList.length>0}}">
+    <checkbox-group bindchange="checkedChange">
+      <view class='dialogItem start' wx:for="{{canGroupList}}" wx:key>
+        <checkbox class='chebox center' value='{{item.ActivityGroupId}}' checked='{{item.checked==true}}'></checkbox>
+        <view class='item column' style='padding: 25rpx 2% 25rpx 2%'>
+          <view class='ft32 w90 bb'>{{item.ActivityGroupName}}</view>
+          <view class='start'>
+            <view class='ft28 w90 bb'>{{item.TradingareaName}}</view>
+          </view>
+          <view class='start'>
+            <view class='wrap cc'>{{item.Descption}}</view>
+          </view>
+          <view class='start ft28 bb'>
+            <view class='mr10'>团单数量：{{item.SheetCount}}</view>
+            <view class='mr10'>可参与：{{item.ParticipatorySheetCount}}</view>
+            <view>正在参与：{{item.ParticipatingSheetCount}}</view>
+          </view>
+        </view>
+      </view>
+    </checkbox-group>
+  </scroll-view>
+</modal>
+
+
+<view class='add' wx:if="{{IsAdministrator==true}}" bindtap='addActive'>参加活动</view>

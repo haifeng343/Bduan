@@ -12,7 +12,15 @@
   width: 88%;
   height: auto;
 }
+.w80{
+  width: 80%;
+}
+.noWrap{
+  width: 284rpx;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+}
 .icon{
-  margin-top: 2rpx;
+  /* margin-top: -1rpx; */
 }
 

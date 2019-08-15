@@ -4,7 +4,7 @@ page {
 
 .container {
   min-height: 100%;
-  padding: 0rpx 0rpx 50rpx;
+  padding: 0rpx 0rpx 100rpx;
 }
 
 .touch-item {
@@ -92,8 +92,8 @@ page {
   color: #A19B9B;
 }
 .avator{
-  width: 120rpx;
-  height: 120rpx;
+  width: 135rpx;
+  height: 135rpx;
   margin-right: 15rpx;
   border-radius: 50%;
 }
@@ -101,13 +101,19 @@ page {
   position: relative;
 }
 .between{
-  width:550rpx;
+  width:542rpx;
 }
 .edit{
   display: flex;
   align-items: center;
   width: 34rpx;
   height: 34rpx;
+}
+.noWra {
+  max-width: 310rpx;
+  white-space: nowrap;
+  overflow:hidden;
+  text-overflow: ellipsis;
 }
 .mt15{
   margin-top: 15rpx;

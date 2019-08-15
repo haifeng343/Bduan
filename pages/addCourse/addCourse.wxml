@@ -12,10 +12,15 @@
     <label>课程类型</label>
     <!-- <input value='{{jobTitle}}' bindinput='bindNJobTitle' placeholder='请填写教师职称'></input> -->
     <view class='jobTitle' bindtap='changeTitle'>{{jobTitle}}</view>
+    <image src='../../img/go.png' class='icon end goes'></image>
   </view>
-  <view class='item start borb h80'>
-    <label>课程描述</label>
-    <input value='{{old}}' bindinput='bindold' placeholder='例：5年'></input>
+  <!-- <view class='item start borb h80'>
+    <label style='width:100%'>课程描述</label>
+    <textarea value='{{old}}' bindinput='bindold' placeholder='例：5年' class='textarea pb10'></textarea>
+  </view> -->
+  <view class='item start borb' style='height:244rpx'>
+    <label class='h81'>课程描述</label>
+    <textarea hidden='{{showLog && !description}}' value='{{description}}' bindinput='bindDescription' placeholder='请填写课程描述' class='textarea' placeholder-class='placeholder'></textarea>
   </view>
 </view>
 
@@ -23,12 +28,12 @@
   <view class='submit' bindtap='submit'>提交</view>
 </view>
 <!-- 课程类型弹窗 -->
-<modal hidden="{{showLog}}" title="课程类型" confirm-text="确认" cancel-text="取消" bindcancel="closeCodeLog" bindconfirm="getCode">
+<modal hidden="{{!showLog}}" title="课程类型" confirm-text="确认" cancel-text="取消" bindcancel="closeCodeLog" bindconfirm="getCode">
   <view class='titleList'>
     <checkbox-group bindchange="changeTitles">
       <view class='item1 column' wx:for="{{TitlesList}}" wx:key>
         <view class='start h60'>
-        <checkbox value='{{item.TypeId}}' checked='{{item.checked}}'></checkbox>
+        <checkbox value='{{item.TypeId}}' checked='{{item.checked==true}}'></checkbox>
         <view>{{item.TypeName}}</view>
         </view>
       </view>

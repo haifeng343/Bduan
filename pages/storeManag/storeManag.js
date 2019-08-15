@@ -18,6 +18,11 @@ Page({
   init() {
     this.getData();
   },
+  callSmo:function(e) { 
+    wx.makePhoneCall({
+      phoneNumber: e.currentTarget.dataset.mobile,
+    })
+  },
   getData:function() {
     let that = this;
     var url = 'account/store/details';
@@ -31,19 +36,24 @@ Page({
       })
     })
   },
-  navtoClass:function() {
+  navtoClass:function(e) {
     wx.navigateTo({
-      url: '/pages/storeAccount/storeAccount?Id=' + this.data.Id,
+      url: '/pages/storeClass/storeClass?Id=' + e.currentTarget.dataset.id,
     })
   },
-  navtoStoreAccount: function () {
+  navtoStoreAccount: function (e) {
     wx.navigateTo({
-      url: '/pages/storeAccount/storeAccount?Id='+this.data.Id,
+      url: '/pages/storeAccount/storeAccount?Id=' + e.currentTarget.dataset.id,
     })
   },
-  navtoStoreTeacher: function () {
+  navtoStoreTeacher: function (e) {
     wx.navigateTo({
-      url: '/pages/storeTeacher/storeTeacher?Id=' + this.data.Id,
+      url: '/pages/storeTeacher/storeTeacher?Id=' + e.currentTarget.dataset.id,
+    })
+  },
+  navtoRecharge:function(e) {
+    wx.navigateTo({
+      url: '/pages/rechar/rechar?Id=' + e.currentTarget.dataset.id + '&name=' + e.currentTarget.dataset.name + '&money=' + this.data.Info.Money,
     })
   },
   onShareAppMessage: function () {

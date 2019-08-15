@@ -1,0 +1,8 @@
+<view class='conetent radius10 mt20'>
+  <text class='ft24'>充值金额(元)</text>
+  <view class='start borb'>
+    <input type='digit' value='{{money}}' bindinput='hasInput' class='inputMoney ft28'></input>
+  </view>
+  <button class='btn' wx:if="{{hideModal}}" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo">支付</button>
+  <button class='btn' wx:else>支付</button>
+</view>

@@ -1,0 +1,116 @@
+
+<view class='bg'>
+<view class='noHas' wx:if="{{storeItemList.length<=0}}">
+  <image src='../../img/zanwu.png' mode='widthFix' class='noList'></image>
+  <view class='notext'>暂无课程</view>
+</view>
+  <view wx:else class="content">
+    <view class='column item pb20' wx:for="{{storeItemList}}" wx:key>
+      <view class='start'>
+        <view>
+          <image src='{{item.ItemCoverImg}}' class='avator' mode='aspectFill'></image>
+        </view>
+        <view class='column'>
+          <view class='between'>
+            <view class='start h40'>
+              <view class='ft28 bold'>{{item.ItemName}}</view>
+            </view>
+          </view>
+          <view class='between ft28 h40'>
+            <view class='ft24 bb noWrap' wx:if="{{item.ItemTypeDes}}">{{item.ItemTypeDes}}</view>
+            <view class='ft24 bb noWrap' wx:else>暂无类型</view>
+          </view>
+          <view class='between ft28 h40'>
+            <view class='ft24 bb noWras' wx:if="{{item.ItemDesc}}">{{item.ItemDesc}}</view>
+            <view class='ft24 bb noWras' wx:else>暂无描述</view>
+          </view>
+          <view class='between ft24 h40'>
+            <view class='bb'>绑定时间:{{item.BindTime}}</view>
+          </view>
+        </view>
+        <view class='center r5'>
+          <image class='edit' bindtap='edit' data-storeId="{{storeId}}" data-name="{{item.ItemName}}" data-id="{{item.ItemId}}" src='../../img/more.png' mode='aspectFill' lazy-load='true'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!--分配课程弹出框-->
+<modal hidden="{{!showLog}}" title="分配课程" confirm-text="确认" cancel-text="取消" bindcancel="bindCancel" bindconfirm="bindSure" catchtouchmove="true">
+  <scroll-view scroll-y="true" class='dialogList' wx:if="{{sellerItemList.length>0}}">
+    <checkbox-group bindchange="checkedChange">
+      <view class='dialogItem start' wx:for="{{sellerItemList}}" wx:key>
+        <checkbox class='chebox center' value='{{item.ItemId}}' checked='{{item.checked==true}}'></checkbox>
+        <view class='center'>
+          <image class='avator' src='{{item.ItemCoverImg}}' mode='aspectFill'></image>
+        </view>
+        <view class='column'>
+          <view class='start h40 black'>
+            <view class='ft28'>{{item.ItemName}}</view>
+          </view>
+          <view class='noWrap w345 h40'>
+            <view class='ft24 bb' wx:if="{{item.ItemTypeDes}}">{{item.ItemTypeDes}}</view>
+            <view class='ft24 bb' wx:else>暂无类型</view>
+          </view>
+          <view class='noWrap w345 h40'>
+            <view class='ft24 bb' wx:if="{{item.ItemDesc}}">{{item.ItemDesc}}</view>
+            <view class='ft24 bb' wx:else>暂无描述</view>
+          </view>
+          <view class='ft24 bb h30 h40'>创建时间: {{item.CreateTime}}</view>
+        </view>
+      </view>
+    </checkbox-group>
+  </scroll-view>
+</modal>
+
+<!--分配课程标签弹出框-->
+<modal hidden="{{!showTag}}" title="选择标签" confirm-text="确认" cancel-text="取消" bindcancel="tagCancel" bindconfirm="tagSure" catchtouchmove="true">
+  <scroll-view scroll-y="true" class='dialogList' wx:if="{{tagItemList.length>0}}">
+    <checkbox-group bindchange="checkedChange1">
+      <view class='item1 column' wx:for="{{tagItemList}}" wx:key>
+        <view class='start h60'>
+          <checkbox value='{{item.TagId}}' checked='{{item.checked==true}}'></checkbox>
+          <view>{{item.TagName}}</view>
+        </view>
+      </view>
+    </checkbox-group>
+  </scroll-view>
+  <view wx:else>
+    <view class='zanwu'>暂无数据</view>
+  </view>
+</modal>
+
+<!--选择教师弹出框-->
+<modal hidden="{{!showTeacher}}" title="选择教师" confirm-text="确认" cancel-text="取消" bindcancel="teacherCancel" bindconfirm="teacherSure" catchtouchmove="true">
+  <scroll-view scroll-y="true" class='dialogList' wx:if="{{storeTeacherList.length>0}}">
+    <checkbox-group bindchange="checkedChange2">
+      <view class='dialogItem start' wx:for="{{storeTeacherList}}" wx:key>
+        <checkbox class='chebox center' value='{{item.Id}}' checked='{{item.checked==true}}'></checkbox>
+        <view class='center'>
+          <image class='avator1 radiu50' src='{{item.HeadUrl}}' mode='aspectFill'></image>
+        </view>
+        <view class='column'>
+          <view class='start'>
+            <view class='ft28 black'>{{item.Name}}</view>
+          </view>
+          <view class='noWrap w345'>
+            <view class='ft24 bb' wx:if="{{item.Titles}}">{{item.Titles}}</view>
+            <view class='ft24 bb' wx:else>暂无标签</view>
+          </view>
+          <view class='w100 w345'>
+            <view class='ft24 bb' wx:if="{{item.Experience}}">{{item.Experience}}</view>
+            <view class='ft24 bb' wx:else>暂无描述</view>
+          </view>
+          <view class='ft24 bb'>创建时间: {{item.CreateTime}}</view>
+        </view>
+      </view>
+    </checkbox-group>
+  </scroll-view>
+  <view wx:else>
+    <view class='zanwu'>暂无数据</view>
+  </view>
+</modal>
+
+
+<view class='add' wx:if="{{IsAdministrator==true}}" bindtap='fenpei'>分配课程</view>

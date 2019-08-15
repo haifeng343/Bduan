@@ -27,9 +27,15 @@ Page({
       PageIndex:that.data.page,
     }
     netUtil.postRequest(url, params, function (res) {
-      console.log(res);
+      let arr = res.Data;
+      let arr1 = that.data.items;
+      if (that.data.page == 1) {
+        arr1 = arr
+      } else {
+        arr1 = arr1.concat(arr);
+      }
       that.setData({
-        items: res.Data
+        items: arr1
       })
     });
   },
@@ -41,25 +47,25 @@ Page({
       name:e.currentTarget.dataset.name
     })
     wx.showActionSheet({
-      itemList: ['编辑','修改密码','删除'],
+      itemList: ['修改密码','编辑','删除'],
       success: function (e) {
         if (e.tapIndex == 0) {
+          wx.navigateTo({
+            url: '/pages/modifyPassword/modifyPassword?id=' + that.data.Id,
+          })
+        }
+        if (e.tapIndex == 1) {
           wx.navigateTo({
             url: '/pages/addAccount/addAccount?id='+that.data.Id,
           })
         }
-        if(e.tapIndex == 1) {
-          wx.navigateTo({
-            url: '/pages/modifyPassword/modifyPassword?id='+that.data.Id,
-          })
-        }
         if (e.tapIndex == 2) {
           wx.showModal({
-            title: '确认删除 '+that.data.name+' 吗？',
+            title: '确认删除账户  '+that.data.name+' 吗？',
             content: '',
             success:function(res) {
               if(res.confirm){
-                var url = 'user/address/delete';
+                var url = 'account/selleraccount/delete';
                 var params = {
                   Id: that.data.Id
                 }
@@ -82,9 +88,21 @@ Page({
       url: '/pages/addAccount/addAccount',
     })
   },
-  onPullDownRefresh:function() {
+  onPullDownRefresh: function () {
+    this.setData({
+      page: 1
+    })
     this.init();
     wx.stopPullDownRefresh();
+  },
+
+  onReachBottom: function () {
+    let temp = this.data.page;
+    temp++;
+    this.setData({
+      page: temp
+    })
+    this.init();
   },
   onShareAppMessage: function () {
 

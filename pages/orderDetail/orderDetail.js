@@ -5,10 +5,11 @@ Page({
     Id:'',
     Info:{},
     mobile:'',
+    showCall:false,
   },
   onLoad:function(options) {
     this.setData({
-      Id:options.id
+      Id:options.id || ''
     })
     this.init();
   },
@@ -21,7 +22,8 @@ Page({
     netUtil.postRequest(url, params, function (res) {
       that.setData({
         Info: res.Data,
-        mobile: res.Data.BuyAccountMobile
+        mobile: res.Data.BuyAccountMobile,
+        showCall: res.Data.BuyAccountMobile.indexOf('*') == -1 && res.Data.BuyAccountMobile != ''
       })
     })
   },
@@ -30,9 +32,19 @@ Page({
       phoneNumber: this.data.mobile,
     })
   },
-  bindCause:function(e) {
-    wx.navigateTo({
-      url: '/pages/courseDetail/courseDetail?id='+e.currentTarget.dataset.id,
+  //复制
+  copyText: function (e) {
+    wx.setClipboardData({
+      data: e.currentTarget.dataset.text,
+      success: function (res) {
+        wx.getClipboardData({
+          success: function (res) {
+            wx.showToast({
+              title: '复制成功'
+            })
+          }
+        })
+      }
     })
   },
   onPullDownRefresh: function () {

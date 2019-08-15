@@ -1,0 +1,25 @@
+<view class='start h80 content ft28 bort borb header'>
+  <picker mode="multiSelector" value="{{date2}}" range='{{array}}' start="{{dataStart}}" end="{{dataEnd}}" fields="month" bindchange="bindDateChange">
+    <view class="picker">
+      {{date?date:now}}
+    </view>
+  </picker>
+  <image src='../../img/select.png' class='select' mode='widthFix' lazy-load='true'></image>
+</view>
+<view class='nohasLog' wx:if="{{List.length<=0}}">
+  <image src='../../img/zanwu.png' mode='widthFix' class='noImg'></image>
+  <view class='notext'>暂无充值记录</view>
+</view>
+<view class='mtml' wx:else>
+  <view class='content borb around ft28'>
+    <!-- <view class='h100 ft28 bold'>券码</view> -->
+    <view class='item'>充值金额 (元)</view>
+    <view class='item'>充值时间</view>
+  </view>
+  <view class='content borb around ft24' wx:for="{{List}}" wx:key>
+    <view class='item h100'>
+      <view class='b1'>{{item.RechargeAmount}}</view>
+      <view class='b2'>{{item.RechargeTime}}</view>
+    </view>
+  </view>
+</view>

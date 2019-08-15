@@ -9,26 +9,32 @@
         <view>
           <image src='{{item.ItemCoverImg}}' class='avator' mode='aspectFill'></image>
         </view>
+        <view class='status' wx:if="{{item.ExamineStatus!=4}}">
+          <view class='ft24 cl' wx:if="{{item.ExamineStatus==1}}">等待审核</view>
+          <view class='ft24 cl' wx:if="{{item.ExamineStatus==2}}">审核中</view>
+          <view class='ft24 cl red' wx:if="{{item.ExamineStatus==3}}" data-content="{{item.ExamineStatusDes}}">审核失败
+            <text bindtap="clickEor" wx:if="{{item.ExamineStatusDes}}">?</text>
+          </view>
+        </view>
         <view class='column'>
           <view class='between'>
-            <view class='start'>
-              <view class='ft28 bold'>{{item.ItemName}}</view>
-            </view>
-            <view class='status'>
-              <view class='ft28' wx:if="{{item.ExamineStatus==1}}">等待审核</view>
-              <view class='ft28' wx:if="{{item.ExamineStatus==2}}">审核中</view>
-              <view class='ft28 red' wx:if="{{item.ExamineStatus==3}}" data-content="{{item.ExamineStatusDes}}" bindtap="clickEor">审核失败?</view>
-              <view class='ft28' wx:if="{{item.ExamineStatus==4}}">审核成功</view>
+            <view class='start h40'>
+              <view class='ft28 bold noWrapd'>{{item.ItemName}}</view>
             </view>
           </view>
-          <view class='between ft24'>
-            <view class='bb noWrap w100'>{{item.ItemTypeDes}}</view>
+          <view class='between h40 ft24'>
+            <view class='bb noWrap w90' wx:if="{{item.ItemTypeDes}}">{{item.ItemTypeDes}}</view>
+            <view class='bb noWrap w90' wx:else>暂无类型</view>
           </view>
-          <view class='between ft24'>
+          <view class='between h40 ft24'>
+            <view class='bb w90' wx:if="{{item.ItemDesc}}">{{item.ItemDesc}}</view>
+            <view class='bb w90' wx:else>暂无描述</view>
+          </view>
+          <view class='between h40 ft24'>
             <view class='bb'>创建时间:{{item.CreateTime}}</view>
           </view>
         </view>
-        <view>
+        <view class='center r5'>
           <image class='edit' bindtap='edit' data-status="{{item.ExamineStatus}}" data-name="{{item.ItemName}}" data-id="{{item.ItemId}}" src='../../img/more.png' mode='aspectFill' lazy-load='true'></image>
         </view>
       </view>

@@ -1,0 +1,29 @@
+<view class='container radius10'>
+
+  <view class='List start borb ft28'>
+    <text style='width:132rpx;'>退款金额:</text>
+    <view class='start'>￥<input type='digit' value='{{money}}' bindinput='hasMoney'></input></view>
+    <text class='all' bindtap='allMoney'>全部</text>
+  </view>
+  <view class='List between ft28'>
+    <text style='width:150rpx'>退款原因:</text>
+    <textarea class='textarea' value='{{text}}' bindinput='hasText'></textarea>
+  </view>
+</view>
+<view class='container radius10'>
+  <view class='certificate'>上传凭证</view>
+  <view style='background-color:#fff;height:400rpx;'>
+    <view class="image" wx:for="{{imgs}}" wx:for-item="item" wx:key="*this">
+      <!-- 图片预览 -->
+      <image src="{{item}}" class='onload' data-index="{{index}}" bindtap="previewImg" mode='aspectFill' lazy-load='true'></image>
+      <view class="deleteImage" data-index="{{index}}" catchtap="deleteImg">
+        <!-- 图片删除 -->
+        <image src='../../img/cha.png' class='cha' mode='widthFix' lazy-load='true'></image>
+      </view>
+    </view>
+    <view class='jiatupian' bindtap="chooseImg" wx:if="{{plusShow}}">
+      <image class='camero' src='../../img/certificate.png' mode='widthFix' lazy-load='true'></image>
+    </view>
+  </view>
+</view>
+  <button class='btn' data-status="{{status}}" bindtap='submit'>提交</button>

@@ -12,22 +12,22 @@
     <input value='{{password}}' bindinput='bindPassword'></input>
   </view>
   <view class='item start borb h80' wx:if="{{!Id}}">
-    <label style='width:250rpx'>再次输入密码</label>
+    <label>确认密码</label>
     <input value='{{password1}}' bindinput='bindPassword1'></input>
   </view>
   <view class='item start borb h80'>
     <label>账户类型</label>
     <radio-group class="ml20" bindchange="changeRadio">
       <label>
-        <radio value='1' checked='{{ showId ==1}}'>普通账户</radio>
-        <radio value='2' wx:if="{{AdminPower==2}}" checked='{{ showId ==2}}'>管理员</radio>
+        <radio value='0' checked='{{ IsAdministrator==false}}'>普通账户</radio>
+        <radio value='1' style='margin-left:50rpx' wx:if="{{AdminPower!=0}}" checked='{{ IsAdministrator==true}}'>管理员</radio>
       </label>
     </radio-group>
   </view>
   <view class='item start borb h80'>
     <label>头像</label>
-    <image class='upload pd20' wx:if="{{headerImg}}" src='{{headerImg}}' mode='widthFix' bindtap='bindUpload'></image>
-    <image class='upload pd20' wx:else src='../../img/upload.png' mode='widthFix' bindtap='bindUpload'></image>
+    <image class='upload pd20' wx:if="{{headerImg}}" src='{{headerImg}}' mode='apsectFill' bindtap='bindUpload'></image>
+    <image class='upload pd20' wx:else src='../../img/upload.png' mode='apsectFill' bindtap='bindUpload'></image>
   </view>
 </view>
 

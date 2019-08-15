@@ -2,88 +2,68 @@
   <image src='../../img/zanwu.png' mode='widthFix' class='noList'></image>
   <view class='zanwu'>暂无账户</view>
 </view>
-<view class='content' wx:else>
-  <view class='item pd20 start' wx:for="{{List}}" wx:key>
-    <view>
-      <image src='{{item.HeadUrl}}' mode='aspectFill' class='avator'></image>
-    </view>
-    <view class='column w100'>
-      <view class='between w100 ft28 h40'>
-        <view>账户名: {{item.UserName}}
-        <text class='tag' wx:if="{{item.IsAdministrator==true}}">管理员</text>
-        <text class='tag tag1' wx:else>普通账户</text>
-        </view>
+<view class="content {{showLog==true?'hidden':''}}" wx:else>
+  <view>
+    <view class='item pd20 start' wx:for="{{List}}" wx:key bindtouchmove='move'>
+      <view>
+        <image src='{{item.HeadUrl}}' mode='aspectFill' class='avator'></image>
       </view>
-      <view class='between w100 ft24 h40'>
-        <view>手机号: {{item.Mobile}}</view>
-        <!-- <view class='cc'>绑定时间: 2019-5241-474</view> -->
+      <view class='column w100'>
+        <view class='between w100 ft28 h40'>
+          <view>账户名：{{item.UserName}}
+            <!-- <text class='tag' wx:if="{{item.IsAdministrator==true}}">管理员</text>
+        <text class='tag tag1' wx:else>普通账户</text> -->
+          </view>
+        </view>
+        <view class='start bb w100 ft24 h40'>账户类型：
+          <view wx:if="{{item.AdminPower==0}}" class=''>普通账户</view>
+          <view wx:if="{{item.AdminPower==1}}" class=''>管理员</view>
+          <view wx:if="{{item.AdminPower==2}}" class=''>超级管理员</view>
+        </view>
+        <view class='between bb w100 ft24 h40'>
+          <view wx:if="{{item.Mobile}}">手机号：{{item.Mobile}}</view>
+          <view wx:else>暂无绑定手机号</view>
+        </view>
+        <view class='between w100 ft24 h40'>
+          <view class='bb' wx:if="{{item.BindTime}}">绑定时间：{{item.BindTime}}</view>
+          <view class='bb' wx:else>绑定时间：(空)</view>
+        </view>
       </view>
     </view>
   </view>
 </view>
-
+<!-- <view class="mask" catchtouchmove="show" bindtap='hideFixed' wx:if="{{show}}"></view> -->
 <!--分配弹出框-->
-<modal hidden="{{showLog}}" title="分配账户" confirm-text="确认" cancel-text="取消" bindcancel="bindCancel" bindconfirm="bindSure">
-  <view class='dialogList' wx:if="{{accountList.length>0}}">
+<modal hidden="{{!showLog}}" title="分配账户" confirm-text="确认" cancel-text="取消" bindcancel="bindCancel" bindconfirm="bindSure" catchtouchmove="true">
+  <scroll-view scroll-y="true" class='dialogList' wx:if="{{accountList.length>0}}">
     <checkbox-group bindchange="checkedChange">
       <view class='dialogItem pd20 start' wx:for="{{accountList}}" wx:key>
         <!-- <checkbox value='{{item.AccountId}}'></checkbox> -->
-        <checkbox value='{{item.AccountId}}' checked='{{item.AccountId == checkedArr[index]}}'></checkbox>
+        <checkbox value='{{item.AccountId}}' checked='{{item.checked == true}}'></checkbox>
         <view>
-          <image src='{{item.HeadUrl}}' mode='aspectFill' class='avator'></image>
+          <image src='{{item.HeadUrl}}' mode='aspectFill' class='avator1'></image>
         </view>
         <view class='column w100'>
-          <view class='between w100 ft28 h40'>
+          <view class='between w100 ft28 black'>
             <view>账户名: {{item.UserName}}</view>
-            <view style='width:140rpx' wx:if="{{item.IsAdministrator==true}}">管理员</view>
-            <view style='width:140rpx' wx:else>普通账户</view>
           </view>
-          <view class='between w100 ft24 h40'>
-            <view>手机号: {{item.Mobile}}</view>
-            <!-- <view class='cc'>绑定时间: 2019-5241-474</view> -->
+          <view class='start w100 ft24 bb'>账户类型：
+            <view wx:if="{{item.AdminPower==0}}">普通账户</view>
+            <view wx:if="{{item.AdminPower==1}}">管理员</view>
+            <view wx:if="{{item.AdminPower==2}}">超级管理员</view>
+          </view>
+          <view class='between w100 ft24 bb'>
+            <view wx:if="{{item.Mobile}}">手机号: {{item.Mobile}}</view>
+            <view wx:else>暂无绑定手机号</view>
+          </view>
+          <view class='between w100 ft24'>
+            <view class='bb'>创建时间: {{item.CreateTime}}</view>
           </view>
         </view>
       </view>
     </checkbox-group>
-  </view>
-  <view wx:else>
-    <view class='zanwu'>暂无数据</view>
-  </view>
+  </scroll-view>
   <input value='{{code}}' bindinput='setCode' class='codeInput'></input>
 </modal>
-<!-- 
-<view class="zan-dialog {{ showSuccess ? 'zan-dialog--show' : 'none' }}" catchtouchmove="ture">
-  <view class="zan-dialog__mask" bindtap="toggleDialog" />
-  <view class="zan-dialog__container">
-    <view class='h60 bold center pd20'>分配账户</view>
-    <view class='dialogList'>
-      <checkbox-group bindchange="checkedChange">
-        <view class='dialogItem pd20 start' wx:for="{{accountList}}" wx:key>
-          <checkbox value='{{item.AccountId}}'></checkbox>
-          <view>
-            <image src='{{item.HeadUrl}}' mode='aspectFill' class='avator'></image>
-          </view>
-          <view class='column w100'>
-            <view class='between w100 ft28 h40'>
-              <view>账户名: {{item.UserName}}</view>
-              <view wx:if="{{item.IsAdministrator==true}}">管理员</view>
-              <view wx:else>普通账户</view>
-            </view>
-            <view class='between w100 ft24 h40'>
-              <view>手机号: {{item.Mobile}}</view>
-              <view class='cc'>绑定时间: 2019-5241-474</view>
-            </view>
-          </view>
-        </view>
-
-
-      </checkbox-group>
-    </view>
-    <view class='know h80 bort between'>
-      <view class='cancel' bindtap='bindCancel'>取消</view>
-      <view class='cancel' bindtap='bindSure'>确认</view>
-    </view>
-  </view>
-</view> -->
 
 <view class='add' bindtap='fenpei' wx:if="{{IsShow==true}}">分配账户</view>

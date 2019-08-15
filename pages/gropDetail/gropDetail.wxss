@@ -1,5 +1,5 @@
 .kl{
-  padding: 20rpx 5%;
+  padding: 15rpx 2.5%;
   box-sizing: border-box;
 }
 .t1{
@@ -8,14 +8,31 @@
   margin-right: 10rpx;
   border-radius: 15rpx;
 }
+.container {
+  width: 95%;
+  margin: 25rpx 2.5%;
+}
 .detailContent{
   width: 88%;
   height: auto;
+}
+.borNone{
+  border: none!important;
 }
 .List{
   width: 100%;
   height: auto;
   background-color: #fff;
+}
+.noWrap{
+  width: 284rpx;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+}
+.noWrap{
+  width: 284rpx;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
 }
 .item{
   width: 100%;
@@ -25,8 +42,6 @@
   box-sizing: border-box;
 }
 .item .start{
-  height: 50rpx;
-  line-height: 50rpx;
   display: flex;
   align-items: center;
 }
@@ -34,7 +49,6 @@
   height: 35rpx;
   line-height: 35rpx;
   font-size: 28rpx;
-  margin-bottom: 10rpx;
 }
 .List1 .item{
   width: 100%;

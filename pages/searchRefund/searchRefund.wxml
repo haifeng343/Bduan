@@ -1,0 +1,28 @@
+<view class="mask" catchtouchmove="show" bindtap='hideFixed' wx:if="{{show}}"></view>
+<view class='startd start'>
+  <input class='searchInput' value='{{value}}' placeholder='退款编号' bindinput='bindSearch'></input>
+  <view class='ft28 searchRight' bindtap='search'>搜索</view>
+  <cover-view class='clearDiv'>
+    <cover-image src='../../img/clear.png' class='cleard' wx:if="{{value.length>0}}" bindtap='clear' mode='widthFix'></cover-image>
+  </cover-view>
+</view>
+
+<view class='List bb'>
+    <view class='item column radius10' wx:for="{{List}}" wx:key>
+      <view data-id="{{item.Id}}" bindtap='bindRefundDetail'>
+        <view class='between'>
+          <view class='ft28'>退款编号：{{item.RefunSn}}</view>
+          <view class='ft28 black' wx:if="{{item.RefundStatus==1}}">申请退款</view>
+          <view class='ft28 black' wx:if="{{item.RefundStatus==2}}">退款中</view>
+          <view class='ft28 red' style='margin-right:15rpx' wx:if="{{item.RefundStatus==3}}">退款失败 </view>
+          <view class='ft28 black' wx:if="{{item.RefundStatus==4}}">退款成功</view>
+          <view class='ft28 black' wx:if="{{item.RefundStatus==5}}">退款取消</view>
+        </view>
+        <view class='ft28'>退款金额：{{item.RefundAmount==0?0:item.RefundAmount}}元</view>
+        <view class='ft28'>申请时间：{{item.ApplyTime}}</view>
+      </view>
+      <cover-view class='absokl'>
+        <cover-image wx:if="{{item.StatusDes}}" data-item="{{item}}" src='../../img/wen.png' class='icon' bindtap='bindEor'>?</cover-image>
+      </cover-view>
+    </view>
+  </view>

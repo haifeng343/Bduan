@@ -39,6 +39,10 @@ Page({
       })
     }
   },
+  onPullDownRefresh:function() {
+    this.init();
+    wx.stopPullDownRefresh();
+  },
   onShareAppMessage: function () {
 
   }

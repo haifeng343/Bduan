@@ -5,7 +5,7 @@ Page({
   data: {
     name: '', //教师姓名
     headImg: '', //教师头像
-    headPath:'',//教师上传头像
+    headPath: '', //教师上传头像
     type: '', //授课类型
     jobTitle: [], //教师职称
     showLog: true, //教师职称弹窗
@@ -140,77 +140,85 @@ Page({
       success(res) {
         let usertoken = wx.getStorageSync('userInfo').UserToken;
         const tempFilePaths = res.tempFilePaths
-        wx.uploadFile({
-          url: baseUrl + 'img/upload', //仅为示例，非真实的接口地址
-          filePath: tempFilePaths[0],
-          name: 'Teacher.Main',
-          header: {
-            "Content-Type": "multipart/form-data", //记得设置
-            'channelCode': 'wechat',
-            'appVersion': '1.0.1',
-            "userToken": usertoken,
-          },
-          success: (res) => {
-            var ttt = JSON.parse(res.data);
-            that.setData({
-              headPath: ttt.Data.ImgPath,
-              headImg: ttt.Data.ImgUrl,
-            })
-          },
-          fail: (res) => {
-            wx.showToast({
-              icon: 'none',
-              title: res.data.ErrorMessage,
-            })
-          },
-        })
+        let tempFiles = res.tempFiles[0].size;
+        if (tempFiles > 1000000) {
+          wx.showToast({
+            icon: 'none',
+            title: '图片不能超过1M',
+          })
+        } else {
+          wx.uploadFile({
+            url: baseUrl + 'img/upload', //仅为示例，非真实的接口地址
+            filePath: tempFilePaths[0],
+            name: 'Teacher.Main',
+            header: {
+              "Content-Type": "multipart/form-data", //记得设置
+              'channelCode': 'wechat',
+              'appVersion': '1.0.1',
+              "userToken": usertoken,
+            },
+            success: (res) => {
+              var ttt = JSON.parse(res.data);
+              that.setData({
+                headPath: ttt.Data.ImgPath,
+                headImg: ttt.Data.ImgUrl,
+              })
+            },
+            fail: (res) => {
+              wx.showToast({
+                icon: 'none',
+                title: res.data.ErrorMessage,
+              })
+            },
+          })
+        }
       }
     })
   },
   //添加商户师资/编辑
-  submit:function() {
+  submit: function() {
     let that = this;
-    var url = that.data.Id ? 'account/sellerteacher/modify' :'account/sellerteacher/add';
-    if (that.data.name){
+    var url = that.data.Id ? 'account/sellerteacher/modify' : 'account/sellerteacher/add';
+    if (that.data.name) {
       wx.showToast({
-        icon:'none',
+        icon: 'none',
         title: '请输入教师姓名',
       })
     }
-    if (that.data.headPath){
+    if (that.data.headPath) {
       wx.showToast({
-        icon:'none',
+        icon: 'none',
         title: '请选择教师头像',
       })
     }
     var params = {
-      TeacherId:that.data.Id,
-      TeacherName:that.data.name,
+      TeacherId: that.data.Id,
+      TeacherName: that.data.name,
       HeadImg: that.data.headPath,
-      TeachingAge:that.data.old,
+      TeachingAge: that.data.old,
       TitlesId: that.data.checkedArr,
       Experience: that.data.description,
     }
-    if (!that.data.name || !that.data.jobTitle || !that.data.old || !that.data.headPath || !that.data.description){
+    if (!that.data.name) {
       wx.showToast({
-        icon:'none',
+        icon: 'none',
         title: '内容不能为空',
       })
       return;
     }
-    netUtil.postRequest(url, params, function (res) {
+    netUtil.postRequest(url, params, function(res) {
       wx.showModal({
         title: that.data.Id ? '编辑成功' : '添加成功',
         content: '',
-        showCancel:false,
-        cancelColor:'#29d9d6',
-        cancelText:'知道了',
-        success:function(res) {
+        showCancel: false,
+        cancelColor: '#29d9d6',
+        cancelText: '知道了',
+        success: function(res) {
           let pages = getCurrentPages(); //当前页面
           let prevPage = pages[pages.length - 2]; //上一页面
           prevPage.init();
           wx.navigateBack({
-            delta:1
+            delta: 1
           })
         }
       })

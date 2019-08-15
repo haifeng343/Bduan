@@ -5,22 +5,27 @@
   </view>
   <view class='item start borb h80'>
     <label>教师头像</label>
-    <image class='upload pd20 ml20' wx:if="{{headImg}}" src='{{headImg}}' mode='widthFix' bindtap='bindUpload'></image>
-    <image class='upload pd20 ml20' wx:else src='../../img/upload.png' mode='widthFix' bindtap='bindUpload'></image>
+    <image class='upload pd20 ml20' wx:if="{{headImg}}" src='{{headImg}}' mode='aspectFill' bindtap='bindUpload'></image>
+    <image class='upload pd20 ml20' wx:else src='../../img/upload.png' mode='aspectFill' bindtap='bindUpload'></image>
   </view>
   <view class='item start borb h80'>
     <label>教师职称</label>
     <!-- <input value='{{jobTitle}}' bindinput='bindNJobTitle' placeholder='请填写教师职称'></input> -->
     <view class='jobTitle' bindtap='changeTitle'>{{jobTitle}}</view>
+    <image src='../../img/go.png' class='icon end goes'></image>
   </view>
   <view class='item start borb h80'>
     <label>授课教龄</label>
     <input value='{{old}}' bindinput='bindold' placeholder='例：5年'></input>
   </view>
-  <view class='item column borb h80'>
-    <label style='width:100%'>教师描述</label>
-    <textarea value='{{description}}' bindinput='bindDescription' placeholder='请填写教师所获荣誉和个人经历' class='textarea pb10'></textarea>
+  <view class='item start borb' style='height:244rpx'>
+    <label class='h81'>教师描述</label>
+    <textarea hidden='{{showLog && !description}}' value='{{description}}' class='textarea' placeholder-class='placeholder' bindinput='bindDescription' placeholder='请填写教师所获荣誉和个人经历'></textarea>
   </view>
+  <!-- <view class='item start borb h81' style='height:140rpx;'>
+    <label>教师描述</label>
+    <input value='{{description}}' bindinput='bindDescription' placeholder='请填写教师所获荣誉和个人经历' class='textarea pb10'></input>
+  </view> -->
 </view>
 
 <view class='fixed'>

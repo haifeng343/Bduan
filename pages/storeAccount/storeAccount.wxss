@@ -1,4 +1,7 @@
 
+page{
+  padding-bottom: 100rpx;
+}
 .item{
   width: 100%;
   height: auto;
@@ -9,6 +12,9 @@
 .item:last-child{
   border-color: transparent;
 }
+modal{
+  background-color: #fff;
+}
 .tag{
   margin-left: 10rpx;
 }
@@ -16,8 +22,8 @@
   width: 100%;
 }
 .avator{
-  width: 120rpx;
-  height: 120rpx;
+  width: 160rpx;
+  height: 160rpx;
   border-radius: 50%;
   margin-right: 10rpx;
 }
@@ -69,8 +75,8 @@
   margin-right: 15rpx;
 }
 .avator1{
-  width: 150rpx;
-  height: 150rpx;
+  width: 110rpx;
+  height: 110rpx;
   border-radius: 50%;
   margin-right: 10rpx;
 }

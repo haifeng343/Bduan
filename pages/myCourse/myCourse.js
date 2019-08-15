@@ -26,8 +26,15 @@ Page({
       PageIndex: that.data.page
     }
     netUtil.postRequest(url, params, function (res) {
+      let arr = res.Data;
+      let arr1 = that.data.items;
+      if (that.data.page == 1) {
+        arr1 = arr
+      } else {
+        arr1 = arr1.concat(arr);
+      }
       that.setData({
-        items: res.Data
+        items: arr1
       })
     });
   },
@@ -51,9 +58,9 @@ Page({
       name:e.currentTarget.dataset.name,
       status: e.currentTarget.dataset.status
     });
-    let state = that.data.status == 2 || that.data.status == 4;
+    let state = that.data.status == 2;
     wx.showActionSheet({
-      itemList: state ? ['课程图片', '刪除'] : ['编辑', '课程图片', '刪除'],
+      itemList: state ? ['课程图片', '刪除'] : ['课程图片', '编辑', '刪除'],
       success: function (e) {
         if (state) {
           if (e.tapIndex == 0) {
@@ -64,10 +71,10 @@ Page({
           }
         } else {
           if (e.tapIndex == 0) {
-            fn1();
+            fn2();
           }
           if (e.tapIndex == 1) {
-            fn2();
+            fn1();
           }
           if (e.tapIndex == 2) {
             fn3();
@@ -86,7 +93,7 @@ Page({
         }
         function fn3() {
           wx.showModal({
-            title: '确认删除' + that.data.name + '吗？',
+            title: '确认删除课程 ' + that.data.name + ' 吗？',
             content: '',
             success: function (res) {
               if (res.confirm) {

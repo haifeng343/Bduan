@@ -9,27 +9,35 @@
         <view>
           <image src='{{item.HeadUrl}}' class='avator' mode='aspectFill'></image>
         </view>
+        <view class='xuanfu'>
+          <view class='status mr15' wx:if="{{item.ExamineStatus!=4}}">
+            <view class='ft24 cl' wx:if="{{item.ExamineStatus==1}}">等待审核</view>
+            <view class='ft24 cl' wx:if="{{item.ExamineStatus==2}}">审核中</view>
+            <view class='ft24 cl red' wx:if="{{item.ExamineStatus==3}}" data-content="{{item.ExamineStatusDes}}">审核失败
+              <text bindtap="clickEor" wx:if="{{item.ExamineStatusDes}}">?</text>
+            </view>
+          </view>
+        </view>
         <view class='column'>
           <view class='between'>
             <view class='start'>
-              <view class='ft28 bold'>{{item.Name}}</view>
-              <view class='ml20 ft24 cc'>{{item.Titles}} | {{item.TeachingAge}}教龄</view>
-              <view class='status'>
-              <view class='ft28' wx:if="{{item.ExamineStatus==1}}">等待审核</view>
-              <view class='ft28' wx:if="{{item.ExamineStatus==2}}">审核中</view>
-              <view class='ft28 red' wx:if="{{item.ExamineStatus==3}}" data-content="{{item.ExamineStatusDes}}" bindtap="clickEor">审核失败?</view>
-              <view class='ft28' wx:if="{{item.ExamineStatus==4}}">审核成功</view>
+              <view class='ft28 noWrapd'>{{item.Name}}</view>
             </view>
-            </view>
+
           </view>
-          <view class='between ft28'>
-            <view class='cc'>{{item.Titles}}</view>
+          <view class='between'>
+            <view class='ft24 bb w90 noWrap' wx:if="{{item.Titles}}">{{item.Titles}} | {{item.TeachingAge}}教龄</view>
+            <view class='ft24 bb w90 noWrap' wx:else>暂无标签 | {{item.TeachingAge}}教龄</view>
           </view>
-          <view class='between ft28'>
-            <view class='cc'>创建时间:{{item.CreateTime}}</view>
+          <view class='between'>
+            <view class='ft24 bb w90 noWrap' wx:if="{{item.Experience}}">{{item.Experience}}</view>
+            <view class='ft24 bb w90 noWrap'>暂无描述</view>
+          </view>
+          <view class='between ft24'>
+            <view class='bb'>创建时间:{{item.CreateTime}}</view>
           </view>
         </view>
-        <view>
+        <view class='center r5'>
           <image class='edit' bindtap='edit' data-status="{{item.ExamineStatus}}" data-name="{{item.Name}}" data-id="{{item.Id}}" src='../../img/more.png' mode='aspectFill' lazy-load='true'></image>
         </view>
       </view>

@@ -10,7 +10,7 @@
   <input class='searchInput' value='{{value}}' placeholder='{{status}}' bindinput='bindSearch'></input>
   <view class='ft28 searchRight' bindtap='search'>搜索</view>
   <cover-view class='clearDiv'>
-    <image src='../../img/clear.png' class='cleard' wx:if="{{value}}" bindtap='clear' mode='widthFix'></image>
+    <cover-image src='../../img/clear.png' class='cleard' wx:if="{{value.length>0}}" bindtap='clear' mode='widthFix'></cover-image>
   </cover-view>
 </view>
 
@@ -27,22 +27,24 @@
 <view class='List List1'>
   <view class='item column' wx:for="{{List}}" data-id="{{item.OrderId}}" bindtap='bindDetail' wx:key>
     <view class='between'>
-      <view class='ft24 bb'>订单号： {{item.OrderSN}}</view>
+      <view class='ft28'>订单号：{{item.OrderSN}}</view>
       <view class='ft30' wx:if="{{item.OrderStatus==1}}">未使用</view>
       <view class='ft30' wx:if="{{item.OrderStatus==2}}">部分使用</view>
       <view class='ft30' wx:if="{{item.OrderStatus==3}}">已完成</view>
       <view class='ft30' wx:if="{{item.OrderStatus==4}}">已过期</view>
     </view>
-    <view class='ft28'>购买时间: {{item.BuyTime}}</view>
-    <view class='ft28'>购买账户: {{item.BuyAccountName}}({{item.BuyAccountMobile}})</view>
+    <view class='ft28'>购买时间：{{item.BuyTime}}</view>
+    <view class='ft28'>购买账户：{{item.BuyAccountName}}({{item.BuyAccountMobile==''?'空':item.BuyAccountMobile}})</view>
     <view class='between klp' wx:for="{{item.ItemList}}" wx:key wx:for-item="k">
       <view class='start'>
-        <view>
+        <view class='center'>
           <image class='icon mr5' src='../../img/b2.png' mode='widthFix'></image>
         </view>
         <view class='ft28'>{{k.ItemName}} ({{k.StoreName}})</view>
       </view>
-      <image class='icon2' wx:if="{{k.UseStatus==2}}" src='../../img/gou.png' mode='widthFix'></image>
+      <view class='center'>
+      <image class='icon' wx:if="{{k.UseStatus==2}}" src='../../img/gou.png' mode='widthFix'></image>
+      </view>
     </view>
   </view>
 </view>

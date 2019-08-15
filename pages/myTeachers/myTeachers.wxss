@@ -4,7 +4,6 @@ page {
 
 .container {
   min-height: 100%;
-  padding: 0rpx 0rpx 50rpx;
 }
 
 .address{
@@ -49,8 +48,8 @@ page {
   color: #A19B9B;
 }
 .avator{
-  width: 120rpx;
-  height: 120rpx;
+  width: 135rpx;
+  height: 135rpx;
   border-radius: 50%;
   margin-right: 15rpx;
 }

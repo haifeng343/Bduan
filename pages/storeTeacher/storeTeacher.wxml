@@ -6,38 +6,50 @@
   <view class='item pd20 start' wx:for="{{List}}" wx:key>
     <image src='{{item.HeadUrl}}' mode='aspectFill' class='avator'></image>
     <view class='column'>
-      <view class='start h60'>
+      <view class='start h40'>
         <view class='ft28'>{{item.Name}}</view>
-        <view class='ft24 cc ml20'>{{item.Titles}} | {{item.TeachingAge}}教龄</view>
       </view>
-      <view class='ft24 bb left'>{{item.Honor}}</view>
-      <!-- <view class='end ft24 cc h40'>绑定时间: 2019-10-12</view> -->
+      <view class='ft24 bb h40 left'>
+        <view class='ft24 bb' wx:if="{{item.Titles}}">{{item.Titles}} | {{item.TeachingAge}}教龄</view>
+        <view class='ft24 bb' wx:else>暂无标签 | {{item.TeachingAge}}教龄</view>
+      </view>
+      <view class='ft24 bb h40 left'>
+        <view class='ft24 bb' wx:if="{{item.Experience}}">{{item.Experience}}</view>
+        <view class='ft24 bb' wx:else>暂无描述</view>
+      </view>
+      <view class='end ft24 bb h40'>绑定时间: {{item.BindTime}}</view>
     </view>
   </view>
 </view>
 
 <!--分配弹出框-->
-<modal hidden="{{showLog}}" title="分配师资" confirm-text="确认" cancel-text="取消" bindcancel="bindCancel" bindconfirm="bindSure">
-  <view class='dialogList' wx:if="{{accountList.length>0}}">
+<modal hidden="{{!showLog}}" title="分配师资" confirm-text="确认" cancel-text="取消" bindcancel="bindCancel" bindconfirm="bindSure" catchtouchmove="true">
+  <scroll-view scroll-y="true" class='dialogList' wx:if="{{accountList.length>0}}">
     <checkbox-group bindchange="checkedChange">
       <view class='dialogItem start' wx:for="{{accountList}}" wx:key>
-        <checkbox class='chebox' value='{{item.Id}}' checked='{{item.Id == checkedArr[index]}}'></checkbox>
-        <view>
+        <checkbox class='chebox' value='{{item.Id}}' checked='{{item.checked==true}}'></checkbox>
+        <view class='center'>
           <image class='avator1' src='{{item.HeadUrl}}' mode='aspectFill'></image>
         </view>
         <view class='column'>
-          <view class='start h50'>
-            <view class='ft26'>{{item.Name}}</view>
-            <view class='ft22 cc ml20'>{{item.Titles}} | {{item.TeachingAge}}教龄</view>
+          <view class='start black'>
+            <view class='ft28'>{{item.Name}}</view>
           </view>
-          <view class='ft22 bb left'>{{item.Honor}}</view>
-          <!-- <view class='end ft22 cc h30'>绑定时间: 2019-10-12</view> -->
+          <view wx:if="{{item.Titles}}">
+            <view class='ft24 bb'>{{item.Titles}} | {{item.TeachingAge}}教龄</view>
+          </view>
+          <view wx:else>
+            <view class='ft24 bb'>暂无标签 | {{item.TeachingAge}}教龄</view>
+          </view>
+          <view class=' ft24 bb h30' wx:if="{{item.Experience}}">{{item.Experience}}</view>
+          <view class=' ft24 bb h30' wx:else>暂无描述</view>
+          <view class=' ft24 bb h30'>创建时间: {{item.CreateTime}}</view>
         </view>
       </view>
     </checkbox-group>
-  </view>
+  </scroll-view>
   <view wx:else>
-  <view class='zanwu'>暂无数据</view>
+    <view class='zanwu'>暂无数据</view>
   </view>
 </modal>
 <view class='add' bindtap='fenpei' wx:if="{{IsShow==true}}">分配师资</view>

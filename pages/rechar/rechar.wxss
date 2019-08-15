@@ -1,0 +1,39 @@
+.container{
+  box-sizing: border-box;
+  padding: 20rpx;
+}
+.kl1{
+  height: 70rpx;
+  display: flex;
+  align-items: center;
+}
+.el1{
+  margin-top: 15rpx;
+  padding-top: 15rpx;
+  box-sizing: border-box;
+}
+.paybtn{
+  color: #fff;
+  background-color: #29D9D6;
+  font-size: 24rpx;
+  width: 120rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  border-radius: 8rpx;
+  text-align: center;
+}
+.ml10{
+  margin-left: 10%;
+}
+
+
+
+
+
+
+
+
+
+
+
+

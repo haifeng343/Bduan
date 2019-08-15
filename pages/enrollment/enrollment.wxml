@@ -1,0 +1,62 @@
+
+<view class='bg'>
+<view class='noHas' wx:if="{{sheetList.length<=0}}">
+  <image src='../../img/zanwu.png' mode='widthFix' class='noList'></image>
+  <view class='notext'>暂无招生课程</view>
+</view>
+  <view wx:else class="content">
+    <view class='column item pb20' wx:for="{{sheetList}}" wx:key>
+      <view class='start'>
+        <view>
+          <image src='{{item.SheetCoverImgUrl}}' class='avator' mode='aspectFill'></image>
+        </view>
+        <view class='xuanfu' wx:if="{{item.SuspendStatus==2}}">
+          <view class='status mr15'>
+            <view class='ft24 cl' wx:if="{{item.SuspendStatus==2}}">已暂停</view>
+          </view>
+        </view>
+        <view class='column'>
+          <view class='between'>
+            <view class='start h40'>
+              <view class='ft28 bold'>{{item.SheetName}}</view>
+            </view>
+          </view>
+          <view class='between ft28 h40'>
+            <view class='ft24 w90'>{{item.TradingareaName}}</view>
+          </view>
+          <view class='between ft24 h40'>
+            <view class='bb'>活动截止:{{item.SheetLowerTime}}</view>
+          </view>
+        </view>
+        <view class='center r5'>
+          <image class='edit' bindtap='edit' data-myId="{{item.Id}}" data-status="{{item.SuspendStatus}}" src='../../img/more.png' mode='aspectFill' lazy-load='true'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!--选择招生栏目-->
+<modal hidden="{{!showLog}}" title="选择招生栏目" confirm-text="确认" cancel-text="取消" bindcancel="bindCancel" bindconfirm="bindSure" catchtouchmove="true">
+  <scroll-view scroll-y="true" class='dialogList' wx:if="{{sellerItemList.length>0}}">
+    <checkbox-group bindchange="checkedChange">
+      <view class='dialogItem start' wx:for="{{sellerItemList}}" wx:key>
+        <checkbox class='chebox center' value='{{item.SheetId}}' checked='{{item.checked==true}}'></checkbox>
+        <view class='center'>
+          <image class='avator' src='{{item.SheetCoverImgUrl}}' mode='aspectFill'></image>
+        </view>
+        <view class='column'>
+          <view class='start h40 black'>
+            <view class='ft28'>{{item.SheetName}}</view>
+          </view>
+          <view class='black w345 h40'>
+            <view class='ft24'>{{item.TradingareaName}}</view>
+          </view>
+          <view class='ft24 bb h30 h40'>活动截止: {{item.SheetLowerTime}}</view>
+        </view>
+      </view>
+    </checkbox-group>
+  </scroll-view>
+</modal>
+
+<view class='add' wx:if="{{IsAdministrator==true}}" bindtap='fenpei'>选择招生栏目</view>

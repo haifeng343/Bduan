@@ -4,7 +4,7 @@ page {
 
 .container {
   min-height: 100%;
-  padding: 0rpx 0rpx 50rpx;
+  padding: 0rpx 0rpx 75rpx;
 }
 
 .address{
@@ -12,10 +12,7 @@ page {
   background-color: #fff;
   height: 100vh;
 }
-.status{
-  width: 120rpx;
-  margin-right: 15rpx;
-}
+
 .noads{
   width: 450rpx;
   display: flex;
@@ -52,10 +49,13 @@ page {
   font-size: 26rpx;
   color: #A19B9B;
 }
+.h40{
+  line-height: 45rpx;
+}
 .avator{
-  width: 120rpx;
-  height: 120rpx;
-  border-radius: 15rpx;
+  width: 135rpx;
+  height: 177rpx;
+  border-radius: 10rpx;
   margin-right: 15rpx;
 }
 .column{

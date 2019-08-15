@@ -6,8 +6,10 @@
     <view class='column'>
       <view class='ft32 mt32 h40'>{{userInfo.NickName}}</view>
       <view class='start h50'>
-        <view class='ft28 mr15 more'>账号: {{userInfo.UserName}}</view>
-        <text class='tag' wx:if="{{userInfo.IsAdministrator==true}}">管理员</text>
+        <view class='ft24 bb mr15 '>账号: {{userInfo.UserName}}</view>
+        <text class='tag' wx:if="{{userInfo.AdminPower==1 && userInfo.IsAdministrator==true}}">管理员</text>
+        <text class='tag' wx:if="{{userInfo.AdminPower==2 && userInfo.IsAdministrator==true}}">超级管理员</text>
+        <text class='tag tag1' wx:if="{{userInfo.IsAdministrator==false}}">普通账户</text>
       </view>
     </view>
   </view>
@@ -18,7 +20,7 @@
     <view class='column'>
       <view class='ft32 mt30 h40'>未登录</view>
       <view class='start h50'>
-        <view class='ft28 mr15 more'>点击登录更精彩</view>
+        <view class='ft24 mr15 bb'>点击登录更精彩</view>
         <!-- <text class='tag'>管理员</text> -->
       </view>
     </view>

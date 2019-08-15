@@ -51,7 +51,7 @@ Page({
         imgs: res.Data,
         imgsArr: arr,
       })
-    });
+    },null,false,false,false);
   },
   chooseImg: function (e) {
     var that = this;
@@ -148,11 +148,8 @@ Page({
       name: 'Teacher.Imgs',
       success: (res) => {
         var ttt = JSON.parse(res.data);
-        console.log(ttt);
         if (ttt.Data) {
-          let arr = this.data.imgsArr;
-          arr.push(ttt.Data.ImgPath)
-          this.setData({ imgsArr: arr });
+          this.submit(ttt.Data.ImgPath)
         } else {
           wx.showToast({
             icon: 'none',
@@ -169,26 +166,16 @@ Page({
     });
   },
   //添加
-  submit: function (url) {
+  submit: function (ImgPath) {
     var that = this;
     var urls = 'account/sellerteacher/img/add';
     var params = {
-      ItemId: this.data.Id,
-      ImgUrl: this.data.imgsArr,
+      TeacherId: this.data.Id,
+      ImgUrl: ImgPath,
     }
     netUtil.postRequest(urls, params, function (res) {
-      wx.showModal({
-        title: '提交成功',
-        content: '',
-        success: function (res) {
-          if (res.confirm) {
-            wx.navigateBack({
-
-            })
-          }
-        }
-      })
-    });
+      that.init();
+    }, null, false, false, false);
   },
   onShareAppMessage: function () {
 

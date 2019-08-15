@@ -7,6 +7,7 @@ Page({
   data: {
     Id:'',
     Info:{},
+    showLog:false,
   },
   onLoad:function(options) {
     this.setData({
@@ -29,6 +30,16 @@ Page({
   bindGropDetail:function(e){
     wx.navigateTo({
       url: '/pages/gropDetail/gropDetail?id='+e.currentTarget.dataset.id,
+    })
+  },
+  joinDetail:function(e) {
+    this.setData({
+      showLog:true
+    })
+  },
+  closeModal: function () {
+    this.setData({
+      showLog: false
     })
   },
   onShareAppMessage: function () {

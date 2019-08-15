@@ -1,0 +1,37 @@
+<view class='container radius10'>
+  <view class='column'>
+    <view class='ft32'>门店余额</view>
+    <view class='between kl1'>
+      <view>
+        <text>￥{{money/100}}</text>
+      </view>
+      <view class='paybtn' bindtap='paybtn'>充值</view>
+    </view>
+  </view>
+</view>
+
+<view class='content content1 ft28 mt20'>
+  <view class='between h80' bindtap='bindRechargeLog'>
+    <view class='start h80'>
+      <image class='icon mr10' src='../../img/R1.png' mode='widthFix'></image>
+      <view>充值记录</view>
+    </view>
+    <image class='go' src='../../img/go.png' mode='widthFix'></image>
+  </view>
+</view>
+<view class='content content1 ft28 mt20'>
+  <view class='between h80 borb' bindtap='bindRefund'>
+    <view class='start h80'>
+      <image class='icon mr10' src='../../img/R2.png' mode='widthFix'></image>
+      <view>申请退款</view>
+    </view>
+    <image class='go' src='../../img/go.png' mode='widthFix'></image>
+  </view>
+  <view class='between h80 borb' bindtap='bindRefundLog'>
+    <view class='start h80'>
+      <image class='icon mr10' src='../../img/R3.png' mode='widthFix'></image>
+      <view>退款记录</view>
+    </view>
+    <image class='go' src='../../img/go.png' mode='widthFix'></image>
+  </view>
+</view>

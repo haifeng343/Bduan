@@ -1,0 +1,116 @@
+.d1 {
+  width: 133rpx;
+  height: 170rpx;
+  border-radius: 15rpx;
+}
+
+.content {
+  padding: 20rpx 5%;
+  box-sizing: border-box;
+}
+
+.content text {
+  margin-right: 10rpx;
+}
+.kml{
+  width: 500rpx;
+  height: auto;
+  line-height: 50rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.add,.w100{
+  display: flex;
+  align-items: center;
+  padding: 0 5%;
+  box-sizing: border-box;
+  justify-content: flex-end;
+}
+.w100{
+  padding: 0;
+}
+.mr25{
+  margin-right: 25rpx;
+}
+.btnd {
+  width: 180rpx;
+  border: 2rpx solid #bebebe;
+  box-sizing: border-box;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 35rpx;
+  background-color: transparent;
+  font-size: 28rpx;
+  color: #bebebe;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imgs {
+  width: 80%;
+  float: left;
+  margin-top: -13rpx;
+}
+
+.imgs image {
+  margin: 20rpx 0 0 20rpx;
+}
+
+.container {
+  background-color: transparent;
+}
+
+.item {
+  position: relative;
+}
+
+.icon {
+  margin-top: 0;
+}
+
+.use {
+  width: 100rpx;
+  height: 100rpx;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  background-color: #fff;
+}
+
+.avator {
+  width: 60rpx;
+  height: 50rpx;
+  margin-left: 10rpx;
+}
+
+.avator1 {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+}
+
+.start text:first-child, .between text:first-child {
+  width: 130rpx;
+}
+
+.statusd {
+  font-size: 28rpx;
+  color: #000;
+  width: 140rpx;
+  text-align: right;
+  word-break: keep-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.itemLeft {
+  width: 23%;
+}
+
+.bort {
+  margin-top: 20rpx;
+  padding-top: 20rpx;
+}

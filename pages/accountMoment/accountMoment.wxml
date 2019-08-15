@@ -11,23 +11,28 @@
             <image src='{{item.HeadUrl}}' mode='aspectFill' class='avator'></image>
           </view>
           <view class='column'>
-            <view class='between ft28'>
-              <view>账户名: {{item.UserName}}
-                <text wx:if="{{item.IsAdministrator==false}}" class='tag tag1'>普通账户</text>
-                <text wx:else class='tag'>管理员</text>
+            <view class='start ft28'>
+              <view class='start center'>账户名：
+                <view class='noWra mr5'>{{item.UserName}}</view>
               </view>
             </view>
-            <view class='between ft24'>
-              <view>手机号: {{item.Mobile}}</view>
+            <view class='start ft24 bb'>账户类型：
+              <text wx:if="{{item.AdminPower==0}}">普通账户</text>
+              <text wx:if="{{item.AdminPower==1}}">管理员</text>
+              <text wx:if="{{item.AdminPower==2}}">超级管理员</text>
+            </view>
+            <view class='between ft24 bb'>
+              <view wx:if="{{item.Mobile}}">手机号：{{item.Mobile}}</view>
+              <view wx:else>暂无绑定手机号</view>
             </view>
             <view class='between ft24'>
               <view>
-                <view class=''>创建时间: 2019-12-12</view>
+                <view class='bb'>创建时间：2019-12-12</view>
               </view>
             </view>
 
           </view>
-          <view>
+          <view class='center r5'>
             <image class='edit' bindtap='edit' data-name="{{item.UserName}}" data-id="{{item.AccountId}}" src='../../img/more.png' mode='aspectFill' lazy-load='true'></image>
           </view>
         </view>

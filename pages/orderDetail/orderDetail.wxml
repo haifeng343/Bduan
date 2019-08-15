@@ -4,12 +4,12 @@
       <view class='between h50'>
         <view class='ft28 start'>
           <text>订单编号:</text>
-          <view class='ml5'>{{Info.OrderSN}}</view>
+          <view class='ml5' bindtap='copyText' data-text="{{Info.OrderSN}}">{{Info.OrderSN}}</view>
         </view>
-        <view class='ft28 status' wx:if="{{Info.OrderStatus==1}}">未使用</view>
-        <view class='ft28 status' wx:if="{{Info.OrderStatus==2}}">部分使用</view>
-        <view class='ft28 status' wx:if="{{Info.OrderStatus==3}}">已完成</view>
-        <view class='ft28 status' wx:if="{{Info.OrderStatus==4}}">已过期</view>
+        <view class='ft28 statusd' wx:if="{{Info.OrderStatus==1}}">未使用</view>
+        <view class='ft28 statusd' wx:if="{{Info.OrderStatus==2}}">部分使用</view>
+        <view class='ft28 statusd' wx:if="{{Info.OrderStatus==3}}">已完成</view>
+        <view class='ft28 statusd' wx:if="{{Info.OrderStatus==4}}">已过期</view>
       </view>
       <view class='between h50 ft28'>
         <view class='start h50'>
@@ -20,7 +20,7 @@
           <view>{{Info.BuyAccountName}} <text wx:if="{{Info.BuyAccountMobile}}">({{Info.BuyAccountMobile}})</text></view>
         </view>
         <view class='center'>
-          <image class='icon' src='../../img/call.png' bindtap='bindCall' mode='widthFix'></image>
+          <image class='icon' wx:if="{{showCall}}" src='../../img/call.png' bindtap='bindCall' mode='widthFix'></image>
         </view>
       </view>
       <view class='between h50'>
@@ -35,16 +35,22 @@
           <text class='h50 ml5'>{{Info.BuyTime}}</text>
         </view>
       </view>
-      <view class='between h50 ft28'>
+      <view class='between h50 ft28' wx:if="{{Info.OrderStatus==1 || Info.OrderStatus==2}}">
         <view class='start h50'>
           <text>有效期至:</text>
           <text class='h50 ml5 '>{{Info.ExpireTime}}</text>
         </view>
       </view>
-      <view class='between h50 ft28' wx:if="{{Info.RefundTime}}">
+      <view class='between h50 ft28' wx:if="{{Info.OrderStatus==3}}">
         <view class='start h50'>
-          <text>退款时间:</text>
-          <text class='h50 ml5 '>{{Info.RefundTime}}</text>
+          <text style='width:180rpx'>最后使用时间:</text>
+          <text class='h50 ml5 '>{{Info.LastUseTime}}</text>
+        </view>
+      </view>
+      <view class='between h50 ft28' wx:if="{{Info.OrderStatus==4}}">
+        <view class='start h50'>
+          <text>截止日期:</text>
+          <text class='h50 ml5 '>{{Info.ExpireTime}}</text>
         </view>
       </view>
       <view class='between bort h50 ft28'>
@@ -58,8 +64,8 @@
 </view>
 
 <view class='container'>
-  <view class="content radius10 mt20 {{Info.OrderStatus==4?'gray':''}}">
-    <view class='item column' wx:for="{{Info.ItemList}}" data-id="{{k.RelId}}" bindtap='bindCause' wx:key wx:for-item="k">
+  <view class="content radius10 mt20">
+    <view class='item column' wx:for="{{Info.ItemList}}" wx:key wx:for-item="k">
       <view class='start'>
         <view class='itemLeft'>
           <image class='d1' src='{{k.ItemCoverImgUrl}}' mode='aspectFill'></image>

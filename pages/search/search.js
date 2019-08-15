@@ -26,10 +26,9 @@ Page({
         title: '搜索 - '+this.data.name,
       })
     }
-    this.init();
   },
   init: function () {
-    this.getSearch();
+    this.search();
   },
   hideFixed:function() {
     this.setData({
@@ -47,7 +46,6 @@ Page({
     this.setData({
       value: '',
       showHistory: true,
-      List: [],
     })
     this.getSearch();
   },
@@ -103,7 +101,7 @@ Page({
       OrderSn: that.data.status == '订单号搜索' ? that.data.value:'',
       BuyAccountName: that.data.status == '账户名搜索' ? that.data.value : '',
       SheetId: that.data.Id=="" ? 0 : that.data.Id,
-      PageCount: that.data.pagecount,
+      PageCount: that.data.pageCount,
       PageIndex: that.data.page,
     }
     if (that.data.value == '') {
@@ -131,16 +129,17 @@ Page({
     wx.setStorageSync('searchRecord', searchRecord);
 
     netUtil.postRequest(url, params, function (res) { //onSuccess成功回调
-      let arr = [];
+      let arr = that.data.List;
       wx.setStorageSync('search', that.data.value);
-      that.setData({
-        List: res.Data
-      })
-      if (that.data.value == '') {
-        that.setData({
-          List: []
-        })
+      let arr1 = res.Data;
+      if(that.data.page==1){
+        arr = arr1
+      }else{
+        arr = arr.concat(arr1)
       }
+      that.setData({
+        List:arr
+      })
       if (that.data.List.length <= 0) {
         wx.showToast({
           icon: 'none',
@@ -185,14 +184,6 @@ Page({
       url: '/pages/orderDetail/orderDetail?id=' + e.currentTarget.dataset.id,
     })
   },
-  onPullDownRefresh: function () {
-    this.setData({
-      page: 1
-    })
-    this.init();
-    wx.stopPullDownRefresh();
-  },
-
   onReachBottom: function () {
     let temp = this.data.page;
     temp++;

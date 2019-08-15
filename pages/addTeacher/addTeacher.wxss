@@ -1,18 +1,38 @@
-.item{
+.item {
   width: 100%;
   height: auto;
   padding: 0 5%;
   box-sizing: border-box;
   font-size: 28rpx;
+  position: relative;
 }
-.item label{
+
+.item label {
   width: 120rpx;
 }
-.item input{
+
+.item input {
   width: 520rpx;
   margin-left: 20rpx;
 }
-.jobTitle{
+.goes{
+  position: absolute;
+  width: 12rpx;
+  height: 22rpx;
+  right: 5%;
+}
+.item1 {
+  margin-bottom: 10rpx;
+  padding-bottom: 10rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #f7f7f7;
+}
+
+.item1:last-child {
+  border: none;
+}
+
+.jobTitle {
   width: 520rpx;
   margin-left: 20rpx;
   height: 80rpx;
@@ -26,26 +46,33 @@
   flex-direction: row;
   flex-wrap: nowrap;
 }
-.upload1{
+
+.upload1 {
   width: 150rpx;
   height: 150rpx;
 }
-.textarea{
-  width: 520rpx;
-  max-height: 100rpx;
-  line-height: 40rpx;
-}
-.titleList{
+
+.titleList {
   width: 100%;
   max-height: 666rpx;
 }
-.fixed{
+.h81{
+  height:80rpx;
+  line-height: 80rpx;
+}
+.fixed {
   width: 100%;
   position: fixed;
   bottom: 0;
   background-color: #fff;
   height: 100rpx;
   padding-top: 20rpx;
+}
+.textarea{
+  width: 520rpx;
+  height: 220rpx;
+  margin-left: 20rpx;
+  margin-top: 24rpx;
 }
 .md {
   width: 95%;
@@ -104,14 +131,3 @@
   margin: 0px;
   margin-left: -10px;
 }
-
-
-
-
-
-
-
-
-
-
-

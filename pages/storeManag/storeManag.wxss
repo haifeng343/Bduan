@@ -13,8 +13,8 @@
 .between{
   padding-right: 5%;
 }
-.icon{
-  margin-top: 2rpx;
+.h80{
+  box-sizing:border-box;
 }
 .go{
   margin-right: 5%；
@@ -36,6 +36,10 @@
 }
 .name{
   width: 100%;
+  height: 38rpx;
+  line-height: 38rpx;
+  display: flex;
+  align-items: center;
   text-align: left;
   color: #5b5b5b;
 }
@@ -57,9 +61,12 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.h40{
+  line-height: 38rpx;
+}
 .topImg{
   width: 150rpx;
-  height: 128rpx;
+  height: 150rpx;
   border-radius: 10rpx;
 }
 .courseRow{

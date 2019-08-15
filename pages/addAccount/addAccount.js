@@ -12,17 +12,14 @@ Page({
     password: '', //密码
     password1: '', //再次输入密码
     headerImg: '', //头像
-    showId: 1, //是否为管理
-    IsAdministrator: '', //是否为管理员
+    IsAdministrator: false, //是否为管理员
     AdminPower: '', //是否为超级管理员
     headerImgPath: '', //上传头像地址
   },
   onLoad: function(options) {
-    let IsAdministrator = wx.getStorageSync('userInfo').IsAdministrator;
     let AdminPower = wx.getStorageSync('userInfo').AdminPower
     this.setData({
       Id: options.id || '',
-      IsAdministrator: IsAdministrator,
       AdminPower: AdminPower
     })
     if (this.data.AdminPower == 1) {
@@ -57,6 +54,7 @@ Page({
         mobile: res.Data.Mobile,
         IsAdministrator: res.Data.IsAdministrator,
         headerImg: res.Data.HeadUrl,
+        headerImgPath: res.Data.Head
       })
     });
   },
@@ -73,36 +71,47 @@ Page({
       success(res) {
         let usertoken = wx.getStorageSync('userInfo').UserToken;
         const tempFilePaths = res.tempFilePaths
-        wx.uploadFile({
-          url: baseUrl + 'img/upload', //仅为示例，非真实的接口地址
-          filePath: tempFilePaths[0],
-          name: 'Admin.Header',
-          header: {
-            "Content-Type": "multipart/form-data", //记得设置
-            'channelCode': 'wechat',
-            'appVersion': '1.0.1',
-            "userToken": usertoken,
-          },
-          success: (res) => {
-            var ttt = JSON.parse(res.data);
-            that.setData({
-              headerImgPath: ttt.Data.ImgPath,
-              headerImg: ttt.Data.ImgUrl,
-            })
-          },
-          fail: (res) => {
-            wx.showToast({
-              icon: 'none',
-              title: res.data.ErrorMessage,
-            })
-          },
-        })
+        const tempFiles = res.tempFiles[0].size;
+        if (tempFiles > 1000000) {
+          wx.showToast({
+            icon: 'none',
+            title: '图片大小不能超过1M',
+          })
+        } else {
+          wx.uploadFile({
+            url: baseUrl + 'img/upload', //仅为示例，非真实的接口地址
+            filePath: tempFilePaths[0],
+            name: 'Admin.Header',
+            header: {
+              "Content-Type": "multipart/form-data", //记得设置
+              'channelCode': 'wechat',
+              'appVersion': '1.0.1',
+              "userToken": usertoken,
+            },
+            success: (res) => {
+              console.log(res)
+              var ttt = JSON.parse(res.data);
+              that.setData({
+                headerImgPath: ttt.Data.ImgPath,
+                headerImg: ttt.Data.ImgUrl,
+              })
+            },
+            fail: (res) => {
+              wx.showToast({
+                icon: 'none',
+                title: res.data.ErrorMessage,
+              })
+            },
+          })
+        }
       }
     })
   },
   //单选框切换
   changeRadio: function(e) {
-    console.log(e)
+    this.setData({
+      IsAdministrator: e.detail.value == "0" ? false : true
+    })
   },
   //输入密码
   bindPassword: function(e) {
@@ -130,7 +139,7 @@ Page({
       AccountId: that.data.Id,
       Head: that.data.headerImgPath,
       UserName: that.data.name,
-      IsAdministrator: this.data.showId,
+      IsAdministrator: this.data.IsAdministrator,
       Mobile: that.data.mobile,
     }
     netUtil.postRequest(url, params, function(res) {
@@ -138,13 +147,13 @@ Page({
         title: '编辑成功',
         content: '',
         showCancel: false,
-        success: function (res) {
+        success: function(res) {
           if (res.confirm) {
             let pages = getCurrentPages(); //当前页面
             let prevPage = pages[pages.length - 2]; //上一页面
             prevPage.init();
             wx.navigateBack({
-              
+
             })
           }
         }
@@ -190,6 +199,13 @@ Page({
       })
       return;
     }
+    if (!that.data.headerImgPath) {
+      wx.showToast({
+        icon: 'none',
+        title: '请上传账户头像',
+      })
+      return;
+    }
     if (that.data.password != that.data.password1) {
       wx.showToast({
         icon: 'none',
@@ -208,14 +224,14 @@ Page({
       wx.showModal({
         title: '创建成功',
         content: '',
-        showCancel:false,
+        showCancel: false,
         success: function(res) {
           if (res.confirm) {
             let pages = getCurrentPages(); //当前页面
             let prevPage = pages[pages.length - 2]; //上一页面
             prevPage.init();
             wx.navigateBack({
-              
+
             })
           }
         }

@@ -56,6 +56,11 @@ Page({
       })
     })
   },
+  bindDetail: function (e) {
+    wx.navigateTo({
+      url: '/pages/orderDetail/orderDetail?id=' + e.currentTarget.dataset.id,
+    })
+  },
   onPullDownRefresh: function () {
     this.setData({
       page: 1

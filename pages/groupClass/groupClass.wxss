@@ -1,0 +1,303 @@
+.navbar {
+  display: flex;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  height: 60rpx;
+  flex-direction: row;
+  text-align: center;
+  color: #000;
+  font-size: 28rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+.dialogList{
+  width: 100%;
+  max-height: 666rpx;
+}
+.put{
+  border: 1rpx solid #D1D1D1;
+  width: 300rpx;
+  margin: 0 15rpx;
+  color: black;
+  box-sizing: border-box;
+  padding-left: 15rpx;
+}
+.labelTitle{
+  width: 190rpx;
+  text-align: right;
+  color: #5b5b5b;
+}
+
+.please {
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  margin: auto;
+}
+
+.please text {
+  color: #29d9d6;
+  border: 1rpx solid #29d9d6;
+  padding: 5rpx 10rpx;
+  margin: 0 5rpx;
+  border-radius: 8rpx;
+}
+
+.navbar-item {
+  flex: 1;
+}
+
+.kld {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+}
+
+.scorll {
+  display: block;
+  margin-top: 25rpx;
+}
+
+swiper {
+  height: 100%;
+}
+
+.navbar-item-active {
+  /* transition: all 0.3s; */
+  border-bottom: 3rpx solid #29d9d6;
+  color: #000;
+}
+
+.movie-content-wrapper {
+  height: 100%;
+  margin-top: 60rpx;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+scroll-view {
+  height: 100%;
+}
+
+.orderList {
+  width: 100%;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+}
+
+.orderItem {
+  width: 95%;
+  height: auto;
+  margin: 30rpx 2.5% 0;
+  box-sizing: border-box;
+  padding: 30rpx 5%;
+  background-color: #fff;
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.orderItem:last-child {
+  margin-bottom: 30rpx;
+}
+
+.title {
+  font-size: 28rpx;
+  color: #4a4a4a;
+}
+
+.happening {
+  font-size: 30rpx;
+  color: #606060;
+}
+
+.orderContent {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 30rpx;
+  padding-bottom: 15rpx;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.orderImg {
+  width: 160rpx;
+  height: 160rpx;
+  margin-right: 20rpx;
+}
+
+.hl {
+  height: 55rpx;
+  line-height: 55rpx;
+}
+
+.Right {
+  width: 71%;
+}
+
+.name {
+  font-size: 30rpx;
+}
+
+.money {
+  font-size: 28rpx;
+  color: #e03433;
+}
+
+.address {
+  font-size: 28rpx;
+}
+
+.icon {
+  width: 30rpx;
+  height: 24rpx;
+  margin-top: 10rpx;
+  margin-left: -5rpx;
+}
+
+.test {
+  font-size: 24rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  color: #858585;
+  overflow: hidden;
+  word-break: keep-all;
+  text-overflow: ellipsis;
+}
+
+.tag {
+  font-size: 30rpx;
+  color: #818181;
+}
+
+.btn {
+  font-size: 28rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border: 1rpx solid #c0c0c0;
+  color: #c0c0c0;
+  padding: 0 40rpx;
+  border-radius: 40rpx;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.bottom {
+  margin-top: 25rpx;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+
+.zan-dialog__mask {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+}
+
+.zan-dialog__container {
+  position: fixed;
+  text-align: center;
+  bottom: 400rpx;
+  width: 650rpx;
+  height: auto;
+  margin-left: 50rpx;
+  background: #fff;
+  transform: translateY(300%);
+  transition: all 0.4s ease;
+  z-index: 12;
+  border-radius: 20rpx;
+}
+
+.know {
+  font-size: 28rpx;
+  color: #9ff6f0;
+  border-top: 1rpx solid #e0e0e0;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin-top: 28rpx;
+}
+
+.zan-dialog--show .zan-dialog__container {
+  /* transform: translateY(0); */
+}
+
+.zan-dialog--show .zan-dialog__mask {
+  display: block;
+}
+
+.zan-title {
+  line-height: 100rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.zan-content {
+  font-size: 28rpx;
+  color: #434343;
+}
+
+.List {
+  width: 97%;
+  margin-left: 1.5%;
+  height: auto;
+}
+
+.item {
+  width: 100%;
+  height: auto;
+  background-color: #fff;
+  border-radius: 15rpx;
+  margin-top: 20rpx;
+  border-bottom: 1rpx solid #f3f3f3;
+  padding: 25rpx 5% 25rpx 5%;
+  box-sizing: border-box;
+  position: relative;
+}
+.item:last-child{
+  border: none;
+}
+.edit {
+  display: flex;
+  align-items: center;
+  width: 34rpx;
+  height: 34rpx;
+  position: absolute;
+  right: 2.5%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.item .start {
+  display: flex;
+}
+
+.item .wrap {
+  width: 90%;
+  line-height: 35rpx;
+  font-size: 28rpx;
+}
+
+.w90 {
+  width: 90%;
+}

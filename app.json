@@ -30,7 +30,17 @@
     "pages/aboutUs/aboutUs",
     "pages/addCourse/addCourse",
     "pages/courseImg/courseImg",
-    "pages/teacherImg/teacherImg"
+    "pages/teacherImg/teacherImg",
+    "pages/storeClass/storeClass",
+    "pages/rechar/rechar",
+    "pages/rechargeMoney/rechargeMoney",
+    "pages/rechargeLog/rechargeLog",
+    "pages/refundLog/refundLog",
+    "pages/refundDetail/refundDetail",
+    "pages/refund/refund",
+    "pages/groupClass/groupClass",
+    "pages/enrollment/enrollment",
+    "pages/searchRefund/searchRefund"
   ],
   "window": {
     "backgroundTextStyle": "dark",

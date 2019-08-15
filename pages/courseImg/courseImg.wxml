@@ -4,15 +4,14 @@
     <image src="{{item.ImgShowUrl}}" class='onload' data-index="{{index}}" bindtap="previewImg" mode='aspectFill' lazy-load='true'></image>
     <view class='statu' wx:if="{{item.ExamineStatus==1}}">等待审核</view>
     <view class='statu' wx:if="{{item.ExamineStatus==2}}">审核中</view>
-    <view class='statu red' data-content="{{item.ExamineStatusDes}}" wx:if="{{item.ExamineStatus==3}}" bindtap="clickEor">审核失败?</view>
+    <view class='ft28 red' wx:if="{{item.ExamineStatus==3}}" data-content="{{item.ExamineStatusDes}}">审核失败<text bindtap="clickEor" wx:if="{{item.ExamineStatusDes}}">?</text></view>
     <view class='statu' wx:if="{{item.ExamineStatus==4}}">审核成功</view>
     <view class="deleteImage" data-index="{{index}}" catchtap="deleteImg">
       <!-- 图片删除 -->
       <image src='../../img/cha.png' class='cha' mode='aspectFill' lazy-load='true'></image>
     </view>
   </view>
-  <view class='jiatupian' bindtap="chooseImg" wx:if="{{plusShow}}">
+  <view class='jiatupian' bindtap="chooseImg" wx:if="{{imgs.length<=6}}">
     <image class='upload1' src='../../img/upload.png' mode='aspectFill' lazy-load='true'></image>
   </view>
 </view>
-<view class='submit' bindtap='submit'>提交</view>

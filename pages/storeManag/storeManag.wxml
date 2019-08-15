@@ -1,6 +1,6 @@
 <view class='keep start'>
   <view class='leftImg'>
-    <image class='topImg' src='../../img/kk1.png' mode='aspectFill' lazy-load='true'></image>
+    <image class='topImg' src='{{Info.StoreCoverImg}}' mode='aspectFill' lazy-load='true'></image>
   </view>
   <view class='right w100'>
     <view class='column w100'>
@@ -10,7 +10,7 @@
       </view>
       <view class='start h40 ft24'>
         <view class='start'>
-          <view>
+          <view class='center'>
             <image class='icon' src='../../img/ad1.png' mode='aspectFill'></image>
           </view>
           <view class='name ml5'>{{Info.Address}}</view>
@@ -18,15 +18,15 @@
       </view>
       <view class='start h40 ft24' wx:for="{{Info.StoreMobile}}" wx:key wx:for-item="k">
         <view class='start'>
-          <view>
+          <view class='center'>
             <image class='icon' src='../../img/cal.png' mode='aspectFill'></image>
           </view>
-          <view class='name ml5'>{{k}}</view>
+          <view class='name ml5' data-mobile="{{k}}" bindtap='callSmo'>{{k}}</view>
         </view>
       </view>
       <view class='start h40 ft24'>
         <view class='start'>
-          <view>
+          <view class='center'>
             <image class='icon' src='../../img/people.png' mode='aspectFill'></image>
           </view>
           <view class='name ml5'>{{Info.Leader}}</view>
@@ -34,7 +34,7 @@
       </view>
       <view class='start h40 ft24'>
         <view class='start'>
-          <view class='name ml5'>门店品类: {{CategoryList}}</view>
+          <view class='name'>门店品类: {{CategoryList}}</view>
         </view>
       </view>
       <view class='start h40 ft24'>
@@ -48,7 +48,17 @@
     </view>
   </view>
 </view>
-
+<view class='content content1 ft28 mt20'>
+  <view class='between h80 borb' data-Id="{{Id}}" data-name="{{Info.StoreName}}" bindtap='navtoRecharge'>
+    <view class='start h80'>
+      <view class='center'>
+        <image class='icon1' src='../../img/R0.png' mode='widthFix'></image>
+      </view>
+      <view>充值</view>
+    </view>
+    <image class='go' src='../../img/go.png' mode='widthFix'></image>
+  </view>
+</view>
 <view class='content content1 ft28 mt20'>
   <view class='between h80 borb' data-Id="{{Id}}" bindtap='navtoClass'>
     <view class='start h80'>
@@ -59,25 +69,21 @@
     </view>
     <image class='go' src='../../img/go.png' mode='widthFix'></image>
   </view>
-</view>
-<view class='content content1 ft28 mt20'>
-  <view class='between h80 borb' data-Id="{{Id}}" bindtap='navtoStoreAccount'>
-    <view class='start h80'>
-      <view class='center'>
-        <image class='icon1' src='../../img/m4.png' mode='widthFix'></image>
-      </view>
-      <view>门店账户</view>
-    </view>
-    <image class='go' src='../../img/go.png' mode='widthFix'></image>
-  </view>
-</view>
-<view class='content content1 ft28 mt20'>
-  <view class='between h80' data-Id="{{Id}}" bindtap='navtoStoreTeacher'>
+  <view class='between h80 borb' data-Id="{{Id}}" bindtap='navtoStoreTeacher'>
     <view class='start h80'>
       <view class='center'>
         <image class='icon1' src='../../img/z2.png' mode='widthFix'></image>
       </view>
       <view>门店师资</view>
+    </view>
+    <image class='go' src='../../img/go.png' mode='widthFix'></image>
+  </view>
+  <view class='between h80' data-Id="{{Id}}" bindtap='navtoStoreAccount'>
+    <view class='start h80'>
+      <view class='center'>
+        <image class='icon1' src='../../img/m4.png' mode='widthFix'></image>
+      </view>
+      <view>门店账户</view>
     </view>
     <image class='go' src='../../img/go.png' mode='widthFix'></image>
   </view>

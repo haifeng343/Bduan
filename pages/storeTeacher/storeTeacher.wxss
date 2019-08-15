@@ -1,4 +1,6 @@
-
+page{
+  padding-bottom: 100rpx;
+}
 .item{
   width: 100%;
   height: auto;
@@ -8,8 +10,14 @@
   border-color: transparent;
 }
 .avator{
-  width: 120rpx;
-  height: 120rpx;
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  margin-right: 10rpx;
+}
+.avator1{
+  width: 140rpx;
+  height: 140rpx;
   border-radius: 50%;
   margin-right: 10rpx;
 }
@@ -59,11 +67,11 @@
   border-color: transparent;
 }
 .dialogItem .chebox{
-  margin-right: 15rpx;
+  margin-right: 8rpx;
 }
 .avator1{
-  width: 120rpx;
-  height: 120rpx;
+  width: 100rpx;
+  height: 100rpx;
   border-radius: 50%;
   margin-right: 10rpx;
 }

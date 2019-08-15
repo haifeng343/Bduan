@@ -4,13 +4,22 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
+		"coverView": true,
 		"autoAudits": false,
-		"coverView": true
+		"uglifyFileName": true,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.7.4",
@@ -40,7 +49,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 29,
+			"current": 35,
 			"list": [
 				{
 					"id": -1,
@@ -179,7 +188,7 @@
 					"id": 19,
 					"name": "addTeacher",
 					"pathName": "pages/addTeacher/addTeacher",
-					"query": "id=68",
+					"query": "id=79",
 					"scene": null
 				},
 				{
@@ -225,10 +234,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 26,
 					"name": "modifyPassword",
 					"pathName": "pages/modifyPassword/modifyPassword",
-					"query": "",
+					"query": "id=6",
 					"scene": null
 				},
 				{
@@ -239,10 +248,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 28,
 					"name": "addCourse",
 					"pathName": "pages/addCourse/addCourse",
-					"query": "id=68",
+					"query": "id=73",
 					"scene": null
 				},
 				{
@@ -250,6 +259,76 @@
 					"name": "courseImg",
 					"pathName": "pages/courseImg/courseImg",
 					"query": "id=68",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "storeClass",
+					"pathName": "pages/storeClass/storeClass",
+					"query": "Id=31",
+					"scene": null
+				},
+				{
+					"id": 31,
+					"name": "rechar",
+					"pathName": "pages/rechar/rechar",
+					"query": "Id=31&name=测试门店1&money=1",
+					"scene": null
+				},
+				{
+					"id": 32,
+					"name": "rechargeMoney",
+					"pathName": "pages/rechargeMoney/rechargeMoney",
+					"query": "storeId=31",
+					"scene": null
+				},
+				{
+					"id": 33,
+					"name": "rechargeLog",
+					"pathName": "pages/rechargeLog/rechargeLog",
+					"query": "storeId=31",
+					"scene": null
+				},
+				{
+					"id": 34,
+					"name": "refundLog",
+					"pathName": "pages/refundLog/refundLog",
+					"query": "storeId=31",
+					"scene": null
+				},
+				{
+					"id": 35,
+					"name": "refundDetail",
+					"pathName": "pages/refundDetail/refundDetail",
+					"query": "id=17",
+					"scene": null
+				},
+				{
+					"id": 36,
+					"name": "refund",
+					"pathName": "pages/refund/refund",
+					"query": "storeId=31&price=1",
+					"scene": null
+				},
+				{
+					"id": 37,
+					"name": "groupClass",
+					"pathName": "pages/groupClass/groupClass",
+					"query": "id=68&storeId=31&name=测试",
+					"scene": null
+				},
+				{
+					"id": 38,
+					"name": "enrollment",
+					"pathName": "pages/enrollment/enrollment",
+					"query": "rellId=89&name=测试",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "searchRefund",
+					"pathName": "pages/searchRefund/searchRefund",
+					"query": "",
 					"scene": null
 				}
 			]

@@ -1,8 +1,8 @@
-<view style='position:relative'>
-  <view class='searchClass'>
+<view style=''>
+  <view class='searchClass' wx:if="{{List.length>0}}">
     <input class='seachTo' bindtap='bindSearch' disabled placeholder='订单号/账户号'></input>
   </view>
-  <view class='noHas' wx:if="{{List.length<=0}}">
+  <view class='nohasLog' wx:if="{{List.length<=0}}">
     <image src='../../img/zanwu.png' mode='widthFix' class='noList'></image>
   <view class='notext'>暂无订单</view>
   </view>
@@ -16,7 +16,7 @@
         <view class='ft28' wx:if="{{item.OrderStatus==4}}">已过期</view>
       </view>
       <view class='ft28'>购买时间：{{item.BuyTime}}</view>
-      <view class='ft28'>购买账户：{{item.BuyAccountName}}({{item.BuyAccountMobile}})</view>
+      <view class='ft28'>购买账户：{{item.BuyAccountName}}({{item.BuyAccountMobile==''?'空':item.BuyAccountMobile}})</view>
       <view class='between klp' wx:for="{{item.ItemList}}" wx:key wx:for-item="k">
         <view class='start'>
           <view class='center'>
@@ -25,7 +25,7 @@
           <view class='ft28'>{{k.ItemName}} ({{k.StoreName}})</view>
         </view>
         <view class='center'>
-          <image class='icon2' wx:if="{{item.OrderStatus==2 || item.OrderStatus==3}}" src='../../img/gou.png' mode='widthFix'></image>
+          <image class='icon' wx:if="{{item.OrderStatus==2 || item.OrderStatus==3}}" src='../../img/gou.png' mode='widthFix'></image>
         </view>
       </view>
     </view>

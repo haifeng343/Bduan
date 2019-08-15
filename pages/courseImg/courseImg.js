@@ -9,35 +9,35 @@ Page({
     plusShow: true,
   },
 
-  onLoad: function (options) {
+  onLoad: function(options) {
     this.setData({
       Id: options.id
     })
     this.init();
   },
-  init: function () {
+  init: function() {
     this.getTitlesList();
   },
   //失败弹窗
-  clickEor:function(e) {
+  clickEor: function(e) {
     wx.showModal({
       title: '审核失败',
-      content: '失败原因'+e.currentTarget.dataset.content,
-      showCancel:false,
-      cancelText:'知道了',
-      success:function() {
-        
+      content: '失败原因' + e.currentTarget.dataset.content,
+      showCancel: false,
+      cancelText: '知道了',
+      success: function() {
+
       }
     })
   },
   //图片列表
-  getTitlesList: function () {
+  getTitlesList: function() {
     let that = this;
     var url = 'account/selleritem/img/list';
     var params = {
       Id: that.data.Id
     }
-    netUtil.postRequest(url, params, function (res) {
+    netUtil.postRequest(url, params, function(res) {
       let arr = [];
       for (let v of res.Data) {
         // if (that.data.checkedArr.indexOf(v.TypeId) != -1 || that.data.checkedArr.indexOf(v.TypeId + '') != -1) {
@@ -53,18 +53,22 @@ Page({
       })
     });
   },
-  chooseImg: function (e) {
+  chooseImg: function(e) {
     var that = this;
     wx.chooseImage({
       count: 1,
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-      success: function (res) {
+      success: function(res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         var tempFilePaths = res.tempFilePaths;
         let arr = that.data.imgs;
-        arr.push({ ImgShowUrl: tempFilePaths[0] });
-        that.setData({ imgs: arr });
+        arr.push({
+          ImgShowUrl: tempFilePaths[0]
+        });
+        that.setData({
+          imgs: arr
+        });
         that.upLoadImg(tempFilePaths[0]);
         that.showHide();
       }
@@ -73,7 +77,7 @@ Page({
   /*
       删除图片
   */
-  deleteImg: function (e) {
+  deleteImg: function(e) {
     var imgs = this.data.imgs;
     var arr = this.data.imgsArr;
     var index = e.currentTarget.dataset.index;
@@ -89,20 +93,20 @@ Page({
     this.showHide();
   },
   //删除
-  delImg: function (id) {
+  delImg: function(id) {
     var that = this;
     var urls = 'account/selleritem/img/delete';
     var params = {
       Id: id,
     }
-    netUtil.postRequest(urls, params, function (res) {
+    netUtil.postRequest(urls, params, function(res) {
 
     });
   },
   /*
       预览图片
   */
-  previewImg: function (e) {
+  previewImg: function(e) {
     //获取当前图片的下标
     var index = e.currentTarget.dataset.index;
     //所有图片
@@ -117,7 +121,7 @@ Page({
   /*
       控制添加图片按钮是否显示出来
   */
-  showHide: function (e) {
+  showHide: function(e) {
     if (this.data.imgs.length == 1) {
       this.setData({
         plusShow: true
@@ -133,7 +137,7 @@ Page({
     }
   },
   //上传图片
-  upLoadImg: function (data) {
+  upLoadImg: function(data) {
     var that = this;
     let usertoken = wx.getStorageSync('userInfo').UserToken;
     wx.uploadFile({
@@ -145,14 +149,12 @@ Page({
         'appVersion': '1.0.1',
         "userToken": usertoken,
       },
-      name: 'Teacher.Imgs',
+      name: 'Item.Imgs',
       success: (res) => {
         var ttt = JSON.parse(res.data);
-        console.log(ttt); 
+        console.log(ttt);
         if (ttt.Data) {
-          let arr = this.data.imgsArr;
-          arr.push(ttt.Data.ImgPath)
-          this.setData({ imgsArr: arr });
+          this.submit(ttt.Data.ImgPath);
         } else {
           wx.showToast({
             icon: 'none',
@@ -169,28 +171,18 @@ Page({
     });
   },
   //添加
-  submit: function (url) {
+  submit: function(imgPath) {
     var that = this;
     var urls = 'account/selleritem/img/add';
     var params = {
       ItemId: this.data.Id,
-      ImgUrl: this.data.imgsArr,
+      ImgUrl: imgPath,
     }
-    netUtil.postRequest(urls, params, function (res) {
-      wx.showModal({
-        title: '提交成功',
-        content: '',
-        success:function(res) {
-          if(res.confirm){
-            wx.navigateBack({
-              
-            })
-          }
-        }
-      })
-    });
+    netUtil.postRequest(urls, params, function(res) {
+      that.init();
+    }, null, false, false, false);
   },
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

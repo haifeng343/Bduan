@@ -5,21 +5,30 @@ Page({
    * 页面的初始数据
    */
   data: {
-    showLog: true,
-    IsShow:false,
+    showLog: false, //弹窗是否显示
+    IsShow: false,
     Id: '',
     List: [], //我的门店杭虎列表
     accountList: [], //所有门店列表
-    checkArr: [],//勾选中的checkbox
+    checkArr: [], //勾选中的checkbox
+    AdminPower: '', //0 普通账户 1 管理员 2 超级管理员
   },
   onLoad: function(options) {
     let IsShow = wx.getStorageSync('userInfo').IsAdministrator;
+    let AdminPower = wx.getStorageSync('userInfo').AdminPower
     this.setData({
       Id: options.Id,
+      AdminPower: AdminPower,
       IsShow: IsShow
     })
     this.init();
   },
+  hideFixed: function() {
+    this.setData({
+      showLog: false
+    })
+  },
+
   //我的门店账户列表
   init: function() {
     let that = this;
@@ -38,24 +47,35 @@ Page({
     let that = this;
     var url = 'account/selleraccount/list';
     var params = {
-      Id: that.data.Id
+      PageCount: 100,
+      PageIndex: 1
     }
-    netUtil.postRequest(url, params, function(res) { //onSuccess成功回调
-      let arr = [];
-      for (let v of res.Data) {
-        let obj = that.data.List.find(x => {
-          return x.AccountId == v.AccountId;
+    netUtil.postRequest(url, params, function(res) {
+      if (res.Data.length > 0) {
+        let arr = [];
+        res.Data.forEach(item => {
+          let tempArr = that.data.List.filter(e => {
+            return e.AccountId === item.AccountId;
+          });
+          if (tempArr.length > 0) {
+            item.checked = true;
+          } else {
+            item.checked = false;
+          }
         });
-        if (obj) {
-          arr.push(v.AccountId);
-        } else {
-          arr.push(0);
-        }
+        that.setData({
+          accountList: res.Data,
+          checkedArr: res.Data.filter(e => {
+            return e.checked == true;
+          }),
+          showLog: true
+        });
+      } else {
+        wx.showToast({
+          icon: 'none',
+          title: '暂无可分配师资',
+        })
       }
-      that.setData({
-        accountList: res.Data,
-        checkedArr: arr,
-      })
     })
   },
   //切换
@@ -67,7 +87,7 @@ Page({
   //取消分配
   bindCancel: function() {
     this.setData({
-      showLog: true
+      showLog: false
     })
   },
   //确认分配
@@ -80,7 +100,7 @@ Page({
     }
     netUtil.postRequest(url, params, function(res) { //onSuccess成功回调
       that.setData({
-        showLog: true
+        showLog: false
       })
       wx.showToast({
         icon: 'none',
@@ -90,12 +110,9 @@ Page({
     })
   },
   fenpei: function() {
-    this.setData({
-      showLog: !this.data.showLog
-    })
     this.getAccountList();
   },
-  onPullDownRefresh:function() {
+  onPullDownRefresh: function() {
     this.init();
     wx.stopPullDownRefresh();
   },
