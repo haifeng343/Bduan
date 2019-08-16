@@ -12,6 +12,9 @@
 .seachTo {
   background-position:38% 50%;
 }
+.mr30{
+  margin-right: 30rpx;
+}
 .List{
   width: 100%;
   height: auto;

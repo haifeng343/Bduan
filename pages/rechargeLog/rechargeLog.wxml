@@ -1,5 +1,5 @@
 <view class='start h80 content ft28 bort borb header'>
-  <picker mode="multiSelector" value="{{date2}}" range='{{array}}' start="{{dataStart}}" end="{{dataEnd}}" fields="month" bindchange="bindDateChange">
+  <picker mode="multiSelector" value="{{date2}}" range='{{array}}' start="{{dataStart}}" end="{{dataEnd}}" fields="month" bindchange="bindDateChange" bindtap='initPicker'>
     <view class="picker">
       {{date?date:now}}
     </view>
@@ -12,7 +12,6 @@
 </view>
 <view class='mtml' wx:else>
   <view class='content borb around ft28'>
-    <!-- <view class='h100 ft28 bold'>券码</view> -->
     <view class='item'>充值金额 (元)</view>
     <view class='item'>充值时间</view>
   </view>

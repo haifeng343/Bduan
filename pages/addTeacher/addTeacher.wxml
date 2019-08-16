@@ -20,7 +20,7 @@
   </view>
   <view class='item start borb' style='height:244rpx'>
     <label class='h81'>教师描述</label>
-    <textarea hidden='{{showLog && !description}}' value='{{description}}' class='textarea' placeholder-class='placeholder' bindinput='bindDescription' placeholder='请填写教师所获荣誉和个人经历'></textarea>
+    <textarea hidden='{{!showLog && !description}}' value='{{description}}' class='textarea' placeholder-class='placeholder' bindinput='bindDescription' placeholder='请填写教师所获荣誉和个人经历'></textarea>
   </view>
   <!-- <view class='item start borb h81' style='height:140rpx;'>
     <label>教师描述</label>

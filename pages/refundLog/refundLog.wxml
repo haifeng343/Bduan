@@ -6,14 +6,14 @@
     <image src='../../img/zanwu.png' mode='widthFix' class='noList'></image>
     <view class='notext'>暂无退款记录</view>
   </view>
-  <view class='List bb' wx:else>
+  <view class='List black' wx:else>
     <view class='item column radius10' wx:for="{{List}}" wx:key>
       <view data-id="{{item.Id}}" bindtap='bindRefundDetail'>
         <view class='between'>
           <view class='ft28'>退款编号：{{item.RefunSn}}</view>
           <view class='ft28 black' wx:if="{{item.RefundStatus==1}}">申请退款</view>
           <view class='ft28 black' wx:if="{{item.RefundStatus==2}}">退款中</view>
-          <view class='ft28 red' style='margin-right:30rpx' wx:if="{{item.RefundStatus==3}}">退款失败 </view>
+          <view class="ft28 red {{item.StatusDes!=''?'mr30':''}}" wx:if="{{item.RefundStatus==3}}">退款失败 </view>
           <view class='ft28 black' wx:if="{{item.RefundStatus==4}}">退款成功</view>
           <view class='ft28 black' wx:if="{{item.RefundStatus==5}}">退款取消</view>
         </view>

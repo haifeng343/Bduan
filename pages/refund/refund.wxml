@@ -1,13 +1,18 @@
 <view class='container radius10'>
 
-  <view class='List start borb ft28'>
-    <text style='width:132rpx;'>退款金额:</text>
-    <view class='start'>￥<input type='digit' value='{{money}}' bindinput='hasMoney'></input></view>
-    <text class='all' bindtap='allMoney'>全部</text>
+  <view class='borb column'>
+    <view class='List start centers ft28'>
+      <text style='width:132rpx;'>退款金额:</text>
+      <view class='start centers'>￥
+        <input type='digit' class='centers' value='{{money}}' bindinput='hasMoney'></input>
+      </view>
+      <text class='all' bindtap='allMoney'>全部</text>
+    </view>
+    <view class='ft24 bb mt20'>最多可退款 {{price}} 元</view>
   </view>
-  <view class='List between ft28'>
-    <text style='width:150rpx'>退款原因:</text>
-    <textarea class='textarea' value='{{text}}' bindinput='hasText'></textarea>
+  <view class='List start ft28'>
+    <text style='width:132rpx;line-height:40rpx;'>退款原因:</text>
+    <textarea class='textarea' value='{{text}}' placeholder='请输入退款原因' bindinput='hasText'></textarea>
   </view>
 </view>
 <view class='container radius10'>
@@ -26,4 +31,4 @@
     </view>
   </view>
 </view>
-  <button class='btn' data-status="{{status}}" bindtap='submit'>提交</button>
+<button class='btn' data-status="{{status}}" bindtap='submit'>提交</button>

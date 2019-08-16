@@ -35,14 +35,14 @@
 }
 .btnd {
   width: 180rpx;
-  border: 2rpx solid #bebebe;
+  border: 2rpx solid #5b5b5b;
   box-sizing: border-box;
   height: 60rpx;
   line-height: 60rpx;
   border-radius: 35rpx;
   background-color: transparent;
   font-size: 28rpx;
-  color: #bebebe;
+  color: #5b5b5b;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -90,10 +90,6 @@
   width: 50rpx;
   height: 50rpx;
   border-radius: 50%;
-}
-
-.start text:first-child, .between text:first-child {
-  width: 130rpx;
 }
 
 .statusd {

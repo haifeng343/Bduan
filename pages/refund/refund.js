@@ -17,7 +17,7 @@ Page({
   onLoad: function(options) {
     this.setData({
       storeId: options.storeId || '',
-      price: options.price || 0,
+      price: Number(options.price/100).toFixed(2) || 0,
       kmd: options.kmd || '',
       kd: options.kd || '',
     });
@@ -38,7 +38,7 @@ Page({
   },
   allMoney: function() {
     this.setData({
-      money: Number(this.data.price / 100)
+      money: this.data.price == 0 ? 0 : this.data.price
     })
   },
   getData: function() {

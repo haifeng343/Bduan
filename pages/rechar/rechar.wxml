@@ -1,7 +1,7 @@
 <view class='container radius10'>
   <view class='column'>
     <view class='ft32'>门店余额</view>
-    <view class='between kl1'>
+    <view class='between kl1 ft32'>
       <view>
         <text>￥{{money/100}}</text>
       </view>

@@ -1,6 +1,6 @@
-page{
-  
+page {
 }
+
 .red {
   margin-left: 13rpx;
 }
@@ -8,17 +8,17 @@ page{
 .go {
   width: 24rpx;
   height: 24rpx;
-  
   display: flex;
   align-items: center;
   margin: auto 0;
   margin-left: 15rpx;
 }
-.all{
-  font-size: 24rpx;
+
+.all {
+  font-size: 28rpx;
   position: absolute;
   right: 5%;
-  color: #3CD5D1;
+  color: #3cd5d1;
   display: flex;
   align-items: center;
 }
@@ -42,6 +42,14 @@ page{
   margin: 10px;
   float: left;
 }
+.ml5{
+  margin-left: 5%;
+}
+.textarea {
+  width: 520rpx;
+  height: 220rpx;
+  padding-top: 4rpx;
+}
 
 .jiatupian image {
   width: 180rpx;
@@ -59,19 +67,26 @@ page{
   margin: 10px;
   float: left;
 }
-.container{
+
+.container {
   padding: 20rpx;
   box-sizing: border-box;
 }
-.borb{
+
+.borb {
   padding-bottom: 15rpx;
   margin-bottom: 15rpx;
   box-sizing: border-box;
 }
-.start{
+
+.start {
+  display: flex;
+}
+.centers{
   display: flex;
   align-items: center;
 }
+
 .deleteImage {
   width: 15px;
   height: 15px;
@@ -86,7 +101,8 @@ page{
   margin: 0px;
   margin-left: -10px;
 }
-.btn{
+
+.btn {
   width: 95%;
   margin-left: 2.5%;
   position: fixed;

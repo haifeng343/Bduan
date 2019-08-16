@@ -63,11 +63,11 @@
       <text wx:else>暂无退款原因</text>
     </view>
     <view class='ft28 start mt20'>
-      <text>退款凭证:</text>
-      <view class='imgs' wx:if="{{Info.ImgList.length>0}}">
+      <text>退款原因:</text>
+      <view  wx:if="{{Info.ImgList.length<=0}}">暂无退款凭证</view>
+      <view class='imgs' wx:else>
         <image wx:for="{{Info.ImgList}}" wx:key wx:for-item="k" src='{{k}}' class='upload' mode='aspectFill'></image>
       </view>
-      <view wx:else class='ft28'>暂无退款凭证</view>
     </view>
   </view>
 </view>
