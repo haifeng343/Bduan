@@ -16,6 +16,11 @@ Page({
       usertoken: wx.getStorageSync('userInfo').UserToken || ''
     })
   },
+  navtoRecharge: function () {
+    wx.navigateTo({
+      url: '/pages/transition/transition'
+    })
+  },
   bindGroup:function() {
     wx.navigateTo({
       url: '/pages/myGroup/myGroup',

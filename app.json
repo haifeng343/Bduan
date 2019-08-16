@@ -40,7 +40,8 @@
     "pages/refund/refund",
     "pages/groupClass/groupClass",
     "pages/enrollment/enrollment",
-    "pages/searchRefund/searchRefund"
+    "pages/searchRefund/searchRefund",
+    "pages/transition/transition"
   ],
   "window": {
     "backgroundTextStyle": "dark",

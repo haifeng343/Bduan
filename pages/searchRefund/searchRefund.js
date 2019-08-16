@@ -64,6 +64,19 @@ Page({
       })
     }
   },
+  bindEor: function (e) {
+    console.log(e)
+    wx.showModal({
+      title: '退款失败',
+      content: e.currentTarget.dataset.item.StatusDes + '\r\n' + '处理时间:' + e.currentTarget.dataset.item.HandlerTime,
+      showCancel: false,
+      confirmColor: '#3DD6D1',
+      confirmText: '知道了',
+      success: function () {
+
+      }
+    })
+  },
   changeVal: function () {
     this.setData({
       show: !this.data.show

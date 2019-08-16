@@ -1,0 +1,33 @@
+<view class='content content1 ft28 mt20'>
+  <view class='between h80 borb' data-Id="{{Id}}" bindtap='navtoRecharge'>
+    <view class='start h80'>
+      <view class='center'>
+        <image class='icon1' src='../../img/seller.png' mode='widthFix'></image>
+      </view>
+      <view>充值到商家</view>
+    </view>
+    <view class='start'>
+      <view>100</view>
+      <view class='center'>
+        <image class='go' src='../../img/go.png' mode='widthFix'></image>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='h80 ft28 pl5'>充值到门店</view>
+<view class='content content1 ft28'>
+  <view class='between h80 borb' data-Id="{{Id}}" bindtap='navtoRecharge'>
+    <view class='start h80'>
+      <view class='center'>
+        <image class='icon1' src='../../img/store.png' mode='widthFix'></image>
+      </view>
+      <view>门店1</view>
+    </view>
+    <view class='start'>
+      <view>100</view>
+      <view class='center'>
+        <image class='go' src='../../img/go.png' mode='widthFix'></image>
+      </view>
+    </view>
+  </view>
+</view>

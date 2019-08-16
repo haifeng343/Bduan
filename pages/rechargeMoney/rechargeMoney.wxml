@@ -1,4 +1,4 @@
-<view class='conetent radius10 mt20'>
+<view class='conetent mt20'>
   <text class='ft24'>充值金额(元)</text>
   <view class='start borb'>
     <input type='digit' value='{{money}}' bindinput='hasInput' class='inputMoney ft28'></input>
