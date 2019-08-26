@@ -47,6 +47,7 @@ Page({
     let that = this;
     var url = 'account/selleraccount/list';
     var params = {
+      Status:1,
       PageCount: 100,
       PageIndex: 1
     }
@@ -65,8 +66,10 @@ Page({
         });
         that.setData({
           accountList: res.Data,
-          checkedArr: res.Data.filter(e => {
+          checkArr: res.Data.filter(e => {
             return e.checked == true;
+          }).map(e => {
+            return e.AccountId
           }),
           showLog: true
         });

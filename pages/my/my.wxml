@@ -27,7 +27,7 @@
   </view>
 </view>
 
-<!-- <view class='content content1 ft28 mt20'>
+<view class='content content1 ft28 mt20'>
   <view class='between h80 borb' data-Id="{{Id}}" bindtap='navtoRecharge'>
     <view class='start h80'>
       <view class='center'>
@@ -37,7 +37,7 @@
     </view>
     <image class='go' src='../../img/go.png' mode='widthFix'></image>
   </view>
-</view> -->
+</view>
 
 <view class='content content1 ft30 mt20'>
   <view class='between h80 borb' bindtap='bindStore'>

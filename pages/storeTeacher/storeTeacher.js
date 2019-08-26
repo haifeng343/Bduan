@@ -59,6 +59,8 @@ Page({
           accountList: res.Data,
           checkedArr: res.Data.filter(e => {
             return e.checked == true;
+          }).map(e => {
+            return e.Id
           }),
           showLog: true
         });

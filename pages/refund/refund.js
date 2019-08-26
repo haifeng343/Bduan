@@ -60,14 +60,17 @@ Page({
     netUtil.postRequest(url, params, function(res) {
       wx.showModal({
         title: '申请退款成功',
-        content: '我们将在1-3个工作日处理',
+        content: '我们将在1-3个工作日处理完毕',
         showCancel:false,
         confirmText: '知道了',
         confirmColor: '#29d9d6',
         success: function() {
+          let pages = getCurrentPages(); //当前页面
+          let prevPage = pages[pages.length - 2]; //上一页面
           wx.navigateBack({
-            
+
           })
+          prevPage.init();
         }
       })
       that.setData({

@@ -69,6 +69,8 @@ Page({
           sellerItemList: res.Data,
           checkedArr: res.Data.filter(e => {
             return e.checked == true;
+          }).map(e=>{
+            return e.ItemId
           }),
           showLog: true,
           move:true
@@ -102,6 +104,8 @@ Page({
           tagItemList: res.Data,
           checkedArr1: res.Data.filter(e => {
             return e.checked == true;
+          }).map(e=>{
+            return e.TagId
           }),
           showTag: true,
           move:true,
@@ -137,6 +141,8 @@ Page({
           storeTeacherList: res.Data,
           checkedArr1: res.Data.filter(e => {
             return e.checked == true;
+          }).map(e=>{
+            return e.Id
           }),
           showTeacher: true,
           move:true

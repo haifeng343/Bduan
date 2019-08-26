@@ -1,11 +1,19 @@
 <view class='container radius10'>
   <view class='column'>
-    <view class='ft32'>门店余额</view>
-    <view class='between kl1 ft32'>
+    <view class='ft32'>充值金额
+      <text class='ft24 bb'>(门店余额 {{money/100}} 元)</text>
+    </view>
+    <view class='between ft32'>
       <view>
-        <text>￥{{money/100}}</text>
+        <view class='start kl1'>
+          ￥
+          <input type='digit' value='{{price}}' bindinput='hasInput' class='inputMoney kl1 ft32'></input>
+        </view>
       </view>
-      <view class='paybtn' bindtap='paybtn'>充值</view>
+      <view class='kl1'>
+        <button class='paybtn ' wx:if="{{hideModal}}" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo">充值</button>
+        <button class='paybtn' wx:else>充值</button>
+      </view>
     </view>
   </view>
 </view>

@@ -18,7 +18,7 @@ Page({
   },
   navtoRecharge: function () {
     wx.navigateTo({
-      url: '/pages/transition/transition'
+      url: '/pages/transition/transition?accountId=' + this.data.userInfo.AccountId
     })
   },
   bindGroup:function() {

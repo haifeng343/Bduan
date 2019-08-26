@@ -33,32 +33,32 @@
     <checkbox-group bindchange="checkedChange">
       <view class='start'>
         <view class='labelTitle'>课程原价:</view>
-        <input class='put' value='{{money}}' bindinput='hasMonry' type='number'></input>
+        <input class='put' value='{{money}}' bindinput='hasMonry' cursor-spacing='450rpx' type='number'></input>
         <view class='bb'>元</view>
       </view>
       <view class='start mt30'>
         <view class='labelTitle'>课程数量:</view>
-        <input class='put' value='{{number}}' bindinput='hasNumber' type='number'></input>
+        <input class='put' value='{{number}}' bindinput='hasNumber' cursor-spacing='370rpx' type='number'></input>
         <view class='bb'>节</view>
       </view>
       <view class='start mt30'>
         <view class='labelTitle'>单节课时:</view>
-        <input class='put' value='{{timer}}' bindinput='hasTimer' type='number'></input>
+        <input class='put' value='{{timer}}' bindinput='hasTimer' cursor-spacing='290rpx' type='number'></input>
         <view class='bb'>分</view>
       </view>
       <view class='start mt30'>
         <view class='labelTitle'>成交后减免:</view>
-        <input class='put' value='{{relief}}' bindinput='hasRelief' type='number'></input>
+        <input class='put' value='{{relief}}' bindinput='hasRelief' cursor-spacing='210rpx' type='number'></input>
         <view class='bb'>元</view>
       </view>
       <view class='start mt30'>
         <view class='labelTitle'>单人购买数量:</view>
-        <input class='put' value='{{purchase}}' bindinput='hasPurchase' type='number'></input>
+        <input class='put' value='{{purchase}}' bindinput='hasPurchase' cursor-spacing='130rpx' type='number'></input>
         <view class='bb'>个</view>
       </view>
       <view class='start mt30'>
         <view class='labelTitle'>{{peoText}}:</view>
-        <input class='put' value='{{people}}' bindinput='hasPeople' type='number'></input>
+        <input class='put' value='{{people}}' bindinput='hasPeople' cursor-spacing='50rpx' type='number'></input>
         <view class='bb'>人</view>
       </view>
     </checkbox-group>

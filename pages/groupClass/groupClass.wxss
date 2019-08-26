@@ -20,14 +20,20 @@
 .put{
   border: 1rpx solid #D1D1D1;
   width: 300rpx;
+  height: 50rpx;
+  line-height: 50rpx;
   margin: 0 15rpx;
   color: black;
   box-sizing: border-box;
   padding-left: 15rpx;
 }
+.bb {
+  line-height: 50rpx;
+}
 .labelTitle{
-  width: 190rpx;
+  width: 200rpx;
   text-align: right;
+  line-height: 50rpx;
   color: #5b5b5b;
 }
 

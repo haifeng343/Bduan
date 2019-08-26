@@ -49,7 +49,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 35,
+			"current": 37,
 			"list": [
 				{
 					"id": -1,
@@ -314,7 +314,7 @@
 					"id": 37,
 					"name": "groupClass",
 					"pathName": "pages/groupClass/groupClass",
-					"query": "id=68&storeId=31&name=测试",
+					"query": "id=76&storeId=31&name=12121",
 					"scene": null
 				},
 				{
