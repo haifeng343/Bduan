@@ -4,11 +4,25 @@ Page({
     Id: '', //退款Id
     Info: {},
     money: '', //退款金额
+    status:'',//1门店 2商家
+    name:'',
   },
   onLoad: function(options) {
     this.setData({
-      Id: options.id || ''
+      Id: options.id || '',
+      status:options.status || '',
+      name:options.name || '',
     })
+    if (this.data.status==2){
+      wx.setNavigationBarTitle({
+        title: '退款详情-商家',
+      })
+    }
+    if (this.data.status == 1) {
+      wx.setNavigationBarTitle({
+        title: '退款详情-'+this.data.name,
+      })
+    }
     this.init();
   },
   init: function() {

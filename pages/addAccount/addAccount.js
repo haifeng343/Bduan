@@ -217,7 +217,7 @@ Page({
       Head: that.data.headerImgPath,
       UserName: that.data.name,
       Password: utilMd5.hexMD5(that.data.password),
-      IsAdministrator: this.data.showId,
+      IsAdministrator: that.data.IsAdministrator,
       Mobile: that.data.mobile,
     }
     netUtil.postRequest(url, params, function(res) {

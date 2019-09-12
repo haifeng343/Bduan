@@ -38,17 +38,17 @@ Page({
   },
   navtoClass:function(e) {
     wx.navigateTo({
-      url: '/pages/storeClass/storeClass?Id=' + e.currentTarget.dataset.id,
+      url: '/pages/storeClass/storeClass?Id=' + e.currentTarget.dataset.id + '&name=' + this.data.Info.StoreName,
     })
   },
   navtoStoreAccount: function (e) {
     wx.navigateTo({
-      url: '/pages/storeAccount/storeAccount?Id=' + e.currentTarget.dataset.id,
+      url: '/pages/storeAccount/storeAccount?Id=' + e.currentTarget.dataset.id + '&name=' + this.data.Info.StoreName,
     })
   },
   navtoStoreTeacher: function (e) {
     wx.navigateTo({
-      url: '/pages/storeTeacher/storeTeacher?Id=' + e.currentTarget.dataset.id,
+      url: '/pages/storeTeacher/storeTeacher?Id=' + e.currentTarget.dataset.id + '&name=' + this.data.Info.StoreName,
     })
   },
   navtoRecharge:function(e) {

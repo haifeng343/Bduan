@@ -22,7 +22,6 @@
   align-items: center;
   height: 80rpx;
   line-height: 80rpx;
-  box-sizing: border-box;
 }
 
 .content1 {

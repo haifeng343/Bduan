@@ -46,7 +46,6 @@
   align-items: center;
 }
 .item .wrap{
-  height: 35rpx;
   line-height: 35rpx;
   font-size: 28rpx;
 }

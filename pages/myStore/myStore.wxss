@@ -59,6 +59,8 @@
 }
 .h40{
   line-height: 38rpx;
+  display: flex;
+  align-items: center;
 }
 .topImg{
   width: 150rpx;

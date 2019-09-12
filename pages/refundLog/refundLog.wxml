@@ -1,6 +1,6 @@
 <view style=''>
   <view class='searchClass' wx:if="{{List.length>0}}">
-    <input class='seachTo' bindtap='bindSearch' disabled placeholder='退款编号'></input>
+    <input class='seachTo' data-name="{{name}}" data-status="{{status}}" bindtap='bindSearch' disabled placeholder='退款编号'></input>
   </view>
   <view class='nohasLog' wx:if="{{List.length<=0}}">
     <image src='../../img/zanwu.png' mode='widthFix' class='noList'></image>

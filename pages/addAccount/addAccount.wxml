@@ -26,7 +26,7 @@
   </view>
   <view class='item start borb h80'>
     <label>头像</label>
-    <image class='upload pd20' wx:if="{{headerImg}}" src='{{headerImg}}' mode='apsectFill' bindtap='bindUpload'></image>
+    <image class='upload pd20' wx:if="{{headerImg}}" src='{{headerImg}}' mode='aspectFill' bindtap='bindUpload'></image>
     <image class='upload pd20' wx:else src='../../img/upload.png' mode='apsectFill' bindtap='bindUpload'></image>
   </view>
 </view>

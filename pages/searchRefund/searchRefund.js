@@ -15,13 +15,20 @@ Page({
     Id: '',
     name: '',
     storeId:'',//门店Id
+    status:'',//1门店 2商家
   },
   onLoad: function (options) {
     this.setData({
       Id: options.id || '',
       name: options.name || '',
       storeId:options.storeId || '',
+      status:options.status
     })
+    if (this.data.status == 2) {
+      wx.setNavigationBarTitle({
+        title: '搜索退款编号-商家',
+      })
+    }
     if (this.data.name) {
       wx.setNavigationBarTitle({
         title: '搜索 - ' + this.data.name,
@@ -102,6 +109,7 @@ Page({
       StoreId: that.data.storeId,
       PageCount: that.data.pageCount,
       PageIndex: that.data.page,
+      StoreType:that.data.status
     }
     if (that.data.value == '') {
       wx.showToast({
@@ -183,7 +191,7 @@ Page({
   },
   bindRefundDetail: function (e) {
     wx.navigateTo({
-      url: '/pages/refundDetail/refundDetail?id=' + e.currentTarget.dataset.id,
+      url: '/pages/refundDetail/refundDetail?id=' + e.currentTarget.dataset.id+'&status='+this.data.status+'&name='+this.data.name,
     })
   },
   onReachBottom: function () {

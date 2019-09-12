@@ -1,0 +1,110 @@
+<view class="movie-container">
+  <!-- 导航栏 -->
+  <view class="navbar">
+    <block wx:for="{{navbarTitle}}" wx:key="index">
+      <view class="navbar-item {{navbarActiveIndex === index ? 'navbar-item-active' : ''}}" data-navbar-index="{{index}}" catchtap="onNavBarTap">
+        <text>{{item}}</text>
+      </view>
+    </block>
+  </view>
+  <view class="movie-content-wrapper">
+    <view wx:if="{{usertoken}}">
+      <view class='nohasLog' wx:if="{{modelList[navbarActiveIndex].list.length==0}}">
+        <image class='noImg' src='../../img/zanwu.png' mode='widthFix' lazy-load='true'></image>
+        <view class='notext'>抢购活动</view>
+      </view>
+      <view wx:else>
+        <view class='List'>
+          <view class='Item'>
+            <view class='coverImgFather'>
+              <image src='http://i3.bbs.fd.zol-img.com.cn/g5/M00/06/0C/ChMkJlm1mf-IKw3rAAQNsmIE5u8AAgWLAAauWoABA3K379.jpg' mode='aspectFill' class='coverImg'></image>
+            </view>
+            <view class='ItemContent'>
+              <view class='between'>
+                <view class='titleTxt nowrap'>我也太难了吧</view>
+                <view class='statusTxt'>正在展示</view>
+              </view>
+              <view class='des bb ft24'>我真的好难、我真的好难、我真的好难、我真的好难我真的好难、我真的好难、我真的好难、我真的好难我真的好难、我真的好难、我真的好难、我真的好难我真的好难、我真的好难、我真的好难、我真的好难</view>
+              <view class='start ft24 h36'>
+                <view>库存100份</view><view class='ml40'>已抢70份</view>
+              </view>
+              <view class='ft24 h36'>价格: 100份</view>
+              <view class='ft24 h36'>抢购时间: 2019-10-12 13:24:12~2019-10-12 13:24:12</view>
+              <view class='contentFooter bort'>
+                <view class='contentBtn'>活动图片</view>
+                <view class='contentBtn'>额外信息</view>
+                <view class='contentBtn'>更多参数</view>
+              </view>
+            </view>
+          </view>
+          <view class='Item'>
+            <view class='coverImgFather'>
+              <image src='http://pic1.win4000.com/wallpaper/a/5864a5dc9c5dc.jpg' mode='aspectFill' class='coverImg'></image>
+            </view>
+            <view class='ItemContent'>
+              <view class='between'>
+                <view class='titleTxt nowrap'>我也太难了吧</view>
+                <view class='statusTxt'>正在展示</view>
+              </view>
+              <view class='des bb ft24'>我真的好难、我真的好难、我真的好难、我真的好难我真的好难、我真的好难、我真的好难、我真的好难我真的好难、我真的好难、我真的好难、我真的好难我真的好难、我真的好难、我真的好难、我真的好难</view>
+              <view class='start ft24 h36'>
+                <view>库存100份</view><view class='ml40'>已抢70份</view>
+              </view>
+              <view class='ft24 h36'>价格: 100份</view>
+              <view class='ft24 h36'>抢购时间: 2019-10-12 13:24:12~2019-10-12 13:24:12</view>
+              <view class='contentFooter bort'>
+                <view class='contentBtn'>活动图片</view>
+                <view class='contentBtn'>额外信息</view>
+                <view class='contentBtn'>更多参数</view>
+              </view>
+            </view>
+          </view>
+          <view class='Item'>
+            <view class='coverImgFather'>
+              <image src='http://img.demaxiya.com/uploads/allimg/140822/1_140822170256_1.jpg' mode='aspectFill' class='coverImg'></image>
+            </view>
+            <view class='ItemContent'>
+              <view class='between'>
+                <view class='titleTxt nowrap'>我也太难了吧</view>
+                <view class='statusTxt'>正在展示</view>
+              </view>
+              <view class='des bb ft24'>我真的好难、我真的好难、我真的好难、我真的好难我真的好难、我真的好难、我真的好难、我真的好难我真的好难、我真的好难、我真的好难、我真的好难我真的好难、我真的好难、我真的好难、我真的好难</view>
+              <view class='start ft24 h36'>
+                <view>库存100份</view><view class='ml40'>已抢70份</view>
+              </view>
+              <view class='ft24 h36'>价格: 100份</view>
+              <view class='ft24 h36'>抢购时间: 2019-10-12 13:24:12~2019-10-12 13:24:12</view>
+              <view class='contentFooter bort'>
+                <view class='contentBtn'>活动图片</view>
+                <view class='contentBtn'>额外信息</view>
+                <view class='contentBtn'>更多参数</view>
+              </view>
+            </view>
+          </view>
+          <view class='Item'>
+            <view class='coverImgFather'>
+              <image src='http://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/50da81cb39dbb6fd1c385c630824ab18972b3717.jpg' mode='aspectFill' class='coverImg'></image>
+            </view>
+            <view class='ItemContent'>
+              <view class='between'>
+                <view class='titleTxt nowrap'>我也太难了吧</view>
+                <view class='statusTxt'>正在展示</view>
+              </view>
+              <view class='des bb ft24'>我真的好难、我真的好难、我真的好难、我真的好难我真的好难、我真的好难、我真的好难、我真的好难我真的好难、我真的好难、我真的好难、我真的好难我真的好难、我真的好难、我真的好难、我真的好难</view>
+              <view class='start ft24 h36'>
+                <view>库存100份</view><view class='ml40'>已抢70份</view>
+              </view>
+              <view class='ft24 h36'>价格: 100份</view>
+              <view class='ft24 h36'>抢购时间: 2019-10-12 13:24:12~2019-10-12 13:24:12</view>
+              <view class='contentFooter bort'>
+                <view class='contentBtn'>活动图片</view>
+                <view class='contentBtn'>额外信息</view>
+                <view class='contentBtn'>更多参数</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

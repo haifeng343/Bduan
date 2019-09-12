@@ -20,7 +20,7 @@
   <view class='content ft24' wx:for="{{List}}" wx:key>
     <view class='item between bord bort h100'>
       <!-- <view>{{item.TicketNumber}}</view> -->
-      <view class='b1'>{{item.AccountName}}({{item.AccountMobile}})</view>
+      <view class='b1'>{{item.AccountName}}<text wx:if="{{item.AccountMobile}}">({{item.AccountMobile}})</text></view>
       <view class='b2'>{{item.ItemName}}({{item.StoreName}})</view>
       <view class='b3'>{{item.CheckTime}}</view>
     </view>

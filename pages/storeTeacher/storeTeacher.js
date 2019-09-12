@@ -11,12 +11,17 @@ Page({
     List: [], //我的门店杭虎列表
     accountList: [], //所有门店列表
     checkedArr: [],
+    name:'',
   },
   onLoad: function(options) {
     let IsShow = wx.getStorageSync('userInfo').IsAdministrator;
     this.setData({
-      Id: options.Id,
-      IsShow: IsShow
+      Id: options.Id || '',
+      IsShow: IsShow,
+      name:options.name || '',
+    })
+    wx.setNavigationBarTitle({
+      title: '门店师资-'+this.data.name,
     })
     this.init();
   },

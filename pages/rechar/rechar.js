@@ -8,36 +8,67 @@ Page({
     money: 0, //金额
     price: '', //充值金额
     hideModal: true, //控制按钮显示
+    status:'',//1门店 2商家
   },
 
   onLoad: function(options) {
+    console.log(options)
     this.setData({
       storeId: options.Id || '',
-      nmae: options.name || '',
-      money: options.money || 0,
+      name: options.name || '',
+      status : options.status || '',
     })
-    wx.setNavigationBarTitle({
-      title: '充值-' + options.name,
-    })
+    if (options.status == 2) {
+      wx.setNavigationBarTitle({
+        title: '充值-商家',
+      })
+    }
+    if (options.status==1) {
+      wx.setNavigationBarTitle({
+        title: '充值-' + options.name,
+      })
+    }
+  },
+  onShow:function() {
+    if(this.data.status==2){
     this.init();
+    }
+    if(this.data.status==1){
+      this.detail();
+    }
+  },
+  init:function() {
+    let money = wx.getStorageSync('userInfo').SellerAmount;
+    this.setData({
+      money: Number(money / 100).toFixed(2)
+    })
+  },
+  getAccountInfo:function(){
+    let that = this;
+    var url = 'account/info';
+    var params = {}
+    netUtil.postRequest(url, params, function (res) {
+      wx.setStorageSync('userInfo', res.Data);
+      that.init();
+    })
+  },
+  detail:function() {
+    let that = this;
+    var url = 'account/store/details';
+    var params = {
+      Id: that.data.storeId,
+    }
+    netUtil.postRequest(url, params, function (res) {
+      that.setData({
+        money: Number(res.Data.Money/100).toFixed(2)
+      })
+    }, null, false, false, false)
   },
   hasInput: function(e) {
     console.log(e)
     this.setData({
       price: e.detail.value
     })
-  },
-  init: function() {
-    let that = this;
-    var url = 'account/store/details';
-    var params = {
-      Id: that.data.storeId
-    }
-    netUtil.postRequest(url, params, function(res) {
-      that.setData({
-        money: res.Data.Money,
-      })
-    }, null, false, false, false)
   },
   //支付是否成功
   isSuccess: function(onsuccess) {
@@ -55,6 +86,7 @@ Page({
     let that = this;
     var url = 'recharge/order/create';
     var params = {
+      StoreType:that.data.status,
       StoreId: that.data.storeId,
       Money: that.data.price * 100,
       OpenId: that.data.openId,
@@ -84,11 +116,16 @@ Page({
                     hideModal: true,
                     price: '',
                   })
-                  that.init();
+                  if (that.data.status == 1) {
+                    that.detail();
+                  }
+                  if (that.data.status == 2) {
+                    that.getAccountInfo();
+                  }
                 },
               })
             } else {
-              var setTime = setInterval(function () {
+              var setTime = setInterval(function() {
                 that.isSuccess(function(item) {
                   if (item.Data.IsPay == true) {
                     clearInterval(setTime);
@@ -103,7 +140,12 @@ Page({
                           hideModal: true,
                           price: '',
                         })
-                        that.init();
+                        if (that.data.status == 1){
+                          that.detail();
+                        }
+                        if(that.data.status==2){
+                          that.getAccountInfo();
+                        }
                       },
                     })
                   }
@@ -190,17 +232,17 @@ Page({
   },
   bindRechargeLog: function() {
     wx.navigateTo({
-      url: '/pages/rechargeLog/rechargeLog?storeId=' + this.data.storeId,
+      url: '/pages/rechargeLog/rechargeLog?storeId=' + this.data.storeId+'&status='+this.data.status+'&name='+this.data.name,
     })
   },
   bindRefundLog: function() {
     wx.navigateTo({
-      url: '/pages/refundLog/refundLog?storeId=' + this.data.storeId,
+      url: '/pages/refundLog/refundLog?storeId=' + this.data.storeId + '&status=' + this.data.status + '&name=' + this.data.name,
     })
   },
   bindRefund: function() {
     wx.navigateTo({
-      url: '/pages/refund/refund?storeId=' + this.data.storeId + '&price=' + this.data.money,
+      url: '/pages/refund/refund?storeId=' + this.data.storeId + '&price=' + this.data.money + '&status=' + this.data.status + '&name=' + this.data.name,
     })
   },
   onShareAppMessage: function() {

@@ -28,7 +28,7 @@
 </view>
 
 <view class='content content1 ft28 mt20'>
-  <view class='between h80 borb' data-Id="{{Id}}" bindtap='navtoRecharge'>
+  <view class='between h80' data-Id="{{Id}}" bindtap='navtoRecharge'>
     <view class='start h80'>
       <view class='center'>
         <image class='icon1' src='../../img/R0.png' mode='widthFix'></image>
@@ -54,6 +54,13 @@
     </view>
     <image class='go' src='../../img/go.png' mode='widthFix'></image>
   </view>
+  <!-- <view class='between h80' bindtap='bindActive'>
+    <view class='start h80'>
+      <image class='icon2' src='../../img/m2.png' mode='widthFix'></image>
+      <view>我的抢购活动</view>
+    </view>
+    <image class='go' src='../../img/go.png' mode='widthFix'></image>
+  </view> -->
 </view>
 
 <view class='content content1 ft30 mt20' wx:if="{{userInfo.IsAdministrator==true}}">
@@ -71,7 +78,7 @@
     </view>
     <image class='go' src='../../img/go.png' mode='widthFix'></image>
   </view>
-  <view class='between h80 borb' bindtap='bindAccountMent'>
+  <view class='between h80' bindtap='bindAccountMent'>
     <view class='start h80'>
       <image class='icon2' src='../../img/m4.png' mode='widthFix'></image>
       <view>账户管理</view>
@@ -81,7 +88,7 @@
 </view>
 
 <view class='content content1 ft30 mt20' bindtap='bindSetting'>
-  <view class='between h80 borb'>
+  <view class='between h80'>
     <view class='start h80'>
       <image class='icon2' src='../../img/m6.png' mode='widthFix'></image>
       <view>设置</view>
@@ -98,7 +105,7 @@
     </view>
     <image class='go' src='../../img/go.png' mode='widthFix'></image>
   </view>
-  <view class='between h80 borb' bindtap='bindCallUs'>
+  <view class='between h80' bindtap='bindCallUs'>
     <view class='start h80'>
       <image class='icon2' src='../../img/m8.png' mode='widthFix'></image>
       <view>联系我们</view>

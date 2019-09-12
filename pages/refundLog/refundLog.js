@@ -9,11 +9,25 @@ Page({
     page: 1,
     List: [],
     storeId: '', //门店Id
+    status: '', //1门店 2商家
+    name:'',
   },
   onLoad: function(options) {
     this.setData({
-      storeId: options.storeId
+      storeId: options.storeId || '',
+      status: options.status || '',
+      name:options.name || '',
     })
+    if (this.data.status == 1) {
+      wx.setNavigationBarTitle({
+        title: '退款记录-'+this.data.name,
+      })
+    }
+    if (this.data.status == 2) {
+      wx.setNavigationBarTitle({
+        title: '退款记录-商家',
+      })
+    }
     this.init();
   },
   init: function() {
@@ -24,6 +38,7 @@ Page({
       StoreId: that.data.storeId,
       PageCount: that.data.pageCount,
       PageIndex: that.data.page,
+      StoreType: that.data.status
     }
     netUtil.postRequest(url, params, function(res) {
       let arr = res.Data;
@@ -42,7 +57,7 @@ Page({
       })
     })
   },
-  bindEor: function (e) {
+  bindEor: function(e) {
     console.log(e)
     wx.showModal({
       title: '退款失败',
@@ -50,20 +65,20 @@ Page({
       showCancel: false,
       confirmColor: '#3DD6D1',
       confirmText: '知道了',
-      success: function () {
+      success: function() {
 
       }
     })
   },
   bindSearch: function() {
     wx.navigateTo({
-      url: '/pages/searchRefund/searchRefund?storeId='+this.data.storeId,
+      url: '/pages/searchRefund/searchRefund?storeId=' + this.data.storeId+'&status='+this.data.status+'&name='+this.data.name,
     })
   },
   bindRefundDetail: function(e) {
     wx.navigateTo({
       // url: '/pages/orderDetail/orderDetail?id=' + e.currentTarget.dataset.id,
-      url: '/pages/refundDetail/refundDetail?id=' + e.currentTarget.dataset.id,
+      url: '/pages/refundDetail/refundDetail?id=' + e.currentTarget.dataset.id +'&status='+this.data.status+'&name=' + this.data.name,
     })
   },
   onPullDownRefresh: function() {

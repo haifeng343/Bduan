@@ -1,5 +1,5 @@
-<view class='content content1 ft28 mt20'>
-  <view class='between h80 borb' data-Id="{{Id}}" bindtap='navtoRecharge'>
+<view class='content content1 ft28 mt20' wx:if="{{userInfo.IsAdministrator==true}}">
+  <view class='between h80' data-Id="{{sellerId}}" data-money="{{sellerAmount}}" bindtap='navtoRecharge'>
     <view class='start h80'>
       <view class='center'>
         <image class='icon1' src='../../img/seller.png' mode='widthFix'></image>
@@ -7,24 +7,24 @@
       <view>充值到商家</view>
     </view>
     <view class='start'>
-      <view>100</view>
+      <view>{{sellerAmount==0?'0':sellerAmount}}</view>
       <view class='center'>
         <image class='go' src='../../img/go.png' mode='widthFix'></image>
       </view>
     </view>
   </view>
 </view>
-<view class='h80 ft28 pl5'>充值到门店</view>
+<view class='ft28 pl5 h81'>充值到门店</view>
 <view class='content content1 ft28'>
-  <view class='between h80 borb' data-Id="{{Id}}" bindtap='navtoRecharge'>
+  <view class='between h80 borb' data-Id="{{item.StoreId}}" data-name="{{item.StoreName}}" data-money="{{item.Money}}" bindtap='navtoStoreRecharge' wx:for="{{storeList}}" wx:key>
     <view class='start h80'>
       <view class='center'>
         <image class='icon1' src='../../img/store.png' mode='widthFix'></image>
       </view>
-      <view>门店1</view>
+      <view>{{item.StoreName}}</view>
     </view>
     <view class='start'>
-      <view>100</view>
+      <view>{{item.Money==0?'0':item.Money}}</view>
       <view class='center'>
         <image class='go' src='../../img/go.png' mode='widthFix'></image>
       </view>

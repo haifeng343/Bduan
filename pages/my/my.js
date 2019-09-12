@@ -1,4 +1,4 @@
-// pages/my/my.js
+var netUtil = require("../../utils/request.js"); //require引入
 Page({
 
   /**
@@ -15,6 +15,18 @@ Page({
       userInfo: wx.getStorageSync('userInfo') || '',
       usertoken: wx.getStorageSync('userInfo').UserToken || ''
     })
+    this.init();
+  },
+  onLoad:function() {
+    // this.init();
+  },
+  init: function () {
+    let that = this;
+    var url = 'account/info';
+    var params = {}
+    netUtil.postRequest(url, params, function (res) {
+      wx.setStorageSync('userInfo', res.Data)
+    }, null, false, false, false)
   },
   navtoRecharge: function () {
     wx.navigateTo({
@@ -59,6 +71,11 @@ Page({
   bindSetting:function() {
     wx.navigateTo({
       url: '/pages/setting/setting',
+    })
+  },
+  bindActive:function() {
+    wx.navigateTo({
+      url: '/pages/active/active',
     })
   },
   bindLogin:function() {

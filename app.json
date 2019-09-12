@@ -41,7 +41,8 @@
     "pages/groupClass/groupClass",
     "pages/enrollment/enrollment",
     "pages/searchRefund/searchRefund",
-    "pages/transition/transition"
+    "pages/transition/transition",
+    "pages/active/active"
   ],
   "window": {
     "backgroundTextStyle": "dark",

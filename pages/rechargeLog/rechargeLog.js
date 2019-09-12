@@ -5,7 +5,7 @@ Page({
     date: '', //不填写默认今天日期，填写后是默认日期
     dataStart: '', //有效日期
     dataEnd: '', //
-    storeId:'',//门店Id
+    storeId: '', //门店Id
     pagecount: 20,
     page: 1,
     year: '全部',
@@ -15,14 +15,13 @@ Page({
     statusdes: '',
     List: [],
     showEor: false,
+    status: '', //1门店 2商家
+    name:'',
   },
-  initPicker: function () {
+  initPicker: function() {
     var date = new Date();
-    let arr = [], arr1 = [];
-    // this.setData({
-    //   year: '全部',     //date.getFullYear(),
-    //   month: '全部'     //date.getMonth() + 1
-    // })
+    let arr = [],
+      arr1 = [];
 
     var year = date.getFullYear();
     arr.push('全部');
@@ -37,27 +36,40 @@ Page({
       date2: [arr.indexOf(this.data.year), arr1.indexOf(this.data.month + '')],
     })
   },
-  onLoad: function (options) {
+  onLoad: function(options) {
     this.setData({
-      storeId:options.storeId
+      storeId: options.storeId || '',
+      status: options.status || '',
+      name:options.name || '',
     })
+    if(this.data.status==1){
+      wx.setNavigationBarTitle({
+        title: '充值记录-'+this.data.name,
+      })
+    }
+    if(this.data.status==2){
+      wx.setNavigationBarTitle({
+        title: '充值记录-商家',
+      })
+    }
     this.initPicker();
     this.init();
   },
-  init: function () {
+  init: function() {
     this.getData();
   },
-  getData: function () {
+  getData: function() {
     let that = this;
     var url = 'recharge/record/list';
     var params = {
-      StoreId:that.data.storeId,
+      StoreId: that.data.storeId,
       Year: that.data.year,
       Month: that.data.month,
       PageCount: that.data.pagecount,
-      PageIndex: that.data.page
+      PageIndex: that.data.page,
+      StoreType: that.data.status
     }
-    netUtil.postRequest(url, params, function (res) { //onSuccess成功回调
+    netUtil.postRequest(url, params, function(res) { //onSuccess成功回调
       let arr = res.Data;
       var arr1 = [];
       arr.forEach(item => {
@@ -74,9 +86,8 @@ Page({
       })
     })
   },
-  bindDateChange: function (e) {
-    // console.log('picker发送选择改变，携带值为', e.detail.value)
-    console.log(1111)
+  bindDateChange: function(e) {
+
     let index = e.detail.value;
     if (index[0] == 0 && index[1] == 0) {
       this.setData({
@@ -95,25 +106,25 @@ Page({
     }
     this.getData();
   },
-  bindShowEor: function (e) {
+  bindShowEor: function(e) {
     wx.showModal({
       title: '验券失败',
       content: '失败原因:',
       cancelColor: '#29d9d6',
       showCancel: false,
       cancelText: '知道了',
-      success: function (res) {
+      success: function(res) {
 
       }
     })
   },
-  closeds: function () {
+  closeds: function() {
     this.setData({
       showEor: false
     })
   },
   //上拉加载更多
-  onReachBottom: function () {
+  onReachBottom: function() {
     let that = this;
     wx.showLoading({
       title: '玩命加载中',
@@ -127,7 +138,7 @@ Page({
 
   },
   //下拉刷新
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
     wx.showLoading({
       title: "玩命加载中",
     });
@@ -138,7 +149,7 @@ Page({
     // 停止下拉动作
     wx.stopPullDownRefresh();
   },
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

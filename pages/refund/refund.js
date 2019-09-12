@@ -13,14 +13,29 @@ Page({
     kd: '',
     lpm: {},
     urlImgs: [],//图片列表
+    status:'',//1门店 2商家
+    name:'',
   },
   onLoad: function(options) {
+    console.log(options)
     this.setData({
       storeId: options.storeId || '',
-      price: Number(options.price/100).toFixed(2) || 0,
+      status:options.status || '',
+      price: options.price || 0,
       kmd: options.kmd || '',
       kd: options.kd || '',
+      name:options.name || '',
     });
+    if (this.data.status == 1) {
+      wx.setNavigationBarTitle({
+        title: '申请退款-'+this.data.name,
+      })
+    }
+    if(this.data.status==2){
+      wx.setNavigationBarTitle({
+        title: '申请退款-商家',
+      })
+    }
     this.init();
   },
   init: function() {
@@ -56,6 +71,7 @@ Page({
       RefundMoney: Number(that.data.money * 100),
       RefundReason: that.data.text,
       ImgList: that.data.urlImgs,
+      StoreType:that.data.status
     }
     netUtil.postRequest(url, params, function(res) {
       wx.showModal({
@@ -70,7 +86,9 @@ Page({
           wx.navigateBack({
 
           })
-          prevPage.init();
+          if(that.data.status==2){
+            prevPage.getAccountInfo();
+          }
         }
       })
       that.setData({

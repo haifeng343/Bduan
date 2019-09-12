@@ -20,7 +20,8 @@ Page({
     confimText: '确认', //弹窗确认的文字和事件
     Item: {}, //项目详情
     name: '', //穿过来的课程名称
-    peoText:'',//预计剩余招生人数
+    peoText: '', //预计剩余招生人数
+    arrivalAmount: '', //到店扣费
   },
 
   onLoad: function(options) {
@@ -91,26 +92,32 @@ Page({
       return false;
     }
     if (this.data.purchase == '') {
-      wx.showToast({
-        icon: 'none',
-        title: '请输入课程单人购买数量',
-      });
-      return false;
-    }
-    if (this.data.people == '') {
-      if (this.data.peoText == '剩余招生人数') {
+      if (this.data.purchase <= 0) {
         wx.showToast({
           icon: 'none',
-          title: '请输入剩余招生人数',
+          title: '请输入课程单人购买数量',
         });
         return false;
       }
-      if (this.data.peoText == '预计招生人数') {
-        wx.showToast({
-          icon: 'none',
-          title: '请输入剩余预计人数',
-        });
-        return false;
+    }
+    if (this.data.people == '') {
+      if (this.data.peoText == '剩余招生数量') {
+        if (this.data.people < 0) {
+          wx.showToast({
+            icon: 'none',
+            title: '请输入剩余招生人数',
+          });
+          return false;
+        }
+      }
+      if (this.data.peoText == '预计招生数量') {
+        if (this.data.people < 0) {
+          wx.showToast({
+            icon: 'none',
+            title: '请输入剩余预计人数',
+          });
+          return false;
+        }
       }
     }
     if (this.data.confimText == '下一步') {
@@ -133,7 +140,7 @@ Page({
       SingleTime: that.data.timer,
       Reduction: that.data.relief * 100,
       MaxBuyCount: that.data.purchase,
-      RemainNumber:that.data.people
+      RemainNumber: that.data.people
     }
     netUtil.postRequest(url, params, function(res) {
       wx.showToast({
@@ -143,6 +150,7 @@ Page({
       that.setData({
         showDetail: false
       })
+      that.init();
     })
   },
   onPullDownRefresh: function() {
@@ -181,13 +189,14 @@ Page({
           that.setData({
             showDetail: true,
             confimText: '确定',
-            peoText:'剩余招生人数',
+            peoText: '剩余招生人数',
             money: Number(that.data.Item.Price / 100),
             number: that.data.Item.CoursesNumber,
             timer: that.data.Item.SingleTime,
             people: that.data.Item.RemainNumber,
             relief: Number(that.data.Item.Reduction / 100),
             purchase: that.data.Item.MaxBuyCount,
+            arrivalAmount: Number(that.data.Item.ArrivalAmount / 100),
           })
         }
         if (e.tapIndex == 2) {
@@ -259,7 +268,7 @@ Page({
       timer: '',
       relief: '',
       purchase: '',
-      people:'',
+      people: '',
     })
   },
   //下一步，获取可参与活动组列表
@@ -309,7 +318,7 @@ Page({
       timer: '',
       relief: '',
       purchase: '',
-      people:'',
+      people: '',
     })
   },
   //门店课程参与到活动组
@@ -325,7 +334,7 @@ Page({
       ActivitygroupList: that.data.checkedArr,
       StoreId: that.data.storeId,
       ItemId: that.data.itemId,
-      MaxNumber:that.data.people
+      MaxNumber: that.data.people
     }
     netUtil.postRequest(url, params, function(res) {
       that.setData({
@@ -355,7 +364,7 @@ Page({
     this.setData({
       showDetail: true,
       confimText: '下一步',
-      peoText:'预计招生人数',
+      peoText: '预计招生人数',
     })
   },
   onShareAppMessage: function() {

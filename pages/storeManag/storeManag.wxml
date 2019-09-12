@@ -48,7 +48,7 @@
     </view>
   </view>
 </view>
-<view class='content content1 ft28 mt20'>
+<!-- <view class='content content1 ft28 mt20'>
   <view class='between h80 borb' data-Id="{{Id}}" data-name="{{Info.StoreName}}" bindtap='navtoRecharge'>
     <view class='start h80'>
       <view class='center'>
@@ -58,9 +58,9 @@
     </view>
     <image class='go' src='../../img/go.png' mode='widthFix'></image>
   </view>
-</view>
+</view> -->
 <view class='content content1 ft28 mt20'>
-  <view class='between h80 borb' data-Id="{{Id}}" bindtap='navtoClass'>
+  <view class='between h80 borb' data-name="{{Info.StoreName}}" data-Id="{{Id}}" bindtap='navtoClass'>
     <view class='start h80'>
       <view class='center'>
         <image class='icon1' src='../../img/m9.png' mode='widthFix'></image>
@@ -69,7 +69,7 @@
     </view>
     <image class='go' src='../../img/go.png' mode='widthFix'></image>
   </view>
-  <view class='between h80 borb' data-Id="{{Id}}" bindtap='navtoStoreTeacher'>
+  <view class='between h80 borb' data-name="{{Info.StoreName}}" data-Id="{{Id}}" bindtap='navtoStoreTeacher'>
     <view class='start h80'>
       <view class='center'>
         <image class='icon1' src='../../img/z2.png' mode='widthFix'></image>
@@ -78,7 +78,7 @@
     </view>
     <image class='go' src='../../img/go.png' mode='widthFix'></image>
   </view>
-  <view class='between h80' data-Id="{{Id}}" bindtap='navtoStoreAccount'>
+  <view class='between h80' data-name="{{Info.StoreName}}" data-Id="{{Id}}" bindtap='navtoStoreAccount'>
     <view class='start h80'>
       <view class='center'>
         <image class='icon1' src='../../img/m4.png' mode='widthFix'></image>

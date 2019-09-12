@@ -12,14 +12,19 @@ Page({
     accountList: [], //所有门店列表
     checkArr: [], //勾选中的checkbox
     AdminPower: '', //0 普通账户 1 管理员 2 超级管理员
+    name:'',
   },
   onLoad: function(options) {
     let IsShow = wx.getStorageSync('userInfo').IsAdministrator;
     let AdminPower = wx.getStorageSync('userInfo').AdminPower
     this.setData({
-      Id: options.Id,
+      Id: options.Id || '',
       AdminPower: AdminPower,
-      IsShow: IsShow
+      IsShow: IsShow,
+      name:options.name || '',
+    })
+    wx.setNavigationBarTitle({
+      title: '门店账户-'+this.data.name,
     })
     this.init();
   },

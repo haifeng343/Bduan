@@ -19,12 +19,18 @@ Page({
     storeItemTeacherList: [], //获取所有课程师资
     storeTeacherList: [], //门店师资列表
     move:false,//是否滚动屏幕
+    name:'',
   },
   onLoad: function(options) {
     let IsAdministrator = wx.getStorageSync('userInfo').IsAdministrator;
+    console.log(options)
     this.setData({
       IsAdministrator: IsAdministrator,
-      storeId: options.Id || ''
+      storeId: options.Id || '',
+      name:options.name || '',
+    })
+    wx.setNavigationBarTitle({
+      title: '门店课程-'+this.data.name,
     })
     this.init();
   },

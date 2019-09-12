@@ -17,8 +17,8 @@ App({
     })
   },
   globalData: {
-    // baseUrl: 'https://qxbseller.guditech.com/',
-     baseUrl : "https://test.guditech.com/rocketseller/",
+    baseUrl: 'https://qxbseller.guditech.com/',
+    //  baseUrl : "https://test.guditech.com/rocketseller/",
     mobileReg: /^(13[0-9]|14[579]|15[0-3,5-9]|17[0135678]|18[0-9])\d{8}$/
   },
 })

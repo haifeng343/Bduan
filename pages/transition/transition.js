@@ -1,65 +1,48 @@
-// pages/transition/transition.js
+var netUtil = require("../../utils/request.js"); //require引入
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    userInfo:{},
+    sellerAmount:0,//商家总金额
+    sellerId:'',//商家Id
+    storeList:[],
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onShow:function() {
+    let userInfo = wx.getStorageSync('userInfo');
+    let sellerAmount = wx.getStorageSync('userInfo').SellerAmount;
+    let sellerId = wx.getStorageSync('userInfo').SellerId;
+    this.setData({
+      userInfo:userInfo,
+      sellerAmount: Number(sellerAmount/100).toFixed(2),
+      sellerId: sellerId,
+    })
+    this.init();
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  init: function () {
+    let that = this;
+    var url = 'account/store/list';
+    var params = {
+      Id: that.data.storeId
+    }
+    netUtil.postRequest(url, params, function (res) {
+      res.Data.forEach(item=>{
+        item.Money = Number(item.Money/100).toFixed(2);
+      })
+      that.setData({
+        storeList:res.Data,
+      })
+    }, null, false, false, false)
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  navtoRecharge:function() {
+    wx.navigateTo({
+      url: '/pages/rechar/rechar?Id=' + this.data.sellerId + '&money=' + this.data.sellerAmount+'&status=2',
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  navtoStoreRecharge:function(e) {
+    wx.navigateTo({
+      url: '/pages/rechar/rechar?Id=' + e.currentTarget.dataset.id + '&money=' + e.currentTarget.dataset.money + '&name=' + e.currentTarget.dataset.name + '&status=1',
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage: function () {
 
   }
