@@ -10,7 +10,9 @@
 .item label {
   width: 120rpx;
 }
-
+.scrollContent{
+  max-height:666rpx;
+}
 .item input {
   width: 520rpx;
   margin-left: 20rpx;

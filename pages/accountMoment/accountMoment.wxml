@@ -38,7 +38,7 @@
         </view>
       </view>
     </view>
-
+    <view class='lastItem'></view>
   </view>
   <view class='add' data-ids="{{ids}}" wx:if="{{IsAdministrator}}" bindtap='bindAddAccount'>新增账户</view>
 </view>

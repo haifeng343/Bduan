@@ -49,7 +49,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 40,
+			"current": 13,
 			"list": [
 				{
 					"id": -1,
@@ -146,7 +146,7 @@
 					"id": 13,
 					"name": "allTeacher",
 					"pathName": "pages/allTeacher/allTeacher",
-					"query": "Id=70",
+					"query": "id=69",
 					"scene": null
 				},
 				{
@@ -335,6 +335,7 @@
 					"id": -1,
 					"name": "active",
 					"pathName": "pages/active/active",
+					"query": "",
 					"scene": null
 				}
 			]

@@ -24,6 +24,9 @@
             <view class='ft24 bb noWras' wx:if="{{item.ItemDesc}}">{{item.ItemDesc}}</view>
             <view class='ft24 bb noWras' wx:else>暂无描述</view>
           </view>
+          <view class='between ft28 h40'>
+            <view class='ft24 bb noWras' wx:if="{{item.ExamineStatusDes}}">{{item.ExamineStatusDes}}</view>
+          </view>
           <view class='between ft24 h40'>
             <view class='bb'>绑定时间:{{item.BindTime}}</view>
           </view>
@@ -45,16 +48,16 @@
         <view class='center'>
           <image class='avator' src='{{item.ItemCoverImg}}' mode='aspectFill'></image>
         </view>
-        <view class='column'>
+        <view class='column w80'>
           <view class='start h40 black'>
             <view class='ft28'>{{item.ItemName}}</view>
           </view>
-          <view class='noWrap w345 h40'>
-            <view class='ft24 bb' wx:if="{{item.ItemTypeDes}}">{{item.ItemTypeDes}}</view>
+          <view class='w345 h40'>
+            <view class='ft24 bb notWrap' wx:if="{{item.ItemTypeDes}}">{{item.ItemTypeDes}}</view>
             <view class='ft24 bb' wx:else>暂无类型</view>
           </view>
-          <view class='noWrap w345 h40'>
-            <view class='ft24 bb' wx:if="{{item.ItemDesc}}">{{item.ItemDesc}}</view>
+          <view class='w345 h40'>
+            <view class='ft24 bb notWrap' wx:if="{{item.ItemDesc}}">{{item.ItemDesc}}</view>
             <view class='ft24 bb' wx:else>暂无描述</view>
           </view>
           <view class='ft24 bb h30 h40'>创建时间: {{item.CreateTime}}</view>
@@ -99,7 +102,7 @@
             <view class='ft24 bb' wx:else>暂无标签</view>
           </view>
           <view class='w100 w345'>
-            <view class='ft24 bb' wx:if="{{item.Experience}}">{{item.Experience}}</view>
+            <view class='ft24 bb notWrap' wx:if="{{item.Experience}}">{{item.Experience}}</view>
             <view class='ft24 bb' wx:else>暂无描述</view>
           </view>
           <view class='ft24 bb'>创建时间: {{item.CreateTime}}</view>

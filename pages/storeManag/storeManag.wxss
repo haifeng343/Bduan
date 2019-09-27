@@ -36,7 +36,6 @@
 }
 .name{
   width: 100%;
-  height: 38rpx;
   line-height: 38rpx;
   display: flex;
   align-items: center;
@@ -53,6 +52,11 @@
 .right{
   right: 78%;
   overflow: hidden;
+}
+.centers{
+  display: flex;
+  justify-content: center;
+  margin-right: 5rpx;
 }
 .activity{
   font-size: 28rpx;

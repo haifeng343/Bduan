@@ -73,11 +73,13 @@ page{
   box-sizing: border-box;
 }
 .item{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20rpx 2.5%;
   display: flex;
   flex: 1;
   text-align: center;
   justify-content: center;
-  padding: 20rpx 0;
 }
 .List .item1{
   width: 33.33%;

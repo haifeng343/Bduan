@@ -17,7 +17,9 @@ page {
 .black {
   color: #000 !important; 
 }
-
+.w80{
+  width: 80%;
+}
 .xuanfu {
   width: 135rpx;
   height: 135rpx;
@@ -80,9 +82,15 @@ page {
   overflow-x: scroll;
   white-space: nowrap;
 }
-.nowrap{
-  white-space: nowrap;
+
+.lastItem{
+  width: 100%;
+  height: 100rpx;
+  background-color: transparent;
+}
+.notWrap{
   overflow: hidden;
+  white-space: nowrap;
   text-overflow: ellipsis;
 }
 .tag {

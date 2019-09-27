@@ -20,7 +20,7 @@
   </view>
   <view class='item start borb' style='height:244rpx'>
     <label class='h81'>教师描述</label>
-    <textarea hidden='{{!showLog && !description}}' value='{{description}}' class='textarea' placeholder-class='placeholder' bindinput='bindDescription' placeholder='请填写教师所获荣誉和个人经历'></textarea>
+    <textarea value='{{description}}' class="textarea {{!showLog?'none':''}}" placeholder-class='placeholder' bindinput='bindDescription' placeholder='请填写教师所获荣誉和个人经历'></textarea>
   </view>
   <!-- <view class='item start borb h81' style='height:140rpx;'>
     <label>教师描述</label>
@@ -34,13 +34,15 @@
 <!-- 教师职称弹窗 -->
 <modal hidden="{{showLog}}" title="教师职称" confirm-text="确认" cancel-text="取消" bindcancel="closeCodeLog" bindconfirm="getCode">
   <view class='titleList'>
-    <checkbox-group bindchange="changeTitles">
-      <view class='item1 column' wx:for="{{TitlesList}}" wx:key>
-        <view class='start h60'>
-          <checkbox value='{{item.TitlesId}}' checked='{{item.checked}}'></checkbox>
-          <view>{{item.TitlesName}}</view>
+    <scroll-view scroll-y="true" catchtouchmove='true' class='scrollContent'>
+      <checkbox-group bindchange="changeTitles">
+        <view class='item1 column' wx:for="{{TitlesList}}" wx:key>
+          <view class='start h60'>
+            <checkbox value='{{item.TitlesId}}' checked='{{item.checked}}'></checkbox>
+            <view>{{item.TitlesName}}</view>
+          </view>
         </view>
-      </view>
-    </checkbox-group>
+      </checkbox-group>
+    </scroll-view>
   </view>
 </modal>

@@ -34,7 +34,7 @@ Page({
         arr1 = arr1.concat(arr);
       }
       that.setData({
-        items: res.Data
+        items: arr1
       })
     });
   },

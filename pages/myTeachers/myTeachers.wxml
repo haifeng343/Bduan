@@ -30,8 +30,11 @@
             <view class='ft24 bb w90 noWrap' wx:else>暂无标签 | {{item.TeachingAge}}教龄</view>
           </view>
           <view class='between'>
-            <view class='ft24 bb w90 noWrap' wx:if="{{item.Experience}}">{{item.Experience}}</view>
-            <view class='ft24 bb w90 noWrap'>暂无描述</view>
+            <view class='ft24 bb w90' wx:if="{{item.Experience}}">{{item.Experience}}</view>
+            <view class='ft24 bb w90' wx:else>暂无描述</view>
+          </view>
+          <view class='between'>
+            <view class='ft24 bb w90' wx:if="{{item.ExamineStatusDes}}">{{item.ExamineStatusDes}}</view>
           </view>
           <view class='between ft24'>
             <view class='bb'>创建时间:{{item.CreateTime}}</view>
@@ -43,5 +46,6 @@
       </view>
     </view>
   </view>
+    <view class='lastItem'></view>
 </view>
-<view class='add' wx:if="{{IsAdministrator==true}}" bindtap='bindAddTeacher'>+添加老师</view>
+<view class='add' wx:if="{{IsAdministrator==true}}" bindtap='bindAddTeacher'>+添加教师</view>

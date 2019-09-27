@@ -31,9 +31,13 @@
 .courseRow {
   width: 65%;
 }
+.centers{
+  display: flex;
+  justify-content: center;
+  margin-right: 5rpx;
+}
 .name{
   width: 100%;
-  height: 38rpx;
   line-height: 38rpx;
   text-align: left;
   color: #5b5b5b;

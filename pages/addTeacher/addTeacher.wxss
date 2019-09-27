@@ -15,6 +15,9 @@
   width: 520rpx;
   margin-left: 20rpx;
 }
+.scrollContent{
+  max-height:666rpx;
+}
 .goes{
   position: absolute;
   width: 12rpx;

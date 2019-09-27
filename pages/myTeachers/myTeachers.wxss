@@ -3,7 +3,7 @@ page {
 }
 
 .container {
-  min-height: 100%;
+  height: auto;
 }
 
 .address{
@@ -39,6 +39,9 @@ page {
   width: 100%;
   padding: 25rpx 0;
   border-bottom:1rpx solid #F7F7F7;
+}
+.item:last-child{
+  border: none;
 }
 .name{
   font-size: 32rpx;

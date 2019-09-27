@@ -15,7 +15,7 @@
         </view>
         <view class='start h40 ft24'>
           <view class='start'>
-            <view class='center'>
+            <view class='centers'>
               <image class='icon' src='../../img/ad1.png' mode='aspectFill'></image>
             </view>
             <view class='name ml5'>{{item.Address}}</view>
@@ -23,7 +23,7 @@
         </view>
         <view class='start h40 ft24' wx:for="{{item.StoreMobile}}" wx:key wx:for-item="k">
           <view class='start'>
-            <view class='center'>
+            <view class='centers'>
               <image class='icon' src='../../img/cal.png' mode='aspectFill'></image>
             </view>
             <view class='name ml5'>{{k}}</view>
@@ -31,7 +31,7 @@
         </view>
         <view class='start h40 ft24'>
           <view class='start'>
-            <view class='center'>
+            <view class='centers'>
               <image class='icon' src='../../img/people.png' mode='aspectFill'></image>
             </view>
             <view class='name ml5'>{{item.Leader}}</view>

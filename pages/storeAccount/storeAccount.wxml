@@ -44,7 +44,7 @@
           <image src='{{item.HeadUrl}}' mode='aspectFill' class='avator1'></image>
         </view>
         <view class='column w100'>
-          <view class='between w100 ft28 black'>
+          <view class='between w100 ft28 black notWrap'>
             <view>账户名: {{item.UserName}}</view>
           </view>
           <view class='start w100 ft24 bb'>账户类型：

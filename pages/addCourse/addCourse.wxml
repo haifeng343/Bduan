@@ -20,7 +20,7 @@
   </view> -->
   <view class='item start borb' style='height:244rpx'>
     <label class='h81'>课程描述</label>
-    <textarea hidden='{{showLog && !description}}' value='{{description}}' bindinput='bindDescription' placeholder='请填写课程描述' class='textarea' placeholder-class='placeholder'></textarea>
+    <textarea value='{{description}}' bindinput='bindDescription' placeholder='请填写课程描述' class="textarea {{showLog?'none':''}}" placeholder-class='placeholder'></textarea>
   </view>
 </view>
 
@@ -30,13 +30,15 @@
 <!-- 课程类型弹窗 -->
 <modal hidden="{{!showLog}}" title="课程类型" confirm-text="确认" cancel-text="取消" bindcancel="closeCodeLog" bindconfirm="getCode">
   <view class='titleList'>
-    <checkbox-group bindchange="changeTitles">
-      <view class='item1 column' wx:for="{{TitlesList}}" wx:key>
-        <view class='start h60'>
-        <checkbox value='{{item.TypeId}}' checked='{{item.checked==true}}'></checkbox>
-        <view>{{item.TypeName}}</view>
+    <scroll-view scroll-y="true" catchtouchmove='true' class='scrollContent'>
+      <checkbox-group bindchange="changeTitles">
+        <view class='item1 column' wx:for="{{TitlesList}}" wx:key>
+          <view class='start h60'>
+            <checkbox value='{{item.TypeId}}' checked='{{item.checked==true}}'></checkbox>
+            <view>{{item.TypeName}}</view>
+          </view>
         </view>
-      </view>
-    </checkbox-group>
+      </checkbox-group>
+    </scroll-view>
   </view>
 </modal>

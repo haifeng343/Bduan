@@ -73,7 +73,7 @@
         <view class=''>
           <view class='ft28'>{{k.ItemName}}</view>
           <image class='use' wx:if="{{Info.OrderStatus==4}}" src='../../img/expired.png' mode='aspectFill'></image>
-          <image class='use' wx:if="{{Info.OrderStatus==2 || Info.OrderStatus==3}}" src='../../img/used.png' mode='aspectFill'></image>
+          <image class='use' wx:if="{{k.UseStatus==2}}" src='../../img/used.png' mode='aspectFill'></image>
           <view class='column'>
             <view class='start mt10'>
               <view class='center'>

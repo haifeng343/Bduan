@@ -29,7 +29,7 @@ function request(url, params, method, onSuccess, onFailed, isShowLoading, isShow
   if (isShowLoading) {
     wx.showLoading({
       title: '玩命加载中...',
-    });
+    }); 
   }
 
   let moment = {};

@@ -4,7 +4,6 @@ page {
 
 .container {
   min-height: 100%;
-  padding: 0rpx 0rpx 100rpx;
 }
 
 .touch-item {
@@ -50,7 +49,7 @@ page {
 .address{
   width: 100%;
   background-color: #fff;
-  height: 100vh;
+  height: auto;
 }
 .noads{
   width: 450rpx;

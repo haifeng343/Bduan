@@ -31,6 +31,9 @@
             <view class='bb w90' wx:else>暂无描述</view>
           </view>
           <view class='between h40 ft24'>
+            <view class='bb w90' wx:if="{{item.ExamineStatusDes}}">{{item.ExamineStatusDes}}</view>
+          </view>
+          <view class='between h40 ft24'>
             <view class='bb'>创建时间:{{item.CreateTime}}</view>
           </view>
         </view>
@@ -40,5 +43,6 @@
       </view>
     </view>
   </view>
-  <view class='add' wx:if="{{IsAdministrator}}" bindtap='bindAddTeacher'>创建课程</view>
+  <view class='lastItem'></view>
 </view>
+<view class='add' wx:if="{{IsAdministrator}}" bindtap='bindAddTeacher'>创建课程</view>

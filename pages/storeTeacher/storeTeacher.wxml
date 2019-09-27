@@ -5,7 +5,7 @@
 <view class='content' wx:else>
   <view class='item pd20 start' wx:for="{{List}}" wx:key>
     <image src='{{item.HeadUrl}}' mode='aspectFill' class='avator'></image>
-    <view class='column'>
+    <view class='column w80'>
       <view class='start h40'>
         <view class='ft28'>{{item.Name}}</view>
       </view>
@@ -16,6 +16,9 @@
       <view class='ft24 bb h40 left'>
         <view class='ft24 bb' wx:if="{{item.Experience}}">{{item.Experience}}</view>
         <view class='ft24 bb' wx:else>暂无描述</view>
+      </view>
+      <view class='ft24 bb h40 left'>
+        <view class='ft24 bb' wx:if="{{item.ExamineStatusDes}}">{{item.ExamineStatusDes}}</view>
       </view>
       <view class='end ft24 bb h40'>绑定时间: {{item.BindTime}}</view>
     </view>
@@ -31,7 +34,7 @@
         <view class='center'>
           <image class='avator1' src='{{item.HeadUrl}}' mode='aspectFill'></image>
         </view>
-        <view class='column'>
+        <view class='column w80'>
           <view class='start black'>
             <view class='ft28'>{{item.Name}}</view>
           </view>
