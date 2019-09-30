@@ -1,5 +1,5 @@
 <view class='start h80 content ft28 bort borb header'>
-  <picker mode="multiSelector" value="{{date2}}" range='{{array}}' start="{{dataStart}}" end="{{dataEnd}}" fields="month" bindchange="bindDateChange">
+  <picker mode="multiSelector" value="{{date2}}" range='{{array}}' start="{{dataStart}}" end="{{dataEnd}}" fields="month" bindchange="bindDateChange" bindtap='initPicker'>
     <view class="picker">
       {{date?date:now}}
     </view>

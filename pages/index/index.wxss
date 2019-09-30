@@ -59,11 +59,6 @@
   right: 5%;
   z-index: 2;
 }
-
-.select .options .active {
-  color: #28d6d7;
-}
-
 .icon {
   margin-top: 0rpx;
   margin-right: 0;
@@ -80,7 +75,9 @@
 .select .option:last-child {
   border: none;
 }
-
+.option.active{
+ color:#29d9d6;
+}
 .addImg {
   width: 75rpx;
   height: 75rpx;

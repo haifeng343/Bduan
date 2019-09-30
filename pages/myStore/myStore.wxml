@@ -8,34 +8,32 @@
       <image class='topImg' src='{{item.StoreCoverImg}}' mode='aspectFill' lazy-load='true'></image>
     </view>
     <view class='right w100'>
-      <view class='column w100'>
-        <view class='between h40 w100'>
-          <view class='ft28'>{{item.StoreName}}</view>
-          <!-- <view class='cc ft24'>2019-10-12</view> -->
-        </view>
-        <view class='start h40 ft24'>
-          <view class='start'>
-            <view class='centers'>
-              <image class='icon' src='../../img/ad1.png' mode='aspectFill'></image>
-            </view>
-            <view class='name ml5'>{{item.Address}}</view>
+      <view class='between w100'>
+        <view class='ft28'>{{item.StoreName}}</view>
+        <!-- <view class='cc ft24'>2019-10-12</view> -->
+      </view>
+      <view class='start ft24'>
+        <view class='start'>
+          <view class='centers'>
+            <image class='icon' src='../../img/ad1.png' mode='aspectFill'></image>
           </view>
+          <view class='name ml5'>{{item.Address}}</view>
         </view>
-        <view class='start h40 ft24' wx:for="{{item.StoreMobile}}" wx:key wx:for-item="k">
-          <view class='start'>
-            <view class='centers'>
-              <image class='icon' src='../../img/cal.png' mode='aspectFill'></image>
-            </view>
-            <view class='name ml5'>{{k}}</view>
+      </view>
+      <view class='start ft24' wx:for="{{item.StoreMobile}}" wx:key wx:for-item="k">
+        <view class='start'>
+          <view class='centers'>
+            <image class='icon' src='../../img/cal.png' mode='aspectFill'></image>
           </view>
+          <view class='name ml5'>{{k}}</view>
         </view>
-        <view class='start h40 ft24'>
-          <view class='start'>
-            <view class='centers'>
-              <image class='icon' src='../../img/people.png' mode='aspectFill'></image>
-            </view>
-            <view class='name ml5'>{{item.Leader}}</view>
+      </view>
+      <view class='start ft24'>
+        <view class='start'>
+          <view class='centers'>
+            <image class='icon' src='../../img/people.png' mode='aspectFill'></image>
           </view>
+          <view class='name ml5'>{{item.Leader}}</view>
         </view>
       </view>
     </view>

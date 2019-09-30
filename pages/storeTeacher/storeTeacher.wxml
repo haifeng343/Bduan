@@ -2,51 +2,36 @@
   <image src='../../img/zanwu.png' mode='widthFix' class='noList'></image>
   <view class='zanwu'>暂无师资</view>
 </view>
-<view class='content' wx:else>
-  <view class='item pd20 start' wx:for="{{List}}" wx:key>
-    <image src='{{item.HeadUrl}}' mode='aspectFill' class='avator'></image>
-    <view class='column w80'>
-      <view class='start h40'>
-        <view class='ft28'>{{item.Name}}</view>
-      </view>
-      <view class='ft24 bb h40 left'>
-        <view class='ft24 bb' wx:if="{{item.Titles}}">{{item.Titles}} | {{item.TeachingAge}}教龄</view>
-        <view class='ft24 bb' wx:else>暂无标签 | {{item.TeachingAge}}教龄</view>
-      </view>
-      <view class='ft24 bb h40 left'>
-        <view class='ft24 bb' wx:if="{{item.Experience}}">{{item.Experience}}</view>
-        <view class='ft24 bb' wx:else>暂无描述</view>
-      </view>
-      <view class='ft24 bb h40 left'>
-        <view class='ft24 bb' wx:if="{{item.ExamineStatusDes}}">{{item.ExamineStatusDes}}</view>
-      </view>
-      <view class='end ft24 bb h40'>绑定时间: {{item.BindTime}}</view>
+<view class='storeContainer' wx:else>
+  <view class='storeItem pd20 start' wx:for="{{List}}" wx:key>
+    <image src='{{item.HeadUrl}}' mode='aspectFill' class='storeTeacherAvator'></image>
+    <view class='storeContent ft24 bb'>
+      <view class='ft28 black notWrap'>{{item.Name}}</view>
+      <view class='notWrap' wx:if="{{item.Titles}}">{{item.Titles}} | {{item.TeachingAge}}教龄</view>
+        <view wx:else>暂无标签 | {{item.TeachingAge}}教龄</view>
+        <view class='notWrap' wx:if="{{item.Experience}}">{{item.Experience}}</view>
+        <view wx:else>暂无描述</view>
+        <view class='notWrap' wx:if="{{item.ExamineStatusDes}}">{{item.ExamineStatusDes}}</view>
+      <view>绑定时间: {{item.BindTime}}</view>
     </view>
   </view>
+  <view class='storeLastItem'></view>
 </view>
 
 <!--分配弹出框-->
 <modal hidden="{{!showLog}}" title="分配师资" confirm-text="确认" cancel-text="取消" bindcancel="bindCancel" bindconfirm="bindSure" catchtouchmove="true">
   <scroll-view scroll-y="true" class='dialogList' wx:if="{{accountList.length>0}}">
     <checkbox-group bindchange="checkedChange">
-      <view class='dialogItem start' wx:for="{{accountList}}" wx:key>
-        <checkbox class='chebox' value='{{item.Id}}' checked='{{item.checked==true}}'></checkbox>
-        <view class='center'>
-          <image class='avator1' src='{{item.HeadUrl}}' mode='aspectFill'></image>
-        </view>
-        <view class='column w80'>
-          <view class='start black'>
-            <view class='ft28'>{{item.Name}}</view>
-          </view>
-          <view wx:if="{{item.Titles}}">
-            <view class='ft24 bb'>{{item.Titles}} | {{item.TeachingAge}}教龄</view>
-          </view>
-          <view wx:else>
-            <view class='ft24 bb'>暂无标签 | {{item.TeachingAge}}教龄</view>
-          </view>
-          <view class=' ft24 bb h30' wx:if="{{item.Experience}}">{{item.Experience}}</view>
-          <view class=' ft24 bb h30' wx:else>暂无描述</view>
-          <view class=' ft24 bb h30'>创建时间: {{item.CreateTime}}</view>
+      <view class='storeDialogItem start' wx:for="{{accountList}}" wx:key>
+        <checkbox class='center' value='{{item.Id}}' checked='{{item.checked==true}}'></checkbox>
+          <image class='storeTeacherAvatorLeft center' src='{{item.HeadUrl}}' mode='aspectFill'></image>
+        <view class='column storeDialogTeacherRight ft24 bb'>
+          <view class='black ft28 notWrap'>{{item.Name}}</view>
+          <view wx:if="{{item.Titles}}">{{item.Titles}} | {{item.TeachingAge}}教龄</view>
+          <view wx:else class=' notWrap'>暂无标签 | {{item.TeachingAge}}教龄</view>
+          <view class='notWrap' wx:if="{{item.Experience}}">{{item.Experience}}</view>
+          <view wx:else>暂无描述</view>
+          <view>创建时间: {{item.CreateTime}}</view>
         </view>
       </view>
     </checkbox-group>

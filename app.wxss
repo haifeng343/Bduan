@@ -15,11 +15,13 @@ page {
 }
 
 .black {
-  color: #000 !important; 
+  color: #000 !important;
 }
-.w80{
+
+.w80 {
   width: 80%;
 }
+
 .xuanfu {
   width: 135rpx;
   height: 135rpx;
@@ -83,16 +85,18 @@ page {
   white-space: nowrap;
 }
 
-.lastItem{
+.lastItem {
   width: 100%;
   height: 100rpx;
   background-color: transparent;
 }
-.notWrap{
+
+.notWrap {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
 .tag {
   font-size: 24rpx;
   border: 2rpx solid #5ee3e4;
@@ -102,12 +106,15 @@ page {
   padding: 0 15rpx;
   border-radius: 5rpx;
 }
-.ml40{
+
+.ml40 {
   margin-left: 40rpx;
 }
-.h36{
+
+.h36 {
   line-height: 36rpx;
 }
+
 .tag3 {
   color: #b2c7ed;
 }
@@ -119,11 +126,6 @@ page {
 .expire {
   width: 72rpx;
   height: 60rpx;
-}
-
-.r5 {
-  position: relative;
-  right: 4%;
 }
 
 .button-hover {
@@ -250,7 +252,6 @@ label {
   align-items: center;
   justify-content: center;
   margin: auto 0;
-  margin-right: 5rpx;
 }
 
 .flex {
@@ -299,6 +300,10 @@ label {
   margin-left: 5%;
 }
 
+.mr15 {
+  margin-right: 15rpx;
+}
+
 .mr5 {
   margin-right: 5rpx;
 }
@@ -341,6 +346,16 @@ label {
 
 .pd25 {
   padding: 20rpx 5% !important;
+}
+
+.pd0 {
+  padding: 0 !important;
+}
+
+.dialogItem:last-child {
+  border: none;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 .pd30 {
@@ -616,7 +631,9 @@ image {
 
 .btn {
   width: 90%;
-  margin-left: 5%;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
   height: 80rpx;
   line-height: 80rpx;
   color: #fff;
@@ -782,4 +799,189 @@ radio .wx-radio-input.wx-radio-input-checked::before {
 
 .pr5 {
   padding-right: 5%;
+}
+
+/***********************门店*****************************/
+
+.storeLastItem {
+  width: 100%;
+  height: 100rpx;
+  background-color: transparent;
+}
+
+.storeItem {
+  width: 100%;
+  padding: 25rpx 5%;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-bottom: 1rpx solid #f7f7f7;
+}
+
+.storeItem:last-child {
+  border: none;
+}
+
+.storeContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 72%;
+}
+
+.edit {
+  display: flex;
+  align-items: center;
+  width: 34rpx;
+  height: 34rpx;
+}
+
+.storeContainer {
+  width: 100%;
+  height: auto;
+  padding: 0;
+}
+
+/***************弹窗*******************/
+
+.storeDialogItem {
+  margin-bottom: 15rpx;
+  padding-bottom: 15rpx !important;
+  border-bottom: 1rpx solid #f7f7f7;
+  box-sizing: border-box;
+}
+
+.storeDialogItem:last-child {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+  border-bottom: none;
+}
+
+.storeClassAvator {
+  width: 133rpx;
+  height: 170rpx;
+  border-radius: 15rpx;
+  margin-right: 15rpx;
+}
+
+.storeTeacherAvatorLeft {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-right: 10rpx;
+}
+
+.dialogList {
+  max-height: 860rpx;
+}
+
+.storeDialogRight {
+  width: 64%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.storeDialogTeacherRight {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.storeTagItem {
+  margin-bottom: 10rpx;
+  padding-bottom: 10rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #f7f7f7;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.storeTagItem:last-child {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+  border-bottom: none;
+}
+
+/*****************门店师资*************/
+
+.storeTeacherAvator {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  margin-right: 10rpx;
+}
+
+/********************门店管理*******/
+
+.storeContentTop {
+  width: 100%;
+  height: auto;
+  padding: 20rpx 5%;
+  box-sizing: border-box;
+}
+
+.storeManagImg {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 10rpx;
+  margin-right: 15rpx;
+}
+
+.storeManagRight {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.MyConetnt {
+  height: auto;
+  padding: 0 5%;
+  background-color: #fff;
+  box-sizing: border-box;
+  width: 100%;
+  padding-right: 0;
+  font-size: 28rpx;
+}
+
+.MyGoIcon {
+  width: 12rpx;
+  height: 22rpx;
+  display: flex;
+  align-items: center;
+  margin: auto 0;
+  margin-right: 5%;
+}
+
+.MyHeaderRight {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.MyAvator {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+
+/******************门店账户*********************/
+
+.storeAcountImg {
+  width: 160rpx;
+  height: 160rpx;
+  margin-right: 15rpx;
+  border-radius: 50%;
+}
+
+/*****************去招生*********************/
+.storeItemAvator{
+  width:135rpx;
+height:135rpx;
+border-radius:15rpx;
+margin-right:15rpx;
+
 }

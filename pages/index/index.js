@@ -33,6 +33,7 @@ Page({
       },
     ],
     storeList: [], //门店列表
+    showStoreId: 0, //默认选择门店
     QuanInfo: {}, //订单信息
     activeList: [], //正在参与的活动
     checked: false,
@@ -53,12 +54,12 @@ Page({
     this.init();
   },
   // 禁止屏幕滚动
-  preventTouchMove: function () {
+  preventTouchMove: function() {
 
   },
-  hideFixed:function() {
+  hideFixed: function() {
     this.setData({
-      showSelect:false,
+      showSelect: false,
     })
   },
   init: function() {
@@ -73,14 +74,20 @@ Page({
     var url = 'account/store/list';
     var params = {}
     netUtil.postRequest(url, params, function(res) {
+      let arr = res.Data;
+      arr.unshift({
+        StoreId: 0,
+        StoreName: "全部门店"
+      })
       that.setData({
-        storeList: res.Data
+        storeList: arr
       })
     })
   },
   //更换门店
   changeStore: function(e) {
     this.setData({
+      showStoreId: e.currentTarget.dataset.id,
       storeId: e.currentTarget.dataset.id,
       storeName: e.currentTarget.dataset.name,
       showSelect: false
@@ -150,7 +157,7 @@ Page({
   //验证记录
   navtoVercation: function() {
     wx.navigateTo({
-      url: '/pages/vercationLog/vercationLog',
+      url: '/pages/yanzheng/yanzheng',
     })
   },
   //点击切换选中样式
@@ -175,7 +182,31 @@ Page({
     })
   },
   getCode: function() {
-    this.bindOrderCode(this.data.code);
+    let that = this;
+    if (that.data.code.indexOf('R') == 0) {
+      that.bindOrderCode(that.data.code);
+    } else if (that.data.code.indexOf('T') == 0) {
+      that._getCheckInfo(function (res) {
+        wx.navigateTo({
+          url: '/pages/yancode/yancode?Info=' +JSON.stringify(res.Data),
+        })
+        that.setData({
+          showLog: true,
+          code: "",
+        })
+      });
+    }
+  },
+  //获取代金券验券详情
+  _getCheckInfo:function(onSuccess) {
+    let that = this;
+    var url = 'account/ticket/check/info';
+    var params = {
+      TicketNumber: that.data.code,
+    }
+    netUtil.postRequest(url, params, function (res) {
+      onSuccess(res);
+    })
   },
   //输入订单号搜索
   bindOrderCode: function(code) {
@@ -184,7 +215,7 @@ Page({
     var params = {
       TicketNumber: code,
     }
-    netUtil.postRequest(url, params, function(res) { //onSuccess成功回调
+    netUtil.postRequest(url, params, function(res) {
       that.setData({
         QuanInfo: res.Data,
         showSure: false,
@@ -224,7 +255,7 @@ Page({
       that.setData({
         showSure: true,
         code: '',
-        checkList:[],
+        checkList: [],
       })
       wx.showModal({
         title: '验券成功',
@@ -245,6 +276,7 @@ Page({
   },
   //设置券码
   setCode: function(e) {
+    console.log(e.detail.value)
     this.setData({
       code: e.detail.value
     })
@@ -284,7 +316,20 @@ Page({
         that.setData({
           code: res.result
         });
-        that.bindOrderCode(res.result);
+        if (that.data.code.indexOf('R') == 0) {
+          that.bindOrderCode(that.data.code);
+        } else if (that.data.code.indexOf('T') == 0) {
+          that._getCheckInfo(function (res) {
+            wx.navigateTo({
+              url: '/pages/yancode/yancode?Info=' + JSON.stringify(res.Data),
+            })
+            that.setData({
+              showLog: true,
+              code:"",
+            })
+          });
+        }
+        // that.bindOrderCode(res.result);
 
       }
     })

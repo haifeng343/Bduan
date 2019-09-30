@@ -49,7 +49,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 13,
+			"current": 38,
 			"list": [
 				{
 					"id": -1,
@@ -321,7 +321,7 @@
 					"id": 38,
 					"name": "enrollment",
 					"pathName": "pages/enrollment/enrollment",
-					"query": "rellId=89&name=测试",
+					"query": "rellId=31&name=篮球项目",
 					"scene": null
 				},
 				{
@@ -336,6 +336,27 @@
 					"name": "active",
 					"pathName": "pages/active/active",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "yanzheng",
+					"pathName": "pages/yanzheng/yanzheng",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "yanquan",
+					"pathName": "pages/yanquan/yanquan",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 43,
+					"name": "yancode",
+					"pathName": "pages/yancode/yancode",
+					"query": "Info={\"Id\":8,\"CardName\":\"代金券2\",\"CardIconUrl\":\"\",\"StartTime\":\"2019-08-31 16:00:00\",\"EndTime\":\"2020-10-30 16:00:00\",\"UseContext\":\"限DASH编程学院(运河上街)、明好小语种培训中心（运河上街）等全店通用\",\"CardType\":3,\"CardQrCode\":\"T758ae72f35fb\"}",
 					"scene": null
 				}
 			]

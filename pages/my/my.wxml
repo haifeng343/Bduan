@@ -1,12 +1,10 @@
 <view class='content pd25'>
   <view class='start ccl' wx:if="{{usertoken}}">
-    <view>
-      <image class='avator' src='{{userInfo.HeadUrl}}' mode='aspectFill'></image>
-    </view>
-    <view class='column'>
-      <view class='ft32 mt32 h40'>{{userInfo.NickName}}</view>
+      <image class='MyAvator' src='{{userInfo.HeadUrl}}' mode='aspectFill'></image>
+    <view class='MyHeaderRight'>
+      <view class='h60 ft32 notWrap'>{{userInfo.NickName}}</view>
       <view class='start h50'>
-        <view class='ft24 bb mr15 '>账号: {{userInfo.UserName}}</view>
+        <view class='bb ft28 mr15'>账号: {{userInfo.UserName}}</view>
         <text class='tag' wx:if="{{userInfo.AdminPower==1 && userInfo.IsAdministrator==true}}">管理员</text>
         <text class='tag' wx:if="{{userInfo.AdminPower==2 && userInfo.IsAdministrator==true}}">超级管理员</text>
         <text class='tag tag1' wx:if="{{userInfo.IsAdministrator==false}}">普通账户</text>
@@ -14,11 +12,9 @@
     </view>
   </view>
   <view class='start ccl' wx:else bindtap='bindLogin'>
-    <view>
-      <image class='avator' src='../../img/userIcon.png' mode='aspectFill'></image>
-    </view>
-    <view class='column'>
-      <view class='ft32 mt30 h40'>未登录</view>
+      <image class='MyAvator' src='../../img/userIcon.png' mode='aspectFill'></image>
+    <view class='MyHeaderRight'>
+      <view class='h60 ft32 notWrap'>未登录</view>
       <view class='start h50'>
         <view class='ft24 mr15 bb'>点击登录更精彩</view>
         <!-- <text class='tag'>管理员</text> -->
@@ -27,7 +23,7 @@
   </view>
 </view>
 
-<view class='content content1 ft28 mt20'>
+<view class='MyConetnt mt20'>
   <view class='between h80' data-Id="{{Id}}" bindtap='navtoRecharge'>
     <view class='start h80'>
       <view class='center'>
@@ -35,81 +31,81 @@
       </view>
       <view>充值</view>
     </view>
-    <image class='go' src='../../img/go.png' mode='widthFix'></image>
+    <image class='MyGoIcon' src='../../img/go.png' mode='widthFix'></image>
   </view>
 </view>
 
-<view class='content content1 ft30 mt20'>
+<view class='MyConetnt mt20'>
   <view class='between h80 borb' bindtap='bindStore'>
     <view class='start h80'>
-      <image class='icon2' src='../../img/m1.png' mode='widthFix'></image>
+      <image class='icon1' src='../../img/m1.png' mode='widthFix'></image>
       <view>我的门店</view>
     </view>
-    <image class='go' src='../../img/go.png' mode='widthFix'></image>
+    <image class='MyGoIcon' src='../../img/go.png' mode='widthFix'></image>
   </view>
   <view class='between h80 borb' bindtap='bindGroup'>
     <view class='start h80'>
-      <image class='icon2' src='../../img/m2.png' mode='widthFix'></image>
+      <image class='icon1' src='../../img/m2.png' mode='widthFix'></image>
       <view>我的活动组</view>
     </view>
-    <image class='go' src='../../img/go.png' mode='widthFix'></image>
+    <image class='MyGoIcon' src='../../img/go.png' mode='widthFix'></image>
   </view>
   <!-- <view class='between h80' bindtap='bindActive'>
     <view class='start h80'>
-      <image class='icon2' src='../../img/m2.png' mode='widthFix'></image>
+      <image class='icon1' src='../../img/m2.png' mode='widthFix'></image>
       <view>我的抢购活动</view>
     </view>
-    <image class='go' src='../../img/go.png' mode='widthFix'></image>
+    <image class='MyGoIcon' src='../../img/go.png' mode='widthFix'></image>
   </view> -->
 </view>
 
-<view class='content content1 ft30 mt20' wx:if="{{userInfo.IsAdministrator==true}}">
+<view class='MyConetnt mt20' wx:if="{{userInfo.IsAdministrator==true}}">
   <view class='between h80 borb' bindtap='bindCourse'>
     <view class='start h80'>
-      <image class='icon2' src='../../img/m3.png' mode='widthFix'></image>
+      <image class='icon1' src='../../img/m3.png' mode='widthFix'></image>
       <view>课程管理</view>
     </view>
-    <image class='go' src='../../img/go.png' mode='widthFix'></image>
+    <image class='MyGoIcon' src='../../img/go.png' mode='widthFix'></image>
   </view>
   <view class='between h80 borb' bindtap='bindTeachers'>
     <view class='start h80'>
-      <image class='icon2' src='../../img/m5.png' mode='widthFix'></image>
+      <image class='icon1' src='../../img/m5.png' mode='widthFix'></image>
       <view>师资管理</view>
     </view>
-    <image class='go' src='../../img/go.png' mode='widthFix'></image>
+    <image class='MyGoIcon' src='../../img/go.png' mode='widthFix'></image>
   </view>
   <view class='between h80' bindtap='bindAccountMent'>
     <view class='start h80'>
-      <image class='icon2' src='../../img/m4.png' mode='widthFix'></image>
+      <image class='icon1' src='../../img/m4.png' mode='widthFix'></image>
       <view>账户管理</view>
     </view>
-    <image class='go' src='../../img/go.png' mode='widthFix'></image>
+    <image class='MyGoIcon' src='../../img/go.png' mode='widthFix'></image>
   </view>
 </view>
 
-<view class='content content1 ft30 mt20' bindtap='bindSetting'>
+<view class='MyConetnt mt20' bindtap='bindSetting'>
   <view class='between h80'>
     <view class='start h80'>
-      <image class='icon2' src='../../img/m6.png' mode='widthFix'></image>
+      <image class='icon1' src='../../img/m6.png' mode='widthFix'></image>
       <view>设置</view>
     </view>
-    <image class='go' src='../../img/go.png' mode='widthFix'></image>
+    <image class='MyGoIcon' src='../../img/go.png' mode='widthFix'></image>
   </view>
 </view>
 
-<view class='content content1 ft30 mt20'>
+<view class='MyConetnt ft30 mt20'>
   <view class='between h80 borb' bindtap='bindAboutUs'>
     <view class='start h80'>
-      <image class='icon2' src='../../img/m7.png' mode='widthFix'></image>
+      <image class='icon1' src='../../img/m7.png' mode='widthFix'></image>
       <view>关于我们</view>
     </view>
-    <image class='go' src='../../img/go.png' mode='widthFix'></image>
+    <image class='MyGoIcon' src='../../img/go.png' mode='widthFix'></image>
   </view>
   <view class='between h80' bindtap='bindCallUs'>
     <view class='start h80'>
-      <image class='icon2' src='../../img/m8.png' mode='widthFix'></image>
+      <image class='icon1' src='../../img/m8.png' mode='widthFix'></image>
       <view>联系我们</view>
     </view>
-    <image class='go' src='../../img/go.png' mode='widthFix'></image>
+    <image class='MyGoIcon' src='../../img/go.png' mode='widthFix'></image>
   </view>
 </view>

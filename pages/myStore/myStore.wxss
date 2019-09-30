@@ -53,6 +53,14 @@
 }
 .right{
   right: 78%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.column{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 }
 .activity{
   font-size: 28rpx;

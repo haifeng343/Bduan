@@ -2,68 +2,47 @@
   <image src='../../img/zanwu.png' mode='widthFix' class='noList'></image>
   <view class='zanwu'>暂无账户</view>
 </view>
-<view class="content {{showLog==true?'hidden':''}}" wx:else>
-  <view>
-    <view class='item pd20 start' wx:for="{{List}}" wx:key bindtouchmove='move'>
-      <view>
-        <image src='{{item.HeadUrl}}' mode='aspectFill' class='avator'></image>
+<view class="storeContainer {{showLog==true?'hidden':''}}" wx:else>
+  <view class='storeItem start' wx:for="{{List}}" wx:key bindtouchmove='move'>
+    <image src='{{item.HeadUrl}}' mode='aspectFill' class='storeAcountImg'></image>
+    <view class='storeContent ft24 bb'>
+      <view class='black ft28'>账户名：{{item.UserName}}</view>
+      <view class='start'>账户类型：
+        <view wx:if="{{item.AdminPower==0}}" class=''>普通账户</view>
+        <view wx:if="{{item.AdminPower==1}}" class=''>管理员</view>
+        <view wx:if="{{item.AdminPower==2}}" class=''>超级管理员</view>
       </view>
-      <view class='column w100'>
-        <view class='between w100 ft28 h40'>
-          <view>账户名：{{item.UserName}}
-            <!-- <text class='tag' wx:if="{{item.IsAdministrator==true}}">管理员</text>
-        <text class='tag tag1' wx:else>普通账户</text> -->
-          </view>
-        </view>
-        <view class='start bb w100 ft24 h40'>账户类型：
-          <view wx:if="{{item.AdminPower==0}}" class=''>普通账户</view>
-          <view wx:if="{{item.AdminPower==1}}" class=''>管理员</view>
-          <view wx:if="{{item.AdminPower==2}}" class=''>超级管理员</view>
-        </view>
-        <view class='between bb w100 ft24 h40'>
-          <view wx:if="{{item.Mobile}}">手机号：{{item.Mobile}}</view>
-          <view wx:else>暂无绑定手机号</view>
-        </view>
-        <view class='between w100 ft24 h40'>
-          <view class='bb' wx:if="{{item.BindTime}}">绑定时间：{{item.BindTime}}</view>
-          <view class='bb' wx:else>绑定时间：(空)</view>
-        </view>
-      </view>
+      <view wx:if="{{item.Mobile}}">手机号：{{item.Mobile}}</view>
+      <view wx:else>暂无绑定手机号</view>
+      <view wx:if="{{item.BindTime}}">绑定时间：{{item.BindTime}}</view>
+      <view wx:else>绑定时间：(空)</view>
     </view>
   </view>
 </view>
+<view class='lastItem'></view>
 <!-- <view class="mask" catchtouchmove="show" bindtap='hideFixed' wx:if="{{show}}"></view> -->
 <!--分配弹出框-->
 <modal hidden="{{!showLog}}" title="分配账户" confirm-text="确认" cancel-text="取消" bindcancel="bindCancel" bindconfirm="bindSure" catchtouchmove="true">
   <scroll-view scroll-y="true" class='dialogList' wx:if="{{accountList.length>0}}">
     <checkbox-group bindchange="checkedChange">
-      <view class='dialogItem pd20 start' wx:for="{{accountList}}" wx:key>
+      <view class='storeDialogItem start' wx:for="{{accountList}}" wx:key>
         <!-- <checkbox value='{{item.AccountId}}'></checkbox> -->
-        <checkbox value='{{item.AccountId}}' checked='{{item.checked == true}}'></checkbox>
-        <view>
-          <image src='{{item.HeadUrl}}' mode='aspectFill' class='avator1'></image>
-        </view>
-        <view class='column w100'>
-          <view class='between w100 ft28 black notWrap'>
-            <view>账户名: {{item.UserName}}</view>
-          </view>
-          <view class='start w100 ft24 bb'>账户类型：
+        <checkbox value='{{item.AccountId}}' class='center' checked='{{item.checked == true}}'></checkbox>
+        <image src='{{item.HeadUrl}}' mode='aspectFill' class='storeTeacherAvatorLeft center'></image>
+        <view class='column storeDialogTeacherRight ft24 bb'>
+          <view class='ft28 black notWrap'>账户名: {{item.UserName}}</view>
+          <view class='start'>账户类型：
             <view wx:if="{{item.AdminPower==0}}">普通账户</view>
             <view wx:if="{{item.AdminPower==1}}">管理员</view>
             <view wx:if="{{item.AdminPower==2}}">超级管理员</view>
           </view>
-          <view class='between w100 ft24 bb'>
-            <view wx:if="{{item.Mobile}}">手机号: {{item.Mobile}}</view>
-            <view wx:else>暂无绑定手机号</view>
-          </view>
-          <view class='between w100 ft24'>
-            <view class='bb'>创建时间: {{item.CreateTime}}</view>
-          </view>
+          <view class='notWrap' wx:if="{{item.Mobile}}">手机号: {{item.Mobile}}</view>
+          <view wx:else>暂无绑定手机号</view>
+          <view>创建时间: {{item.CreateTime}}</view>
         </view>
       </view>
     </checkbox-group>
   </scroll-view>
-  <input value='{{code}}' bindinput='setCode' class='codeInput'></input>
 </modal>
 
 <view class='add' bindtap='fenpei' wx:if="{{IsShow==true}}">分配账户</view>

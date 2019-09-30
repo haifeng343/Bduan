@@ -1,0 +1,131 @@
+.content {
+  padding: 0;
+}
+
+.content1 {
+  height: 80rpx !important;
+  line-height: 80rpx !important;
+}
+
+.selectImg {
+  margin-left: 5rpx;
+  display: flex;
+  align-items: center;
+}
+
+.go {
+  margin-left: 10rpx;
+}
+
+.startd {
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.select {
+  font-size: 26rpx;
+  width: 200rpx;
+  height: auto;
+  box-shadow: 0 0 15rpx #e9e9e9;
+  border-radius: 15rpx;
+  text-align: center;
+  position: absolute;
+  background-color: #fff;
+  right: 5%;
+  z-index: 2;
+}
+
+.option {
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #f7f7f7;
+  z-index: 22;
+}
+.option.active{
+  color:#29d9d6;
+}
+.option:last-child {
+  border: none;
+}
+
+.relative {
+  z-index: 22;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  background-color: #f2f2f2;
+  z-index: 9999;
+  box-sizing: border-box;
+  padding: 0 5%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.selectTopImg {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.List {
+  width: 100%;
+  height: auto;
+  margin-top: 80rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  width: 95%;
+  height: auto;
+  border-radius: 15rpx;
+  background-color: #fff;
+  box-sizing: border-box;
+  padding: 20rpx;
+  margin: 0 auto;
+  display: flex;
+  margin-top: 20rpx;
+  flex-direction: column;
+}
+
+.h40 {
+  line-height: 40rpx;
+}
+
+.avator {
+  width: 60rpx;
+  height: 50rpx;
+  margin-left: 10rpx;
+}
+
+.icon {
+  margin-top: 0;
+}
+
+.avator1 {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+}
+
+.call {
+  width: 34rpx;
+  height: 34rpx;
+}
+
+.pbor {
+  margin-bottom: 15rpx;
+  padding-bottom: 15rpx;
+}
+
+.quanName {
+  font-size: 28rpx;
+  width: 70%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

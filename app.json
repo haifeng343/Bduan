@@ -42,7 +42,10 @@
     "pages/enrollment/enrollment",
     "pages/searchRefund/searchRefund",
     "pages/transition/transition",
-    "pages/active/active"
+    "pages/active/active",
+    "pages/yanzheng/yanzheng",
+    "pages/yanquan/yanquan",
+    "pages/yancode/yancode"
   ],
   "window": {
     "backgroundTextStyle": "dark",

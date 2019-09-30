@@ -27,8 +27,7 @@
         <image class='selectImg' src='../../img/select.png' mode='widthFix'></image>
       </view>
       <view class="select {{showSelect==true?'':'none'}}">
-        <view class='option active {{showId == item.id ? "active" : ""}}' bindtap='allStore'>全部门店</view>
-        <view class='option' wx:for="{{storeList}}" wx:key data-id="{{item.StoreId}}" data-name="{{item.StoreName}}" bindtap='changeStore'>{{item.StoreName}}</view>
+        <view class='option {{showStoreId == item.StoreId ? "active" : ""}}' wx:for="{{storeList}}" wx:key data-id="{{item.StoreId}}" data-name="{{item.StoreName}}" bindtap='changeStore'>{{item.StoreName}}</view>
       </view>
     </view>
   </view>
@@ -123,7 +122,7 @@
 <!--输入券验证弹出框-->
 <modal hidden="{{showLog}}" title="输码验券" confirm-text="确认" cancel-text="取消" bindcancel="closeCodeLog" bindconfirm="getCode" catchtouchmove="true">
   <scroll-view scroll-y="true">
-    <input value='{{code}}' bindinput='setCode' type='number' placeholder='请输入券码' class='codeInput'></input>
+    <input value='{{code}}' bindinput='setCode' type='text' placeholder='请输入券码' class='codeInput'></input>
   </scroll-view>
 </modal>
 

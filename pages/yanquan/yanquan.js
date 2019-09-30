@@ -1,6 +1,5 @@
 var netUtil = require("../../utils/request.js"); //require引入
 Page({
-
   data: {
     date: '', //不填写默认今天日期，填写后是默认日期
     dataStart: '', //有效日期
@@ -8,14 +7,18 @@ Page({
     pagecount: 20,
     page: 1,
     year: '全部',
-    date2:[],
+    date2: [],
     month: '全部',
     array: [],
     statusdes: '',
     List: [],
-    showEor:false,
+    showEor: false,
+    showSelect: false, //是否显示门店弹窗
+    storeList: [], //门店列表
+    showId: 0, //选中门店下标
+    storeName: "全部门店", //默认
   },
-  initPicker: function () {
+  initPicker: function() {
     var date = new Date();
     let arr = [],
       arr1 = [];
@@ -25,7 +28,6 @@ Page({
     for (var i = year; i > 1970; i--) {
       arr.push(i)
     }
-
     arr1 = ['全部', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
     this.setData({
       array: [arr, arr1],
@@ -33,23 +35,66 @@ Page({
       date2: [arr.indexOf(this.data.year), arr1.indexOf(this.data.month + '')],
     })
   },
-  onLoad: function () { 
+  onLoad: function() {
     this.initPicker();
     this.init();
+    this.getStore();
   },
-  init:function() {
+  //获取所有门店列表
+  getStore: function() {
+    let that = this;
+    var url = 'account/store/list';
+    var params = {}
+    netUtil.postRequest(url, params, function(res) {
+      let arr = res.Data;
+      arr.unshift({
+        StoreId: 0,
+        StoreName: "全部门店"
+      })
+      that.setData({
+        storeList: arr
+      })
+    })
+  },
+  //弹出门店下拉选择
+  changeSelect: function() {
+    this.setData({
+      showSelect: true
+    })
+  },
+  //点击全部门店
+  allStore: function() {
+    this.setData({
+      storeId: 0,
+      storeName: '全部门店',
+      showSelect: false
+    })
+  },
+  //更换门店
+  changeStore: function(e) {
+    let that = this;
+    that.setData({
+      showId: e.currentTarget.dataset.id,
+      storeId: e.currentTarget.dataset.id,
+      storeName: e.currentTarget.dataset.name,
+      showSelect: false
+    })
     this.getData();
   },
-  getData: function () {
+  init: function() {
+    this.getData();
+  },
+  getData: function() {
     let that = this;
-    var url = 'account/order/check/record';
+    var url = 'account/ticket/check/record';
     var params = {
       Year: that.data.year,
       Month: that.data.month,
+      StoreId: that.data.showId,
       PageCount: that.data.pagecount,
       PageIndex: that.data.page
     }
-    netUtil.postRequest(url, params, function (res) { //onSuccess成功回调
+    netUtil.postRequest(url, params, function(res) { //onSuccess成功回调
       let arr = res.Data;
       var arr1 = [];
       arr.forEach(item => {
@@ -66,7 +111,7 @@ Page({
       })
     })
   },
-  bindDateChange: function (e) {
+  bindDateChange: function(e) {
     // console.log('picker发送选择改变，携带值为', e.detail.value)
     let index = e.detail.value;
     if (index[0] == 0 && index[1] == 0) {
@@ -86,25 +131,8 @@ Page({
     }
     this.getData();
   },
-  bindShowEor: function (e) {
-    wx.showModal({
-      title: '验券失败',
-      content: '失败原因:',
-      cancelColor:'#29d9d6',
-      showCancel:false,
-      cancelText:'知道了',
-      success:function(res){
-        
-      }
-    })
-  },
-  closeds: function () {
-    this.setData({
-      showEor: false
-    })
-  },
   //上拉加载更多
-  onReachBottom: function () {
+  onReachBottom: function() {
     let that = this;
     wx.showLoading({
       title: '玩命加载中',
@@ -118,7 +146,7 @@ Page({
 
   },
   //下拉刷新
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
     wx.showLoading({
       title: "玩命加载中",
     });
@@ -129,7 +157,7 @@ Page({
     // 停止下拉动作
     wx.stopPullDownRefresh();
   },
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

@@ -282,6 +282,9 @@ scroll-view {
   padding: 25rpx 5% 25rpx 5%;
   box-sizing: border-box;
   position: relative;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 }
 .item:last-child{
   border: none;

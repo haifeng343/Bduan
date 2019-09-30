@@ -19,19 +19,19 @@
         <view class='column'>
           <view class='between'>
             <view class='start h40'>
-              <view class='ft28 bold noWrapd'>{{item.ItemName}}</view>
+              <view class='ft28 bold notWrap'>{{item.ItemName}}</view>
             </view>
           </view>
           <view class='between h40 ft24'>
-            <view class='bb noWrap w90' wx:if="{{item.ItemTypeDes}}">{{item.ItemTypeDes}}</view>
-            <view class='bb noWrap w90' wx:else>暂无类型</view>
+            <view class='bb notWrap w90' wx:if="{{item.ItemTypeDes}}">{{item.ItemTypeDes}}</view>
+            <view class='bb notWrap w90' wx:else>暂无类型</view>
           </view>
           <view class='between h40 ft24'>
-            <view class='bb w90' wx:if="{{item.ItemDesc}}">{{item.ItemDesc}}</view>
+            <view class='bb w90 notWrap' wx:if="{{item.ItemDesc}}">{{item.ItemDesc}}</view>
             <view class='bb w90' wx:else>暂无描述</view>
           </view>
           <view class='between h40 ft24'>
-            <view class='bb w90' wx:if="{{item.ExamineStatusDes}}">{{item.ExamineStatusDes}}</view>
+            <view class='bb w90 notWrap' wx:if="{{item.ExamineStatusDes}}">{{item.ExamineStatusDes}}</view>
           </view>
           <view class='between h40 ft24'>
             <view class='bb'>创建时间:{{item.CreateTime}}</view>

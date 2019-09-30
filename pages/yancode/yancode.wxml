@@ -1,0 +1,45 @@
+<view class='item'>
+  <view class='startd'>
+    <image src='{{Info.CardIconUrl}}' mode='aspectFill' class='quanImg'></image>
+    <view class='quanContent'>
+      <view class='quanTitle noWrap'>{{Info.CardName}}</view>
+      <view class='ft24 bb' wx:if="{{Info.UseContext}}">{{Info.UseContext}}</view>
+      <view class='ft24 bb'>有效期至{{Info.EndTime}}</view>
+      <view class=' money'>
+        <text class='moneyTxt'>面值:</text> {{Amount}}</view>
+    </view>
+  </view>
+
+  <view class='conItem'>
+    <view class='conLeft'>使用门店</view>
+    <view class='' wx:if="{{storeList.length<=0}}">
+      <view class='ft24 bb start'>暂无可用门店</view>
+    </view>
+    <view class='' wx:if="{{storeList.length==1}}">
+      <view class='ft24 bb start'>{{checkStore.StoreName}}</view>
+    </view>
+    <view class='start' wx:if="{{storeList.length>1}}">
+      <picker mode="selector" bindchange="bindPickerChange" range-key="StoreName" bindtap='interPicker' value="{{index}}" range="{{storeList}}">
+        <view class="picker start">
+          <view class='ft24 bb start'>{{selectPicker}}</view>
+          <image src='../../img/go.png' mode='aspectFill' class='go'></image>
+        </view>
+      </picker>
+    </view>
+  </view>
+  <!-- <view class='store' wx:if="{{storeList.length==1}}">已选择 {{checkStore.StoreName}}</view>
+  <view class='store' bindtap='showClick' wx:else>请选择门店
+    <image src='../../img/go.png' mode='aspectFill' class='go'></image>
+  </view>
+  <scroll-view scroll-y="true" hidden='{{!showStore}}' class='storeList'>
+    <radio-group bindchange="changeCheck">
+      <view class='storeItem' wx:for="{{storeList}}" wx:key>
+        <radio value='{{item.StoreId}}'>
+          <text>{{item.StoreName}}</text>
+        </radio>
+      </view>
+    </radio-group>
+  </scroll-view> -->
+</view>
+
+<view class='btn' bindtap='sure'>确认使用</view>

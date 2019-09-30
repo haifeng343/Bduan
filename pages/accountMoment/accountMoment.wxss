@@ -98,6 +98,9 @@ page {
 }
 .column{
   position: relative;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 }
 .between{
   width:542rpx;

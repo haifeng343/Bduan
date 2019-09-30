@@ -1,49 +1,34 @@
-<view class='keep start'>
-  <view class='leftImg'>
-    <image class='topImg' src='{{Info.StoreCoverImg}}' mode='aspectFill' lazy-load='true'></image>
-  </view>
-  <view class='right w100'>
-    <view class='column w100'>
-      <view class='between h40 w100'>
-        <view class='ft28'>{{Info.StoreName}}</view>
-        <!-- <view class='cc ft24'>2019-10-12</view> -->
+<view class='storeContentTop bg start'>
+  <image class='storeManagImg' src='{{Info.StoreCoverImg}}' mode='aspectFill' lazy-load='true'></image>
+  <view class='storeManagRight'>
+    <view class='ft28'>{{Info.StoreName}}</view>
+    <view class='start ft24'>
+      <view class='centers'>
+        <image class='icon' src='../../img/ad1.png' mode='aspectFill'></image>
       </view>
-      <view class='start h40 ft24'>
-        <view class='start'>
-          <view class='centers'>
-            <image class='icon' src='../../img/ad1.png' mode='aspectFill'></image>
-          </view>
-          <view class='name ml5'>{{Info.Address}}</view>
-        </view>
+      <view class='name ml5'>{{Info.Address}}</view>
+    </view>
+    <view class='start ft24' wx:for="{{Info.StoreMobile}}" wx:key wx:for-item="k">
+      <view class='centers'>
+        <image class='icon' src='../../img/cal.png' mode='aspectFill'></image>
       </view>
-      <view class='start h40 ft24' wx:for="{{Info.StoreMobile}}" wx:key wx:for-item="k">
-        <view class='start'>
-          <view class='centers'>
-            <image class='icon' src='../../img/cal.png' mode='aspectFill'></image>
-          </view>
-          <view class='name ml5' data-mobile="{{k}}" bindtap='callSmo'>{{k}}</view>
-        </view>
+      <view class='name ml5' data-mobile="{{k}}" bindtap='callSmo'>{{k}}</view>
+    </view>
+    <view class='start ft24'>
+      <view class='centers'>
+        <image class='icon' src='../../img/people.png' mode='aspectFill'></image>
       </view>
-      <view class='start h40 ft24'>
-        <view class='start'>
-          <view class='centers'>
-            <image class='icon' src='../../img/people.png' mode='aspectFill'></image>
-          </view>
-          <view class='name ml5'>{{Info.Leader}}</view>
-        </view>
-      </view>
-      <view class='start h40 ft24'>
-        <view class='start'>
-          <view class='name'>门店品类: {{CategoryList}}</view>
-        </view>
-      </view>
-      <view class='start h40 ft24'>
-        <view class='start'>
-          <view class='name' wx:if="{{Info.BusinessStatus==1}}">营业状态: 营业中</view>
-          <view class='name' wx:if="{{Info.BusinessStatus==2}}">营业状态: 已关门</view>
-          <view class='name' wx:if="{{Info.BusinessStatus==3}}">营业状态: 筹建中</view>
-          <view class='name' wx:if="{{Info.BusinessStatus==4}}">营业状态: 暂停营业</view>
-        </view>
+      <view class='name ml5'>{{Info.Leader}}</view>
+    </view>
+    <view class='start ft24'>
+      <view class='name'>门店品类: {{CategoryList}}</view>
+    </view>
+    <view class='start ft24'>
+      <view class='start'>
+        <view class='name' wx:if="{{Info.BusinessStatus==1}}">营业状态: 营业中</view>
+        <view class='name' wx:if="{{Info.BusinessStatus==2}}">营业状态: 已关门</view>
+        <view class='name' wx:if="{{Info.BusinessStatus==3}}">营业状态: 筹建中</view>
+        <view class='name' wx:if="{{Info.BusinessStatus==4}}">营业状态: 暂停营业</view>
       </view>
     </view>
   </view>
@@ -59,32 +44,26 @@
     <image class='go' src='../../img/go.png' mode='widthFix'></image>
   </view>
 </view> -->
-<view class='content content1 ft28 mt20'>
+<view class='MyConetnt mt20'>
   <view class='between h80 borb' data-name="{{Info.StoreName}}" data-Id="{{Id}}" bindtap='navtoClass'>
     <view class='start h80'>
-      <view class='center'>
-        <image class='icon1' src='../../img/m9.png' mode='widthFix'></image>
-      </view>
+      <image class='icon1' src='../../img/m9.png' mode='widthFix'></image>
       <view>门店课程</view>
     </view>
-    <image class='go' src='../../img/go.png' mode='widthFix'></image>
+    <image class='MyGoIcon' src='../../img/go.png' mode='widthFix'></image>
   </view>
   <view class='between h80 borb' data-name="{{Info.StoreName}}" data-Id="{{Id}}" bindtap='navtoStoreTeacher'>
     <view class='start h80'>
-      <view class='center'>
-        <image class='icon1' src='../../img/z2.png' mode='widthFix'></image>
-      </view>
+      <image class='icon1' src='../../img/z2.png' mode='widthFix'></image>
       <view>门店师资</view>
     </view>
-    <image class='go' src='../../img/go.png' mode='widthFix'></image>
+    <image class='MyGoIcon' src='../../img/go.png' mode='widthFix'></image>
   </view>
   <view class='between h80' data-name="{{Info.StoreName}}" data-Id="{{Id}}" bindtap='navtoStoreAccount'>
     <view class='start h80'>
-      <view class='center'>
-        <image class='icon1' src='../../img/m4.png' mode='widthFix'></image>
-      </view>
+      <image class='icon1' src='../../img/m4.png' mode='widthFix'></image>
       <view>门店账户</view>
     </view>
-    <image class='go' src='../../img/go.png' mode='widthFix'></image>
+    <image class='MyGoIcon' src='../../img/go.png' mode='widthFix'></image>
   </view>
 </view>
