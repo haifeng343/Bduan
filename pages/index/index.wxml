@@ -5,15 +5,20 @@
   <view class='content flex around'>
     <view bindtap='bindInputCode'>
       <image class='addImg' src='../../img/a1.png' mode='widthFix'></image>
-      <view class='ft30'>输码验证</view>
+      <view class='ft28'>输码验证</view>
     </view>
     <view bindtap='clickSaoma'>
       <image class='addImg' src='../../img/a2.png' mode='widthFix'></image>
-      <view class='ft30'>扫码验证</view>
+      <view class='ft28'>扫码验证</view>
     </view>
     <view bindtap='navtoVercation'>
       <image class='addImg' src='../../img/a3.png' mode='widthFix'></image>
-      <view class='ft30'>验证记录</view>
+      <view class='ft28'>验证记录</view>
+    </view>
+    <view bindtap='reservation' class='relative'>
+      <span class='count'>1</span>
+      <image class='addImg' src='../../img/a4.png' mode='widthFix'></image>
+      <view class='ft28'>预约记录</view>
     </view>
   </view>
 </view>

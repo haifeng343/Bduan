@@ -1,0 +1,15 @@
+<view class='List'>
+  <view class='item'>
+    <view class='ft28 start'>
+      <label>信息名称:</label>
+      <input type='text' value='{{title}}' bindinput='hasTitle' class='ml10 w74'></input>
+    </view>
+    <view class='ft28 start bort mt20 pdt20'>
+    <label>信息内容:</label>
+    <!-- <input type='textarea' class='ml10 w74'></input> -->
+    <textarea class='ml10 w74' value='{{content}}' bindinput='hasContent'></textarea>
+    </view>
+  </view>
+</view>
+
+<view class='add' bindtap="btnClick">{{Id==''?'确认添加':'确认编辑'}}</view>

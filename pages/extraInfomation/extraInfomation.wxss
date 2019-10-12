@@ -1,0 +1,15 @@
+.extraTitle{
+  font-size: 32rpx;
+  width: 85%;
+}
+.item{
+  padding: 0;
+}
+.ItemTitle{
+  padding: 20rpx 5% 0rpx;
+}
+.extraTxt{
+  line-height: 40rpx;
+  padding-top: 20rpx;
+  padding: 20rpx 5% 20rpx;
+}

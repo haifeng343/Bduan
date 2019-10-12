@@ -160,6 +160,12 @@ Page({
       url: '/pages/yanzheng/yanzheng',
     })
   },
+  //预约记录
+  navtoVercation: function() {
+    wx.navigateTo({
+      url: '/pages/yanzheng/yanzheng',
+    })
+  },
   //点击切换选中样式
   changeShowId: function(e) {
     this.setData({

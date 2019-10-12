@@ -13,7 +13,10 @@ page {
   color: #b2c7ed !important;
   border: 1rpx solid #b2c7ed !important;
 }
-
+.swich{
+  zoom:.6;
+  margin-left: 25rpx;
+}
 .black {
   color: #000 !important;
 }
@@ -291,7 +294,9 @@ label {
 .ml5 {
   margin-left: 5rpx;
 }
-
+.ml10 {
+  margin-left: 10rpx;
+}
 .ml20 {
   margin-left: 20rpx;
 }
@@ -343,7 +348,12 @@ label {
 .pd20 {
   padding: 20rpx 0;
 }
-
+.pd200{
+  padding: 20rpx;
+}
+.pdt20{
+  padding-top: 20rpx;
+}
 .pd25 {
   padding: 20rpx 5% !important;
 }
@@ -985,3 +995,106 @@ border-radius:15rpx;
 margin-right:15rpx;
 
 }
+/******************活动图片**********************/
+.avtiveImg{
+  width: 100%;
+  height: 330rpx;
+  border-radius: 25rpx;
+  margin-top: 20rpx;
+}
+.avtiveImg:first-child{
+  margin-top: 0;
+}
+/**************************活动参数***********************/
+.parameterInput{
+  width: 100%;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 28rpx;
+  color: #000;
+  background-color: #F1F1F1;
+  border: 2rpx solid #D6D6D6;
+  box-sizing: border-box;
+  padding: 0 20rpx;
+  margin-top: 10rpx;
+}
+.parameterTextarea{
+  width: 100%;
+  height: auto;
+  line-height: 60rpx;
+  font-size: 28rpx;
+  color: #000;
+  background-color: #F1F1F1;
+  border: 2rpx solid #D6D6D6;
+  box-sizing: border-box;
+  padding: 0 20rpx;
+  margin-top: 10rpx;
+}
+/*******************************************************/
+.count{
+  display: inline-block;
+  width: auto;
+  padding: 0 10rpx;
+  height: 35rpx;
+  line-height: 35rpx;
+  position: absolute;
+  background-color: red;
+  border-radius: 25rpx;
+  left: 53%;
+  top: -5rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 24rpx;
+}
+.footer{
+  display: flex;
+  justify-content: flex-end;
+}
+.orderBtn{
+  width: 180rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  border-radius: 25rpx;
+  box-sizing: border-box;
+  border: 2rpx solid #000;
+  color: #000;
+  font-size: 28rpx;
+  margin: 20rpx 0;
+  background-color: transparent;
+  margin-left: 20rpx;
+}
+.orderBtn:first-child{
+  margin-left: 0;
+}
+
+.List{
+  width: 97.5%;
+  height: auto;
+  margin: 0 auto;
+}
+.item{
+  width: 95%;
+  border-radius: 15rpx;
+  height: auto;
+  line-height: 50rpx;
+  box-sizing: border-box;
+  margin: 20rpx auto 0;
+  padding: 20rpx 5%;
+  font-size: 24rpx;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

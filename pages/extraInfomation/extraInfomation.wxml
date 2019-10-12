@@ -1,0 +1,17 @@
+<view class='List' wx:if="{{List.length>0}}">
+  <view class='item' wx:for="{{List}}" wx:key>
+    <view class='ItemTitle'>
+      <view class='between'>
+        <view class='extraTitle notWrap'>{{item.Title}}</view>
+        <image src='../../img/more.png' mode='aspectFill' data-Id="{{item.Id}}" data-Title="{{item.Title}}" data-content="{{item.Content}}" class='edit center' bindtap='edit'></image>
+      </view>
+    </view>
+    <view class='extraTxt bort mt20'>{{item.Content}}</view>
+  </view>
+</view>
+<view class='nohasLog' wx:else>
+  <image src='../../img/zanwu.png' mode='widthFix' class='noList'></image>
+  <view class='notext'>暂无额外信息</view>
+</view>
+<view class='lastItem mt20'></view>
+<view class='add' bindtap='add'>添加额外信息</view>

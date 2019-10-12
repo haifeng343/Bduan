@@ -45,7 +45,15 @@
     "pages/active/active",
     "pages/yanzheng/yanzheng",
     "pages/yanquan/yanquan",
-    "pages/yancode/yancode"
+    "pages/yancode/yancode",
+    "pages/activeImg/activeImg",
+    "pages/activeExtra/activeExtra",
+    "pages/activeParameter/activeParameter",
+    "pages/panicBuy/panicBuy",
+    "pages/reservation/reservation",
+    "pages/extraInfomation/extraInfomation",
+    "pages/addExtra/addExtra",
+    "pages/reservationForm/reservationForm"
   ],
   "window": {
     "backgroundTextStyle": "dark",

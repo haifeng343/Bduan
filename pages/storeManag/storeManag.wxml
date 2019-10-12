@@ -6,7 +6,7 @@
       <view class='centers'>
         <image class='icon' src='../../img/ad1.png' mode='aspectFill'></image>
       </view>
-      <view class='name ml5'>{{Info.Address}}</view>
+      <view class='name ml5'>{{Info.Address==""?'暂无地址':Info.Address}}</view>
     </view>
     <view class='start ft24' wx:for="{{Info.StoreMobile}}" wx:key wx:for-item="k">
       <view class='centers'>
@@ -59,10 +59,17 @@
     </view>
     <image class='MyGoIcon' src='../../img/go.png' mode='widthFix'></image>
   </view>
-  <view class='between h80' data-name="{{Info.StoreName}}" data-Id="{{Id}}" bindtap='navtoStoreAccount'>
+  <view class='between h80 borb' data-name="{{Info.StoreName}}" data-Id="{{Id}}" bindtap='navtoStoreAccount'>
     <view class='start h80'>
       <image class='icon1' src='../../img/m4.png' mode='widthFix'></image>
       <view>门店账户</view>
+    </view>
+    <image class='MyGoIcon' src='../../img/go.png' mode='widthFix'></image>
+  </view>
+  <view class='between h80' data-name="{{Info.StoreName}}" data-Id="{{Id}}" bindtap='navtoReser'>
+    <view class='start h80'>
+      <image class='icon1' src='../../img/reser.png' mode='widthFix'></image>
+      <view>预约管理</view>
     </view>
     <image class='MyGoIcon' src='../../img/go.png' mode='widthFix'></image>
   </view>

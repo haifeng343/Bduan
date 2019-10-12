@@ -159,6 +159,24 @@ Page({
       url: '/pages/activityDetail/activityDetail?id=' + e.currentTarget.dataset.id,
     })
   },
+  //活动图片
+  navImgto:function(){
+    wx.navigateTo({
+      url: '/pages/activeImg/activeImg',
+    })
+  },
+  //额外信息
+  navExtra:function() {
+    wx.navigateTo({
+      url: '/pages/activeExtra/activeExtra',
+    })
+  },
+  //活动参数
+  navParameter:function() {
+    wx.navigateTo({
+      url: '/pages/activeParameter/activeParameter',
+    })
+  },
   Refund: function (e) {
     // this.setData({
     //   showDialog: !this.data.showDialog

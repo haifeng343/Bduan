@@ -31,9 +31,9 @@
               <view class='ft24 h36'>价格: 100份</view>
               <view class='ft24 h36'>抢购时间: 2019-10-12 13:24:12~2019-10-12 13:24:12</view>
               <view class='contentFooter bort'>
-                <view class='contentBtn'>活动图片</view>
-                <view class='contentBtn'>额外信息</view>
-                <view class='contentBtn'>更多参数</view>
+                <view class='contentBtn' bindtap='navImgto'>活动图片</view>
+                <view class='contentBtn' bindtap='navExtra'>额外信息</view>
+                <view class='contentBtn' bindtap='navParameter'>更多参数</view>
               </view>
             </view>
           </view>

@@ -49,7 +49,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 38,
+			"current": 50,
 			"list": [
 				{
 					"id": -1,
@@ -357,6 +357,55 @@
 					"name": "yancode",
 					"pathName": "pages/yancode/yancode",
 					"query": "Info={\"Id\":8,\"CardName\":\"代金券2\",\"CardIconUrl\":\"\",\"StartTime\":\"2019-08-31 16:00:00\",\"EndTime\":\"2020-10-30 16:00:00\",\"UseContext\":\"限DASH编程学院(运河上街)、明好小语种培训中心（运河上街）等全店通用\",\"CardType\":3,\"CardQrCode\":\"T758ae72f35fb\"}",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "activeImg",
+					"pathName": "pages/activeImg/activeImg",
+					"query": "rellId=31&name=篮球项目",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "activeExtra",
+					"pathName": "pages/activeExtra/activeExtra",
+					"query": "rellId=31&name=篮球项目",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "activeParameter",
+					"pathName": "pages/activeParameter/activeParameter",
+					"query": "rellId=31&name=篮球项目",
+					"scene": null
+				},
+				{
+					"id": 47,
+					"name": "reservation",
+					"pathName": "pages/reservation/reservation",
+					"query": "Id=7&name=滨江运动_宝龙",
+					"scene": null
+				},
+				{
+					"id": 48,
+					"name": "extraInfomation",
+					"pathName": "pages/extraInfomation/extraInfomation",
+					"query": "storeId=7&itemId=22&name=橄榄球项目",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "reservationForm",
+					"pathName": "pages/reservationForm/reservationForm",
+					"query": "storeId=7&itemId=22&name=橄榄球项目",
+					"scene": null
+				},
+				{
+					"id": 50,
+					"name": "addExtra",
+					"pathName": "pages/addExtra/addExtra",
+					"query": "storeId=7&itemId=22",
 					"scene": null
 				}
 			]

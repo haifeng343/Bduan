@@ -25,6 +25,7 @@
   margin-top: 80rpx;
   width: 100%;
   height: auto;
+  margin-bottom: 20rpx;
 }
 .Item{
   width: 95%;
@@ -51,7 +52,6 @@
 .titleTxt{
   font-size: 32rpx;
   line-height: 40rpx;
-  font-weight: bold;
   width: 80%;
 }
 .statusTxt{

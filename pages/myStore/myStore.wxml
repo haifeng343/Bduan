@@ -17,7 +17,7 @@
           <view class='centers'>
             <image class='icon' src='../../img/ad1.png' mode='aspectFill'></image>
           </view>
-          <view class='name ml5'>{{item.Address}}</view>
+          <view class='name ml5'>{{item.Address==''?'暂无地址':item.Address}}</view>
         </view>
       </view>
       <view class='start ft24' wx:for="{{item.StoreMobile}}" wx:key wx:for-item="k">

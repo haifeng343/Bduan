@@ -1,0 +1,33 @@
+<view class='container'>
+  <image src='http://i3.bbs.fd.zol-img.com.cn/g5/M00/06/0C/ChMkJlm1mf-IKw3rAAQNsmIE5u8AAgWLAAauWoABA3K379.jpg' mode='aspectFill' class='avtiveImg'></image>
+
+  <view class='parameterLabel ft28 bb mt20'>活动名称:</view>
+  <input disabled value='森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动' class='parameterInput'></input>
+  <view class='parameterLabel ft28 bb mt20'>活动描述:</view>
+  <input disabled value='森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动' class='parameterInput'></input>
+  <view class='parameterLabel ft28 bb mt20'>单次抢购数量:</view>
+  <input disabled value='森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动' class='parameterInput'></input>
+  <view class='parameterLabel ft28 bb mt20'>活动总份数:</view>
+  <input disabled value='森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动' class='parameterInput'></input>
+  <view class='parameterLabel ft28 bb mt20'>单批最大份数:</view>
+  <input disabled value='森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动' class='parameterInput'></input>
+  <view class='parameterLabel ft28 bb mt20'>单人单批抢购次数:</view>
+  <input disabled value='森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动' class='parameterInput'></input>
+  <view class='parameterLabel ft28 bb mt20'>单人抢购总次数:</view>
+  <input disabled value='森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动' class='parameterInput'></input>
+  <view class='parameterLabel ft28 bb mt20'>单批最大有效时间 (分):</view>
+  <input disabled value='森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动' class='parameterInput'></input>
+  <view class='parameterLabel ft28 bb mt20'>提前展示时间 (分):</view>
+  <input disabled value='森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动' class='parameterInput'></input>
+  <view class='parameterLabel ft28 bb mt20'>延迟展示时间 (分):</view>
+  <input disabled value='森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动' class='parameterInput'></input>
+  <view class='parameterLabel ft28 bb mt20 start'>间隔时间 (分):
+    <view class='start'>
+      <image mode='sapectFill' class='icon center ml10' src='../../img/radio1.png'></image>分钟
+      <image mode='sapectFill' class='icon center ml10' src='../../img/radio.png'></image>月
+    </view>
+  </view>
+  <input disabled value='森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动' class='parameterInput'></input>
+  <view class='parameterLabel ft28 bb mt20'>抢购批次总次数:</view>
+  <input disabled value='森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动森林活动' class='parameterInput'></input>
+</view>

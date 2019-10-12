@@ -79,14 +79,16 @@
  color:#29d9d6;
 }
 .addImg {
-  width: 75rpx;
-  height: 75rpx;
+  width: 60rpx;
+  height: 60rpx;
   display: flex;
   justify-content: center;
   margin: 0 auto;
   margin-bottom: 10rpx;
 }
-
+.relative{
+  position: relative;
+}
 .List {
   width: 100%;
   height: auto;

@@ -56,6 +56,12 @@ Page({
       url: '/pages/rechar/rechar?Id=' + e.currentTarget.dataset.id + '&name=' + e.currentTarget.dataset.name + '&money=' + this.data.Info.Money,
     })
   },
+  //跳转到预约管理
+  navtoReser:function(e){
+    wx.navigateTo({
+      url: '/pages/reservation/reservation?Id=' + e.currentTarget.dataset.id + '&name=' + e.currentTarget.dataset.name,
+    })
+  },
   onShareAppMessage: function () {
 
   }
