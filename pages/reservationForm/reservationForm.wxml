@@ -1,0 +1,84 @@
+<view class='container'>
+  <view class='timeAbsolute' wx:if="{{Info.MinDate}}">{{Info.MinDate}}</view>
+  <view class='timeAbsolute1' wx:if="{{Info.MaxDate}}">{{Info.MaxDate}}</view>
+  <calendar bindnextMonth="next" bindprevMonth="prev" binddateChange="dateChange" binddayClick="dayClick" weeks-type="cn" active-type="rounded" pitch_on="circle" days-color="{{dayStyle}}" board-style="board" atefont-style="atefont" />
+  <view class='containerBot bort'>
+    <view class='end'>
+      <span class='addBtn' bindtap="classAdd">添加</span>
+    </view>
+    <view class='formList' wx:if="{{Info.List.length>0}}">
+      <view class='formItem' wx:for="{{Info.List}}" wx:key>
+        <view>预约描述: {{item.ScheduleName}}</view>
+        <view>上课时间: {{item.ClassDate+' '+ item.ClassTime}}
+          <span class="ml40">时长(分): {{item.ClassDuration}}</span>
+        </view>
+        <view>预约名额: {{item.RemainQuota}}</view>
+        <view class='end'>
+          <span class='addBtn ItemBtn mr40' data-item="{{item}}" bindtap="edit">编辑</span>
+          <span class='addBtn ItemBtn' data-Id="{{item.Id}}" data-schedulename="{{item.ScheduleName}}" bindtap="delete">删除</span>
+        </view>
+      </view>
+    </view>
+    <view class='formList center bg bb ft28' wx:else>
+      暂无预约信息
+    </view>
+  </view>
+</view>
+<view class='lastItem'></view>
+<view class='FoormFooter'>
+  <view>可预约课程节数: {{Info.AppointmentCount}}</view>
+  <view>
+    <span class='addBtn fotBtn mr20 gray2' bindtap="emptyClick">清空预约表</span>
+    <span class='addBtn fotBtn' bindtap="addPoint">添加预约表</span>
+  </view>
+</view>
+
+<!-- 添加预约表弹窗 -->
+<modal hidden="{{!showSuccess}}" title="{{Id==''?'添加预约表':'编辑预约表'}}" confirm-text="确认" cancel-text="取消" bindcancel="clickCancel" bindconfirm="clickSure" catchtouchmove="true">
+  <view class='column'>
+    <view class='start'>
+      <label>预约描述:</label>
+      <input type='text' value='{{scheduleName}}' bindinput='scheduleChange' class='flex formInput ft28'></input>
+    </view>
+    <view class='start mt20'>
+      <label>上课时间:</label>
+      <picker class='flex formInput ft28' mode="time" value="{{classTime}}" bindchange="timeChange">{{classTime==''?'请选择时间':classTime}}</picker>
+    </view>
+    <view class='start mt20'>
+      <label>时长 (分):</label>
+      <input type='text' value='{{classDuration}}' bindinput='durationChange' class='flex formInput ft28'></input>
+    </view>
+    <view class='start mt20'>
+      <label>剩余名额:</label>
+      <input type='text' value='{{remainQuota}}' bindinput='remainChange' class='flex formInput ft28'></input>
+    </view>
+  </view>
+</modal>
+
+<!-- 清空预约弹窗 -->
+<modal hidden="{{!showDialog}}" title="清空预约" confirm-text="确认" cancel-text="取消" bindcancel="batchCancel" bindconfirm="batchSure" catchtouchmove="true">
+  <view class='modalList'>
+    <checkbox  value='{{checkAll}}' checked='{{checkAll==true}}' class='black ft28 checkAll'>全部</checkbox>
+    <checkbox-group class="bort" bindchange="changeQita">
+      <checkbox class=' black ft28 checkAll' value='qita'>其他(自定义)</checkbox>
+      <view class='modalFormList' wx:if="{{batchList.length>0}}">
+        <view class='modalFormItem'>
+          <checkbox></checkbox>
+          <view class='modalFormItemRight flex'>
+            <view class='black ft24'>预约表名称</view>
+            <view class='ft24'>添加时间: 2019-10-12</view>
+            <view class='ft24'>预约表有效期: 2019-10-12~2019-10-22</view>
+          </view>
+        </view>
+        <view class='modalFormItem'>
+          <checkbox></checkbox>
+          <view class='modalFormItemRight flex'>
+            <view class='black ft24'>预约表名称</view>
+            <view class='ft24'>添加时间: 2019-10-12</view>
+            <view class='ft24'>预约表有效期: 2019-10-12~2019-10-22</view>
+          </view>
+        </view>
+      </view>
+    </checkbox-group>
+  </view>
+</modal>

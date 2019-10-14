@@ -50,13 +50,34 @@ Page({
           })
         }
         if (res.tapIndex == 1) {
-
+          wx.showModal({
+            title: '是否删除' + item.title,
+            confirmColor:'#000',
+            success:function(res){
+              if(res.confirm){
+                that._delete(item.id)
+              }
+            }
+          })
         }
       }
     })
   },
   //删除
-  
+  _delete:function(Id){
+    let that = this;
+    var url = 'account/storeitem/othercontent/delete';
+    var params = {
+      Id: Id,
+    }
+    netUtil.postRequest(url, params, function (res) {
+      wx.showToast({
+        icon:"none",
+        title: '成功删除',
+      })
+      that.init();
+    })
+  },
   add: function() {
     wx.navigateTo({
       url: '/pages/addExtra/addExtra?storeId=' + this.data.storeId + '&itemId=' + this.data.itemId,

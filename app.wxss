@@ -715,7 +715,10 @@ radio .wx-radio-input.wx-radio-input-checked::before {
   background-color: #c1c1c1;
   border-color: #c1c1c1;
 }
-
+.gray2{
+  color: #c1c1c1!important;
+  border-color: #c1c1c1!important;
+}
 .zan-dialog--show .zan-dialog__container {
   transform: translateY(0%);
 }
@@ -1085,12 +1088,94 @@ margin-right:15rpx;
   display: flex;
   flex-direction: column;
 }
+/*********************预约表**********************/
+.addBtn{
+  font-size: 24rpx;
+  color: #29d9d6;
+  border:2rpx solid #29d9d6;
+  padding: 10rpx 40rpx;
+  border-radius: 30rpx;
+}
+.FoormFooter{
+  width: 100%;
+  height: 100rpx;
+  background-color: #fff;
+  font-size: 24rpx;
+  color: #000;
+  line-height: 100rpx;
+  position: fixed;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 0 2.5%;
+}
+.fotBtn{
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 28rpx;
+}
+/**************************预约表*********************/
 
+.formList {
+  width: 100%;
+  margin-top: 20rpx;
+  height: auto;
+  min-height: 200rpx;
+  display: flex;
+  flex-direction: column;
+}
 
+.formItem {
+  width: 100%;
+  height: auto;
+  margin-top: 20rpx;
+  background-color: #f4f4f4;
+  border-radius: 15rpx;
+  box-sizing: border-box;
+  padding: 20rpx 3%;
+  display: flex;
+  flex-direction: column;
+  font-size: 24rpx;
+  line-height: 50rpx;
+}
 
+.ItemBtn {
+  height: 50rpx;
+  line-height: 50rpx;
+  padding: 0 40rpx;
+}
 
+.formInput {
+  border: 2rpx solid #f4f4f4;
+  margin-left: 15rpx;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 15rpx;
+}
 
+.formInput[disabled] {
+  background-color: transparent;
+}
 
+.w100 {
+  width: 100%;
+}
+
+label {
+  color: #000;
+  font-size: 28rpx;
+}
+
+.ItemBtn:last-child {
+  color: red;
+  border-color: red;
+}
+
+.formItem:first-child {
+  margin-top: 0;
+}
 
 
 

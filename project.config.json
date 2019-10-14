@@ -49,7 +49,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 50,
+			"current": 51,
 			"list": [
 				{
 					"id": -1,
@@ -395,7 +395,7 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 49,
 					"name": "reservationForm",
 					"pathName": "pages/reservationForm/reservationForm",
 					"query": "storeId=7&itemId=22&name=橄榄球项目",
@@ -405,6 +405,13 @@
 					"id": 50,
 					"name": "addExtra",
 					"pathName": "pages/addExtra/addExtra",
+					"query": "storeId=7&itemId=22",
+					"scene": null
+				},
+				{
+					"id": 51,
+					"name": "addAppointment",
+					"pathName": "pages/addAppointment/addAppointment",
 					"query": "storeId=7&itemId=22",
 					"scene": null
 				}
