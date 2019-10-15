@@ -12,7 +12,6 @@ Page({
     array: [],
     statusdes: '',
     List: [],
-    showEor: false,
     showSelect: false, //是否显示门店弹窗
     storeList: [], //门店列表
     showId: 0, //选中门店下标

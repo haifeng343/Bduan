@@ -371,7 +371,11 @@ Page({
       url: '/pages/orderDetail/orderDetail?id=' + e.currentTarget.dataset.id,
     })
   },
-
+  reservation:function() {
+    wx.navigateTo({
+      url: '/pages/reservationList/reservationList',
+    })
+  },
   onPullDownRefresh: function() {
     this.init();
     wx.stopPullDownRefresh();

@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "预约记录",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
+  "usingComponents": {
+    "calendar": "plugin://calendar/calendar"
+  }
+}

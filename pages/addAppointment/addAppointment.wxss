@@ -6,3 +6,131 @@
   margin: 0 auto;
   padding-bottom: 20rpx;
 }
+.Interval{
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  margin: 25rpx 0;
+}
+.IntervalItem{
+  width: 120rpx;
+  height: 120rpx;
+  text-align: center;
+  line-height: 120rpx;
+  font-size: 32rpx;
+  border-radius: 15rpx;
+  background-color: #F4F5F7;
+  color: #000;
+  margin-right: 80rpx;
+}
+.IntervalItem.active{
+  background-color: #29D9D6;
+  color: #fff;
+}
+.IntervalItem:last-child{
+  margin-right: 0;
+}
+
+.WeekList{
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+}
+.WeekItem{
+  width: 75rpx;
+  height:75rpx;
+  text-align: center;
+  line-height: 75rpx;
+  font-size: 28rpx;
+  border-radius: 50%;
+  border: 1rpx solid #f4f4f4;
+}
+.WeekItem.active{
+  color: #fff;
+  background-color: #29D9D6;
+  border: 1rpx solid #29D9D6;
+}
+.WeekItem:last-child{
+  margin-right: 0;
+}
+.MonthList{
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.MonthItem{
+  width: 75rpx;
+  height:75rpx;
+  text-align: center;
+  line-height: 75rpx;
+  font-size: 28rpx;
+  margin-right: 18rpx;
+  margin-top: 20rpx;
+  border-radius: 50%;
+  border: 1rpx solid #f4f4f4;
+}
+.MonthItem.active{
+  color: #fff;
+  background-color: #29D9D6;
+  border: 1rpx solid #29D9D6;
+}
+.lastMonthItem{
+  width: 170rpx;
+  height: 75rpx;
+  text-align: center;
+  line-height: 75rpx;
+  font-size: 28rpx;
+  margin-top: 20rpx;
+  border-radius: 35rpx;
+  border: 1rpx solid #f4f4f4;
+}
+.lastMonthItem.active{
+  color: #fff;
+  background-color: #29D9D6;
+  border: 1rpx solid #29D9D6;
+}
+.MonthItem:nth-child(7n){
+  margin-right: 0;
+}
+.ExcludeDateList{
+  width: 100%;
+  height: auto;
+  display: flex;
+  box-sizing: border-box;
+  padding: 0 5%;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding-bottom: 20rpx;
+}
+.ExcludeDateItem{
+  width: 180rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color: #BABABA;
+  border:1rpx solid #BABABA;
+  border-radius: 35rpx;
+  margin-right: 45rpx;
+  position: relative;
+  margin-top: 20rpx;
+}
+.ExcludeDateItem:nth-child(3n){
+  margin-right: 0;
+}
+.cha1{
+  width: 35rpx;
+  height:35rpx;
+  position: absolute;
+  right: -35rpx;
+  top: -20rpx;
+}
+.add{
+  box-shadow:0 0 0 0 transparent;
+  background-color:#42dfde;
+  color:#fff;
+}

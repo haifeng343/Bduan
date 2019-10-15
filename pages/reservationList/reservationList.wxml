@@ -1,0 +1,59 @@
+<view class="movie-container">
+  <!-- 导航栏 -->
+  <view class="navbar">
+    <block wx:for="{{navbarTitle}}" wx:key="index">
+      <view class="navbar-item {{navbarActiveIndex === index ? 'navbar-item-active' : ''}}" data-navbar-index="{{index}}" catchtap="onNavBarTap">
+        <text>{{item}}</text>
+      </view>
+    </block>
+  </view>
+  <view class='between changeTop bort ft28'>
+    <view class='start'>
+      <picker mode="multiSelector" value="{{date2}}" range='{{array}}' start="{{dataStart}}" end="{{dataEnd}}" fields="month" bindchange="bindDateChange" bindtap='initPicker'>
+        <view class="picker">
+          {{date?date:now}}
+        </view>
+      </picker>
+      <image src='../../img/select.png' class='selectTopImg center' mode='widthFix' lazy-load='true'></image>
+    </view>
+    <view class='changeright ' wx:if="{{storeList.length>1}}">
+      <view class='ft28 start startd' bindtap='changeSelect'>{{storeName}}
+        <image class='selectImg center' src='../../img/select.png' mode='widthFix'></image>
+      </view>
+      <view class="select {{showSelect==true?'':'none'}}">
+        <view class="option {{showId == item.StoreId ?'active':''}}" wx:for="{{storeList}}" wx:key data-id="{{item.StoreId}}" data-name="{{item.StoreName}}" bindtap='changeStore'>{{item.StoreName}}</view>
+      </view>
+    </view>
+  </view>
+  <view class='nohasLog' wx:if="{{modelList[navbarActiveIndex].list.length>0}}">
+    <image class='noImg' src='../../img/zanwu.png' mode='widthFix' lazy-load='true'></image>
+    <view class='notext'>暂无预约记录</view>
+  </view>
+  <view wx:else>
+    <view class='reserList'>
+      <view class='reserItem'>
+        <view class='between'>
+          <view class='start center w80'>
+            <label class='center ft28'>预约账号: </label>
+            <image src='../../img/m4.png' mode='aspectFill' class='avator center'></image>
+            <view class='ft24 reserTitle'>小林小林小林小林小林小林小林 <span>(154541512514)</span></view>
+          </view>
+          <view class='reserStatus'>未处理</view>
+        </view>
+        <view class='start ft28 bb'>
+          <view>手机号: 1358888888</view>
+          <view class='ml40'>孩子信息: 丽丽 <span>(3岁)</span></view>
+        </view>
+        <view class='start ft28 bb'>预约课程: 数学课 (门店1)</view>
+        <view class='start ft28 bb'>预约类型: 14:00数学课 (2019-02-22)</view>
+        <view class='start ft28 bb'>取消原因: 机构原因</view>
+        <view class='start ft28 bb'>取消时间: 2019-02-22 14:00</view>
+        <view class='reserFooter bort'>
+          <view class='reserBtn'>修改预约</view>
+          <view class='reserBtn'>确认预约</view>
+          <view class='reserBtn error ml40'>取消预约</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

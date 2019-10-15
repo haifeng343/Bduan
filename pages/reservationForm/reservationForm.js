@@ -89,7 +89,7 @@ Page({
   //关闭清空预约弹窗
   batchCancel: function() {
     this.setData({
-      showDialog: false,
+      showDialog: false
     })
   },
   //确定清空操作

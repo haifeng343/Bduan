@@ -1,6 +1,7 @@
 <view class='container'>
   <view class='start pd25 ft28'>
-    预约表名称:<input type='text' class='ml20 flex' value='' placeholder='给次预约表添加一个名称，不能重复'></input>
+    预约表名称:
+    <input type='text' class='ml20 flex' bindinput='hasName' value='{{bathName}}' placeholder='给次预约表添加一个名称，不能重复'></input>
   </view>
 </view>
 <view class='container bg'>
@@ -9,19 +10,61 @@
     <span class='addBtn' bindtap="classAdd">添加</span>
   </view>
   <view class='formList' wx:if="{{appointList.length>0}}">
-      <view class='formItem' wx:for="{{appointList}}" wx:key>
-        <view>预约描述: {{item.scheduleName}}</view>
-        <view>上课时间: {{item.classTime}}
-          <span class="ml40">时长(分): {{item.classDuration}}</span>
-        </view>
-        <view>预约名额: {{item.remainQuota}}</view>
-        <view class='end'>
-          <span class='addBtn ItemBtn mr40' data-item="{{item}}" bindtap="edit">编辑</span>
-          <span class='addBtn ItemBtn' data-Id="{{item.Id}}" data-schedulename="{{item.ScheduleName}}" bindtap="delete">删除</span>
-        </view>
+    <view class='formItem' wx:for="{{appointList}}" wx:key>
+      <view>预约描述: {{item.scheduleName}}</view>
+      <view>上课时间: {{item.classTime}}
+        <span class="ml40">时长(分): {{item.classDuration}}</span>
+      </view>
+      <view>预约名额: {{item.remainQuota}}</view>
+      <view class='end'>
+        <span class='addBtn ItemBtn mr40' data-item="{{item}}" data-index="{{index}}" bindtap="edit">编辑</span>
+        <span class='addBtn ItemBtn' data-Id="{{item.Id}}" data-index="{{index}}" data-scheduleName="{{item.scheduleName}}" bindtap="delete">删除</span>
       </view>
     </view>
+  </view>
 </view>
+
+<view class='container bg'>
+  <view class='start pd25 ft28'>
+    <view class='center'>有效期:</view>
+    <view class='bb start'>
+      请选择
+      <picker mode="date" value="{{startTime}}" class='black' bindchange='startChange'>{{startTime==''?'开始时间':startTime}}</picker>
+      <span> 至 </span>
+      <picker mode="date" value='{{endTime}}' class='black' bindchange='endChange'>{{endTime==''?'结束时间':endTime}}</picker>
+    </view>
+  </view>
+  <view class='pd25 ft28 bort column'>
+    <label>间隔类型:</label>
+    <view class='Interval'>
+      <view class="IntervalItem {{showId == b.Id?'active':''}}" wx:for="{{IntervalList}}" data-Id="{{b.Id}}" bindtap='intervalChange' wx:key wx:for-item="b">{{b.name}}</view>
+    </view>
+    <view class='start' wx:if="{{showId==1}}">间隔天数:
+      <input type='number' value='{{intervalDays}}' bindinput='intervalInput' class='ml20'></input>
+    </view>
+    <view class='WeekList' wx:if="{{showId==2}}">
+      <view class="WeekItem {{k.check ==true?'active':''}}" wx:for="{{weekList}}" data-id="{{k.Id}}" bindtap='weekChange' wx:key wx:for-item="k">{{k.name}}</view>
+    </view>
+    <view class='MonthList' wx:if="{{showId==3}}">
+      <view class="MonthItem {{m.check==true?'active':''}} {{m.Id==0?'lastMonthItem':''}}" wx:for="{{monthList}}" bindtap="monthChange" data-id="{{m.Id}}" wx:key wx:for-item="m">{{m.name}}</view>
+    </view>
+  </view>
+</view>
+
+<view class='container bg'>
+  <view class='between pd25 ft28'>
+    <view class='center'>排除日期:</view>
+    <span class='addBtn' bindtap="exclideAdd">添加自定义日期</span>
+  </view>
+  <view class='ExcludeDateList' wx:if="{{excludeDateList.length>0}}">
+    <view class='ExcludeDateItem' wx:for="{{excludeDateList}}" wx:key wx:for-item="d" data-index="{{index}}">{{d}}
+    <image src='../../img/cha1.png' mode='aspectFill' class='cha1' data-index="{{index}}" bindtap='deleteDate'></image>
+    </view>
+  </view>
+</view>
+
+<view class='lastItem'></view>
+<view class='add' bindtap="btnClick">确认添加</view>
 
 <!-- 添加预约表弹窗 -->
 <modal hidden="{{!showSuccess}}" title="{{Id==''?'添加预约表':'编辑预约表'}}" confirm-text="确认" cancel-text="取消" bindcancel="clickCancel" bindconfirm="clickSure" catchtouchmove="true">
@@ -43,4 +86,10 @@
       <input type='text' value='{{remainQuota}}' bindinput='remainChange' class='flex formInput ft28'></input>
     </view>
   </view>
+</modal>
+
+<!-- 添加排除日期弹窗 -->
+<modal hidden="{{!showDateDialog}}" title="添加自定义日期" confirm-text="确认" cancel-text="取消" bindcancel="excludeDateCancel" bindconfirm="excludeDateSure" catchtouchmove="true">
+  <calendar bindnextMonth="next" bindprevMonth="prev" binddateChange="dateChange" binddayClick="dayClick" weeks-type="cn" active-type="rounded" pitch_on="circle" days-color="{{dayStyle}}" board-style="board" atefont-style="atefont" />
+  <view class='ft24 black'>将排除:{{excludeDateList1}}</view>
 </modal>

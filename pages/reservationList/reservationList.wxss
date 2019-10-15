@@ -1,0 +1,170 @@
+.navbar {
+  display: flex;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 199;
+  width: 100%;
+  height: 60rpx;
+  flex-direction: row;
+  text-align: center;
+  color: #000;
+  font-size: 28rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+.nameTitle{
+  height: 45rpx;
+  line-height: 45rpx;
+}
+.langqi {
+  margin-top: -40rpx;
+  z-index: 999;
+}
+
+.please text {
+  color: #29d9d6;
+  border: 1rpx solid #29d9d6;
+  padding: 5rpx 10rpx;
+  margin: 0 5rpx;
+  border-radius: 8rpx;
+}
+
+.navbar-item {
+  flex: 1;
+}
+
+.kld {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+}
+
+.scorll {
+  display: block;
+  margin-top: 25rpx;
+}
+
+swiper {
+  height: 100%;
+}
+
+.navbar-item-active {
+  /* transition: all 0.3s; */
+  border-bottom: 4rpx solid #29d9d6;
+  color: #000;
+}
+
+.movie-content-wrapper {
+  height: 100%;
+  margin-top: 60rpx;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+scroll-view {
+  height: 100%;
+}
+.selectTopImg{
+  width: 30rpx;
+  height: 30rpx;
+}
+.changeTop{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 5%;
+  background-color: #fff;
+  height: 80rpx;
+  line-height: 80rpx;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 60rpx;
+  z-index: 2;
+}
+.selectImg {
+  margin-left: 5rpx;
+  display: flex;
+  align-items: center;
+}
+
+.select {
+  font-size: 26rpx;
+  width: 200rpx;
+  height: auto;
+  box-shadow: 0 0 15rpx #e9e9e9;
+  border-radius: 15rpx;
+  text-align: center;
+  position: absolute;
+  background-color: #fff;
+  right: 5%;
+  z-index: 2;
+}
+
+.option {
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #f7f7f7;
+  z-index: 22;
+}
+.option.active{
+  color:#29d9d6;
+}
+.option:last-child {
+  border: none;
+}
+.reserList{
+  width: 95%;
+  height: auto;
+  margin:140rpx auto 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+.reserItem{
+  width: 100%;
+  height: auto;
+  border-radius: 15rpx;
+  box-sizing: border-box;
+  margin-top: 20rpx;
+  line-height: 55rpx;
+  padding: 20rpx 5%;
+  background-color: #fff;
+}
+.reserStatus{
+  font-size: 32rpx;
+  color: #000;
+}
+.avator{
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  margin: 0 10rpx;
+}
+.reserTitle{
+  width: 63%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.reserFooter{
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20rpx;
+  padding-top: 20rpx;
+}
+.reserBtn{
+  font-size: 28rpx;
+  color: #29d9d6;
+  border: 2rpx solid #29d9d6;
+  padding: 0rpx 30rpx;
+  border-radius: 35rpx;
+}
+.reserBtn.error{
+  border-color: #BABABA;
+  color: #BABABA;
+}
