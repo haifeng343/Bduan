@@ -6,7 +6,7 @@ const todayStyle = {
   color: 'red'
 };
 //当前总样式
-let styleArr = [];
+let styleArr = [], tempStyleArr = [];
 Page({
   data: {
     storeId: '',//门店id
@@ -282,28 +282,41 @@ Page({
   exclideAdd: function() {
     let that = this;
     //1设置总样式为空
-    styleArr = [];
-    //2判断当前月份是否今天的月份，是的话总样式添加今天样式
-    if (that.data.currentMonth == (new Date().getMonth() + 1)){
-      styleArr.push({
-        month:'current',
-        day:new Date().getDate(),
-        color:'#fff',
-        background:"#29D9D6"
-      })
-      that.setData({
-        dayStyle: styleArr
-      })
-    }
-    //3查询排除列表中当前月份的日期，总样式添加目标日期样式
-
-    let arr = that.data.excludeDateList;
-
-
+    this.resetDate();
     //4.打开弹窗
     this.setData({
       showDateDialog: true,
       excludeDateList1: this.data.excludeDateList
+    })
+  },
+  resetDate: function() {
+    let that = this;
+    styleArr = [];
+    let dd = new Date();
+    if (that.data.currentYear == dd.getFullYear() && that.data.currentMonth == (dd.getMonth() + 1)) {
+      styleArr.push({
+        month: 'current',
+        day: new Date().getDate(),
+        color: '#fff',
+        background: "#29D9D6"
+      })
+    }
+    let arr = that.data.excludeDateList;
+    for (let v of arr) {
+      let arr1 = v.split('-');
+      if (arr1[0] == that.data.currentYear && arr1[1] == that.data.currentMonth) {
+        styleArr.push({
+          month: 'current',
+          day: arr1[2],
+          color: '#fff',
+          background: "#000"
+        })
+      }
+    }
+    this.edArr = [...arr];
+    this.sArr = [...styleArr];
+    that.setData({
+      dayStyle: styleArr
     })
   },
   //切换下一月份
@@ -312,7 +325,8 @@ Page({
     that.setData({
       currentYear: e.detail.currentYear,
       currentMonth: e.detail.currentMonth,
-    })
+    });
+    this.resetDate();
   },
    //切换上一月份
   prev: function(e) {
@@ -320,7 +334,8 @@ Page({
     that.setData({
       currentYear: e.detail.currentYear,
       currentMonth: e.detail.currentMonth,
-    })
+    });
+    this.resetDate();
   },
   //年份月份切换
   dateChange: function(e) {
@@ -329,7 +344,8 @@ Page({
     that.setData({
       currentYear: e.detail.currentYear,
       currentMonth: e.detail.currentMonth,
-    })
+    });
+    this.resetDate();
   },
 
   //监听点击日历具体某一天的事件
@@ -341,7 +357,8 @@ Page({
     }
     let classDate = e.detail.year + '-' + month + '-' + e.detail.day;
     let arr = this.data.excludeDateList1;
-
+    
+    console.log(this.edArr, this.sArr);
     let indexTemp = arr.indexOf(classDate);
     //不存在则添加
     if (indexTemp==-1){
@@ -372,8 +389,12 @@ Page({
 
   //关闭排除日期弹窗
   excludeDateCancel: function() {
+    styleArr = this.sArr;
     this.setData({
-      showDateDialog: false
+      showDateDialog: false,
+      excludeDateList1: this.edArr,
+      excludeDateList: this.edArr,
+      dayStyle: this.sArr,
     })
   },
   //确定添加排除日期
