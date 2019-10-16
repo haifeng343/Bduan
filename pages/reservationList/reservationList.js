@@ -6,10 +6,11 @@ Page({
     date2: [],
     month: '全部',
     array: [],
-    storeList:[],//门店列表
+    storeList: [], //门店列表
     showId: 0, //选中门店下标
     storeName: "全部门店", //默认
-    showSelect:false,//门店弹窗
+    showSelect: false, //门店弹窗
+    Id:'',//预约记录Id
     navbarActiveIndex: 0,
     navbarTitle: [
       "全部",
@@ -21,103 +22,90 @@ Page({
     modelList: [{
       list: [],
       status: 0, //是否需要刷新0是 1否
-      pageIndex: 0,
-      wantIndex: 0,
-      navbarActiveIndex: 0
+      pageIndex: 1,
+      navbarActiveIndex: 0,
+      isFinish: true, //数据加载是否完成
     }, {
       list: [],
       status: 0,
-      pageIndex: 0,
-      wantIndex: 0,
-      navbarActiveIndex: 1
+      pageIndex: 1,
+      navbarActiveIndex: 1,
+      isFinish: true, //数据加载是否完成
     }, {
       list: [],
       status: 0,
-      pageIndex: 0,
-      wantIndex: 0,
-      navbarActiveIndex: 2
+      pageIndex: 1,
+      navbarActiveIndex: 2,
+      isFinish: true, //数据加载是否完成
     }, {
       list: [],
       status: 0,
-      pageIndex: 0,
-      wantIndex: 0,
-      navbarActiveIndex: 3
+      pageIndex: 1,
+      navbarActiveIndex: 3,
+      isFinish: true, //数据加载是否完成
     }, {
       list: [],
       status: 0,
-      pageIndex: 0,
-      wantIndex: 0,
-      navbarActiveIndex: 3
+      pageIndex: 1,
+      navbarActiveIndex: 4,
+      isFinish: true, //数据加载是否完成
     }],
-    usertoken:'',
+    usertoken: '',
+    showCancel: false, //取消预约弹窗
+    reason: '', //弹窗内容
   },
 
-  onLoad: function (options) {
+  onLoad: function(options) {
     let that = this;
     that._getStore();
     that.initPicker();
+    that.getData(1);
   },
-  onShow: function() {
-    this.setData({
-      usertoken: wx.getStorageSync('usertoken')
-    });
-    this.getData(false, false);
-  },
-
-  getData: function(isForceData, isRefreshData) {
-    if ((isForceData || this.data.modelList[this.data.navbarActiveIndex].status == 0) && this.data.usertoken) {
-      this._getData(isRefreshData ? 1 : this.data.modelList[this.data.navbarActiveIndex].pageIndex + 1);
-    }
-  },
-
-  _getData: function(wantIndex) {
+  //type:1.获取最新 2.获取更多
+  getData: function(type) {
     let that = this;
-    if (that.data.modelList[that.data.navbarActiveIndex].wantIndex > 0) {
+    let tempModelList = that.data.modelList;
+    //判断上一次操作是否完成,未完成直接返回
+    if (tempModelList[that.data.navbarActiveIndex].isFinish!=true){
       return;
     }
-
-    let tempModelList = that.data.modelList;
-    tempModelList[that.data.navbarActiveIndex].wantIndex = wantIndex;
+    tempModelList[that.data.navbarActiveIndex].isFinish=false;
     that.setData({
       modelList: tempModelList
-    })
-
+    });
     var url = 'appointment/record/list';
     var params = {
-      AppointmentStatus:that.data.navbarActiveIndex + 1,
-      Year:that.data.year,
-      Month:that.data.month,
+      AppointmentStatus: that.data.navbarActiveIndex,
+      Year: that.data.year,
+      Month: that.data.month,
       StoreId: that.data.showId,
       PageCount: 20,
-      PageIndex: 1,
+      PageIndex: type==1?1:(that.data.modelList[that.data.navbarActiveIndex].pageIndex+1),
     }
-    netUtil.postRequest(url, params, function (res) { //onSuccess成功回调
-      let arr = [];
-      if (tempModelList[that.data.navbarActiveIndex].wantIndex == 1) {
-        arr = res.Data;
-      } else {
-        arr = tempModelList[that.data.navbarActiveIndex].list;
-        arr = arr.concat(res.Data);
-      }
-
-      if (res.Data.length > 0) {
-        tempModelList[that.data.navbarActiveIndex].pageIndex = tempModelList[that.data.navbarActiveIndex].wantIndex;
-      }
+    netUtil.postRequest(url, params, function(res) { //onSuccess成功回调
+      tempModelList = that.data.modelList;
       tempModelList[that.data.navbarActiveIndex].status = 1; //设置状态为已刷新
-      tempModelList[that.data.navbarActiveIndex].wantIndex = 0;
-      tempModelList[that.data.navbarActiveIndex].list = arr;
-      that.setData({
-        modelList: tempModelList
-      })
-    }, function (error) {
-      tempModelList[that.data.navbarActiveIndex].wantIndex = 0;
+      let arr = res.Data; //返回数据
+      //1.判断是刷新还是加载更多
+      //a.如果刷新，设置页码数为1
+      //b.如果加载更多且数据列表不为空，设置页码数+1
+      if (type == 1) {
+        tempModelList[that.data.navbarActiveIndex].list = arr;
+        tempModelList[that.data.navbarActiveIndex].list.pageIndex=1;
+      } else {
+        if (arr.length > 0) {
+          tempModelList[that.data.navbarActiveIndex].list = tempModelList[that.data.navbarActiveIndex].list.concat(arr)
+          tempModelList[that.data.navbarActiveIndex].pageIndex++;
+        }
+      }
+      tempModelList[that.data.navbarActiveIndex].isFinish = true;
       that.setData({
         modelList: tempModelList
       })
     });
   },
 
-  initPicker: function () {
+  initPicker: function() {
     var date = new Date();
     let arr = [],
       arr1 = [];
@@ -134,11 +122,11 @@ Page({
     })
   },
   //获取所有门店列表
-  _getStore: function () {
+  _getStore: function() {
     let that = this;
     var url = 'account/store/list';
     var params = {}
-    netUtil.postRequest(url, params, function (res) {
+    netUtil.postRequest(url, params, function(res) {
       let arr = res.Data;
       arr.unshift({
         StoreId: 0,
@@ -150,13 +138,13 @@ Page({
     })
   },
   //弹出门店下拉选择
-  changeSelect: function () {
+  changeSelect: function() {
     this.setData({
-      showSelect: true
+      showSelect: !this.data.showSelect
     })
   },
   //点击全部门店
-  allStore: function () {
+  allStore: function() {
     this.setData({
       storeId: 0,
       storeName: '全部门店',
@@ -164,7 +152,7 @@ Page({
     })
   },
   //更换门店
-  changeStore: function (e) {
+  changeStore: function(e) {
     let that = this;
     that.setData({
       showId: e.currentTarget.dataset.id,
@@ -172,10 +160,9 @@ Page({
       storeName: e.currentTarget.dataset.name,
       showSelect: false
     })
-    this._getData();
+    this.getData(1);
   },
-  bindDateChange: function (e) {
-    // console.log('picker发送选择改变，携带值为', e.detail.value)
+  bindDateChange: function(e) {
     let index = e.detail.value;
     if (index[0] == 0 && index[1] == 0) {
       this.setData({
@@ -192,7 +179,7 @@ Page({
         page: 1
       })
     }
-    this._getData();
+    this.getData(1);
   },
   //取消退款
   cancelOrder: function(e) {
@@ -226,22 +213,26 @@ Page({
 
   // 点击导航栏
   onNavBarTap: function(event) {
+    let navbarTapIndex = event.currentTarget.dataset.navbarIndex
+    // 设置data属性中的navbarActiveIndex为当前点击的navbar
     this.setData({
-      navbarActiveIndex: event.currentTarget.dataset.navbarIndex
+      navbarActiveIndex: navbarTapIndex
     })
-
-    this._getData(false, false);
+    if (this.data.modelList[navbarTapIndex].status == 0) {
+      this.getData(1);
+    }
   },
 
   //下拉刷新
   onPullDownRefresh: function() {
-    this._getData(true, true);
+    let that = this;
+    that.getData(1);
     wx.stopPullDownRefresh();
   },
-
   //上拉加载更多
-  onReachBottom: function() {
-    this._getData(true, false);
+  onReachBottom: function () {
+    let that = this;
+    that.getData(2);
   },
 
   //删除
@@ -277,6 +268,57 @@ Page({
       }
     })
   },
+  //打开取消预约弹窗
+  appointCancel: function(e) {
+    this.setData({
+      showCancel: true,
+      reason: '',
+      Id:e.currentTarget.dataset.id
+    })
+  },
 
+  //关闭取消预约弹窗
+  clickCancel: function() {
+    this.setData({
+      showCancel: false
+    })
+  },
+  //确定发送预约弹窗内容
+  clickConfirm: function() {
+    this._appointmentCancel();
+    if (this.data.reason) {
+      this.setData({
+        showCancel: false
+      })
+    }
+  },
+  //获取取消预约内容
+  hasReason: function(e) {
+    this.setData({
+      reason: e.detail.value
+    })
+  },
+  _appointmentCancel: function() {
+    let that = this;
+    if (!that.data.reason) {
+      wx.showToast({
+        icon: 'none',
+        title: '请输入取消原因',
+      })
+      return;
+    }
+    var url = 'appointment/cancel';
+    var params = {
+      RecordId: that.data.Id,
+      Reason: that.data.reason,
+    }
+    netUtil.postRequest(url, params, function(res) {
+      wx.showToast({
+        icon: 'none',
+        title: '发送成功',
+      })
+      that.getData(1)
+    })
+  },
   onShareAppMessage: function() {},
 })

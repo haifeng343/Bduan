@@ -1,6 +1,6 @@
 <view class='container'>
   <view class='content radius10'>
-    <view class='item column'>
+    <view class='orderItem column'>
       <view class='between h50'>
         <view class='ft28 start'>
           <text>订单编号:</text>
@@ -19,7 +19,7 @@
           </view>
           <view>{{Info.BuyAccountName}} <text wx:if="{{Info.BuyAccountMobile}}">({{Info.BuyAccountMobile}})</text></view>
         </view>
-        <view class='center'>
+        <view class='center' wx:if="{{Info.BuyAccountMobile}}">
           <image class='icon' wx:if="{{showCall}}" src='../../img/call.png' bindtap='bindCall' mode='widthFix'></image>
         </view>
       </view>
@@ -65,11 +65,9 @@
 
 <view class='container'>
   <view class="content radius10 mt20">
-    <view class='item column' wx:for="{{Info.ItemList}}" wx:key wx:for-item="k">
+    <view class='orderItem column' wx:for="{{Info.ItemList}}" wx:key wx:for-item="k">
       <view class='start'>
-        <view class='itemLeft'>
           <image class='d1' src='{{k.ItemCoverImgUrl}}' mode='aspectFill'></image>
-        </view>
         <view class=''>
           <view class='ft28'>{{k.ItemName}}</view>
           <image class='use' wx:if="{{Info.OrderStatus==4}}" src='../../img/expired.png' mode='aspectFill'></image>

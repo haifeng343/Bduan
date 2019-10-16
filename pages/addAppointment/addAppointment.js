@@ -1,10 +1,4 @@
 var netUtil = require("../../utils/request.js"); //require引入
-//今天日期样式
-const todayStyle = {
-  month: 'current',
-  day: new Date().getDate(),
-  color: 'red'
-};
 //当前总样式
 let styleArr = [], tempStyleArr = [];
 Page({
@@ -452,8 +446,8 @@ Page({
       StoreId:that.data.storeId,
       ItemId:that.data.itemId,
       BatchName:that.data.bathName,
-      BatchStartTime:that.data.startTime,
-      BatchEndTime:that.data.endTime,
+      BatchStartTime:that.data.startTime + ' 00:00:00',
+      BatchEndTime: that.data.endTime + ' 00:00:00',
       List:that.data.appointList,
       IntervalType:that.data.showId,
       IntervalDays: that.data.showId == 1 ? that.data.intervalDays:'',

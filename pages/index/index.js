@@ -45,6 +45,7 @@ Page({
     arrivalCount: '', //到店数
     buyCount: '', //购买数
     usertoken: '',
+    count: "",//获取未处理预约数量
   },
   onLoad: function(options) {
     let userInfo = wx.getStorageSync('userInfo');
@@ -67,6 +68,7 @@ Page({
     this.getGroupList();
     this.getOrderList();
     this.getOperating();
+    this._getCount();
   },
   //获取所有门店列表
   getStore: function() {
@@ -84,6 +86,20 @@ Page({
       })
     })
   },
+  //获取未处理预约数量
+  _getCount:function() {
+    let that = this;
+    var url = 'appointment/count';
+    var params = {}
+    netUtil.postRequest(url, params, function (res) {
+      if (res.Data) {
+        that.setData({
+          count: res.Data.AppointmentCount
+        })
+      }
+    })
+  },
+
   //更换门店
   changeStore: function(e) {
     this.setData({

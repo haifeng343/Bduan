@@ -58,24 +58,15 @@
 <!-- 清空预约弹窗 -->
 <modal hidden="{{!showDialog}}" title="清空预约" confirm-text="确认" cancel-text="取消" bindcancel="batchCancel" bindconfirm="batchSure" catchtouchmove="true">
   <view class='modalList'>
-    <checkbox  value='{{checkAll}}' checked='{{checkAll==true}}' class='black ft28 checkAll'>全部</checkbox>
+    <checkbox  value='{{checkAll}}' checked='{{checkAll==true}}' bindtap="allChange" class='black ft28 checkAll'>全部</checkbox>
     <checkbox-group class="bort" bindchange="changeQita">
-      <checkbox class=' black ft28 checkAll' value='qita'>其他(自定义)</checkbox>
       <view class='modalFormList' wx:if="{{batchList.length>0}}">
-        <view class='modalFormItem'>
-          <checkbox></checkbox>
+        <view class='modalFormItem' wx:for="{{batchList}}" wx:key>
+          <checkbox value='{{item.BatchName}}' checked='{{item.check==true}}'></checkbox>
           <view class='modalFormItemRight flex'>
-            <view class='black ft24'>预约表名称</view>
-            <view class='ft24'>添加时间: 2019-10-12</view>
-            <view class='ft24'>预约表有效期: 2019-10-12~2019-10-22</view>
-          </view>
-        </view>
-        <view class='modalFormItem'>
-          <checkbox></checkbox>
-          <view class='modalFormItemRight flex'>
-            <view class='black ft24'>预约表名称</view>
-            <view class='ft24'>添加时间: 2019-10-12</view>
-            <view class='ft24'>预约表有效期: 2019-10-12~2019-10-22</view>
+            <view class='black ft24'>{{item.BatchName==''?'其他 (自定义)':item.BatchName}}</view>
+            <view class='ft24' wx:if="{{item.CreateTime}}">添加时间: {{item.CreateTime}}</view>
+            <view class='ft24' wx:if="{{item.BatchStartTime && item.BatchEndTime}}">预约表有效期: {{item.BatchStartTime}}~{{item.BatchEndTime}}</view>
           </view>
         </view>
       </view>

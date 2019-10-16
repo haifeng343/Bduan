@@ -30,6 +30,7 @@ Page({
     showDialog: false, //清空预约弹窗
     batchList: [], //门店课程批量排课列表
     checkAll: false, //是否全选
+    qita: "", //其他是空字符串
   },
   onLoad: function(options) {
     let month = new Date().getMonth() + 1;
@@ -73,8 +74,15 @@ Page({
       ItemId: that.data.itemId,
     }
     netUtil.postRequest(url, params, function(res) {
+      let arr = res.Data;
+      arr.unshift({
+        BatchName: "",
+        BatchEndTime: null,
+        BatchStartTime: null,
+        CreateTime: null
+      })
       that.setData({
-        batchList: res.Data
+        batchList: arr,
       })
     })
   },
@@ -94,28 +102,67 @@ Page({
   },
   //确定清空操作
   batchSure: function() {
-
+    this._batchDelete();
   },
   // 批量清空课程排课
   _batchDelete: function() {
     let that = this;
-    var url = 'account/storeitem/schedule/batch/list';
+    var url = 'account/storeitem/schedule/batch/delete';
     var params = {
       StoreId: that.data.storeId,
       ItemId: that.data.itemId,
-      BatchNameList: null
+      BatchNameList: that.data.checkAll == true ? null : that.data.batchList.filter(item => {
+        return item.check == true
+      }).map(item => {
+        return item.BatchName
+      })
     }
     netUtil.postRequest(url, params, function(res) {
       that.setData({
-        batchList: res.Data
+        showDialog: false
+      })
+      wx.showToast({
+        icon:"none",
+        title: '清空成功',
       })
     })
   },
   changeQita: function(e) {
-    console.log(e)
+    let that = this;
+    let tempArr = that.data.batchList;
+    let arr = e.detail.value;
+    let checkAll = true;
+
+    tempArr.forEach(item => {
+      let indexTemp = arr.indexOf(item.BatchName);
+      if (indexTemp == -1) {
+        item.check = false;
+        checkAll = false;
+      } else {
+        item.check = true;
+      }
+    });
+
+    that.setData({
+      batchList: tempArr,
+      checkAll: checkAll
+    });
   },
-  changeAll: function(e) {
-    console.log(e)
+  allChange: function() {
+    let that = this;
+    let tempArr = that.data.batchList;
+    tempArr.forEach(item => {
+      if (that.data.checkAll == true) {
+        item.check = false
+      } else {
+        item.check = true
+      }
+    })
+    that.setData({
+      checkAll: !that.data.checkAll,
+      batchList: tempArr
+    })
+    // if(e.value.)
   },
   //添加预约表弹窗
   classAdd: function() {
@@ -150,7 +197,7 @@ Page({
     })
     wx.showModal({
       title: '提示',
-      content: "您确认删除 " + e.currentTarget.dataset.schedulename+ ' 的预约表吗？',
+      content: "您确认删除 " + e.currentTarget.dataset.schedulename + ' 的预约表吗？',
       confirmColor: "#000",
       success: function(res) {
         if (res.confirm) {
@@ -425,9 +472,9 @@ Page({
     }
   },
   //添加预约表
-  addPoint:function() {
+  addPoint: function() {
     wx.navigateTo({
-      url:'/pages/addAppointment/addAppointment?storeId='+this.data.storeId+'&itemId='+this.data.itemId
+      url: '/pages/addAppointment/addAppointment?storeId=' + this.data.storeId + '&itemId=' + this.data.itemId
     })
   },
   onShareAppMessage: function() {

@@ -16,7 +16,7 @@
       <view class='ft28'>验证记录</view>
     </view>
     <view bindtap='reservation' class='relative'>
-      <span class='count'>1</span>
+      <span class='count' wx:if="{{count && count>0}}">{{count}}</span>
       <image class='addImg' src='../../img/a4.png' mode='widthFix'></image>
       <view class='ft28'>预约记录</view>
     </view>

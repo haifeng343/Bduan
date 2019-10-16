@@ -49,7 +49,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 52,
+			"current": 53,
 			"list": [
 				{
 					"id": -1,
@@ -420,6 +420,13 @@
 					"name": "reservationList",
 					"pathName": "pages/reservationList/reservationList",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "orderDetail",
+					"pathName": "pages/orderDetail/orderDetail",
+					"query": "id=55",
 					"scene": null
 				}
 			]

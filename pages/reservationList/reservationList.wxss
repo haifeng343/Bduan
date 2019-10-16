@@ -3,7 +3,7 @@
   position: fixed;
   left: 0;
   top: 0;
-  z-index: 199;
+  z-index: 1;
   width: 100%;
   height: 60rpx;
   flex-direction: row;
@@ -99,7 +99,7 @@ scroll-view {
   position: absolute;
   background-color: #fff;
   right: 5%;
-  z-index: 2;
+  z-index: 202;
 }
 
 .option {
@@ -144,10 +144,17 @@ scroll-view {
   margin: 0 10rpx;
 }
 .reserTitle{
-  width: 63%;
+  width: 55%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.changeright{
+  z-index: 201;
+}
+.centers{
+  display: flex;
+  align-items: center;
 }
 .reserFooter{
   width: 100%;
@@ -167,4 +174,13 @@ scroll-view {
 .reserBtn.error{
   border-color: #BABABA;
   color: #BABABA;
+}
+.cancelTxt1{
+  width: 100%;
+  height: 200rpx;
+  border-radius: 15rpx;
+  border: 1rpx solid #E6E6E6;
+  font-size: 28rpx;
+  box-sizing: border-box;
+  padding: 20rpx;
 }

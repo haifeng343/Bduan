@@ -25,35 +25,49 @@
       </view>
     </view>
   </view>
-  <view class='nohasLog' wx:if="{{modelList[navbarActiveIndex].list.length>0}}">
+  <view class='nohasLog' wx:if="{{modelList[navbarActiveIndex].list.length<=0}}">
     <image class='noImg' src='../../img/zanwu.png' mode='widthFix' lazy-load='true'></image>
     <view class='notext'>暂无预约记录</view>
   </view>
   <view wx:else>
     <view class='reserList'>
-      <view class='reserItem'>
+      <view class='reserItem' wx:for="{{modelList[navbarActiveIndex].list}}" wx:key>
         <view class='between'>
-          <view class='start center w80'>
+          <view class='start centers w80'>
             <label class='center ft28'>预约账号: </label>
-            <image src='../../img/m4.png' mode='aspectFill' class='avator center'></image>
-            <view class='ft24 reserTitle'>小林小林小林小林小林小林小林 <span>(154541512514)</span></view>
+            <image src='{{item.AccountHeadUrl}}' mode='aspectFill' class='avator center'></image>
+            <view class='ft24 reserTitle'>{{item.AccountName}}
+              <span wx:if="{{item.AccountMobile}}">({{item.AccountMobile}})</span>
+            </view>
           </view>
-          <view class='reserStatus'>未处理</view>
+          <view class='reserStatus' wx:if="{{item.AppointmentStatus==1}}">未处理</view>
+          <view class='reserStatus' wx:if="{{item.AppointmentStatus==2}}">已预约</view>
+          <view class='reserStatus' wx:if="{{item.AppointmentStatus==3}}">被动取消</view>
+          <view class='reserStatus' wx:if="{{item.AppointmentStatus==5}}">已过期</view>
         </view>
         <view class='start ft28 bb'>
-          <view>手机号: 1358888888</view>
-          <view class='ml40'>孩子信息: 丽丽 <span>(3岁)</span></view>
+          <view>手机号: {{item.AppointmentMobile}}</view>
+          <view class='ml40'>孩子信息: {{item.ChildName}}
+            <span wx:if="{{item.ChildAge}}">({{item.ChildAge}}岁)</span>
+          </view>
         </view>
-        <view class='start ft28 bb'>预约课程: 数学课 (门店1)</view>
-        <view class='start ft28 bb'>预约类型: 14:00数学课 (2019-02-22)</view>
-        <view class='start ft28 bb'>取消原因: 机构原因</view>
-        <view class='start ft28 bb'>取消时间: 2019-02-22 14:00</view>
+        <view class='start ft28 bb'>预约课程: {{item.ItemName}} ({{item.StoreName}})</view>
+        <view class='start ft28 bb' wx:if="{{item.AppointmentStatus==1 || item.AppointmentStatus==2 || item.AppointmentStatus==5}}">预约类型: {{item.AppointmentType==1?'与老师协商':item.ScheduleName +' ('+item.ClassDate+')'}}</view>
+        <view class='start ft28 bb' wx:if="{{item.AppointmentStatus==2 || item.AppointmentStatus==5}}">预约时间: {{item.ClassDate +' ' +item.ClassTime+' ('+ (item.AppointmentType==1?'自定义时间':item.ScheduleName)+')'}}</view>
+        <view class='start ft28 bb' wx:if="{{item.AppointmentStatus==5}}">取消原因: {{item.AppointmentStatusDes==''?'暂无取消原因':item.AppointmentStatusDes}}</view>
+        <view class='start ft28 bb' wx:if="{{item.AppointmentStatus==5}}">取消时间: {{item.CancelTime==null?'暂无取消时间':item.CancelTime}}</view>
         <view class='reserFooter bort'>
-          <view class='reserBtn'>修改预约</view>
-          <view class='reserBtn'>确认预约</view>
-          <view class='reserBtn error ml40'>取消预约</view>
+          <view class='reserBtn' wx:if="{{item.AppointmentStatus==2}}">修改预约</view>
+          <view class='reserBtn' wx:if="{{item.AppointmentStatus==1}}">确认预约</view>
+          <view class='reserBtn error ml40' wx:if="{{item.AppointmentStatus==1 || item.AppointmentStatus==2}}" bindtap='appointCancel' data-Id="{{item.Id}}">取消预约</view>
         </view>
       </view>
     </view>
   </view>
 </view>
+
+<view class='father' catchtouchmove='true' bindtap='changeSelect' wx:if="{{showSelect==true}}"></view>
+<!--取消预约弹窗-->
+<modal hidden="{{!showCancel}}" title="取消预约" confirm-text="确认" cancel-text="取消" bindcancel="clickCancel" bindconfirm="clickConfirm" catchtouchmove="true">
+  <textarea class='cancelTxt1' value='{{reason}}' bindinput='hasReason' placeholder='在此输入取消原因'></textarea>
+</modal>
