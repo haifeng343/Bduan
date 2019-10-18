@@ -13,14 +13,17 @@ page {
   color: #b2c7ed !important;
   border: 1rpx solid #b2c7ed !important;
 }
-.swich{
-  zoom:.6;
-  margin-left: 25rpx;
+
+.swich {
+  zoom: 0.8;
+  margin-left: 25rpx !important;
 }
+
 .black {
   color: #000 !important;
 }
-.father{
+
+.father {
   width: 100%;
   height: 100%;
   background-color: transparent;
@@ -29,6 +32,7 @@ page {
   top: 0;
   left: 0;
 }
+
 .w80 {
   width: 80%;
 }
@@ -302,9 +306,11 @@ label {
 .ml5 {
   margin-left: 5rpx;
 }
+
 .ml10 {
   margin-left: 10rpx;
 }
+
 .ml20 {
   margin-left: 20rpx;
 }
@@ -356,12 +362,15 @@ label {
 .pd20 {
   padding: 20rpx 0;
 }
-.pd200{
+
+.pd200 {
   padding: 20rpx;
 }
-.pdt20{
+
+.pdt20 {
   padding-top: 20rpx;
 }
+
 .pd25 {
   padding: 20rpx 5% !important;
 }
@@ -563,7 +572,7 @@ image {
 }
 
 .h80 {
-  line-height: 80rpx;
+  line-height: 80rpx!important;
   display: flex;
   align-items: center;
 }
@@ -723,10 +732,12 @@ radio .wx-radio-input.wx-radio-input-checked::before {
   background-color: #c1c1c1;
   border-color: #c1c1c1;
 }
-.gray2{
-  color: #c1c1c1!important;
-  border-color: #c1c1c1!important;
+
+.gray2 {
+  color: #c1c1c1 !important;
+  border-color: #c1c1c1 !important;
 }
+
 .zan-dialog--show .zan-dialog__container {
   transform: translateY(0%);
 }
@@ -891,9 +902,6 @@ radio .wx-radio-input.wx-radio-input-checked::before {
   margin-right: 10rpx;
 }
 
-.dialogList {
-  max-height: 860rpx;
-}
 
 .storeDialogRight {
   width: 64%;
@@ -999,50 +1007,58 @@ radio .wx-radio-input.wx-radio-input-checked::before {
 }
 
 /*****************去招生*********************/
-.storeItemAvator{
-  width:135rpx;
-height:135rpx;
-border-radius:15rpx;
-margin-right:15rpx;
 
+.storeItemAvator {
+  width: 135rpx;
+  height: 135rpx;
+  border-radius: 15rpx;
+  margin-right: 15rpx;
 }
+
 /******************活动图片**********************/
-.avtiveImg{
+
+.avtiveImg {
   width: 100%;
   height: 330rpx;
   border-radius: 25rpx;
   margin-top: 20rpx;
 }
-.avtiveImg:first-child{
+
+.avtiveImg:first-child {
   margin-top: 0;
 }
+
 /**************************活动参数***********************/
-.parameterInput{
+
+.parameterInput {
   width: 100%;
   height: 60rpx;
   line-height: 60rpx;
   font-size: 28rpx;
   color: #000;
-  background-color: #F1F1F1;
-  border: 2rpx solid #D6D6D6;
+  background-color: #f1f1f1;
+  border: 2rpx solid #d6d6d6;
   box-sizing: border-box;
   padding: 0 20rpx;
   margin-top: 10rpx;
 }
-.parameterTextarea{
+
+.parameterTextarea {
   width: 100%;
   height: auto;
   line-height: 60rpx;
   font-size: 28rpx;
   color: #000;
-  background-color: #F1F1F1;
-  border: 2rpx solid #D6D6D6;
+  background-color: #f1f1f1;
+  border: 2rpx solid #d6d6d6;
   box-sizing: border-box;
   padding: 0 20rpx;
   margin-top: 10rpx;
 }
+
 /*******************************************************/
-.count{
+
+.count {
   display: inline-block;
   width: auto;
   padding: 0 10rpx;
@@ -1057,54 +1073,62 @@ margin-right:15rpx;
   color: #fff;
   font-size: 24rpx;
 }
-.footer{
+
+.footer {
   display: flex;
   justify-content: flex-end;
 }
-.orderBtn{
+
+.orderBtn {
   width: 180rpx;
   height: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   line-height: 50rpx;
   border-radius: 25rpx;
-  box-sizing: border-box;
-  border: 2rpx solid #000;
+  border: 1rpx solid #000;
   color: #000;
   font-size: 28rpx;
   margin: 20rpx 0;
   background-color: transparent;
   margin-left: 20rpx;
 }
-.orderBtn:first-child{
+
+.orderBtn:first-child {
   margin-left: 0;
 }
 
-.List{
+.List {
   width: 97.5%;
   height: auto;
   margin: 0 auto;
 }
-.item{
+
+.item {
   width: 95%;
   border-radius: 15rpx;
   height: auto;
   line-height: 50rpx;
   box-sizing: border-box;
-  margin: 20rpx auto 0;
   padding: 20rpx 5%;
   font-size: 24rpx;
   background-color: #fff;
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
 }
+
 /*********************预约表**********************/
-.addBtn{
+
+.addBtn {
   font-size: 24rpx;
   color: #29d9d6;
-  border:2rpx solid #29d9d6;
+  border: 1rpx solid #29d9d6;
   padding: 10rpx 40rpx;
   border-radius: 30rpx;
 }
-.FoormFooter{
+
+.FoormFooter {
   width: 100%;
   height: 100rpx;
   background-color: #fff;
@@ -1119,11 +1143,13 @@ margin-right:15rpx;
   box-sizing: border-box;
   padding: 0 2.5%;
 }
-.fotBtn{
+
+.fotBtn {
   height: 50rpx;
   line-height: 50rpx;
   font-size: 28rpx;
 }
+
 /**************************预约表*********************/
 
 .formList {
@@ -1185,9 +1211,74 @@ label {
   margin-top: 0;
 }
 
+/********************按钮****************/
 
+.borBlack {
+  color: #000 !important;
+  border-color: #000 !important;
+}
 
-
-
-
-
+/*******************封装弹窗**************************/
+.dialogMask{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  align-items: center;
+  font-size: 28rpx;
+}
+.dialog-container{
+  width: 90%;
+  height: auto;
+  background-color: #fff;
+  border-radius: 15rpx;
+  max-height: 80%;
+  position: relative;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding-top: 0;
+}
+.dialog-title{
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 32rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+}
+.dialog-content{
+  width: 100%;
+  height: auto;
+  max-height: 800rpx;
+  box-sizing: border-box;
+  padding: 20rpx 5%;
+}
+.dialog-footer{
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  display: flex;
+  justify-content: space-around;
+  border-top: 2rpx solid #f4f4f4;
+}
+.dialog-btn{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-sizing: border-box;
+}
+.dialog-btn:first-child{
+  border-right: 2rpx solid #f4f4f4;
+}

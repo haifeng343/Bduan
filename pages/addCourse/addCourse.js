@@ -1,6 +1,5 @@
 var netUtil = require("../../utils/request.js"); //require引入
 const app = getApp().globalData;
-const baseUrl = app.baseUrl;
 Page({
   data: {
     name: '', //课程姓名
@@ -155,7 +154,7 @@ Page({
           })
         } else {
           wx.uploadFile({
-            url: baseUrl + 'img/upload', //仅为示例，非真实的接口地址
+            url: netUtil.baseUrl + 'img/upload', //仅为示例，非真实的接口地址
             filePath: tempFilePaths[0],
             name: 'Item.Main',
             header: {
@@ -271,7 +270,7 @@ Page({
     var that = this;
     let usertoken = wx.getStorageSync('userInfo').UserToken;
     wx.uploadFile({
-      url: baseUrl + 'img/upload',
+      url: netUtil.baseUrl + 'img/upload',
       filePath: data,
       header: {
         "Content-Type": "multipart/form-data", //记得设置

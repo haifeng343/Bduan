@@ -1,156 +1,203 @@
 .banner {
   width: 100%;
-  height: 300rpx;
+  height: 305rpx;
   position: relative;
   z-index: 0;
+  box-sizing: border-box;
+  padding-top: 20rpx;
   background-color: #fff;
 }
 swiper {
   height: 100%;
+  box-sizing: border-box;
 }
 
 swiper-item {
   text-align: center;
 }
-
+.typeFooter{
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  line-height: 100rpx;
+  background-color: #29D9D6;
+  color: #fff;
+  position: fixed;
+  justify-content: space-between;
+  bottom: 0;
+  font-size: 28rpx;
+  box-sizing: border-box;
+  padding: 0 5%;
+}
+.joinDetail{
+  width: 34rpx;
+  height: 34rpx;
+}
 .img1 {
-  width: 660rpx;
-  height: 300rpx;
+  width: 96%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 10rpx;
+  border-radius: 15rpx;
 }
 
 .box {
-  width: 95%;
+  width: 100%;
   height: 100%;
+  font-size: 32rpx;
   display: inline-block;
   box-sizing: border-box;
 }
 
 .dot {
   position: absolute;
-  bottom: 10rpx;
-  right: 50rpx;
+  bottom: 8rpx;
+  right: 52rpx;
   background: rgba(0, 0, 0, 0.1);
   color: #fff;
   font-size: 24rpx;
   border-radius: 40rpx;
   padding: 3rpx 20rpx;
 }
-.courseCont{
+
+.courseCont {
   background-color: #fff;
-  padding-bottom: 15rpx;
-  padding-top: 40rpx;
+  padding: 20rpx 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
 }
-.courseLi{
-  font-size: 30rpx;
-  line-height: 45rpx;
-  font-weight: 600;
-}
-.howMoney{
-  color: #F8000F;
-}
-.somebody{
-  font-size: 26rpx;
-  color: #ACACAC;
-  margin: 10rpx 0; 
-}
-.courseRow{
-  width: 100%;
-  border-bottom: 1rpx solid #F7F7F7;
+
+.courseLi {
   font-size: 28rpx;
-  height: 80rpx;
-  line-height: 80rpx;
-  box-sizing: border-box;
+  line-height: 40rpx;
 }
-.courseRow:last-child{
+
+.name {
+  font-weight: bold;
+}
+
+.howMoney {
+  color: #f8000f;
+  font-size: 32rpx;
+}
+
+.somebody {
+  font-size: 24rpx;
+  line-height: 36rpx;
+  margin: 10rpx 0;
+  color: #5b5b5b;
+}
+
+.courseRow {
+  font-size: 24rpx;
+  line-height: 40rpx;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.courseRow:last-child {
   border: none;
 }
-.rowImg{
-  width: 40rpx;
-  height: 34rpx;
+
+.rowImg {
+  width: 28rpx;
+  height: 28rpx;
   margin-right: 5rpx;
-  margin-top: 18rpx;
 }
-.courseRow .start{
-  width: 90%;
+
+.courseRow .start {
+  width: 100%;
 }
-.address{
-  width: 90%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  word-break: keep-all;
+
+.address {
+  width: 100%;
 }
-button{
+
+.ml40{
+  margin-left: 40rpx;
+}
+
+.centers{
+  display: flex;
+  align-items: center;
+  height: 40rpx;
+}
+
+button {
   padding: 0;
 }
-.content{
-  padding: 20rpx 5%;
-}
-.end{
+
+.end {
   display: flex;
   justify-content: flex-end;
 }
-.prompt{
-  margin-top: 15rpx;
-}
-.prompTitle{
-  font-size: 32rpx;
-  font-weight: 600;
-}
-.promptText{
-  font-size: 26rpx;
-  line-height: 35rpx;
-  letter-spacing: 2rpx;
-  margin-top: 20rpx;
-}
-.teacherList{
+.propList{
   width: 100%;
-  padding: 0 5%;
-  box-sizing: border-box;
-  background-color: #fff;
   height: auto;
-  margin-top: 15rpx;
 }
 
-.teaNumber{
-  font-size: 32rpx;
-  font-weight: 600;
+.prompTitle {
+  font-size: 28rpx;
+  font-weight: bold;
 }
-.icon{
-  margin-top: 7rpx;
+
+.promptText {
+  font-size: 24rpx;
+  line-height: 36rpx;
+  margin-top: 10rpx;
 }
-.teaList{
+
+.teacherList {
+  width: 100%;
+  height: auto;
+}
+
+.tearcherTitle {
+  margin-bottom: 20rpx;
+}
+
+.teaNumber {
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.go {
+  position: relative;
+}
+
+.teaList {
   display: flex;
   flex-direction: row;
   width: 100%;
   overflow-x: scroll;
-  padding-bottom:20rpx; 
 }
+
 .teaList::-webkit-scrollbar {
   width: 0;
   height: 0;
   color: transparent;
 }
-.teachers{
+
+.teachers {
   width: 200rpx;
   margin-right: 25rpx;
   text-align: center;
-  word-break:keep-all;
+  word-break: keep-all;
 }
-.teaImg{
+
+.teaImg {
   width: 150rpx;
   height: 150rpx;
   border-radius: 50%;
 }
-.teaName{
-  font-size: 30rpx;
+
+.teaName {
+  font-size: 28rpx;
 }
 
-.profession{
+.profession {
   color: #656565;
   font-size: 26rpx;
   word-break: keep-all;
 }
-
-

@@ -20,7 +20,7 @@
           <view>{{Info.BuyAccountName}} <text wx:if="{{Info.BuyAccountMobile}}">({{Info.BuyAccountMobile}})</text></view>
         </view>
         <view class='center' wx:if="{{Info.BuyAccountMobile}}">
-          <image class='icon' wx:if="{{showCall}}" src='../../img/call.png' bindtap='bindCall' mode='widthFix'></image>
+          <image class='icon1' wx:if="{{showCall}}" src='../../img/call.png' bindtap='bindCall' mode='widthFix'></image>
         </view>
       </view>
       <view class='between h50'>

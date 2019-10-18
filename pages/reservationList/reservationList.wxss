@@ -13,6 +13,10 @@
   box-sizing: border-box;
   background-color: #fff;
 }
+.dialog-btn:last-child {
+  border-left:2rpx solid #f4f4f4;
+}
+
 .nameTitle{
   height: 45rpx;
   line-height: 45rpx;
@@ -183,4 +187,30 @@ scroll-view {
   font-size: 28rpx;
   box-sizing: border-box;
   padding: 20rpx;
+}
+.appointTop {
+  display: flex;
+  flex-direction: column;
+  line-height: 50rpx;
+  font-size: 28rpx;
+}
+
+.calendars {
+  margin: 20rpx 0;
+}
+.bort{
+  border-top: 1rpx solid #f4f4f4;
+}
+.pddingt20{
+  padding-top: 20rpx;
+}
+.cha{
+  position: absolute;
+  width: 45rpx;
+  height: 45rpx;
+  right:-5rpx;
+  top:-70rpx;
+}
+.opacity{
+  opacity: 0.5;
 }

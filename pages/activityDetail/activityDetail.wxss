@@ -1,12 +1,50 @@
+.item1 {
+  width: 100%;
+  border-radius: 15rpx;
+  height: auto;
+  line-height: 40rpx;
+  box-sizing: border-box;
+  padding: 20rpx 0;
+  font-size: 24rpx;
+  background-color: #fff;
+  /* display: flex;
+  flex-direction: column; */
+}
 .kl{
-  padding: 20rpx 5%;
+  padding: 0 5%;
   box-sizing: border-box;
 }
+.widthName{
+  width: 70%!important;
+}
+.activeTitle{
+  width: 80%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.activeItem{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.widthRight{
+  width: 100%;
+  text-align: left;
+}
 .t1{
-  width: 110rpx;
-  height: 110rpx;
+  width: 120rpx;
+  height: 120rpx;
   margin-right: 10rpx;
   border-radius: 15rpx;
+}
+.centers{
+  display: flex;
+  align-items: center;
+}
+.icon{
+  width: 28rpx;
+  height: 28rpx;
 }
 .detailContent{
   width: 88%;
@@ -16,11 +54,9 @@
   width: 80%;
 }
 .noWrap{
-  width: 284rpx;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
   text-overflow: ellipsis;
-  overflow-x: hidden;
-}
-.icon{
-  /* margin-top: -1rpx; */
 }
 

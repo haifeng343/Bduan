@@ -17,19 +17,16 @@
   justify-content: center!important;
   margin: 0 auto!important;
 }
+.gray2{
+  color: #ccc!important;
+  border-color: #ccc!important;
+}
 .container .timeAbsolute{
   position: absolute;
   top: 45rpx;
   left: 7%;
   font-size: 28rpx;
   color: #c1c1c1;
-}
-.modalList{
-  width: 100%;
-  height: auto;
-  max-height: 666rpx;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
 }
 .modalFormList{
   width: 100%;
@@ -40,7 +37,7 @@
   width: 100%;
   display: flex;
   justify-content: flex-start;
-  padding-top: 10rpx;
+  padding-top: 20rpx;
 }
 .modalFormItemRight{
   display: flex;

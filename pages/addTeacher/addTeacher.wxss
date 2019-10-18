@@ -5,6 +5,7 @@
   box-sizing: border-box;
   font-size: 28rpx;
   position: relative;
+  margin-top: 0;
 }
 
 .item label {

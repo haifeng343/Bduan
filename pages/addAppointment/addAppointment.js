@@ -6,16 +6,12 @@ Page({
     storeId: '',//门店id
     itemId:'',//课程id
     bathName:'',//预约表名称
+    type:1,//1添加 2编辑 
     currentYear: new Date().getFullYear(),
     currentMonth: (new Date().getMonth() + 1),
     showSuccess: false, //添加预约弹窗
-    appointList: [{
-      'classDuration': "43",
-      'classTime': "02:00:00",
-      'remainQuota': "34",
-      'scheduleName': "21"
-    }], //本地预约列表
-    classTime: '请选择时间', //课程时间
+    appointList: [], //本地预约列表
+    classTime: '', //课程时间
     scheduleName: '', //排课描述
     classDuration: '', //上课时长
     remainQuota: '', //剩余名额
@@ -32,7 +28,7 @@ Page({
       Id: 3,
       name: '月'
     }],
-    showId: 1, //间隔类型默认选择
+    showId: 2, //间隔类型默认选择
     intervalDays: '', //时间间隔天数
     weekList: [ //星期几列表
       {
@@ -105,11 +101,12 @@ Page({
     })
   },
   //添加预约课程
-  classAdd: function() {
+  classAdd: function(e) {
     this.setData({
+      type:e.currentTarget.dataset.type,
       showSuccess: true,
       popIndex: -1,
-      classTime: '请选择时间', //课程时间
+      classTime: '', //课程时间
       scheduleName: '', //排课描述
       classDuration: '', //上课时长
       remainQuota: '', //剩余名额
@@ -126,6 +123,34 @@ Page({
     let that = this;
     let arr = that.data.appointList;
     let index = that.data.popIndex;
+    if (!that.data.scheduleName) {
+      wx.showToast({
+        icon: "none",
+        title: '请输入预约描述',
+      })
+      return;
+    }
+    if (!that.data.classTime) {
+      wx.showToast({
+        icon: "none",
+        title: '请选择上课时间',
+      })
+      return;
+    }
+    if (!that.data.classDuration) {
+      wx.showToast({
+        icon: "none",
+        title: '请输入上课时长',
+      })
+      return;
+    }
+    if (!that.data.remainQuota) {
+      wx.showToast({
+        icon: "none",
+        title: '请输入剩余名额',
+      })
+      return;
+    }
     if (index == -1) {
       arr.push({
         scheduleName: that.data.scheduleName,
@@ -152,6 +177,7 @@ Page({
     let tempArr = that.data.appointList;
 
     that.setData({
+      type:e.currentTarget.dataset.type,
       showSuccess: true,
       popIndex: index,
       scheduleName: item.scheduleName,
@@ -167,8 +193,7 @@ Page({
     let index = e.currentTarget.dataset.index;
     let tempArr = that.data.appointList;
     wx.showModal({
-      title: '提示',
-      content: "您确认删除 " + e.currentTarget.dataset.schedulename + ' 的预约表吗？',
+      content: '您确认删除 "' + e.currentTarget.dataset.schedulename + '" 的预约表吗？',
       confirmColor: "#000",
       success: function(res) {
         if (res.confirm) {
@@ -275,13 +300,15 @@ Page({
   //排除日期操作
   exclideAdd: function() {
     let that = this;
-    //1设置总样式为空
-    this.resetDate();
-    //4.打开弹窗
-    this.setData({
+    let arr = [];
+    that.setData({
       showDateDialog: true,
-      excludeDateList1: this.data.excludeDateList
+      excludeDateList1: arr.concat(that.data.excludeDateList)
     })
+    console.log(that.data.excludeDateList)
+    //1设置总样式为空
+    that.resetDate();
+    //4.打开弹窗
   },
   resetDate: function() {
     let that = this;
@@ -292,10 +319,10 @@ Page({
         month: 'current',
         day: new Date().getDate(),
         color: '#fff',
-        background: "#29D9D6"
+        background: "#f4f4f4"
       })
     }
-    let arr = that.data.excludeDateList;
+    let arr = that.data.excludeDateList1;
     for (let v of arr) {
       let arr1 = v.split('-');
       if (arr1[0] == that.data.currentYear && arr1[1] == that.data.currentMonth) {
@@ -303,7 +330,7 @@ Page({
           month: 'current',
           day: arr1[2],
           color: '#fff',
-          background: "#000"
+          background: "#29D9D6"
         })
       }
     }
@@ -361,7 +388,7 @@ Page({
         month: 'current',
         day: e.detail.day,
         color: 'white',
-        background: 'black'
+        background: '#29D9D6'
       });
       console.log(styleArr)
     }else{
@@ -387,7 +414,7 @@ Page({
     this.setData({
       showDateDialog: false,
       excludeDateList1: this.edArr,
-      excludeDateList: this.edArr,
+      // excludeDateList: this.edArr,
       dayStyle: this.sArr,
     })
   },
@@ -418,6 +445,13 @@ Page({
       wx.showToast({
         icon:"none",
         title: '请给预约表输入名称，不可重复',
+      })
+      return;
+    }
+    if (that.data.appointList.length<=0){
+      wx.showToast({
+        icon: "none",
+        title: '请添加预约表',
       })
       return;
     }

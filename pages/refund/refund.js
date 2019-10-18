@@ -1,6 +1,5 @@
 var netUtil = require("../../utils/request.js"); //require引入
 const app = getApp().globalData;
-const baseUrl = app.baseUrl;
 Page({
   data: {
     imgs: [],
@@ -21,7 +20,7 @@ Page({
     this.setData({
       storeId: options.storeId || '',
       status:options.status || '',
-      price: options.price || 0,
+      price: Number(options.price) || 0,
       kmd: options.kmd || '',
       kd: options.kd || '',
       name:options.name || '',
@@ -53,7 +52,7 @@ Page({
   },
   allMoney: function() {
     this.setData({
-      money: this.data.price == 0 ? 0 : this.data.price
+      money: this.data.price
     })
   },
   getData: function() {
@@ -68,7 +67,7 @@ Page({
     }
     var params = {
       StoreId:that.data.storeId,
-      RefundMoney: Number(that.data.money * 100),
+      RefundMoney: parseInt(that.data.money * 100),
       RefundReason: that.data.text,
       ImgList: that.data.urlImgs,
       StoreType:that.data.status
@@ -170,7 +169,7 @@ Page({
     var that = this;
     let usertoken = wx.getStorageSync('userInfo').UserToken;
     wx.uploadFile({
-      url: baseUrl + 'img/upload',
+      url: netUtil.baseUrl + 'img/upload',
       filePath: data,
       header: {
         "Content-Type": "multipart/form-data", //记得设置

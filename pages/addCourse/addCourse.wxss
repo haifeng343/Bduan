@@ -5,6 +5,7 @@
   box-sizing: border-box;
   font-size: 28rpx;
   position: relative;
+  margin-top: 0;
 }
 
 .item label {
@@ -61,13 +62,8 @@
   height: 220rpx;
   margin-left: 20rpx;
   margin-top: 24rpx;
+  box-sizing: border-box;
 }
-
-.titleList {
-  width: 100%;
-  max-height: 666rpx;
-}
-
 .fixed {
   width: 100%;
   position: fixed;

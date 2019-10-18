@@ -1,25 +1,22 @@
 <view class='container radius10 kl'>
-  <view class='item pd20 borb borNone start' bindtap='bindGropDetail'>
+  <view class='item1 pd20 borb borNone start' bindtap='bindGropDetail'>
     <view>
       <image class='t1' src='{{Info.SheetCoverImgUrl}}' mode='aspectFill'></image>
     </view>
-    <view class='detailContent column'>
-      <view class='between ft28'>
-        <view>{{Info.SheetName}}</view>
+    <view class='activeItem column ft24'>
+      <view class='between'>
+        <view class='activeTitle'>{{Info.SheetName}}</view>
         <view class='bb' wx:if="{{Info.Status==1}}">等待上架</view>
-        <view class='bb' wx:if="{{Info.Status==2}}">有效期至: {{Info.SheetLowerTime}}</view>
         <view class='bb' wx:if="{{Info.Status==3}}">已下架</view>
         <view class='bb' wx:if="{{Info.Status==4}}">已过期</view>
       </view>
-      <view class='wrap bb ft28'>{{Info.SheetDescription}}</view>
+      <view class='bb' wx:if="{{Info.Status==2}}">有效期至: {{Info.SheetLowerTime}}</view>
       <view class='between h40' wx:for="{{Info.ItemList}}" wx:for-item="k" wx:key>
         <view class='start'>
-          <view class='center'>
-            <image class='icon mr5' src='../../img/b2.png' mode='widthFix'></image>
-          </view>
-          <view class='ft28 bb noWrap'>{{k.ItemName}} ({{k.StoreName}})</view>
+          <image class='icon center mr5' src='../../img/b2.png' mode='aspectFill'></image>
+          <view class='bb noWrap'>{{k.ItemName}} ({{k.StoreName}})</view>
         </view>
-        <view class='start ft28 bb'>
+        <view class='start bb'>
           <view>{{k.BuyCount}}购买 | {{k.ArrivalCount}}人到店</view>
         </view>
       </view>

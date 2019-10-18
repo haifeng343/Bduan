@@ -1,27 +1,11 @@
 var netUtil = require("../../utils/request.js"); //require引入
-const styleArr = [{
-    month: 'current',
-    day: new Date().getDate(),
-    color: 'white',
-    background: '#3CD5D1'
-  },
-  {
-    month: 'current',
-    day: new Date().getDate(),
-    color: 'white',
-    background: '#3CD5D1'
-  },
-];
 Page({
   data: {
     name: "", //课程名称
-    storeId: "", //门店Id
-    itemId: "", //项目Id
     showSuccess: false, //弹窗是否显示
-    dayStyle: styleArr,
-    classDate: '', //获取课程排课时间
+    dayStyle: [],
     Info: {}, //课程排课详情
-    classTime: '请选择时间', //课程时间
+    classTime: '', //课程时间
     scheduleName: '', //排课描述
     classDuration: '', //上课时长
     remainQuota: '', //剩余名额
@@ -31,6 +15,26 @@ Page({
     batchList: [], //门店课程批量排课列表
     checkAll: false, //是否全选
     qita: "", //其他是空字符串
+
+
+
+
+    storeId: "", //门店Id
+    itemId: "", //项目Id
+    //弹窗年月参数
+    popItem: {
+      Year: "",
+      Month: ""
+    },
+    //日期点击参数
+    clickItem: {
+      Year: "",
+      Month: "",
+      Day: ""
+    },
+    dayStyle: [], //默认选中当天日期样式
+    excludeStyleArr: [], //无效样式
+    excludeDateList: [], //排除日期列表
   },
   onLoad: function(options) {
     let month = new Date().getMonth() + 1;
@@ -41,30 +45,177 @@ Page({
       name: options.name || '',
       storeId: options.storeId || '',
       itemId: options.itemId || '',
-      classDate: new Date().getFullYear() + '-' + month + '-' + new Date().getDate() //初始化时间选择当前日期
+      popItem: {
+        Year: new Date().getFullYear(),
+        Month: new Date().getMonth() + 1,
+      },
+      clickItem: {
+        Year: new Date().getFullYear(),
+        Month: new Date().getMonth() + 1,
+        Day: new Date().getDate()
+      }
     })
     wx.setNavigationBarTitle({
       title: '预约表-' + this.data.name,
     })
     this.init();
   },
-  // 获取课程排课
+  // 初始加载
   init: function() {
     let that = this;
+    that._getExcludeDateList();
+  },
+  //获取排除日期列表
+  _getExcludeDateList: function() {
+    let that = this;
+    var url = 'appointment/item/date/list';
+    var params = {
+      StoreId: that.data.storeId,
+      ItemId: that.data.itemId,
+      Year: that.data.popItem.Year,
+      Month: that.data.popItem.Month,
+    }
+    netUtil.postRequest(url, params, function(res) {
+      let excludeDateList = [];
+      for (var i = 1; i <= 31; i++) {
+        if (res.Data.indexOf(i) == -1) {
+          excludeDateList.push(i);
+        }
+      }
+      that.setData({
+        excludeDateList: excludeDateList,
+        Info: {}
+      })
+      that._setExcludeDateStyle();
+    },null,false,true,true)
+  },
+  //设置无效日期样式
+  _setExcludeDateStyle: function() {
+    let that = this;
+    let arr = [];
+    that.data.excludeDateList.forEach(item => {
+      arr.push({
+        month: 'current',
+        day: item,
+        color: '#ccc'
+      });
+    });
+    that.setData({
+      excludeStyleArr: arr
+    });
+    let dd = new Date();
+    if (Number(that.data.popItem.Year) == dd.getFullYear() && Number(that.data.popItem.Month) == (dd.getMonth() + 1)) {
+      arr.push({
+        month: 'current',
+        day: dd.getDate(),
+        background: '#f4f4f4'
+      });
+    }
+    that.setData({
+      dayStyle: arr
+    });
+    if (that.data.popItem.Year == that.data.clickItem.Year && that.data.popItem.Month == that.data.clickItem.Month) {
+      that._getDayClass();
+    }
+  },
+  // 点击某一天获取课程列表 且选中
+  _getDayClass: function() {
+    let that = this;
+    let monthTemp = that.data.clickItem.Month;
+    let datTemp = that.data.clickItem.Day;
+
+    if (that.data.clickItem.Month < 10) {
+      monthTemp = '0' + monthTemp;
+    }
+    if (that.data.clickItem.Day < 10) {
+      datTemp = '0' + datTemp;
+    }
     var url = 'account/storeitem/schedule/list';
     var params = {
       StoreId: that.data.storeId,
       ItemId: that.data.itemId,
-      ClassDate: that.data.classDate,
+      ClassDate: that.data.clickItem.Year + '-' + monthTemp + '-' + datTemp,
     }
     netUtil.postRequest(url, params, function(res) {
-      if (res.Data) {
-        that.setData({
-          Info: res.Data
-        })
-      }
-    })
+      that.setData({
+        Info: res.Data
+      })
+      that._setCheckday();
+    },null,false,true,true);
   },
+  //设置日期样式
+  _setCheckday: function() {
+    let that = this;
+    let arr = [];
+    arr = arr.concat(that.data.excludeStyleArr);
+    if (Number(that.data.popItem.Year) == Number(that.data.clickItem.Year) && Number(that.data.popItem.Month) == Number(that.data.clickItem.Month)) {
+      arr.push({
+        month: 'current',
+        day: that.data.clickItem.Day,
+        color: '#fff',
+        background: '#3CD5D1'
+      });
+    }
+    that.setData({
+      dayStyle: arr
+    });
+  },
+  //监听点击日历具体某一天的事件
+  dayClick: function(e) {
+    let that = this;
+    that.setData({
+      popItem: {
+        Year: e.detail.year,
+        Month: e.detail.month,
+      },
+      clickItem: {
+        Year: e.detail.year,
+        Month: e.detail.month,
+        Day: e.detail.day
+      }
+    });
+    that._getDayClass();
+  },
+  //监听点击日历标题日期选择
+  dateChange: function(e) {
+    let that = this;
+    if (e.detail.currentYear == that.data.popItem.Year && e.detail.currentMonth == that.data.popItem.Month){
+      return;
+    }
+    that.setData({
+      popItem: {
+        Year: e.detail.currentYear,
+        Month: e.detail.currentMonth
+      },
+      clickItem: {}
+    });
+    that._getExcludeDateList();
+  },
+  //监听点击下个月
+  next: function(e) {
+    let that = this;
+    that.setData({
+      popItem: {
+        Year: e.detail.currentYear,
+        Month: e.detail.currentMonth
+      },
+      clickItem: {}
+    });
+    that._getExcludeDateList();
+  },
+  //监听点击上个月
+  prev: function(e) {
+    let that = this;
+    that.setData({
+      popItem: {
+        Year: e.detail.currentYear,
+        Month: e.detail.currentMonth
+      },
+      clickItem:{}
+    });
+    that._getExcludeDateList();
+  },
+
   // 获取门店课程批量排课列表
   _getBatchList: function() {
     let that = this;
@@ -91,13 +242,13 @@ Page({
     this.setData({
       showDialog: true,
     })
-
     this._getBatchList();
   },
   //关闭清空预约弹窗
   batchCancel: function() {
     this.setData({
-      showDialog: false
+      showDialog: false,
+      checkAll: false
     })
   },
   //确定清空操作
@@ -119,10 +270,12 @@ Page({
     }
     netUtil.postRequest(url, params, function(res) {
       that.setData({
-        showDialog: false
+        showDialog: false,
+        checkAll: false
       })
+      that.init();
       wx.showToast({
-        icon:"none",
+        icon: "none",
         title: '清空成功',
       })
     })
@@ -169,7 +322,7 @@ Page({
     this.setData({
       Id: '',
       showSuccess: true,
-      classTime: '请选择时间', //课程时间
+      classTime: '', //课程时间
       scheduleName: '', //排课描述
       classDuration: '', //上课时长
       remainQuota: '', //剩余名额
@@ -196,12 +349,12 @@ Page({
       Id: e.currentTarget.dataset.id
     })
     wx.showModal({
-      title: '提示',
-      content: "您确认删除 " + e.currentTarget.dataset.schedulename + ' 的预约表吗？',
+      content: '您确认删除 "' + e.currentTarget.dataset.schedulename + '" 的预约表吗？',
       confirmColor: "#000",
       success: function(res) {
         if (res.confirm) {
-          that._delete(e.currentTarget.dataset.id)
+          that._delete(e.currentTarget.dataset.id);
+          that.init();
         }
       }
     })
@@ -291,10 +444,21 @@ Page({
       })
       return;
     }
+
+    let monthTemp = that.data.clickItem.Month;
+    let datTemp = that.data.clickItem.Day;
+
+    if (that.data.clickItem.Month < 10) {
+      monthTemp = '0' + monthTemp;
+    }
+    if (that.data.clickItem.Day < 10) {
+      datTemp = '0' + datTemp;
+    }
+
     var params = {
       StoreId: that.data.storeId,
       ItemId: that.data.itemId,
-      ClassDate: that.data.classDate,
+      ClassDate: that.data.clickItem.Year + '-' + monthTemp + '-' + datTemp,
       ClassTime: that.data.classTime,
       ScheduleName: that.data.scheduleName,
       ClassDuration: that.data.classDuration,
@@ -327,111 +491,7 @@ Page({
       that.init();
     })
   },
-  //监听点击日历具体某一天的事件
-  dayClick: function(e) {
-    let month = e.detail.month;
-    if (month < 10) {
-      month = '0' + month
-    }
-    this.setData({
-      classDate: e.detail.year + '-' + month + '-' + e.detail.day
-    })
-    let dd = new Date();
-    if (e.detail.month != (dd.getMonth() + 1) ||
-      (e.detail.month == (dd.getMonth() + 1) &&
-        e.detail.year != (dd.getFullYear()))) {
-      this.setData({
-        dayStyle: [styleArr[0]],
-      });
-      let clickDay = e.detail.day;
-      let changeDay = `dayStyle[0].day`;
-      let changeBg = `dayStyle[0].background`;
-      this.setData({
-        [changeDay]: clickDay,
-        [changeBg]: "#84e7d0"
-      })
-    } else {
-      this.setData({
-        dayStyle: styleArr
-      });
-      let clickDay = e.detail.day;
-      let changeDay = `dayStyle[1].day`;
-      let changeBg = `dayStyle[1].background`;
-      this.setData({
-        [changeDay]: clickDay,
-        [changeBg]: "#84e7d0"
-      })
-    }
-    const data = [{
-        month: 10,
-        day: 2
-      },
-      {
-        month: 10,
-        day: 3
-      },
-      {
-        month: 10,
-        day: 4
-      },
-    ]
-    for (let v of data) {
-      if (e.detail.day == v.day) {
-        wx.showToast({
-          icon: "none",
-          title: '该时间暂无体验课',
-        })
-      } else {
-        continue;
-      }
-    }
-    this.init();
-  },
-  //监听点击日历标题日期选择
-  dateChange: function(e) {
-    let dd = new Date();
-    if (e.detail.currentMonth != (dd.getMonth() + 1) ||
-      (e.detail.currentMonth == (dd.getMonth() + 1) &&
-        e.detail.currentYear != (dd.getFullYear()))) {
-      this.setData({
-        dayStyle: []
-      });
-    } else {
-      this.setData({
-        dayStyle: styleArr
-      });
-    }
-  },
-  //监听点击下个月
-  next: function(e) {
-    let dd = new Date();
-    if (e.detail.currentMonth != (dd.getMonth() + 1) ||
-      (e.detail.currentMonth == (dd.getMonth() + 1) &&
-        e.detail.currentYear != (dd.getFullYear()))) {
-      this.setData({
-        dayStyle: []
-      });
-    } else {
-      this.setData({
-        dayStyle: styleArr
-      });
-    }
-  },
-  //监听点击上个月
-  prev: function(e) {
-    let dd = new Date();
-    if (e.detail.currentMonth != (dd.getMonth() + 1) ||
-      (e.detail.currentMonth == (dd.getMonth() + 1) &&
-        e.detail.currentYear != (dd.getFullYear()))) {
-      this.setData({
-        dayStyle: []
-      });
-    } else {
-      this.setData({
-        dayStyle: styleArr
-      });
-    }
-  },
+
   //关闭弹窗'
   clickCancel: function() {
     this.setData({

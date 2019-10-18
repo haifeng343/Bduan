@@ -7,7 +7,6 @@
     "pages/activityDetail/activityDetail",
     "pages/search/search",
     "pages/gropDetail/gropDetail",
-    "pages/authorization/authorization",
     "pages/login/login",
     "pages/orderDetail/orderDetail",
     "pages/forgetPassword/forgetPassword",

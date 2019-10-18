@@ -13,23 +13,23 @@
         <!-- <view class='cc ft24'>2019-10-12</view> -->
       </view>
       <view class='start ft24'>
-        <view class='start'>
-          <view class='centers'>
+        <view class='start center'>
+          <view class=''>
             <image class='icon' src='../../img/ad1.png' mode='aspectFill'></image>
           </view>
-          <view class='name ml5'>{{item.Address==''?'暂无地址':item.Address}}</view>
+          <view class='name center ml5'>{{item.Address==''?'暂无地址':item.Address}}</view>
         </view>
       </view>
       <view class='start ft24' wx:for="{{item.StoreMobile}}" wx:key wx:for-item="k">
-        <view class='start'>
+        <view class='start center'>
           <view class='centers'>
             <image class='icon' src='../../img/cal.png' mode='aspectFill'></image>
           </view>
-          <view class='name ml5'>{{k}}</view>
+          <view class='name ml5'>{{k==''?'暂无联系方式':k}}</view>
         </view>
       </view>
       <view class='start ft24'>
-        <view class='start'>
+        <view class='start center'>
           <view class='centers'>
             <image class='icon' src='../../img/people.png' mode='aspectFill'></image>
           </view>

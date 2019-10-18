@@ -13,6 +13,11 @@
 .between{
   padding-right: 5%;
 }
+.icon{
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 5rpx;
+}
 .go{
   margin-right: 5%；
 }
@@ -34,7 +39,6 @@
 .centers{
   display: flex;
   justify-content: center;
-  margin-right: 5rpx;
 }
 .name{
   width: 100%;

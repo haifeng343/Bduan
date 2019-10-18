@@ -28,65 +28,79 @@
 </view>
 
 <!--参与详情-->
-<modal hidden="{{!showDetail}}" title="参与详情" confirm-text="{{confimText}}" cancel-text="取消" bindcancel="bindDetail" bindconfirm="bindDetailSure" catchtouchmove="true">
-  <scroll-view scroll-y="true" class='dialogList'>
-    <checkbox-group bindchange="checkedChange">
-      <view class='start'>
-        <view class='labelTitle'>课程原价(元):</view>
-        <input class='put' value='{{money}}' bindinput='hasMonry' cursor-spacing='450rpx' type='digit'></input>
-      </view>
-      <view class='start mt30'>
-        <view class='labelTitle'>课程数量(节):</view>
-        <input class='put' value='{{number}}' bindinput='hasNumber' cursor-spacing='370rpx' type='number'></input>
-      </view>
-      <view class='start mt30'>
-        <view class='labelTitle'>单节课时(分):</view>
-        <input class='put' value='{{timer}}' bindinput='hasTimer' cursor-spacing='290rpx' type='number'></input>
-      </view>
-      <view class='start mt30'>
-        <view class='labelTitle'>成交后减免(元):</view>
-        <input class='put' value='{{relief}}' bindinput='hasRelief' cursor-spacing='210rpx' type='digit'></input>
-      </view>
-      <view class='start mt30'>
-        <view class='labelTitle'>单人购买数量(个):</view>
-        <input class='put' value='{{purchase}}' bindinput='hasPurchase' placeholder='-1表示全部' cursor-spacing='130rpx' type='number'></input>
-      </view>
-      <view class='start mt30'>
-        <view class='labelTitle'>{{peoText}}(人):</view>
-        <input class='put' value='{{people}}' bindinput='hasPeople' cursor-spacing='50rpx' type='number'></input>
-      </view>
-      <view class='start mt30'>
-        <view class='labelTitle'>到店扣费(元):</view>
-        <input class='put' value='{{arrivalAmount}}' disabled cursor-spacing='130rpx' type='number'></input>
-      </view>
-    </checkbox-group>
-  </scroll-view>
-</modal>
+<view class='dialogMask' hidden="{{!showDetail}}" catchtouchmove="true">
+  <view class='dialog-container'>
+    <view class='dialog-title'>参与详情</view>
+    <scroll-view scroll-y="true" class='dialog-content'>
+      <checkbox-group bindchange="checkedChange">
+        <view class='start'>
+          <view class='labelTitle'>课程原价(元):</view>
+          <input class='put' value='{{money}}' bindinput='hasMonry' cursor-spacing='450rpx' type='digit'></input>
+        </view>
+        <view class='start mt30'>
+          <view class='labelTitle'>课程数量(节):</view>
+          <input class='put' value='{{number}}' bindinput='hasNumber' cursor-spacing='370rpx' type='number'></input>
+        </view>
+        <view class='start mt30'>
+          <view class='labelTitle'>单节课时(分):</view>
+          <input class='put' value='{{timer}}' bindinput='hasTimer' cursor-spacing='290rpx' type='number'></input>
+        </view>
+        <view class='start mt30'>
+          <view class='labelTitle'>成交后减免(元):</view>
+          <input class='put' value='{{relief}}' bindinput='hasRelief' cursor-spacing='210rpx' type='digit'></input>
+        </view>
+        <view class='start mt30'>
+          <view class='labelTitle'>单人购买数量(个):</view>
+          <input class='put' value='{{purchase}}' bindinput='hasPurchase' placeholder='-1表示全部' cursor-spacing='130rpx' type='number'></input>
+        </view>
+        <view class='start mt30'>
+          <view class='labelTitle'>{{peoText}}(人):</view>
+          <input class='put' value='{{people}}' bindinput='hasPeople' cursor-spacing='50rpx' type='number'></input>
+        </view>
+        <view class='start mt30'>
+          <view class='labelTitle'>到店扣费(元):</view>
+          <input class='put' value='{{arrivalAmount}}' disabled cursor-spacing='130rpx' type='number'></input>
+        </view>
+      </checkbox-group>
+    </scroll-view>
+    <view class='dialog-footer'>
+      <view class='dialog-btn' bindtap='bindDetail'>取消</view>
+      <view class='dialog-btn' bindtap='bindDetailSure'>{{confimText}}</view>
+    </view>
+  </view>
+</view>
+
 
 <!--选择活动组-->
-<modal hidden="{{!showLog}}" title="选择活动组" confirm-text="确认" cancel-text="取消" bindcancel="bindCancel" bindconfirm="bindSure" catchtouchmove="true">
-  <scroll-view scroll-y="true" class='dialogList' wx:if="{{canGroupList.length>0}}">
-    <checkbox-group bindchange="checkedChange">
-      <view class='dialogItem start' wx:for="{{canGroupList}}" wx:key>
-        <checkbox class='chebox center' value='{{item.ActivityGroupId}}' checked='{{item.checked==true}}'></checkbox>
-        <view class='item column' style='padding: 25rpx 2% 25rpx 2%'>
-          <view class='ft32 w90 bb'>{{item.ActivityGroupName}}</view>
-          <view class='start'>
-            <view class='ft28 w90 bb'>{{item.TradingareaName}}</view>
-          </view>
-          <view class='start'>
-            <view class='wrap cc'>{{item.Descption}}</view>
-          </view>
-          <view class='start ft28 bb'>
-            <view class='mr10'>团单数量：{{item.SheetCount}}</view>
-            <view class='mr10'>可参与：{{item.ParticipatorySheetCount}}</view>
-            <view>正在参与：{{item.ParticipatingSheetCount}}</view>
+<view class='dialogMask' hidden="{{!showLog}}" catchtouchmove="true">
+  <view class='dialog-container'>
+    <view class='dialog-title'>选择活动组</view>
+    <scroll-view scroll-y="true" class='dialog-content'>
+      <checkbox-group bindchange="checkedChange">
+        <view class='dialogItem start' wx:for="{{canGroupList}}" wx:key>
+          <checkbox class='chebox center' value='{{item.ActivityGroupId}}' checked='{{item.checked==true}}'></checkbox>
+          <view class='item column' style='padding: 25rpx 2% 25rpx 2%'>
+            <view class='ft32 w90 bb'>{{item.ActivityGroupName}}</view>
+            <view class='start'>
+              <view class='ft28 w90 bb'>{{item.TradingareaName}}</view>
+            </view>
+            <view class='start'>
+              <view class='wrap cc'>{{item.Descption}}</view>
+            </view>
+            <view class='start ft28 bb'>
+              <view class='mr10'>团单数量：{{item.SheetCount}}</view>
+              <view class='mr10'>可参与：{{item.ParticipatorySheetCount}}</view>
+              <view>正在参与：{{item.ParticipatingSheetCount}}</view>
+            </view>
           </view>
         </view>
-      </view>
-    </checkbox-group>
-  </scroll-view>
-</modal>
-
+      </checkbox-group>
+    </scroll-view>
+    <view class='dialog-footer'>
+      <view class='dialog-btn' bindtap='bindCancel'>取消</view>
+      <view class='dialog-btn' bindtap='bindSure'>确定</view>
+    </view>
+  </view>
+</view>
 
 <view class='add' wx:if="{{IsAdministrator==true}}" bindtap='addActive'>参加活动</view>

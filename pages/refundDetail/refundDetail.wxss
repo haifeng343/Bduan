@@ -3,9 +3,12 @@
   height: 170rpx;
   border-radius: 15rpx;
 }
-
-.content {
+.item{
+  width: 100%;
   padding: 20rpx 5%;
+}
+.content {
+  padding: 0;
   box-sizing: border-box;
 }
 

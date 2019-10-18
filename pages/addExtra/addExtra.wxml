@@ -1,8 +1,7 @@
 <view class='List'>
   <view class='item'>
     <view class='ft28 start'>
-      <label>信息名称:</label>
-      <input type='text' value='{{title}}' bindinput='hasTitle' class='ml10 w74'></input>
+      <label>信息名称:</label><input type='text' value='{{title}}' bindinput='hasTitle' class='ml10 w74 h50'></input>
     </view>
     <view class='ft28 start bort mt20 pdt20'>
     <label>信息内容:</label>

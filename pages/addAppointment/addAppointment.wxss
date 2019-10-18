@@ -24,6 +24,7 @@
   color: #000;
   margin-right: 80rpx;
 }
+
 .IntervalItem.active{
   background-color: #29D9D6;
   color: #fff;
@@ -133,4 +134,16 @@
   box-shadow:0 0 0 0 transparent;
   background-color:#42dfde;
   color:#fff;
+}
+.dialog-content{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.paichuList{
+  width: 100%;
+  flex: 1;
+  max-height: 160rpx;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }

@@ -13,7 +13,11 @@
 .container {
   background-color: transparent;
 }
-
+.icon{
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 5rpx;
+}
 .item {
   position: relative;
 }

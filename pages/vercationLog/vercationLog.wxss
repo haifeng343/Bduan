@@ -28,7 +28,8 @@ page{
 .mtml{
   width: 100%;
   height: 100vh;
-  margin-top: 80rpx;
+  position: absolute;
+  top: 80rpx;
 }
 .item{
   flex: 1;
@@ -38,14 +39,21 @@ page{
   display: flex;
   flex: 1;
 }
-.content{
+.contents{
   display: flex;
+  justify-content: space-around;
   text-align: center;
   width: 100%;
+  height: auto;
   flex-wrap: wrap;
+  box-sizing: border-box;
+  padding: 15rpx 0;
   border-bottom:1rpx solid #f4f4f4;
 }
-.content .item{
+.contents:last-child{
+  border: none;
+}
+.contents .item{
   line-height: 50rpx;
 }
 .kl{
@@ -59,16 +67,16 @@ page{
   height: 80rpx!important;
   line-height: 80rpx!important;
 }
-.content .item .b1{
+.contents .b1{
   margin-right: 5%;
   width: 33%;
   box-sizing: border-box;
 }
-.content .item .b2{
+.contents .b2{
   width: 33%;
   box-sizing: border-box;
 }
-.content .item .b3{
+.contents .b3{
   margin-left: 5%;
   width: 33%;
   box-sizing: border-box;

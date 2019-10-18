@@ -22,27 +22,34 @@
 <view class='lastItem'></view>
 <!-- <view class="mask" catchtouchmove="show" bindtap='hideFixed' wx:if="{{show}}"></view> -->
 <!--分配弹出框-->
-<modal hidden="{{!showLog}}" title="分配账户" confirm-text="确认" cancel-text="取消" bindcancel="bindCancel" bindconfirm="bindSure" catchtouchmove="true">
-  <scroll-view scroll-y="true" class='dialogList' wx:if="{{accountList.length>0}}">
-    <checkbox-group bindchange="checkedChange">
-      <view class='storeDialogItem start' wx:for="{{accountList}}" wx:key>
-        <!-- <checkbox value='{{item.AccountId}}'></checkbox> -->
-        <checkbox value='{{item.AccountId}}' class='center' checked='{{item.checked == true}}'></checkbox>
-        <image src='{{item.HeadUrl}}' mode='aspectFill' class='storeTeacherAvatorLeft center'></image>
-        <view class='column storeDialogTeacherRight ft24 bb'>
-          <view class='ft28 black notWrap'>账户名: {{item.UserName}}</view>
-          <view class='start'>账户类型：
-            <view wx:if="{{item.AdminPower==0}}">普通账户</view>
-            <view wx:if="{{item.AdminPower==1}}">管理员</view>
-            <view wx:if="{{item.AdminPower==2}}">超级管理员</view>
+<view class='dialogMask' hidden="{{!showLog}}" catchtouchmove="true">
+  <view class='dialog-container'>
+    <view class='dialog-title'>分配账户</view>
+    <scroll-view scroll-y="true" class='dialog-content'>
+      <checkbox-group bindchange="checkedChange">
+        <view class='storeDialogItem start' wx:for="{{accountList}}" wx:key>
+          <!-- <checkbox value='{{item.AccountId}}'></checkbox> -->
+          <checkbox value='{{item.AccountId}}' class='center' checked='{{item.checked == true}}'></checkbox>
+          <image src='{{item.HeadUrl}}' mode='aspectFill' class='storeTeacherAvatorLeft center'></image>
+          <view class='column storeDialogTeacherRight ft24 bb'>
+            <view class='ft28 black notWrap'>账户名: {{item.UserName}}</view>
+            <view class='start'>账户类型：
+              <view wx:if="{{item.AdminPower==0}}">普通账户</view>
+              <view wx:if="{{item.AdminPower==1}}">管理员</view>
+              <view wx:if="{{item.AdminPower==2}}">超级管理员</view>
+            </view>
+            <view class='notWrap' wx:if="{{item.Mobile}}">手机号: {{item.Mobile}}</view>
+            <view wx:else>暂无绑定手机号</view>
+            <view>创建时间: {{item.CreateTime}}</view>
           </view>
-          <view class='notWrap' wx:if="{{item.Mobile}}">手机号: {{item.Mobile}}</view>
-          <view wx:else>暂无绑定手机号</view>
-          <view>创建时间: {{item.CreateTime}}</view>
         </view>
-      </view>
-    </checkbox-group>
-  </scroll-view>
-</modal>
+      </checkbox-group>
+    </scroll-view>
+    <view class='dialog-footer'>
+      <view class='dialog-btn' bindtap='bindCancel'>取消</view>
+      <view class='dialog-btn' bindtap='bindSure'>确定</view>
+    </view>
+  </view>
+</view>
 
 <view class='add' bindtap='fenpei' wx:if="{{IsShow==true}}">分配账户</view>

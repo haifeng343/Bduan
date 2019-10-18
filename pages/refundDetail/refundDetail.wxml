@@ -22,7 +22,7 @@
       </view>
       <view class='between h50 ft28' wx:if="{{Info.RefundStatus==2 || Info.RefundStatus==4}}">
         <view class='start h50'>
-          <text>到账时间:</text>
+          <text style="width:140rpx;">到账时间:</text>
           <view class='column'>
             <view class='kml' wx:for="{{Info.List}}" wx:key wx:for-item="time">
               <view class='start'>
@@ -50,7 +50,7 @@
 </view>
 
 <view class='container'>
-  <view class="content radius10 mt20">
+  <view class="item radius10 mt20">
     <view class='ft32'>退款信息</view>
     <view class='ft28 mt20'>
       <text>退款金额:</text>￥

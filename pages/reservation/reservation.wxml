@@ -1,13 +1,13 @@
 <view class='List' wx:if="{{List.length>0}}">
   <view class='item' wx:for="{{List}}" wx:key>
-    <view class='between'>
+    <view class='between ft28'>
       <view>课程名称: {{item.ItemName}}</view>
       <view class='start'>
         开启预约
-        <switch class='swich' data-Id="{{item.Id}}" checked='{{item.IsAppointment}}' bindchange='swichChange' color='#29D9D6'></switch>
+        <switch class='swich center' data-Id="{{item.Id}}" checked='{{item.IsAppointment}}' bindchange='swichChange' color='#29D9D6'></switch>
       </view>
     </view>
-    <view>预约表停止时间: {{item.AppointmentLastDate}}</view>
+    <view class='ft28'>预约表停止时间: {{item.AppointmentLastDate}}</view>
     <view class='footer bort mt20'>
       <button class='orderBtn' data-itemId="{{item.ItemId}}" data-name="{{item.ItemName}}" bindtap='navtoExtra'>额外信息</button>
       <button class='orderBtn' data-itemId="{{item.ItemId}}" data-name="{{item.ItemName}}" bindtap='navtoForm'>预约表</button>

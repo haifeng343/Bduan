@@ -39,6 +39,7 @@ page {
   width: 100%;
   padding: 25rpx 0;
   border-bottom:1rpx solid #F7F7F7;
+  margin-top: 0;
 }
 .item:last-child{
   border: none;

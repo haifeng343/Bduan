@@ -1,10 +1,26 @@
+.item1 {
+  width: 100%;
+  border-radius: 15rpx;
+  height: auto;
+  line-height: 40rpx;
+  box-sizing: border-box;
+  padding: 20rpx 0;
+  font-size: 24rpx;
+  background-color: #fff;
+}
 .kl{
-  padding: 15rpx 2.5%;
+  padding: 0 5%;
   box-sizing: border-box;
 }
+.activeTitle{
+  width: 80%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .t1{
-  width: 110rpx;
-  height: 110rpx;
+  width: 120rpx;
+  height: 120rpx;
   margin-right: 10rpx;
   border-radius: 15rpx;
 }
@@ -15,6 +31,15 @@
 .detailContent{
   width: 88%;
   height: auto;
+}
+.icon{
+  width: 28rpx;
+  height: 28rpx;
+}
+.activeItem{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .borNone{
   border: none!important;

@@ -1,6 +1,6 @@
 <view class='container radius10 kl'>
-  <view class='item column bg' bindtap='binddetail'>
-      <view class='ft32 h60'>{{Info.ActivityGroupName}}</view>
+  <view class='item1 column bg' bindtap='binddetail'>
+    <view class='ft32 h60'>{{Info.ActivityGroupName}}</view>
     <view class='start'>
       <view class='ft28 bb'>{{Info.TradingareaName}}</view>
     </view>
@@ -14,27 +14,24 @@
 </view>
 
 <view class='content column'>
-  <view class="item pd20 borb start {{Info.Status==3?'gray':''}} {{Info.Status==4?'gray':''}}" wx:for="{{Info.SheetList}}" wx:for-item="k" wx:key data-id="{{k.SheetId}}" bindtap='bindGropDetail'>
+  <view class="item1 pd20 borb start {{Info.Status==3?'gray':''}} {{Info.Status==4?'gray':''}}" wx:for="{{Info.SheetList}}" wx:for-item="k" wx:key data-id="{{k.SheetId}}" bindtap='bindGropDetail'>
     <view>
       <image class='t1' src='{{k.SheetCoverImgUrl}}' mode='aspectFill'></image>
     </view>
-    <view class='detailContent column'>
-      <view class='between ft28'>
-        <view>{{k.SheetName}}</view>
+    <view class='activeItem ft24'>
+      <view class='between'>
+        <view class='activeTitle'>{{k.SheetName}}</view>
         <view class='bb' wx:if="{{k.Status==1}}">等待上架</view>
-        <view class='bb' wx:if="{{k.Status==2}}">有效期至: {{k.SheetLowerTime}}</view>
         <view class='bb' wx:if="{{k.Status==3}}">已下架</view>
         <view class='bb' wx:if="{{k.Status==4}}">已过期</view>
       </view>
-      <view class='wrap bb ft28'>{{k.SheetDescription}}</view>
-      <view class='between h40 ' wx:for="{{k.ItemList}}" wx:key wx:for-item="k">
-        <view class='start h40'>
-          <view class='center'>
-            <image class='icon mr5' src='../../img/b2.png' mode='widthFix'></image>
-          </view>
-          <view class='ft28 bb noWrap'>{{k.ItemName}} ({{k.StoreName}})</view>
+      <view class='bb widthRight' wx:if="{{k.Status==2}}">有效期至: {{k.SheetLowerTime}}</view>
+      <view class='between flex bb h40 ' wx:for="{{k.ItemList}}" wx:key wx:for-item="k">
+        <view class='start'>
+          <image class='icon center mr5' src='../../img/b2.png' mode='aspectFill'></image>
+          <view class='noWrap widthName centers'>{{k.ItemName}} ({{k.StoreName}})</view>
         </view>
-        <view class='start ft28 bb'>
+        <view class='centers'>
           <view>{{k.BuyCount}}人购买 | {{k.ArrivalCount}}人到店</view>
         </view>
       </view>

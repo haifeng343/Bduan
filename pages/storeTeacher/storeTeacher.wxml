@@ -8,10 +8,10 @@
     <view class='storeContent ft24 bb'>
       <view class='ft28 black notWrap'>{{item.Name}}</view>
       <view class='notWrap' wx:if="{{item.Titles}}">{{item.Titles}} | {{item.TeachingAge}}教龄</view>
-        <view wx:else>暂无标签 | {{item.TeachingAge}}教龄</view>
-        <view class='notWrap' wx:if="{{item.Experience}}">{{item.Experience}}</view>
-        <view wx:else>暂无描述</view>
-        <view class='notWrap' wx:if="{{item.ExamineStatusDes}}">{{item.ExamineStatusDes}}</view>
+      <view wx:else>暂无标签 | {{item.TeachingAge}}教龄</view>
+      <view class='notWrap' wx:if="{{item.Experience}}">{{item.Experience}}</view>
+      <view wx:else>暂无描述</view>
+      <view class='notWrap' wx:if="{{item.ExamineStatusDes}}">{{item.ExamineStatusDes}}</view>
       <view>绑定时间: {{item.BindTime}}</view>
     </view>
   </view>
@@ -19,25 +19,30 @@
 </view>
 
 <!--分配弹出框-->
-<modal hidden="{{!showLog}}" title="分配师资" confirm-text="确认" cancel-text="取消" bindcancel="bindCancel" bindconfirm="bindSure" catchtouchmove="true">
-  <scroll-view scroll-y="true" class='dialogList' wx:if="{{accountList.length>0}}">
-    <checkbox-group bindchange="checkedChange">
-      <view class='storeDialogItem start' wx:for="{{accountList}}" wx:key>
-        <checkbox class='center' value='{{item.Id}}' checked='{{item.checked==true}}'></checkbox>
+<view class='dialogMask' hidden="{{!showLog}}" catchtouchmove="true">
+  <view class='dialog-container'>
+    <view class='dialog-title'>分配师资</view>
+    <scroll-view scroll-y="true" class='dialog-content'>
+      <checkbox-group bindchange="checkedChange">
+        <view class='storeDialogItem start' wx:for="{{accountList}}" wx:key>
+          <checkbox class='center' value='{{item.Id}}' checked='{{item.checked==true}}'></checkbox>
           <image class='storeTeacherAvatorLeft center' src='{{item.HeadUrl}}' mode='aspectFill'></image>
-        <view class='column storeDialogTeacherRight ft24 bb'>
-          <view class='black ft28 notWrap'>{{item.Name}}</view>
-          <view wx:if="{{item.Titles}}">{{item.Titles}} | {{item.TeachingAge}}教龄</view>
-          <view wx:else class=' notWrap'>暂无标签 | {{item.TeachingAge}}教龄</view>
-          <view class='notWrap' wx:if="{{item.Experience}}">{{item.Experience}}</view>
-          <view wx:else>暂无描述</view>
-          <view>创建时间: {{item.CreateTime}}</view>
+          <view class='column storeDialogTeacherRight ft24 bb'>
+            <view class='black ft28 notWrap'>{{item.Name}}</view>
+            <view wx:if="{{item.Titles}}">{{item.Titles}} | {{item.TeachingAge}}教龄</view>
+            <view wx:else class=' notWrap'>暂无标签 | {{item.TeachingAge}}教龄</view>
+            <view class='notWrap' wx:if="{{item.Experience}}">{{item.Experience}}</view>
+            <view wx:else>暂无描述</view>
+            <view>创建时间: {{item.CreateTime}}</view>
+          </view>
         </view>
-      </view>
-    </checkbox-group>
-  </scroll-view>
-  <view wx:else>
-    <view class='zanwu'>暂无数据</view>
+      </checkbox-group>
+    </scroll-view>
+    <view class='dialog-footer'>
+      <view class='dialog-btn' bindtap='bindCancel'>取消</view>
+      <view class='dialog-btn' bindtap='bindSure'>确定</view>
+    </view>
   </view>
-</modal>
+</view>
+
 <view class='add' bindtap='fenpei' wx:if="{{IsShow==true}}">分配师资</view>

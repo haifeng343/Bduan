@@ -27,18 +27,24 @@
 <view class='fixed'>
   <view class='submit' bindtap='submit'>提交</view>
 </view>
-<!-- 课程类型弹窗 -->
-<modal hidden="{{!showLog}}" title="课程类型" confirm-text="确认" cancel-text="取消" bindcancel="closeCodeLog" bindconfirm="getCode">
-  <view class='titleList'>
-    <scroll-view scroll-y="true" catchtouchmove='true' class='scrollContent'>
-      <checkbox-group bindchange="changeTitles">
+
+<!-- 添加课程类型 -->
+<view class='dialogMask' hidden="{{!showLog}}" catchtouchmove="true">
+  <view class='dialog-container'>
+    <view class='dialog-title'>课程类型</view>
+    <scroll-view scroll-y="true" class='dialog-content'>
+      <checkbox-group bindchange="changeTitles" class='scrollContent'>
         <view class='item1 column' wx:for="{{TitlesList}}" wx:key>
           <view class='start h60'>
             <checkbox value='{{item.TypeId}}' checked='{{item.checked==true}}'></checkbox>
-            <view>{{item.TypeName}}</view>
+            <view class='ft28'>{{item.TypeName}}</view>
           </view>
         </view>
       </checkbox-group>
     </scroll-view>
+    <view class='dialog-footer'>
+      <view class='dialog-btn' bindtap='closeCodeLog'>取消</view>
+      <view class='dialog-btn' bindtap='getCode'>确定</view>
+    </view>
   </view>
-</modal>
+</view>

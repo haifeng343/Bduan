@@ -32,17 +32,24 @@
   <view class='submit' bindtap='submit'>提交</view>
 </view>
 <!-- 教师职称弹窗 -->
-<modal hidden="{{showLog}}" title="教师职称" confirm-text="确认" cancel-text="取消" bindcancel="closeCodeLog" bindconfirm="getCode">
-  <view class='titleList'>
-    <scroll-view scroll-y="true" catchtouchmove='true' class='scrollContent'>
-      <checkbox-group bindchange="changeTitles">
-        <view class='item1 column' wx:for="{{TitlesList}}" wx:key>
-          <view class='start h60'>
-            <checkbox value='{{item.TitlesId}}' checked='{{item.checked}}'></checkbox>
-            <view>{{item.TitlesName}}</view>
+<view class='dialogMask' hidden="{{showLog}}" catchtouchmove="true">
+  <view class='dialog-container'>
+    <view class='dialog-title'>排除日期</view>
+    <scroll-view scroll-y="true" class='dialog-content'>
+      <view class='scrollContent'>
+        <checkbox-group bindchange="changeTitles">
+          <view class='item1 column' wx:for="{{TitlesList}}" wx:key>
+            <view class='start h60'>
+              <checkbox value='{{item.TitlesId}}' checked='{{item.checked}}'></checkbox>
+              <view class='ft28'>{{item.TitlesName}}</view>
+            </view>
           </view>
-        </view>
-      </checkbox-group>
+        </checkbox-group>
+      </view>
     </scroll-view>
+    <view class='dialog-footer'>
+      <view class='dialog-btn' bindtap='closeCodeLog'>取消</view>
+      <view class='dialog-btn' bindtap='getCode'>确定</view>
+    </view>
   </view>
-</modal>
+</view>

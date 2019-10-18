@@ -49,7 +49,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 53,
+			"current": 47,
 			"list": [
 				{
 					"id": -1,
@@ -83,7 +83,7 @@
 					"id": 4,
 					"name": "activityDetail",
 					"pathName": "pages/activityDetail/activityDetail",
-					"query": "id=24",
+					"query": "id=20",
 					"scene": null
 				},
 				{
@@ -97,14 +97,7 @@
 					"id": 6,
 					"name": "gropDetail",
 					"pathName": "pages/gropDetail/gropDetail",
-					"query": "id=20",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "authorization",
-					"pathName": "pages/authorization/authorization",
-					"query": "",
+					"query": "id=16",
 					"scene": null
 				},
 				{
@@ -136,10 +129,10 @@
 					"scene": null
 				},
 				{
-					"id": 12,
+					"id": 11,
 					"name": "courseDetail",
 					"pathName": "pages/courseDetail/courseDetail",
-					"query": "id=70",
+					"query": "id=30",
 					"scene": null
 				},
 				{
@@ -388,7 +381,7 @@
 					"scene": null
 				},
 				{
-					"id": 48,
+					"id": 47,
 					"name": "extraInfomation",
 					"pathName": "pages/extraInfomation/extraInfomation",
 					"query": "storeId=7&itemId=22&name=橄榄球项目",

@@ -1,6 +1,5 @@
 var netUtil = require("../../utils/request.js"); //require引入
 const app = getApp().globalData;
-const baseUrl = app.baseUrl;
 Page({
 
   data: {
@@ -137,7 +136,7 @@ Page({
     var that = this;
     let usertoken = wx.getStorageSync('userInfo').UserToken;
     wx.uploadFile({
-      url: baseUrl + 'img/upload',
+      url: netUtil.baseUrl + 'img/upload',
       filePath: data,
       header: {
         "Content-Type": "multipart/form-data", //记得设置

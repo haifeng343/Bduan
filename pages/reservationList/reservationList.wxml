@@ -31,7 +31,7 @@
   </view>
   <view wx:else>
     <view class='reserList'>
-      <view class='reserItem' wx:for="{{modelList[navbarActiveIndex].list}}" wx:key>
+      <view class="reserItem {{item.AppointmentStatus==5?'opacity':''}}" wx:for="{{modelList[navbarActiveIndex].list}}" wx:key>
         <view class='between'>
           <view class='start centers w80'>
             <label class='center ft28'>预约账号: </label>
@@ -42,32 +42,83 @@
           </view>
           <view class='reserStatus' wx:if="{{item.AppointmentStatus==1}}">未处理</view>
           <view class='reserStatus' wx:if="{{item.AppointmentStatus==2}}">已预约</view>
-          <view class='reserStatus' wx:if="{{item.AppointmentStatus==3}}">被动取消</view>
+          <view class='reserStatus' wx:if="{{item.AppointmentStatus==3}}">被取消</view>
           <view class='reserStatus' wx:if="{{item.AppointmentStatus==5}}">已过期</view>
         </view>
         <view class='start ft28 bb'>
-          <view>手机号: {{item.AppointmentMobile}}</view>
-          <view class='ml40'>孩子信息: {{item.ChildName}}
+          <view>手机号码: {{item.AppointmentMobile}}</view>
+          <view class='ml20'>孩子信息: 
+          <span wx:if="{{item.ChildName}}">{{item.ChildName}}</span>
             <span wx:if="{{item.ChildAge}}">({{item.ChildAge}}岁)</span>
           </view>
         </view>
-        <view class='start ft28 bb'>预约课程: {{item.ItemName}} ({{item.StoreName}})</view>
-        <view class='start ft28 bb' wx:if="{{item.AppointmentStatus==1 || item.AppointmentStatus==2 || item.AppointmentStatus==5}}">预约类型: {{item.AppointmentType==1?'与老师协商':item.ScheduleName +' ('+item.ClassDate+')'}}</view>
-        <view class='start ft28 bb' wx:if="{{item.AppointmentStatus==2 || item.AppointmentStatus==5}}">预约时间: {{item.ClassDate +' ' +item.ClassTime+' ('+ (item.AppointmentType==1?'自定义时间':item.ScheduleName)+')'}}</view>
-        <view class='start ft28 bb' wx:if="{{item.AppointmentStatus==5}}">取消原因: {{item.AppointmentStatusDes==''?'暂无取消原因':item.AppointmentStatusDes}}</view>
-        <view class='start ft28 bb' wx:if="{{item.AppointmentStatus==5}}">取消时间: {{item.CancelTime==null?'暂无取消时间':item.CancelTime}}</view>
-        <view class='reserFooter bort'>
-          <view class='reserBtn' wx:if="{{item.AppointmentStatus==2}}">修改预约</view>
-          <view class='reserBtn' wx:if="{{item.AppointmentStatus==1}}">确认预约</view>
+        <view class='start ft28 bb'>
+          <label class='bb'>预约课程:</label>
+          <view class='flex ml10'> {{item.ItemName}} ({{item.StoreName}})</view>
+        </view>
+        <view class='start ft28 bb' wx:if="{{item.AppointmentStatus==1 || item.AppointmentStatus==2 || item.AppointmentStatus==5}}">
+          <label class='bb'> 预约类型:</label>
+          <view class='flex ml10'>{{item.AppointmentType==1?'与老师协商':item.ScheduleName +' ('+item.ClassDate+')'}}</view>
+        </view>
+        <view class='start ft28 bb' wx:if="{{item.AppointmentStatus==2 || item.AppointmentStatus==5}}">
+          <label class='bb'>预约时间:</label>
+          <view class='flex ml10'>{{item.ClassDate +' ' +item.ClassTime+' ('+ (item.AppointmentType==1?'自定义时间':item.ScheduleName)+')'}}</view>
+        </view>
+        <view class='start ft28 bb' wx:if="{{item.AppointmentStatus==3 || item.AppointmentStatus==5}}">
+          <label class='bb'>取消原因:</label>
+          <view class='flex ml10'>{{item.AppointmentStatusDes==''?'暂无取消原因':item.AppointmentStatusDes}}</view>
+        </view>
+        <view class='start ft28 bb' wx:if="{{item.AppointmentStatus==3 || item.AppointmentStatus==5}}">
+          <label class='bb'>取消时间:</label>
+          <view class='flex ml10'>{{item.CancelTime==null?'暂无取消时间':item.CancelTime}}</view>
+        </view>
+        <view class='reserFooter bort' wx:if="{{item.AppointmentStatus==1 || item.AppointmentStatus==2}}">
+          <view class='reserBtn' wx:if="{{item.AppointmentStatus==2}}" data-item="{{item}}" data-type="1" bindtap='bindReserSure'>修改预约</view>
+          <view class='reserBtn' wx:if="{{item.AppointmentStatus==1}}" data-type="2" data-item="{{item}}" bindtap='bindReserSure'>确认预约</view>
           <view class='reserBtn error ml40' wx:if="{{item.AppointmentStatus==1 || item.AppointmentStatus==2}}" bindtap='appointCancel' data-Id="{{item.Id}}">取消预约</view>
         </view>
       </view>
     </view>
   </view>
 </view>
-
+<!-- 选择门店透明阴影 -->
 <view class='father' catchtouchmove='true' bindtap='changeSelect' wx:if="{{showSelect==true}}"></view>
+
 <!--取消预约弹窗-->
-<modal hidden="{{!showCancel}}" title="取消预约" confirm-text="确认" cancel-text="取消" bindcancel="clickCancel" bindconfirm="clickConfirm" catchtouchmove="true">
-  <textarea class='cancelTxt1' value='{{reason}}' bindinput='hasReason' placeholder='在此输入取消原因'></textarea>
-</modal>
+<view class='dialogMask' hidden="{{!showCancel}}" catchtouchmove="true">
+  <view class='dialog-container'>
+    <view class='dialog-title'>取消预约</view>
+    <scroll-view scroll-y="true" class='dialog-content'>
+      <textarea class='cancelTxt1' value='{{reason}}' bindinput='hasReason' placeholder='在此输入取消原因'></textarea>
+    </scroll-view>
+    <view class='dialog-footer'>
+      <view class='dialog-btn' bindtap='clickCancel'>取消</view>
+      <view class='dialog-btn' bindtap='clickConfirm'>确定</view>
+    </view>
+  </view>
+</view>
+
+<!--确认预约弹窗-->
+<view class='dialogMask' hidden="{{!showConfirm}}" catchtouchmove="true">
+  <view class='dialog-container'>
+  <!-- <cover-image src='../../img/cha.png' bindtap='closeConfirm' class='cha' mode='aspectFill'></cover-image> -->
+    <view class='dialog-title'>{{type==1?'修改预约':'确认预约'}}</view>
+    <scroll-view scroll-y="true" class='dialog-content'>
+      <calendar bindnextMonth="next" bindprevMonth="prev" year="{{year1}}" month="{{month1}}" day="{{day1}}" binddateChange="dateChange" binddayClick="dayClick" weeks-type="cn" active-type="rounded" pitch_on="circle" days-color="{{dayStyle}}" board-style="board"
+        atefont-style="atefont" />
+      <radio-group class="appointTop bort pddingt20" bindchange="classChange" wx:if="{{classList.length>0}}">
+        <view class='between' wx:for="{{classList}}" wx:key>
+          <radio value='{{item.AppointmentId}}' checked='{{item.AppointmentId==checkedAppointmentId}}'>
+            <view>{{item.ScheduleName}}</view>
+          </radio>
+          <view class='bb'>剩余名额: {{item.RemainQuota}}</view>
+        </view>
+      </radio-group>
+    </scroll-view>
+    <view class='dialog-footer'>
+      <view class='dialog-btn' bindtap='closeConfirm'>取消</view>
+      <view class='dialog-btn' bindtap='sureTransfer'>插班</view>
+      <view class='dialog-btn' bindtap='sureReservation'>确认预约</view>
+    </view>
+  </view>
+</view>

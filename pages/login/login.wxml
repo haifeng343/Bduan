@@ -2,12 +2,12 @@
   <view class='title'>亲学宝商家端登录</view>
   <view class='content'>
     <label class='name'>账户名</label>
-    <input class='nameInput borb mt20 ft28' value='{{name}}' bindinput='bindName'></input>
+    <input class='nameInput borb mt20 ft28' placeholder='请输入商家账号' value='{{name}}' bindinput='bindName'></input>
   </view>
   <view class='content mt40 relative'>
     <label class='name'>密码</label>
-    <input class='nameInput borb mt20 ft28' wx:if="{{showEye}}" type="password" value='{{value}}' bindinput='bindPassword'></input>
-    <input class='nameInput borb mt20 ft28' wx:else type="text" value='{{value}}' bindinput='bindPassword'></input>
+    <input class='nameInput borb mt20 ft28' placeholder='请输入账号密码' wx:if="{{showEye}}" type="password" value='{{value}}' bindinput='bindPassword'></input>
+    <input class='nameInput borb mt20 ft28' placeholder='请输入账号密码' wx:else type="text" value='{{value}}' bindinput='bindPassword'></input>
     <cover-view class='eye'>
       <cover-image class='icon1' wx:if="{{showEye}}" style='margin-left: 0;' catchtap='changeEyeImg' src='../../img/eyes.png'></cover-image>
       <cover-image class='icon1' wx:else style='margin-left: 0;' catchtap='changeEyeImg' src='../../img/eye.png'></cover-image>

@@ -26,20 +26,27 @@
 </view>
 <view class='lastItem'></view>
 <!--选择招生栏目-->
-<modal hidden="{{!showLog}}" title="选择招生栏目" confirm-text="确认" cancel-text="取消" bindcancel="bindCancel" bindconfirm="bindSure" catchtouchmove="true">
-  <scroll-view scroll-y="true" class='dialogList' wx:if="{{sellerItemList.length>0}}">
-    <checkbox-group bindchange="checkedChange">
-      <view class='storeDialogItem start' wx:for="{{sellerItemList}}" wx:key>
-        <checkbox class='center' value='{{item.SheetId}}' checked='{{item.checked==true}}'></checkbox>
+<view class='dialogMask' hidden="{{!showLog}}" catchtouchmove="true">
+  <view class='dialog-container'>
+    <view class='dialog-title'>选择招生栏目</view>
+    <scroll-view scroll-y="true" class='dialog-content'>
+      <checkbox-group bindchange="checkedChange">
+        <view class='storeDialogItem start' wx:for="{{sellerItemList}}" wx:key>
+          <checkbox class='center' value='{{item.SheetId}}' checked='{{item.checked==true}}'></checkbox>
           <image class='storeItemAvator' src='{{item.SheetCoverImgUrl}}' mode='aspectFill'></image>
-        <view class='column storeDialogTeacherRight ft24 bb'>
-          <view class='black notWrap ft28'>{{item.SheetName}}</view>
+          <view class='column storeDialogTeacherRight ft24 bb'>
+            <view class='black notWrap ft28'>{{item.SheetName}}</view>
             <view class='notWrap'>{{item.TradingareaName}}</view>
-          <view>活动截止: {{item.SheetLowerTime}}</view>
+            <view>活动截止: {{item.SheetLowerTime}}</view>
+          </view>
         </view>
-      </view>
-    </checkbox-group>
-  </scroll-view>
-</modal>
+      </checkbox-group>
+    </scroll-view>
+    <view class='dialog-footer'>
+      <view class='dialog-btn' bindtap='bindCancel'>取消</view>
+      <view class='dialog-btn' bindtap='bindSure'>确定</view>
+    </view>
+  </view>
+</view>
 
 <view class='add' wx:if="{{IsAdministrator==true}}" bindtap='fenpei'>选择招生栏目</view>

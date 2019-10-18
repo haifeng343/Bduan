@@ -51,7 +51,7 @@ Page({
         }
         if (res.tapIndex == 1) {
           wx.showModal({
-            title: '是否删除' + item.title,
+            title: '确定要删除 "' + item.title+'" 吗？',
             confirmColor:'#000',
             success:function(res){
               if(res.confirm){

@@ -1,1 +1,4 @@
 
+.item{
+  margin: 20rpx auto 0;
+}

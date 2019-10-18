@@ -111,8 +111,8 @@
       <view class='ft28'>购买账户：{{item.BuyAccountName}}({{item.BuyAccountMobile==''?'空':item.BuyAccountMobile}})</view>
       <view class='between' wx:for="{{item.ItemList}}" wx:key wx:for-item="k">
         <view class='start ft28'>
-          <view class='center'>
-            <image class='icon mr5' src='../../img/b2.png' mode='widthFix'></image>
+          <view class='center mr5'>
+            <image class='icon ' src='../../img/b2.png' mode='widthFix'></image>
           </view>
           <view class='ft28'>{{k.ItemName}} ({{k.StoreName}})</view>
         </view>
@@ -125,39 +125,55 @@
 </view>
 
 <!--输入券验证弹出框-->
-<modal hidden="{{showLog}}" title="输码验券" confirm-text="确认" cancel-text="取消" bindcancel="closeCodeLog" bindconfirm="getCode" catchtouchmove="true">
-  <scroll-view scroll-y="true">
-    <input value='{{code}}' bindinput='setCode' type='text' placeholder='请输入券码' class='codeInput'></input>
-  </scroll-view>
-</modal>
+<view class='dialogMask' hidden="{{showLog}}" catchtouchmove="true">
+  <view class='dialog-container'>
+    <view class='dialog-title'>输码验券</view>
+    <scroll-view scroll-y="true" class='dialog-content'>
+      <input value='{{code}}' bindinput='setCode' type='text' placeholder='请输入券码' class='codeInput'></input>
+    </scroll-view>
+    <view class='dialog-footer'>
+      <view class='dialog-btn' bindtap='closeCodeLog'>取消</view>
+      <view class='dialog-btn' bindtap='getCode'>确定</view>
+    </view>
+  </view>
+</view>
 
 <!-- 确认订单信息弹出框 -->
-<modal hidden="{{showSure}}" title="确认订单信息" confirm-text="确认" cancel-text="取消" bindcancel="closeCodeSure" bindconfirm="submitSure" catchtouchmove="true">
-  <scroll-view scroll-y="true" class='showsure'>
-    <view class='column'>
-      <view class='between pl5 pr5 h60'>
-        <view class='ft28'>订单号：{{QuanInfo.OrderSN}}</view>
-        <view class='ft30' wx:if="{{QuanInfo.OrderStatus==1}}">未使用</view>
-        <view class='ft30' wx:if="{{QuanInfo.OrderStatus==2}}">部分使用</view>
-        <view class='ft30' wx:if="{{QuanInfo.OrderStatus==3}}">已完成</view>
-        <view class='ft30' wx:if="{{QuanInfo.OrderStatus==4}}">已过期</view>
-      </view>
-      <view class='ft28 left pl5 pr5 h60'>购买账户：{{QuanInfo.BuyAccountName}}({{QuanInfo.BuyAccountMobile}})</view>
-      <view class='ft28 left pl5 h60 pr5'>购买时间：{{QuanInfo.BuyTime}}</view>
-    </view>
-    <view class='List noBg'>
-      <checkbox-group bindchange="checkdChange">
-        <view class=' start h80 pl5 pr5 bort between' wx:for="{{QuanInfo.ItemList}}" wx:key wx:for-item="k">
-          <view class='start h80'>
-            <view>
-              <image class='icon1' src='../../img/k1.png' mode='widthFix'></image>
-            </view>
-            <view class="{{k.UseStatus==2?'cc':''}} ft28">{{k.ItemName}}（{{k.StoreName}}）</view>
+<view class='dialogMask' hidden="{{showSure}}" catchtouchmove="true">
+  <view class='dialog-container'>
+    <view class='dialog-title'>确认订单信息</view>
+    <scroll-view scroll-y="true" class='dialog-content'>
+      <view class='showsure'>
+        <view class='column'>
+          <view class='between pl5 pr5 h60'>
+            <view class='ft28'>订单号：{{QuanInfo.OrderSN}}</view>
+            <view class='ft30' wx:if="{{QuanInfo.OrderStatus==1}}">未使用</view>
+            <view class='ft30' wx:if="{{QuanInfo.OrderStatus==2}}">部分使用</view>
+            <view class='ft30' wx:if="{{QuanInfo.OrderStatus==3}}">已完成</view>
+            <view class='ft30' wx:if="{{QuanInfo.OrderStatus==4}}">已过期</view>
           </view>
-          <checkbox value='{{k.RelId}}' wx:if='{{QuanInfo.OrderStatus!=3 && !QuanInfo.OrderStatus!=4 && k.UseStatus!=2}}'></checkbox>
-          <image src='../../img/expire.png' wx:if="{{QuanInfo.OrderStatus==4}}" mode='widthFix' class='expire'></image>
+          <view class='ft28 left pl5 pr5 h60'>购买账户：{{QuanInfo.BuyAccountName}}({{QuanInfo.BuyAccountMobile}})</view>
+          <view class='ft28 left pl5 h60 pr5'>购买时间：{{QuanInfo.BuyTime}}</view>
         </view>
-      </checkbox-group>
+        <view class='List noBg'>
+          <checkbox-group bindchange="checkdChange">
+            <view class=' start h80 pl5 pr5 bort between' wx:for="{{QuanInfo.ItemList}}" wx:key wx:for-item="k">
+              <view class='start h80'>
+                <view>
+                  <image class='icon1' src='../../img/k1.png' mode='widthFix'></image>
+                </view>
+                <view class="{{k.UseStatus==2?'cc':''}} ft28">{{k.ItemName}}（{{k.StoreName}}）</view>
+              </view>
+              <checkbox value='{{k.RelId}}' wx:if='{{QuanInfo.OrderStatus!=3 && !QuanInfo.OrderStatus!=4 && k.UseStatus!=2}}'></checkbox>
+              <image src='../../img/expire.png' wx:if="{{QuanInfo.OrderStatus==4}}" mode='widthFix' class='expire'></image>
+            </view>
+          </checkbox-group>
+        </view>
+      </view>
+    </scroll-view>
+    <view class='dialog-footer'>
+      <view class='dialog-btn' bindtap='closeCodeSure'>取消</view>
+      <view class='dialog-btn' bindtap='submitSure'>确定</view>
     </view>
-  </scroll-view>
-</modal>
+  </view>
+</view>

@@ -57,12 +57,12 @@ Page({
       if (check == true) {
         wx.showToast({
           icon: "none",
-          title: '开启预约成功！',
+          title: '成功开启预约',
         })
       } else {
         wx.showToast({
           icon: "none",
-          title: '关闭预约成功！',
+          title: '成功关闭预约',
         })
       }
     })

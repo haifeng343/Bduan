@@ -111,7 +111,7 @@ Page({
         }
       }
       if (this.data.peoText == '预计招生数量') {
-        if (this.data.people < 0) {
+        if (this.data.people <= 0) {
           wx.showToast({
             icon: 'none',
             title: '请输入剩余预计人数',

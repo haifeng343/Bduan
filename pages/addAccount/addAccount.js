@@ -1,6 +1,5 @@
 var netUtil = require("../../utils/request.js"); //require引入
 const app = getApp().globalData;
-const baseUrl = app.baseUrl;
 var utilMd5 = require('../../utils/md5.js');
 Page({
 
@@ -79,7 +78,7 @@ Page({
           })
         } else {
           wx.uploadFile({
-            url: baseUrl + 'img/upload', //仅为示例，非真实的接口地址
+            url: netUtil.baseUrl + 'img/upload', //仅为示例，非真实的接口地址
             filePath: tempFilePaths[0],
             name: 'Admin.Header',
             header: {

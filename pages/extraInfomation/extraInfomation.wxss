@@ -1,11 +1,18 @@
 .extraTitle{
-  font-size: 32rpx;
+  font-size:28rpx;
+  font-weight:bold;
   width: 85%;
 }
 .item{
   padding: 0;
+  display: flex;
+  margin: 20rpx auto 0;
+  flex-direction: column;
 }
 .ItemTitle{
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
   padding: 20rpx 5% 0rpx;
 }
 .extraTxt{

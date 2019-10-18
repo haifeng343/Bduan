@@ -4,7 +4,8 @@
   <calendar bindnextMonth="next" bindprevMonth="prev" binddateChange="dateChange" binddayClick="dayClick" weeks-type="cn" active-type="rounded" pitch_on="circle" days-color="{{dayStyle}}" board-style="board" atefont-style="atefont" />
   <view class='containerBot bort'>
     <view class='end'>
-      <span class='addBtn' bindtap="classAdd">添加</span>
+      <span class='addBtn' wx:if="{{clickItem.Year && clickItem.Month && clickItem.Day}}" bindtap="classAdd">添加</span>
+      <span class="addBtn gray2" wx:else>添加</span>
     </view>
     <view class='formList' wx:if="{{Info.List.length>0}}">
       <view class='formItem' wx:for="{{Info.List}}" wx:key>
@@ -14,7 +15,7 @@
         </view>
         <view>预约名额: {{item.RemainQuota}}</view>
         <view class='end'>
-          <span class='addBtn ItemBtn mr40' data-item="{{item}}" bindtap="edit">编辑</span>
+          <span class='addBtn ItemBtn mr20' data-item="{{item}}" bindtap="edit">编辑</span>
           <span class='addBtn ItemBtn' data-Id="{{item.Id}}" data-schedulename="{{item.ScheduleName}}" bindtap="delete">删除</span>
         </view>
       </view>
@@ -26,7 +27,7 @@
 </view>
 <view class='lastItem'></view>
 <view class='FoormFooter'>
-  <view>可预约课程节数: {{Info.AppointmentCount}}</view>
+  <view>可预约课程节数: {{(clickItem.Year && clickItem.Month && clickItem.Day)?Info.AppointmentCount:0}}</view>
   <view>
     <span class='addBtn fotBtn mr20 gray2' bindtap="emptyClick">清空预约表</span>
     <span class='addBtn fotBtn' bindtap="addPoint">添加预约表</span>
@@ -34,42 +35,58 @@
 </view>
 
 <!-- 添加预约表弹窗 -->
-<modal hidden="{{!showSuccess}}" title="{{Id==''?'添加预约表':'编辑预约表'}}" confirm-text="确认" cancel-text="取消" bindcancel="clickCancel" bindconfirm="clickSure" catchtouchmove="true">
-  <view class='column'>
-    <view class='start'>
-      <label>预约描述:</label>
-      <input type='text' value='{{scheduleName}}' bindinput='scheduleChange' class='flex formInput ft28'></input>
-    </view>
-    <view class='start mt20'>
-      <label>上课时间:</label>
-      <picker class='flex formInput ft28' mode="time" value="{{classTime}}" bindchange="timeChange">{{classTime==''?'请选择时间':classTime}}</picker>
-    </view>
-    <view class='start mt20'>
-      <label>时长 (分):</label>
-      <input type='text' value='{{classDuration}}' bindinput='durationChange' class='flex formInput ft28'></input>
-    </view>
-    <view class='start mt20'>
-      <label>剩余名额:</label>
-      <input type='text' value='{{remainQuota}}' bindinput='remainChange' class='flex formInput ft28'></input>
-    </view>
-  </view>
-</modal>
-
-<!-- 清空预约弹窗 -->
-<modal hidden="{{!showDialog}}" title="清空预约" confirm-text="确认" cancel-text="取消" bindcancel="batchCancel" bindconfirm="batchSure" catchtouchmove="true">
-  <view class='modalList'>
-    <checkbox  value='{{checkAll}}' checked='{{checkAll==true}}' bindtap="allChange" class='black ft28 checkAll'>全部</checkbox>
-    <checkbox-group class="bort" bindchange="changeQita">
-      <view class='modalFormList' wx:if="{{batchList.length>0}}">
-        <view class='modalFormItem' wx:for="{{batchList}}" wx:key>
-          <checkbox value='{{item.BatchName}}' checked='{{item.check==true}}'></checkbox>
-          <view class='modalFormItemRight flex'>
-            <view class='black ft24'>{{item.BatchName==''?'其他 (自定义)':item.BatchName}}</view>
-            <view class='ft24' wx:if="{{item.CreateTime}}">添加时间: {{item.CreateTime}}</view>
-            <view class='ft24' wx:if="{{item.BatchStartTime && item.BatchEndTime}}">预约表有效期: {{item.BatchStartTime}}~{{item.BatchEndTime}}</view>
-          </view>
+<view class='dialogMask' hidden="{{!showSuccess}}" catchtouchmove="true">
+  <view class='dialog-container'>
+    <view class='dialog-title'>{{Id==''?'添加预约信息':'编辑预约信息'}}</view>
+    <scroll-view scroll-y="true" class='dialog-content'>
+      <view class='column'>
+        <view class='start'>
+          <label class='center'>预约描述:</label>
+          <input type='text' value='{{scheduleName}}' bindinput='scheduleChange' class='flex formInput ft28'></input>
+        </view>
+        <view class='start mt20'>
+          <label class='center'>上课时间:</label>
+          <picker class='flex formInput ft28 bb' mode="time" value="{{classTime}}" bindchange="timeChange">{{classTime==''?'请选择时间':classTime}}</picker>
+        </view>
+        <view class='start mt20'>
+          <label class='center'>时长 (分):</label>
+          <input type='number' value='{{classDuration}}' cursor-spacing="80" bindinput='durationChange' class='flex formInput ft28'></input>
+        </view>
+        <view class='start mt20'>
+          <label class='center'>剩余名额:</label>
+          <input type='number' value='{{remainQuota}}' cursor-spacing="80" bindinput='remainChange' class='flex formInput ft28'></input>
         </view>
       </view>
-    </checkbox-group>
+    </scroll-view>
+    <view class='dialog-footer'>
+      <view class='dialog-btn' bindtap='clickCancel'>取消</view>
+      <view class='dialog-btn' bindtap='clickSure'>确定</view>
+    </view>
   </view>
-</modal>
+</view>
+
+<!-- 清空预约弹窗 -->
+<view class='dialogMask' hidden="{{!showDialog}}" catchtouchmove="true">
+  <view class='dialog-container'>
+    <view class='dialog-title'>{{Id==''?'添加预约信息':'编辑预约信息'}}</view>
+    <scroll-view scroll-y="true" class='dialog-content'>
+      <checkbox value='{{checkAll}}' checked='{{checkAll==true}}' bindtap="allChange" class='black ft28 checkAll'>清空全部</checkbox>
+      <checkbox-group class="bort" bindchange="changeQita">
+        <view class='modalFormList' wx:if="{{batchList.length>0}}">
+          <view class='modalFormItem' wx:for="{{batchList}}" wx:key>
+            <checkbox value='{{item.BatchName}}' checked='{{item.check==true}}'></checkbox>
+            <view class='modalFormItemRight flex'>
+              <view class='black ft24'>{{item.BatchName==''?'其他 (自定义)':item.BatchName}}</view>
+              <view class='ft24' wx:if="{{item.CreateTime}}">添加时间: {{item.CreateTime}}</view>
+              <view class='ft24' wx:if="{{item.BatchStartTime && item.BatchEndTime}}">预约表有效期: {{item.BatchStartTime}}~{{item.BatchEndTime}}</view>
+            </view>
+          </view>
+        </view>
+      </checkbox-group>
+    </scroll-view>
+    <view class='dialog-footer'>
+      <view class='dialog-btn' bindtap='batchCancel'>取消</view>
+      <view class='dialog-btn' bindtap='batchSure'>确定</view>
+    </view>
+  </view>
+</view>
