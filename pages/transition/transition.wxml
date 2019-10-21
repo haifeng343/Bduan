@@ -14,7 +14,7 @@
     </view>
   </view>
 </view>
-<view class='ft28 pl5 h81'>充值到门店</view>
+<view class='ft28 pl5 h81' wx:if="{{storeList.length>0}}">充值到门店</view>
 <view class='content content1 ft28'>
   <view class='between h80 borb' data-Id="{{item.StoreId}}" data-name="{{item.StoreName}}" data-money="{{item.Money}}" bindtap='navtoStoreRecharge' wx:for="{{storeList}}" wx:key>
     <view class='start h80'>

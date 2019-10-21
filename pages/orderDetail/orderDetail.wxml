@@ -56,7 +56,7 @@
       <view class='between bort h50 ft28'>
         <view class='start h50'>
           <text>购买类型:</text>
-          <text class='h50 ml5 '><text wx:if="{{Info.BuyType==1}}">团购</text>（{{Info.SheetName}}）</text>
+          <text class='h50 ml5 '>{{Info.BuyType?Info.BuyType:'未知'}} <text wx:if="{{Info.SheetModel==1 && Info.SheetName}}">（{{Info.SheetName}}）</text></text>
         </view>
       </view>
     </view>
