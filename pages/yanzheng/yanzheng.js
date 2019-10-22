@@ -18,6 +18,11 @@ Page({
       url: '/pages/yanquan/yanquan',
     })
   },
+  bindTransaction:function() {
+    wx.navigateTo({
+      url: '/pages/transaction/transaction',
+    })
+  },
   onShareAppMessage: function() {
 
   }

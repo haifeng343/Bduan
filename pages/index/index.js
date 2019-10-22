@@ -46,6 +46,10 @@ Page({
     buyCount: '', //购买数
     usertoken: '',
     count: "",//获取未处理预约数量
+    showClass:false,//等待课程确认
+    showSureClass:false,//确认课程信息
+    showPassword:true,//输入支付密码
+    num:'',//输入密码,
   },
   onLoad: function(options) {
     let userInfo = wx.getStorageSync('userInfo');
@@ -61,6 +65,13 @@ Page({
   hideFixed: function() {
     this.setData({
       showSelect: false,
+    })
+  },
+  //获取支付密码
+  hasPassword:function(e) {
+    console.log(e);
+    this.setData({
+      num:e.detail.value
     })
   },
   init: function() {
@@ -168,6 +179,12 @@ Page({
       that.setData({
         orderList: res.Data,
       })
+    })
+  },
+  //关闭等待家张确认课程
+  closeClass:function() {
+    this.setData({
+      showClass:false,
     })
   },
   //验证记录

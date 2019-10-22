@@ -76,7 +76,7 @@
   width: 520rpx;
   height: 220rpx;
   margin-left: 20rpx;
-  margin-top: 24rpx;
+  margin-top: 15rpx;
 }
 .md {
   width: 95%;

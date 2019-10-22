@@ -322,7 +322,7 @@ Page({
       //b.如果加载更多且数据列表不为空，设置页码数+1
       if (type == 1) {
         tempModelList[that.data.navbarActiveIndex].list = arr;
-        tempModelList[that.data.navbarActiveIndex].list.pageIndex = 1;
+        tempModelList[that.data.navbarActiveIndex].pageIndex = 1;
       } else {
         if (arr.length > 0) {
           tempModelList[that.data.navbarActiveIndex].list = tempModelList[that.data.navbarActiveIndex].list.concat(arr)

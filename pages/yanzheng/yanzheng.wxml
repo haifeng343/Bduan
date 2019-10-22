@@ -5,9 +5,15 @@
     </view>
     <image class='go' src='../../img/go.png' mode='widthFix'></image>
   </view>
-  <view class='between h80' bindtap='bindQuan'>
+  <view class='between h80 borb' bindtap='bindQuan'>
     <view class='start'>
       <view>代金券验券记录</view>
+    </view>
+    <image class='go' src='../../img/go.png' mode='widthFix'></image>
+  </view>
+  <view class='between h80' bindtap='bindTransaction'>
+    <view class='start'>
+      <view>成交验证记录</view>
     </view>
     <image class='go' src='../../img/go.png' mode='widthFix'></image>
   </view>

@@ -18,9 +18,10 @@
         </view>
         <view class='column'>
           <view class='between'>
-            <view class='start h40'>
+            <view class='start w80 h40'>
               <view class='ft28 bold notWrap'>{{item.ItemName}}</view>
             </view>
+            <view class='money'>￥290</view>
           </view>
           <view class='between h40 ft24'>
             <view class='bb notWrap w90' wx:if="{{item.ItemTypeDes}}">{{item.ItemTypeDes}}</view>

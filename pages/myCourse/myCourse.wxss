@@ -6,23 +6,26 @@ page {
   min-height: auto;
 }
 
-.noads{
+.noads {
   width: 450rpx;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
 }
-.nohave{
+
+.nohave {
   font-size: 32rpx;
   text-align: center;
   line-height: 50rpx;
 }
-.haveto{
+
+.haveto {
   font-size: 28rpx;
   text-align: center;
 }
-.List{
+
+.List {
   width: 100%;
   height: 100vh;
   padding: 0 0 0 5%;
@@ -30,40 +33,57 @@ page {
   overflow-y: scroll;
   padding-bottom: 100rpx;
 }
-.item{
+
+.item {
   width: 100%;
   padding: 25rpx 0;
-  border-bottom:1rpx solid #F7F7F7;
+  border-bottom: 1rpx solid #f7f7f7;
 }
-.item:last-child{
+
+.item:last-child {
   border: none;
 }
-.name{
+
+.money {
+  font-size: 28rpx;
+  color: red;
+  width: 20%;
+  text-align: right;
+  overflow: hidden;
+}
+
+.name {
   font-size: 32rpx;
 }
-.addressDetail{
+
+.addressDetail {
   font-size: 26rpx;
-  color: #A19B9B;
+  color: #a19b9b;
 }
-.h40{
+
+.h40 {
   line-height: 45rpx;
 }
-.avator{
+
+.avator {
   width: 135rpx;
   height: 177rpx;
   border-radius: 10rpx;
   margin-right: 15rpx;
 }
-.column{
+
+.column {
   position: relative;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
 }
-.between{
-  width:540rpx;
+
+.between {
+  width: 540rpx;
 }
-.edit{
+
+.edit {
   display: flex;
   align-items: center;
   width: 34rpx;

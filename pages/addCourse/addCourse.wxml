@@ -9,10 +9,21 @@
     <image class='upload pd20 ml20' wx:else src='../../img/upload.png' mode='aspectFill' bindtap='bindUpload'></image>
   </view>
   <view class='item start borb h80'>
+    <label>课程价格</label>
+    <input class='' value='' bindinput='' type='number' placeholder='请输入课程价格'></input>
+  </view>
+  <view class='item start borb h80'>
     <label>课程类型</label>
     <!-- <input value='{{jobTitle}}' bindinput='bindNJobTitle' placeholder='请填写教师职称'></input> -->
     <view class='jobTitle' bindtap='changeTitle'>{{jobTitle}}</view>
     <image src='../../img/go.png' class='icon end goes'></image>
+  </view>
+  <view class='item start borb h80'>
+    <label>使用范围</label>
+    <checkbox-group class="ml20">
+      <checkbox>体验课</checkbox>
+      <checkbox class="ml40">正价课</checkbox>
+    </checkbox-group>
   </view>
   <!-- <view class='item start borb h80'>
     <label style='width:100%'>课程描述</label>
@@ -20,7 +31,7 @@
   </view> -->
   <view class='item start borb' style='height:244rpx'>
     <label class='h81'>课程描述</label>
-    <textarea value='{{description}}' bindinput='bindDescription' placeholder='请填写课程描述' class="textarea {{showLog?'none':''}}" placeholder-class='placeholder'></textarea>
+    <textarea value='{{description}}' fixed='true' bindinput='bindDescription' placeholder='请填写课程描述' class="textarea {{showLog?'none':''}}" placeholder-class='textarea-placeholder'></textarea>
   </view>
 </view>
 

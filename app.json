@@ -54,7 +54,8 @@
     "pages/addExtra/addExtra",
     "pages/reservationForm/reservationForm",
     "pages/addAppointment/addAppointment",
-    "pages/reservationList/reservationList"
+    "pages/reservationList/reservationList",
+    "pages/transaction/transaction"
   ],
   "window": {
     "backgroundTextStyle": "dark",
