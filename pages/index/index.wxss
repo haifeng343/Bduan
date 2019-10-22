@@ -51,11 +51,9 @@
   border: 1rpx solid red;
   position: absolute;
   bottom: 20rpx;
-  left: 5%;
+  left: -9999px;
   opacity: 0;
   z-index: 22;
-  background-color: transparent;
-  color: transparent;
 }
 
 .blocks {
