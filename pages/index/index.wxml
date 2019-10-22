@@ -194,10 +194,10 @@
   </view>
 </view>
 
-<!--确认课程信息-->
+<!--确认课程信息 yancode-->
 <view class='dialogMask' hidden="{{!showSureClass}}" catchtouchmove="true">
   <view class='dialog-container'>
-    <view class='dialog-title'>确认课程信息</view>
+    <view class='dialog-title'>成交课程信息</view>
     <scroll-view scroll-y="true" class='dialog-content'>
       <view class='classItem'>
         <view class='start centers'>
