@@ -29,7 +29,7 @@ function request(url, params, method, onSuccess, onFailed, isShowLoading, isShow
   if (isShowLoading) {
     wx.showLoading({
       title: '玩命加载中...',
-    }); 
+    });
   }
 
   let moment = {};
@@ -50,7 +50,7 @@ function request(url, params, method, onSuccess, onFailed, isShowLoading, isShow
       'appVersion': '1.0.1',
       'userToken': usertoken,
     },
-    success: function (res) {
+    success: function(res) {
       if (isShowLoading) {
         wx.hideLoading();
       }
@@ -67,17 +67,23 @@ function request(url, params, method, onSuccess, onFailed, isShowLoading, isShow
               url: '/pages/login/login',
             })
           }
-        } else if (isShowError) {
-          wx.showToast({
-            icon: 'none',
-            title: res.data.ErrorMessage,
-          })
+        } else {
+          if (isShowError) {
+            wx.showToast({
+              icon: 'none',
+              title: res.data.ErrorMessage,
+            })
+          }
+          if (onFailed) {
+            onFailed();
+          }
+
         }
         /** end 处理结束*/
       }
     },
 
-    fail: function (error) {
+    fail: function(error) {
       if (isShowLoading) {
         wx.hideLoading();
       }

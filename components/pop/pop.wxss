@@ -1,0 +1,228 @@
+.dialogMask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  align-items: center;
+  font-size: 28rpx;
+}
+input{
+  box-sizing: border-box;
+  padding-left: 10rpx;
+}
+.dialog-container {
+  width: 90%;
+  height: auto;
+  background-color: #fff;
+  border-radius: 15rpx;
+  max-height: 80%;
+  position: relative;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding-top: 0;
+}
+
+.dialog-title {
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 32rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+}
+
+.dialog-content {
+  width: 100%;
+  height: auto;
+  max-height: 800rpx;
+  box-sizing: border-box;
+  padding: 20rpx 5%;
+}
+
+.dialog-footer {
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  display: flex;
+  justify-content: space-around;
+  border-top: 2rpx solid #f4f4f4;
+}
+
+.dialog-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.dialog-btn:first-child {
+  border-right: 2rpx solid #f4f4f4;
+}
+
+.classItem {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.centers {
+  display: flex;
+  align-items: center;
+}
+
+.InputIcon {
+  position: absolute;
+  width: 30rpx;
+  height: 30rpx;
+  transform: rotate(-90deg);
+  right: 0;
+  top: 9rpx;
+}
+
+.moneyContent {
+  width: 100%;
+  margin: 20rpx auto;
+  text-align: center;
+  padding: 40rpx 0;
+}
+
+.moneyNumber {
+  font-size: 40rpx;
+}
+
+.moneyInput {
+  width: 90%;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin: 0 auto;
+  border: 1rpx solid red;
+  position: absolute;
+  bottom: 20rpx;
+  left: -300rpx;
+  opacity: 0;
+  z-index: 22;
+}
+.closeImg{
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  right:25rpx;
+  top:25rpx;
+}
+.blocks {
+  width: 90%;
+  height: 80rpx;
+  line-height: 80rpx;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  margin-bottom: 20rpx;
+}
+label{
+  width: 120rpx;
+}
+.picker{
+  width: 80%;
+  height: auto;
+  position: relative;
+}
+.classContent{
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bort{
+  border-top: 1rpx solid #f4f4f4;
+}
+.borb{
+  border-bottom: 1rpx solid #f4f4f4;
+}
+.block {
+  width: 100rpx;
+  height: 80rpx;
+  text-align: center;
+  box-sizing: border-box;
+  border: 1rpx solid #cfcfcf;
+  border-right: #fff;
+}
+
+.block:last-child {
+  border: 1rpx solid #cfcfcf;
+}
+
+.cursor {
+  width: 1px;
+  height: 40rpx;
+  background-color: #000;
+  animation: focus 0.7s infinite;
+}
+
+/* 光标动画 */
+
+@keyframes focus {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.flex {
+  display: flex;
+  flex: 1;
+}
+
+.mt20 {
+  margin-top: 20rpx;
+}
+
+.borRight {
+  border: 1rpx solid #f4f4f4;
+  border-radius: 5rpx;
+  margin-left: 15rpx;
+}
+
+.relative {
+  z-index: 22;
+  position: relative;
+}
+
+.waitContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20rpx 0;
+  flex-direction: column;
+}
+
+.waitTime {
+  width: 120rpx;
+  height: 120rpx;
+}
+.zhidaoBtn{
+  width: 90%;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  text-align: center;
+  margin: 20rpx auto;
+  border-radius: 15rpx;
+  color: #fff;
+  background-color: #29D9D6;
+}

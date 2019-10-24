@@ -23,7 +23,7 @@ Page({
     let tempInfo = JSON.parse(options.Info);
     that.setData({
       Info: tempInfo|| {},
-      Amount: Number(tempInfo.Amount *1.0 / 100).toFixed(2)
+      Amount: Number(tempInfo.Amount *1.0 / 100).toFixed(2),
     })
     that.getStore();
   },

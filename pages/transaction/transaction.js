@@ -17,7 +17,7 @@ Page({
     showId: 0, //选中门店下标
     storeName: "全部门店", //默认
   },
-  initPicker: function () {
+  initPicker: function() {
     var date = new Date();
     let arr = [],
       arr1 = [];
@@ -34,17 +34,17 @@ Page({
       date2: [arr.indexOf(this.data.year), arr1.indexOf(this.data.month + '')],
     })
   },
-  onLoad: function () {
+  onLoad: function() {
     this.initPicker();
     this.init();
     this.getStore();
   },
   //获取所有门店列表
-  getStore: function () {
+  getStore: function() {
     let that = this;
     var url = 'account/store/list';
     var params = {}
-    netUtil.postRequest(url, params, function (res) {
+    netUtil.postRequest(url, params, function(res) {
       let arr = res.Data;
       arr.unshift({
         StoreId: 0,
@@ -56,13 +56,13 @@ Page({
     })
   },
   //弹出门店下拉选择
-  changeSelect: function () {
+  changeSelect: function() {
     this.setData({
       showSelect: true
     })
   },
   //点击全部门店
-  allStore: function () {
+  allStore: function() {
     this.setData({
       storeId: 0,
       storeName: '全部门店',
@@ -70,7 +70,7 @@ Page({
     })
   },
   //更换门店
-  changeStore: function (e) {
+  changeStore: function(e) {
     let that = this;
     that.setData({
       showId: e.currentTarget.dataset.id,
@@ -80,12 +80,12 @@ Page({
     })
     this.getData();
   },
-  init: function () {
+  init: function() {
     this.getData();
   },
-  getData: function () {
+  getData: function() {
     let that = this;
-    var url = 'account/ticket/check/record';
+    var url = 'account/basesubsidy/record/list';
     var params = {
       Year: that.data.year,
       Month: that.data.month,
@@ -93,7 +93,7 @@ Page({
       PageCount: that.data.pagecount,
       PageIndex: that.data.page
     }
-    netUtil.postRequest(url, params, function (res) { //onSuccess成功回调
+    netUtil.postRequest(url, params, function(res) { //onSuccess成功回调
       let arr = res.Data;
       var arr1 = [];
       arr.forEach(item => {
@@ -110,7 +110,21 @@ Page({
       })
     })
   },
-  bindDateChange: function (e) {
+  getCode: function(e) {
+    let that = this;
+    let item = e.currentTarget.dataset.item;
+
+
+    if (item.Status == 2) {
+      item.Status = 0;
+    }
+    console.log(item)
+    if (that.selectComponent('#pop')) {
+      that.selectComponent('#pop')._showClassDialog(item);
+    }
+
+  },
+  bindDateChange: function(e) {
     // console.log('picker发送选择改变，携带值为', e.detail.value)
     let index = e.detail.value;
     if (index[0] == 0 && index[1] == 0) {
@@ -130,8 +144,9 @@ Page({
     }
     this.getData();
   },
+
   //上拉加载更多
-  onReachBottom: function () {
+  onReachBottom: function() {
     let that = this;
     wx.showLoading({
       title: '玩命加载中',
@@ -145,7 +160,7 @@ Page({
 
   },
   //下拉刷新
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
     wx.showLoading({
       title: "玩命加载中",
     });
@@ -156,7 +171,7 @@ Page({
     // 停止下拉动作
     wx.stopPullDownRefresh();
   },
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

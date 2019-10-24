@@ -63,35 +63,35 @@ Page({
     });
   },
   bindDetailSure: function() {
-    if (this.data.money == '') {
+    if (!this.data.money) {
       wx.showToast({
         icon: 'none',
         title: '请输入课程原价',
       });
       return false;
     }
-    if (this.data.number == '') {
+    if (!this.data.number) {
       wx.showToast({
         icon: 'none',
         title: '请输入课程数量',
       });
       return false;
     }
-    if (this.data.timer == '') {
+    if (!this.data.timer) {
       wx.showToast({
         icon: 'none',
         title: '请输入课程单节课时',
       });
       return false;
     }
-    if (this.data.relief == '') {
+    if (!this.data.relief) {
       wx.showToast({
         icon: 'none',
         title: '请输入课程成交后减免',
       });
       return false;
     }
-    if (this.data.purchase == '') {
+    if (!this.data.purchase) {
       if (this.data.purchase <= 0) {
         wx.showToast({
           icon: 'none',
@@ -100,7 +100,7 @@ Page({
         return false;
       }
     }
-    if (this.data.people == '') {
+    if (!this.data.people) {
       if (this.data.peoText == '剩余招生数量') {
         if (this.data.people < 0) {
           wx.showToast({

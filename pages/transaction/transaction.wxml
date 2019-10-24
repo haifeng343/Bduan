@@ -16,63 +16,36 @@
     </view>
   </view>
 </view>
-<view class='nohasLog' wx:if="{{List.length>0}}">
+<view class='nohasLog' wx:if="{{List.length<=0}}">
   <image src='../../img/zanwu.png' mode='widthFix' class='noImg'></image>
   <view class='notext'>暂无成交验证记录</view>
 </view>
 <scroll-view scroll-y="true" class='List' wx:else>
-  <!-- <view class='item' wx:for="{{List}}" wx:key wx:for-item="item1">
-    <view class='between h50'>
-      <view class='quanName'>{{item1.CardName}}</view>
-      <view class='bb ft28'>面值:{{item1.Amount}}元</view>
-    </view>
-    <view class='between bb ft24 h40'>
-      <view>券码:{{item1.CardQrCode}}</view>
-      <view>领取时间:{{item1.CreateTime}}</view>
-    </view>
-    <view class='between bb ft24 h40 borb pbor'>
-      <view>验券门店:{{item1.StoreName}}</view>
-      <view>验券时间:{{item1.UseTime}}</view>
-    </view>
-    <view class='between ft24 h40'>
-      <view class='start h50'>
-        <text>购买账户:</text>
-        <view class='avator'>
-          <image class='avator1' src='{{item1.AccountIconUrl}}' mode='widthFix'></image>
-        </view>
-        <view>{{item1.AccountName}}
-          <text wx:if="{{Info.BuyAccountMobile}}">({{item1.AccountMobile}})</text>
-        </view>
-      </view>
-      <view class='center'>
-        <image class='icon' wx:if="{{showCall}}" src='../../img/call.png' bindtap='bindCall' mode='widthFix'></image>
-      </view>
-    </view>
-  </view> -->
-  <view class='item'>
+  <view class='item' wx:for="{{List}}" wx:key data-item="{{item}}" bindtap='getCode'>
     <view class='between ft24 h40'>
       <view class='start h50'>
         <text>学员账户:</text>
         <view class='avator'>
-          <image class='avator1' src='../../img/checked.png' mode='widthFix'></image>
+          <image class='avator1' src='{{item.HeadUrl}}' mode='widthFix'></image>
         </view>
-        <view>小林
-          <text>(1547454157)</text>
+        <view>{{item.AccountName}}
+          <text wx:if="{{item.AccountMobile}}">({{item.AccountMobile}})</text>
         </view>
       </view>
     </view>
-    <view class='bb'>课程名称: /</view>
+    <view class='bb'>课程名称: {{item.ItemName?item.ItemName:'/'}}</view>
     <view class='start'>
-      <view class='bb'>课程原价(元): /</view>
-      <view class='bb ml40'>实付金额(元): /</view>
+      <view class='bb'>课程原价(元): {{item.Price*1.0/100?item.Price*1.0/100:'/'}}</view>
+      <view class='bb ml40'>实付金额(元): {{item.PayAmount*1.0/100?item.PayAmount*1.0/100:'/'}}</view>
     </view>
-    <view class='bb'>创建时间: /</view>
+    <view class='bb'>创建时间: {{item.CreateTime?item.CreateTime:'/'}}</view>
     <view class='footer'>
-      <view>开始成交，请输入课程信息</view>
-      <!-- <view>已输入课程信息，等待确认</view>
-      <view>信息有误，请尽快修改</view>
-      <view>确认已完成，请尽快完成支付</view>
-      <view>课程已成交</view> -->
+      <view wx:if="{{item.Status==1}}">等待客户确认</view>
+      <view wx:if="{{item.Status==2}}">客户反馈信息有误</view>
+      <view wx:if="{{item.Status==3}}">客户已确认，等待商家付款</view>
+      <view wx:if="{{item.Status==4}}">商家已付款</view>
     </view>
   </view>
 </scroll-view>
+
+<pop id="pop"></pop>

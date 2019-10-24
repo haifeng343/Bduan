@@ -49,7 +49,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 53,
+			"current": -1,
 			"list": [
 				{
 					"id": -1,
@@ -346,10 +346,10 @@
 					"scene": null
 				},
 				{
-					"id": 43,
+					"id": 42,
 					"name": "yancode",
 					"pathName": "pages/yancode/yancode",
-					"query": "Info={\"Id\":8,\"CardName\":\"代金券2\",\"CardIconUrl\":\"\",\"StartTime\":\"2019-08-31 16:00:00\",\"EndTime\":\"2020-10-30 16:00:00\",\"UseContext\":\"限DASH编程学院(运河上街)、明好小语种培训中心（运河上街）等全店通用\",\"CardType\":3,\"CardQrCode\":\"T758ae72f35fb\"}",
+					"query": "Info={\"Id\":8,\"CardName\":\"代金券2\",\"CardIconUrl\":\"\",\"StartTime\":\"2019-08-31 16:00:00\",\"EndTime\":\"2020-10-30 16:00:00\",\"UseContext\":\"限DASH编程学院(运河上街)、明好小语种培训中心（运河上街）等全店通用\",\"CardType\":3,\"CardQrCode\":\"T758ae72f35fb\"}&type=1",
 					"scene": null
 				},
 				{
@@ -426,6 +426,7 @@
 					"id": -1,
 					"name": "transaction",
 					"pathName": "pages/transaction/transaction",
+					"query": "",
 					"scene": null
 				}
 			]

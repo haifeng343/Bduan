@@ -6,6 +6,7 @@ Page({
     headImg: '', //课程头像
     headPath: '', //课程上传头像
     type: '', //授课类型
+    price:'',//课程价格
     jobTitle: [], //课程职称
     showLog: false, //课程职称弹窗
     TitlesList: [], //所有课程职称列表
@@ -52,9 +53,15 @@ Page({
         headImg: res.Data.ItemCoverImg,
         ItemTypeList: res.Data.ItemTypeList,
         headPath: res.Data.ItemCover,
-        description: res.Data.ItemDescription
+        description: res.Data.ItemDescription,
+        price: res.Data.Price*1.0/100
       })
     });
+  },
+  hasPrice:function(e){
+    this.setData({
+      price:e.detail.value
+    })
   },
   //所有课程类型列表
   getTitlesList: function() {
@@ -311,17 +318,26 @@ Page({
   submit: function() {
     let that = this;
     var url = that.data.Id ? 'account/selleritem/modify' : 'account/selleritem/add';
-    if (that.data.name) {
+    if (!that.data.name) {
       wx.showToast({
         icon: 'none',
         title: '请输入课程名称',
       })
+      return
     }
-    if (that.data.headPath) {
+    if (!that.data.headPath) {
       wx.showToast({
         icon: 'none',
         title: '请选择课程图片',
       })
+      return
+    }
+    if (!that.data.price) {
+      wx.showToast({
+        icon: 'none',
+        title: '请输入课程价格',
+      })
+      return
     }
     var params = {
       ItemId: that.data.Id,
@@ -329,6 +345,7 @@ Page({
       ItemCover: that.data.headPath,
       ItemTypeIdList: that.data.checkedArr,
       ItemDescription: that.data.description,
+      Price:that.data.price*100
     }
     if (!that.data.name) {
       wx.showToast({

@@ -10,7 +10,7 @@
   </view>
   <view class='item start borb h80'>
     <label>课程价格</label>
-    <input class='' value='' bindinput='' type='number' placeholder='请输入课程价格'></input>
+    <input class='' value='{{price}}' bindinput='hasPrice' type='number' placeholder='请输入课程价格'></input>
   </view>
   <view class='item start borb h80'>
     <label>课程类型</label>
@@ -18,13 +18,13 @@
     <view class='jobTitle' bindtap='changeTitle'>{{jobTitle}}</view>
     <image src='../../img/go.png' class='icon end goes'></image>
   </view>
-  <view class='item start borb h80'>
+  <!-- <view class='item start borb h80'>
     <label>使用范围</label>
     <checkbox-group class="ml20">
       <checkbox>体验课</checkbox>
       <checkbox class="ml40">正价课</checkbox>
     </checkbox-group>
-  </view>
+  </view> -->
   <!-- <view class='item start borb h80'>
     <label style='width:100%'>课程描述</label>
     <textarea value='{{old}}' bindinput='bindold' placeholder='例：5年' class='textarea pb10'></textarea>

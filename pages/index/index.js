@@ -45,11 +45,8 @@ Page({
     arrivalCount: '', //到店数
     buyCount: '', //购买数
     usertoken: '',
-    count: "",//获取未处理预约数量
-    showClass:false,//等待课程确认
-    showSureClass:false,//确认课程信息
-    showPassword:true,//输入支付密码
-    num:'',//输入密码,
+    count: "", //获取未处理预约数量
+    num: '', //输入密码,
   },
   onLoad: function(options) {
     let userInfo = wx.getStorageSync('userInfo');
@@ -68,10 +65,10 @@ Page({
     })
   },
   //获取支付密码
-  hasPassword:function(e) {
+  hasPassword: function(e) {
     console.log(e);
     this.setData({
-      num:e.detail.value
+      num: e.detail.value
     })
   },
   init: function() {
@@ -98,11 +95,11 @@ Page({
     })
   },
   //获取未处理预约数量
-  _getCount:function() {
+  _getCount: function() {
     let that = this;
     var url = 'appointment/count';
     var params = {}
-    netUtil.postRequest(url, params, function (res) {
+    netUtil.postRequest(url, params, function(res) {
       if (res.Data) {
         that.setData({
           count: res.Data.AppointmentCount
@@ -181,12 +178,7 @@ Page({
       })
     })
   },
-  //关闭等待家张确认课程
-  closeClass:function() {
-    this.setData({
-      showClass:false,
-    })
-  },
+
   //验证记录
   navtoVercation: function() {
     wx.navigateTo({
@@ -214,36 +206,64 @@ Page({
       showSuccess: !this.data.showSuccess
     })
   },
+
   //输入扫码
   bindInputCode: function() {
     this.setData({
-      showLog: !this.data.showLog
+      showLog: false,
+      code:'',
     })
   },
+  //扫描二维码
+  clickSaoma: function() {
+    let that = this;
+    wx.scanCode({
+      onlyFromCamera: false,
+      scanType: ['qrCode', 'barCode'],
+      success: (res) => {
+        that.setData({
+          code: res.result
+        });
+        that.getCode();
+      }
+    })
+  },
+  //获取到二维码确定
   getCode: function() {
     let that = this;
     if (that.data.code.indexOf('R') == 0) {
       that.bindOrderCode(that.data.code);
-    } else if (that.data.code.indexOf('T') == 0) {
-      that._getCheckInfo(function (res) {
-        wx.navigateTo({
-          url: '/pages/yancode/yancode?Info=' +JSON.stringify(res.Data),
-        })
-        that.setData({
-          showLog: true,
-          code: "",
-        })
+    } else if (that.data.code.indexOf('T') == 0 || that.data.code.indexOf('SB') == 0) {
+      that._getCheckInfo(function(res) {
+        //代金券
+        if (res.Data.CardType == 3) {
+          wx.navigateTo({
+            url: '/pages/yancode/yancode?Info=' + JSON.stringify(res.Data),
+          })
+        } else{
+          if (that.selectComponent('#pop')) {
+            that.selectComponent('#pop')._showClassDialog(res.Data.TempResult);
+          }
+        }
       });
+    }else {
+      wx.showToast({
+        icon: 'none',
+        title: '券码有误',
+      })
     }
+    that.setData({
+      showLog: true
+    })
   },
   //获取代金券验券详情
-  _getCheckInfo:function(onSuccess) {
+  _getCheckInfo: function(onSuccess) {
     let that = this;
     var url = 'account/ticket/check/info';
     var params = {
       TicketNumber: that.data.code,
     }
-    netUtil.postRequest(url, params, function (res) {
+    netUtil.postRequest(url, params, function(res) {
       onSuccess(res);
     })
   },
@@ -272,7 +292,7 @@ Page({
   //关闭订单验券弹窗
   closeCodeLog: function() {
     this.setData({
-      showLog: !this.data.showLog,
+      showLog: true,
       code: '',
     })
   },
@@ -315,7 +335,6 @@ Page({
   },
   //设置券码
   setCode: function(e) {
-    console.log(e.detail.value)
     this.setData({
       code: e.detail.value
     })
@@ -344,35 +363,7 @@ Page({
       showSelect: true
     })
   },
-  //扫描二维码
-  clickSaoma: function() {
-    let that = this;
-    wx.scanCode({
-      onlyFromCamera: false,
-      scanType: ['qrCode', 'barCode'],
-      success: (res) => {
-        console.log(res)
-        that.setData({
-          code: res.result
-        });
-        if (that.data.code.indexOf('R') == 0) {
-          that.bindOrderCode(that.data.code);
-        } else if (that.data.code.indexOf('T') == 0) {
-          that._getCheckInfo(function (res) {
-            wx.navigateTo({
-              url: '/pages/yancode/yancode?Info=' + JSON.stringify(res.Data),
-            })
-            that.setData({
-              showLog: true,
-              code:"",
-            })
-          });
-        }
-        // that.bindOrderCode(res.result);
 
-      }
-    })
-  },
   //获取用户信息
   // getData:function() {
   //   let that = this;
@@ -404,7 +395,7 @@ Page({
       url: '/pages/orderDetail/orderDetail?id=' + e.currentTarget.dataset.id,
     })
   },
-  reservation:function() {
+  reservation: function() {
     wx.navigateTo({
       url: '/pages/reservationList/reservationList',
     })

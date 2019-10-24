@@ -1,0 +1,129 @@
+<!--提交课程信息-->
+<view class='dialogMask' hidden="{{!showSureClass}}" catchtouchmove="true">
+  <view class='dialog-container'>
+    <view class='dialog-title'>成交课程信息</view>
+    <scroll-view scroll-y="true" class='dialog-content'>
+      <view class='classItem'>
+        <view class='start centers'>
+          <label>机构名称: </label>
+          <picker class='picker' mode="selector" bindchange="bindPickerStoreChange" range-key="StoreName" value="{{storeIndex}}" range="{{storeList}}">
+            <input type='text' disabled value='{{selectPicker.StoreName}}' class='flex borRight'></input>
+            <image src='../../img/select.png' class='InputIcon'></image>
+          </picker>
+        </view>
+      </view>
+      <view class='classItem mt20'>
+        <view class='start centers'>
+          <label>课程名称: </label>
+          <picker disabled="{{(selectPicker && classList && classList.length>0)?false:true}}" class='picker' mode="selector" bindchange="bindPickeClassrChange" range-key="ItemName" value="{{itemIndex}}" range="{{classList}}">
+            <input type='text' disabled value='{{selectClass.ItemName}}' class='flex borRight'></input>
+            <image src='../../img/select.png' class='InputIcon'></image>
+          </picker>
+        </view>
+      </view>
+      <view class='classItem mt20'>
+        <view class='start centers'>
+          <label>课程原价: </label>
+          <input type='number' value='{{price}}' cursor-spacing='80' bindinput='bindChangePrice' class='flex borRight'></input>
+        </view>
+      </view>
+      <view class='classItem mt20'>
+        <view class='start centers'>
+          <label>实付价格: </label>
+          <input type='number' value='{{payAmount}}' cursor-spacing='80' bindinput='bindChangeAmount' cursor-spacing='60' class='flex borRight'></input>
+        </view>
+      </view>
+    </scroll-view>
+    <view class='dialog-footer'>
+      <view class='dialog-btn' bindtap='closeClassClick'>取消</view>
+      <view class='dialog-btn' bindtap='sureClassClick'>确认</view>
+    </view>
+  </view>
+</view>
+
+<!--等待确认课程成交-->
+<view class='dialogMask' hidden="{{!showClass}}" catchtouchmove="true">
+  <view class='dialog-container'>
+    <scroll-view scroll-y="true" class='dialog-content'>
+      <view class='waitContainer'>
+        <image src='../../img/wait.png' class='waitTime' mode='aspectFill'></image>
+        <view class='ft28 mt20'>等待家长确认课程成交信息</view>
+      </view>
+    </scroll-view>
+    <view class='dialog-footer'>
+      <view class='dialog-btn' bindtap='closeWaitClass'>取消</view>
+      <view class='dialog-btn' bindtap='sureWaitClass'>已确认</view>
+    </view>
+  </view>
+</view>
+
+<!-- 支付 -->
+<view class='dialogMask' hidden="{{!showPay}}" catchtouchmove="true">
+  <view class='dialog-container'>
+    <scroll-view scroll-y="true" class='dialog-content'>
+      <view class='classContent'>课程{{gotoPayClassName}}实付{{gotoPayAmount*1.0/100}}元，需支付渠道费{{gotoPayCanalAmount*1.0/100}}元</view>
+    </scroll-view>
+    <view class='dialog-footer'>
+      <view class='dialog-btn' bindtap='payEor'>取消</view>
+      <view class='dialog-btn' bindtap='payOK'>确认</view>
+    </view>
+  </view>
+</view>
+
+<!--请输入支付密码-->
+<view class='dialogMask' hidden="{{!showPassword}}" catchtouchmove="true">
+  <view class='dialog-container relative  pb20'>
+  <image src='../../img/navback.png' mode='aspectFill' class='closeImg' bindtap='closePayDialog'></image>
+    <view class='dialog-title'>请输入支付密码</view>
+    <view class='moneyContent bort borb'>
+      <span class="ft24">￥</span>
+      <span class="moneyNumber">{{gotoPayAmount*1.0/100}}</span>
+    </view>
+    <view class='relative'>
+      <view class='blocks'>
+        <view class="block">
+          <view wx:if="{{!num.length}}" class="cursor"></view>
+          <text wx:if="{{num.length}}">{{num[0]}}</text>
+        </view>
+        <view class="block">
+          <view wx:if="{{num.length===1}}" class="cursor"></view>
+          <text wx:if="{{num.length>=2}}">{{num[1]}}</text>
+        </view>
+        <view class="block">
+          <view wx:if="{{num.length===2}}" class="cursor"></view>
+          <text wx:if="{{num.length>=3}}">{{num[2]}}</text>
+        </view>
+        <view class="block">
+          <view wx:if="{{num.length===3}}" class="cursor"></view>
+          <text wx:if="{{num.length>=4}}">{{num[3]}}</text>
+        </view>
+        <view class="block">
+          <view wx:if="{{num.length===4}}" class="cursor"></view>
+          <text wx:if="{{num.length>=5}}">{{num[4]}}</text>
+        </view>
+        <view class="block">
+          <view wx:if="{{num.length===5}}" class="cursor"></view>
+          <text wx:if="{{num.length>=6}}">{{num[5]}}</text>
+        </view>
+      </view>
+      <input type='number' class='moneyInput' value='{{num}}' cursor-spacing='40' bindinput='hasPassword' maxlength='6' focus="{{true}}" unselectable='on'></input>
+    </view>
+  </view>
+</view>
+
+<!--支付成功课程成交-->
+<view class='dialogMask' hidden="{{!showPaySuccess}}" catchtouchmove="true">
+  <view class='dialog-container'>
+    <scroll-view scroll-y="true" class='dialog-content'>
+      <view class='waitContainer'>
+        <image src='../../img/success1.png' class='waitTime' mode='aspectFill'></image>
+        <view class='ft28 mt20'>支付成功，课程已提交</view>
+      </view>
+      <view class='zhidaoBtn' bindtap='payOkEor'>知道了</view>
+    </scroll-view>
+    <!-- <view class='dialog-footer'>
+      <view class='dialog-btn' bindtap='payOkEor'>取消</view>
+      <view class='dialog-btn' bindtap='payOkRes'>确认</view>
+    </view> -->
+  </view>
+</view>
