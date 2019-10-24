@@ -79,11 +79,15 @@ Page({
     }
     netUtil.postRequest(url, params, function(res) {
       onsuccess(res);
-    }, null, false, false, false)
+    }, function(err) {
+      that.loading = false;
+    }, false, false, false)
   },
   //提交订单
   submit: function() {
     let that = this;
+    if (this.loading) return;
+    this.loading = true;
     var url = 'recharge/order/create';
     var params = {
       StoreType:that.data.status,
@@ -92,6 +96,7 @@ Page({
       OpenId: that.data.openId,
     }
     netUtil.postRequest(url, params, function(res) {
+      
       that.setData({
         rechargeId: res.Data.RechargeId,
         hideModal: false,
@@ -105,6 +110,7 @@ Page({
         'success': function(res) {
           that.isSuccess(function(item) {
             if (item.Data.IsPay == true) {
+              that.loading = false;
               wx.showModal({
                 title: '充值成功',
                 content: '您已成功充值 ' + that.data.price + ' 元',
@@ -128,6 +134,7 @@ Page({
               var setTime = setInterval(function() {
                 that.isSuccess(function(item) {
                   if (item.Data.IsPay == true) {
+                    that.loading = false;
                     clearInterval(setTime);
                     wx.showModal({
                       title: '充值成功',
@@ -159,11 +166,14 @@ Page({
             title: '用户取消支付',
             image: '../../img/cancel.png',
           });
+          that.loading = false;
           that.setData({
             hideModal: true
           })
         },
       });
+    }, function(err) {
+      that.loading = false;
     })
   },
   getUserInfo: function(e) {

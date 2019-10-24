@@ -39,7 +39,6 @@ Component({
     gotoPayCanalAmount: "", //需支付取到金额
 
     num: '', //支付密码
-    true:true
   },
 
   /**

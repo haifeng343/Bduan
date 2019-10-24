@@ -106,7 +106,8 @@
           <text wx:if="{{num.length>=6}}">{{num[5]}}</text>
         </view>
       </view>
-      <input type='number' class='moneyInput' value='{{num}}' cursor-spacing='40' bindinput='hasPassword' maxlength='6' focus="{{true}}" unselectable='on'></input>
+      <input type='number' class='moneyInput' value='{{num}}' cursor-spacing='40' bindinput='hasPassword' maxlength='6' 
+        focus='{{showPassword}}' unselectable='on'></input>
     </view>
   </view>
 </view>
