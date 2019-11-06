@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "确认课程成交信息",
+  "usingComponents": {
+    "pop": "../../components/pop/pop"
+  }
+
+}

@@ -213,6 +213,11 @@ button::after {
 .relative {
   position: relative;
 }
+.rela{
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
 
 .searchClass {
   width: 100%;
@@ -534,10 +539,6 @@ image {
   object-fit: cover;
 }
 
-.relative {
-  position: relative;
-}
-
 .cc {
   color: #5b5b5b;
 }
@@ -572,7 +573,7 @@ image {
 }
 
 .h80 {
-  line-height: 80rpx!important;
+  line-height: 80rpx !important;
   display: flex;
   align-items: center;
 }
@@ -902,7 +903,6 @@ radio .wx-radio-input.wx-radio-input-checked::before {
   margin-right: 10rpx;
 }
 
-
 .storeDialogRight {
   width: 64%;
   display: flex;
@@ -1219,7 +1219,8 @@ label {
 }
 
 /*******************封装弹窗**************************/
-.dialogMask{
+
+.dialogMask {
   position: fixed;
   top: 0;
   left: 0;
@@ -1233,7 +1234,8 @@ label {
   align-items: center;
   font-size: 28rpx;
 }
-.dialog-container{
+
+.dialog-container {
   width: 90%;
   height: auto;
   background-color: #fff;
@@ -1246,7 +1248,8 @@ label {
   box-sizing: border-box;
   padding-top: 0;
 }
-.dialog-title{
+
+.dialog-title {
   width: 100%;
   height: 80rpx;
   line-height: 80rpx;
@@ -1256,14 +1259,16 @@ label {
   align-items: center;
   color: #000;
 }
-.dialog-content{
+
+.dialog-content {
   width: 100%;
   height: auto;
   max-height: 800rpx;
   box-sizing: border-box;
   padding: 20rpx 5%;
 }
-.dialog-footer{
+
+.dialog-footer {
   width: 100%;
   height: 80rpx;
   line-height: 80rpx;
@@ -1271,7 +1276,8 @@ label {
   justify-content: space-around;
   border-top: 2rpx solid #f4f4f4;
 }
-.dialog-btn{
+
+.dialog-btn {
   flex: 1;
   display: flex;
   align-items: center;
@@ -1279,6 +1285,16 @@ label {
   text-align: center;
   box-sizing: border-box;
 }
-.dialog-btn:first-child{
+
+.dialog-btn:first-child {
   border-right: 2rpx solid #f4f4f4;
+}
+
+/**********************mtml*********************/
+
+.mtml {
+  width: 100%;
+  height: auto!important;
+  position: relative!important;
+  top: 80rpx;
 }

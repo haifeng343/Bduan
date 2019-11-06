@@ -1,44 +1,44 @@
-<view class='address'>
-  <view class='noHas' wx:if="{{List.length<=0}}">
+<view class='rela' wx:if="{{List.length<=0}}">
+  <view class='noHas'>
     <image src='../../img/zanwu.png' mode='widthFix' class='noList'></image>
     <view class='notext'>暂无账户</view>
   </view>
-  <view wx:else>
-    <view class="container">
-      <view class='column item pb20' wx:for="{{items}}" wx:key>
-        <view class='start'>
-          <view>
-            <image src='{{item.HeadUrl}}' mode='aspectFill' class='avator'></image>
+</view>
+<view wx:else>
+  <view class="container">
+    <view class='column item pb20' wx:for="{{List}}" wx:key>
+      <view class='start'>
+        <view>
+          <image src='{{item.HeadUrl}}' mode='aspectFill' class='avator'></image>
+        </view>
+        <view class='column'>
+          <view class='start ft28'>
+            <view class='start center'>账户名：
+              <view class='noWra mr5'>{{item.UserName}}</view>
+            </view>
           </view>
-          <view class='column'>
-            <view class='start ft28'>
-              <view class='start center'>账户名：
-                <view class='noWra mr5'>{{item.UserName}}</view>
-              </view>
+          <view class='start ft24 bb'>账户类型：
+            <text wx:if="{{item.AdminPower==0}}">普通账户</text>
+            <text wx:if="{{item.AdminPower==1}}">管理员</text>
+            <text wx:if="{{item.AdminPower==2}}">超级管理员</text>
+          </view>
+          <view class='between ft24 bb'>
+            <view wx:if="{{item.Mobile}}">手机号：{{item.Mobile}}</view>
+            <view wx:else>暂无绑定手机号</view>
+          </view>
+          <view class='between ft24'>
+            <view>
+              <view class='bb'>创建时间：2019-12-12</view>
             </view>
-            <view class='start ft24 bb'>账户类型：
-              <text wx:if="{{item.AdminPower==0}}">普通账户</text>
-              <text wx:if="{{item.AdminPower==1}}">管理员</text>
-              <text wx:if="{{item.AdminPower==2}}">超级管理员</text>
-            </view>
-            <view class='between ft24 bb'>
-              <view wx:if="{{item.Mobile}}">手机号：{{item.Mobile}}</view>
-              <view wx:else>暂无绑定手机号</view>
-            </view>
-            <view class='between ft24'>
-              <view>
-                <view class='bb'>创建时间：2019-12-12</view>
-              </view>
-            </view>
+          </view>
 
-          </view>
-          <view class='center r5'>
-            <image class='edit' bindtap='edit' data-name="{{item.UserName}}" data-id="{{item.AccountId}}" src='../../img/more.png' mode='aspectFill' lazy-load='true'></image>
-          </view>
+        </view>
+        <view class='center r5'>
+          <image class='edit' bindtap='edit' data-name="{{item.UserName}}" data-id="{{item.AccountId}}" src='../../img/more.png' mode='aspectFill' lazy-load='true'></image>
         </view>
       </view>
     </view>
-    <view class='lastItem'></view>
   </view>
-  <view class='add' data-ids="{{ids}}" wx:if="{{IsAdministrator}}" bindtap='bindAddAccount'>新增账户</view>
+  <view class='lastItem'></view>
 </view>
+<view class='add' data-ids="{{ids}}" wx:if="{{IsAdministrator}}" bindtap='bindAddAccount'>新增账户</view>

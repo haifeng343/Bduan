@@ -84,7 +84,7 @@ Page({
       that.setData({
         List: arr1
       })
-    })
+    }, null, true, true, true, true)
   },
   bindDateChange: function(e) {
 
@@ -146,8 +146,6 @@ Page({
       page: 1
     });
     this.getData();
-    // 停止下拉动作
-    wx.stopPullDownRefresh();
   },
   onShareAppMessage: function() {
 

@@ -64,7 +64,8 @@ Page({
       that.setData({
         List: arr1
       })
-    })
+      
+    }, null, true, true, true, true);
   },
   bindDateChange: function (e) {
     // console.log('picker发送选择改变，携带值为', e.detail.value)
@@ -106,9 +107,6 @@ Page({
   //上拉加载更多
   onReachBottom: function () {
     let that = this;
-    wx.showLoading({
-      title: '玩命加载中',
-    });
     var temp_page = this.data.page;
     temp_page++;
     this.setData({
@@ -119,15 +117,10 @@ Page({
   },
   //下拉刷新
   onPullDownRefresh: function () {
-    wx.showLoading({
-      title: "玩命加载中",
-    });
     this.setData({
       page: 1
     });
     this.getData();
-    // 停止下拉动作
-    wx.stopPullDownRefresh();
   },
   onShareAppMessage: function () {
 

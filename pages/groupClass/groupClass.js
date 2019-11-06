@@ -60,7 +60,7 @@ Page({
       that.setData({
         groupList: arr1
       })
-    });
+    }, null, true, true, true, true);
   },
   bindDetailSure: function() {
     if (!this.data.money) {
@@ -158,7 +158,6 @@ Page({
       page: 1
     });
     this.init();
-    wx.stopPullDownRefresh();
   },
   //上拉刷新
   onReachBottom: function() {
@@ -168,7 +167,6 @@ Page({
       page: temp
     })
     this.init();
-    wx.stopPullDownRefresh();
   },
   //编辑
   edit: function(e) {

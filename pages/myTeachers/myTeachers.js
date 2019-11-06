@@ -36,7 +36,7 @@ Page({
       that.setData({
         items: arr1
       })
-    });
+    }, null, true, true, true, true);
   },
   //错误弹窗
   clickEor: function (e) {
@@ -127,7 +127,6 @@ Page({
       page: 1
     })
     this.init();
-    wx.stopPullDownRefresh();
   },
 
   onReachBottom: function() {

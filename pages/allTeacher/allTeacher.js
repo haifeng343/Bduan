@@ -35,16 +35,15 @@ Page({
       that.setData({
         teacherList: arr1
       })
-    });
+    }, null, true, true, true, true);
   },
   onPullDownRefresh:function() {
     this.setData({
       page: 1
     });
     this.getData();
-    wx.stopPullDownRefresh();
   },
-  //上拉刷新
+
   onReachBottom: function () {
     let temp = this.data.page;
     temp++
@@ -52,7 +51,6 @@ Page({
       page: temp
     })
     this.getData();
-    wx.stopPullDownRefresh();
   },
   onShareAppMessage: function () {
 

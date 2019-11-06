@@ -104,8 +104,7 @@ Page({
       that.setData({
         modelList: tempModelList
       })
-      wx.hideLoading();
-    });
+    }, null, true, true, true, true);
   },
   /**
    * 点击导航栏
@@ -133,14 +132,9 @@ Page({
       modelList: temp
     })
     that.getData();
-    wx.stopPullDownRefresh();
   },
   //上拉加载更多
   onReachBottom: function () {
-    // wx.pageScrollTo({
-    //   scrollTop: 0,
-    //   duration: 0
-    // })
     let that = this;
     let temp = that.data.modelList;
     temp[that.data.navbarActiveIndex].pageIndex++;
@@ -149,11 +143,6 @@ Page({
     })
     that.getData();
   },
-  // orderDetail: function (e) {
-  //   wx.navigateTo({
-  //     url: '/pages/orderDetail/orderDetail?Id=' + e.currentTarget.dataset.id + '&status=' + (this.data.navbarActiveIndex + 1) + '&kd=3',
-  //   })
-  // },
   bindDetail: function (e) {
     wx.navigateTo({
       url: '/pages/activityDetail/activityDetail?id=' + e.currentTarget.dataset.id,

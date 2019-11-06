@@ -48,7 +48,7 @@ Page({
       that.setData({
         storeItemList: res.Data
       })
-    });
+    }, null, true, true, true, true);
   },
   //获取商户课程列表
   getSellerItemList: function() {
@@ -340,7 +340,6 @@ Page({
   },
   onPullDownRefresh: function() {
     this.init();
-    wx.stopPullDownRefresh();
   },
   onShareAppMessage: function() {
 

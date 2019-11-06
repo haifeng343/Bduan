@@ -16,11 +16,13 @@
     </view>
   </view>
 </view>
-<view class='nohasLog' wx:if="{{List.length<=0}}">
-  <image src='../../img/zanwu.png' mode='widthFix' class='noImg'></image>
-  <view class='notext'>暂无代金券验券记录</view>
+<view wx:if="{{List.length<=0}}">
+  <view class='nohasLog'>
+    <image src='../../img/zanwu.png' mode='widthFix' class='noImg'></image>
+    <view class='notext'>暂无代金券验券记录</view>
+  </view>
 </view>
-<scroll-view scroll-y="true" class='List' wx:else>
+<scroll-view scroll-y="true" class='List mtml' wx:else>
   <view class='item' wx:for="{{List}}" wx:key wx:for-item="item1">
     <view class='between h50'>
       <view class='quanName'>{{item1.CardName}}</view>

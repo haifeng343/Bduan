@@ -110,8 +110,7 @@ Page({
       that.setData({
         modelList: tempModelList
       })
-      wx.hideLoading();
-    });
+    }, null, true, true, true, true);
   },
   /**
    * 点击导航栏
@@ -139,7 +138,6 @@ Page({
       modelList: temp
     })
     that.getData();
-    wx.stopPullDownRefresh();
   },
   //上拉加载更多
   onReachBottom: function () {

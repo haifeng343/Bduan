@@ -49,7 +49,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 54,
 			"list": [
 				{
 					"id": -1,
@@ -426,6 +426,13 @@
 					"id": -1,
 					"name": "transaction",
 					"pathName": "pages/transaction/transaction",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 54,
+					"name": "qrClassPage",
+					"pathName": "pages/qrClassPage/qrClassPage",
 					"query": "",
 					"scene": null
 				}

@@ -3,7 +3,7 @@ Page({
 
   data: {
     Id:'',
-    items:[],
+    List:[],
     IsAdministrator:'',//是否为管理员
     AdminPower: '',//是否为超级管理员
     name:'',
@@ -28,16 +28,16 @@ Page({
     }
     netUtil.postRequest(url, params, function (res) {
       let arr = res.Data;
-      let arr1 = that.data.items;
+      let arr1 = that.data.List;
       if (that.data.page == 1) {
         arr1 = arr
       } else {
         arr1 = arr1.concat(arr);
       }
       that.setData({
-        items: arr1
+        List: arr1
       })
-    });
+    }, null, true, true, true, true);
   },
   //编辑
   edit: function (e) {
@@ -93,7 +93,6 @@ Page({
       page: 1
     })
     this.init();
-    wx.stopPullDownRefresh();
   },
 
   onReachBottom: function () {

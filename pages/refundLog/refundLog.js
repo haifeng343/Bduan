@@ -55,7 +55,7 @@ Page({
       that.setData({
         List: arr1
       })
-    })
+    }, null, true, true, true, true)
   },
   bindEor: function(e) {
     console.log(e)
@@ -86,7 +86,6 @@ Page({
       page: 1
     })
     this.init();
-    wx.stopPullDownRefresh();
   },
 
   onReachBottom: function() {

@@ -6,9 +6,11 @@
   </picker>
   <image src='../../img/select.png' class='select' mode='widthFix' lazy-load='true'></image>
 </view>
-<view class='nohasLog' wx:if="{{List.length<=0}}">
+<view class='rela' wx:if="{{List.length<=0}}">
+<view class='nohasLog'>
   <image src='../../img/zanwu.png' mode='widthFix' class='noImg'></image>
   <view class='notext'>暂无验证记录</view>
+</view>
 </view>
 <view class='mtml' wx:else>
   <view class='content between borb ft28'>

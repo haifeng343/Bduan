@@ -53,14 +53,13 @@ Page({
       that.setData({
         sheetList: arr1
       })
-    });
+    },null,true,true,true,true);
   },
   onPullDownRefresh: function() {
     this.setData({
       page: 1
     });
     this.init();
-    wx.stopPullDownRefresh();
   },
   //上拉刷新
   onReachBottom: function() {
@@ -70,7 +69,6 @@ Page({
       page: temp
     })
     this.init();
-    wx.stopPullDownRefresh();
   },
   //错误弹窗
   clickEor: function(e) {
@@ -211,10 +209,6 @@ Page({
   //分配课程
   fenpei: function() {
     this.getSellerItemList();
-  },
-  onPullDownRefresh: function() {
-    this.init();
-    wx.stopPullDownRefresh();
   },
   onShareAppMessage: function() {
 

@@ -14,7 +14,9 @@
     </view>
   </view>
 </view>
-<view class='nohasLog' wx:else>
-  <image src='../../img/zanwu.png' mode='widthFix' class='noList'></image>
-  <view class='notext'>暂无预约管理记录</view>
+<view class='rela' wx:else>
+  <view class='nohasLog'>
+    <image src='../../img/zanwu.png' mode='widthFix' class='noList'></image>
+    <view class='notext'>暂无预约管理记录</view>
+  </view>
 </view>

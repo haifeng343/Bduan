@@ -1,0 +1,34 @@
+<view class='container bg'>
+  <view class='classItem'>
+    <view class='start centers w100'>
+      <label>机构名称: </label>
+      <picker class='picker' mode="selector" bindchange="bindPickerStoreChange" range-key="StoreName" value="{{storeIndex}}" range="{{storeList}}">
+        <input type='text' disabled value='{{selectPicker.StoreName}}' class='itemRight'></input>
+        <image src='../../img/select.png' class='InputIcon'></image>
+      </picker>
+    </view>
+  </view>
+  <view class="classItem">
+    <view class='start centers w100'>
+      <label class="{{(selectPicker && classList && classList.length>0)?'':'Gray'}}">课程名称: </label>
+      <picker disabled="{{(selectPicker && classList && classList.length>0)?false:true}}" class="picker" mode="selector" bindchange="bindPickeClassrChange" range-key="ItemName" value="{{itemIndex}}" range="{{classList}}">
+        <input type='text' disabled value='{{selectClass.ItemName}}' class='itemRight'></input>
+        <image src='../../img/select.png' class='InputIcon'></image>
+      </picker>
+    </view>
+  </view>
+  <view class='classItem'>
+    <view class='start centers w100'>
+      <label>课程原价 (元): </label>
+      <input type='number' value='{{price}}' cursor-spacing='80' bindinput='bindChangePrice' class='itemRight1'></input>
+    </view>
+  </view>
+  <view class='classItem'>
+    <view class='start centers w100'>
+      <label>实付价格 (元): </label>
+      <input type='number' value='{{payAmount}}' cursor-spacing='80' bindinput='bindChangeAmount' cursor-spacing='60' class='itemRight1'></input>
+    </view>
+  </view>
+</view>
+
+<view class='btnSure' bindtap='sureClassClick'>确定</view>

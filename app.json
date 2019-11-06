@@ -55,7 +55,8 @@
     "pages/reservationForm/reservationForm",
     "pages/addAppointment/addAppointment",
     "pages/reservationList/reservationList",
-    "pages/transaction/transaction"
+    "pages/transaction/transaction",
+    "pages/qrClassPage/qrClassPage"
   ],
   "window": {
     "backgroundTextStyle": "dark",

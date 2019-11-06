@@ -34,7 +34,7 @@ Page({
       that.setData({
         List: arr1,
       })
-    })
+    }, null, true, true, true, true)
   },
   bindSearch: function() {
     wx.navigateTo({
@@ -51,7 +51,6 @@ Page({
       page:1
     })
     this.init();
-    wx.stopPullDownRefresh();
   },
 
   onReachBottom: function() {

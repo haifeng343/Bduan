@@ -51,65 +51,7 @@ Component({
         showSureClass: false,
       })
     },
-    sureClassClick: function() {
-      let that = this;
-      that._basesubsidyConfirm(function(res) {
-        if (res.Status == 1) {
-          that.waitClass(res);
-        } else if (res.Status == 3) {
-          that.gotoPay(res);
-        }
-        that.setData({
-          showSureClass: false
-        })
-      });
-    },
-    // 补贴宝确认课程信息
-    _basesubsidyConfirm: function(onSuccess) {
-      let that = this;
-      var url = 'account/basesubsidy/confirm';
-      if (!that.data.selectPicker) {
-        wx.showToast({
-          icon: 'none',
-          title: '请选择门店',
-        })
-        return
-      }
-      if (!that.data.selectClass) {
-        wx.showToast({
-          icon: 'none',
-          title: '请选择课程',
-        })
-        return
-      }
-      if (!that.data.price) {
-        wx.showToast({
-          icon: 'none',
-          title: '请输入课程原价',
-        })
-        return
-      }
-      if (!that.data.payAmount) {
-        wx.showToast({
-          icon: 'none',
-          title: '请输入实付价格',
-        })
-        return
-      }
-      var params = {
-        QrCode: that.data.qrCode,
-        RecordId: that.data.sureClassRecordId,
-        StoreId: that.data.selectPicker.StoreId,
-        ItemId: that.data.selectClass.ItemId,
-        Price: that.data.price * 100,
-        PayAmount: that.data.payAmount*100,
-      }
-      netUtil.postRequest(url, params, function(res) {
-        if (onSuccess) {
-          onSuccess(res.Data);
-        }
-      })
-    },
+
     //获取课程原价
     bindChangePrice: function(e) {
       this.setData({
@@ -130,19 +72,31 @@ Component({
         showClass: false,
       })
     },
+
+    showDlgErrorInfo: function() {
+      wx.showModal({
+        content: '成交课程信息有误，请确认',
+        showCancel: false,
+        confirmColor: "#000",
+        confirmText: "知道了"
+      })
+    },
+
     sureWaitClass: function() {
       let that = this;
       that._basesubsidyDealConfirm(function(res) {
         if (res.Status == 0) {
-          that.sureClass(res);
+          that.showDlgErrorInfo();
         } else if (res.Status == 3) {
           that.gotoPay(res);
         }
+
         that.setData({
           showClass: false,
         })
       });
     },
+
     // 补贴宝确认成交信息
     _basesubsidyDealConfirm: function(onSuccess) {
       let that = this;
@@ -163,6 +117,7 @@ Component({
         showPay: false
       })
     },
+
     payOK: function() {
       this.setData({
         showPay: false,
@@ -170,24 +125,27 @@ Component({
         num: '',
       })
     },
+
     // 关闭支付页面
     closePayDialog: function() {
       this.setData({
         showPassword: false
       })
+
       wx.showToast({
         icon: "none",
         title: '支付已取消',
       })
     },
+
     // 支付成功课程成交 showPaySuccess
     payOkEor: function() {
       this.setData({
         showPaySuccess: false
       })
     },
-    payOkRes: function() {
 
+    payOkRes: function() {
     },
 
     //获取支付密码
@@ -200,6 +158,7 @@ Component({
         that._basesubsidyPay();
       }
     },
+
     // 补贴宝商家支付
     _basesubsidyPay: function() {
       let that = this;
@@ -220,20 +179,20 @@ Component({
       })
     },
 
-
     //弹出选择课程
     _showClassDialog: function(temp) {
-      let that=this;
-      if (!temp) {
-        return;
-      }
+      let that = this;
       if (temp.Status == 0) {
-        that.sureClass(temp);
+        if (temp.StoreId != 0) {
+          that.showDlgErrorInfo();
+        }
       } else if (temp.Status == 1) {
         that.waitClass(temp);
+      } else if (temp.Status == 2) {
+        
       } else if (temp.Status == 3) {
         that.gotoPay(temp);
-      }else{
+      } else if (temp.Status == 4) {
         wx.showToast({
           icon:'none',
           title: '已成交',
@@ -241,16 +200,13 @@ Component({
       }
     },
 
-
     //去支付初始化
     gotoPay: function(tempInfo) {
       let that = this;
-      if (!tempInfo) {
-        return;
-      }
       that.setData({
         showPay: true
       });
+
       that.setData({
         gotoPayRecordId: tempInfo.RecordId,
         gotoPayAmount: tempInfo.PayAmount,
@@ -262,75 +218,15 @@ Component({
     //等待课程确认初始化
     waitClass: function(tempInfo) {
       let that = this;
-      if (!tempInfo) {
-        return;
-      }
       that.setData({
         showClass: true
       });
+
       that.setData({
         waitClassRecordId: tempInfo.RecordId
       });
     },
 
-    //成交课表信息弹出框初始化
-    sureClass: function(tempInfo) {
-      let that = this;
-      that._getStore(tempInfo.StoreIdList, function(res) {
-        if (tempInfo.RecordId != 0) {
-          let tempIndex = 0;
-          let storeName = "";
-          res.forEach((e, index) => {
-            if (e.StoreId == tempInfo.StoreId) {
-              tempIndex = index;
-              storeName = e.StoreName
-            }
-          });
-          that.setData({
-            selectPicker: {
-              StoreId: tempInfo.StoreId,
-              StoreName: storeName
-            },
-            storeIndex: tempIndex,
-            price: tempInfo.Price*1.0/100,
-            payAmount: tempInfo.PayAmount * 1.0 / 100,
-          });
-          that._getClass(tempInfo.StoreId, function(res) {
-            if (res && res.length > 0) {
-              let tempItemIndex = 0;
-              let itemName = "";
-              res.forEach((e, itemIndex) => {
-                if (e.ItemId == tempInfo.ItemId) {
-                  tempItemIndex = itemIndex;
-                  itemName = e.ItemName;
-                }
-              });
-              that.setData({
-                selectClass: {
-                  ItemId: tempInfo.ItemId,
-                  ItemName: itemName
-                },
-                itemIndex: tempItemIndex
-              });
-            }
-          });
-        } else {
-          that.setData({
-            storeIndex: 0,
-            itemIndex: 0,
-            selectClass: {},
-            selectPicker: {},
-            price: '',
-            payAmount: '',
-          })
-        }
-      });
-      that.setData({
-        sureClassRecordId: tempInfo.RecordId,
-        qrCode: tempInfo.QrCode,
-        showSureClass: true
-      });
-    },
     //获取所有门店列表
     _getStore: function(storeIdList, onSuccess) {
       let that = this;
@@ -343,14 +239,17 @@ Component({
             return storeIdList.indexOf(e.StoreId) != -1;
           });
         }
+
         that.setData({
           storeList: arr
         })
+
         if (onSuccess) {
           onSuccess(arr);
         }
       })
     },
+
     //改变picker值
     bindPickerStoreChange: function(e) {
       let that = this;
@@ -358,13 +257,16 @@ Component({
       if (that.data.storeList[index].StoreId == that.data.selectPicker.StoreId) {
         return;
       }
+
       that.setData({
         selectPicker: that.data.storeList[index],
         selectClass: {}
       })
+
       let storeId = that.data.selectPicker.StoreId;
       that._getClass(storeId);
     },
+
     //获取所有门店课程
     _getClass: function(storeId, onSuccess) {
       let that = this;
@@ -376,11 +278,13 @@ Component({
         that.setData({
           classList: res.Data,
         })
+        
         if (onSuccess) {
           onSuccess(res.Data);
         }
       })
     },
+
     bindPickeClassrChange: function(e) {
       let that = this;
       let index = e.detail.value;

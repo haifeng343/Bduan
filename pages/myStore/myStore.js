@@ -30,7 +30,7 @@ Page({
       that.setData({
         List:res.Data
       })
-    })
+    }, null, true, true, true, true)
   },
   bindStoreManag:function(e) {
     if(this.data.usertoken){
@@ -41,7 +41,6 @@ Page({
   },
   onPullDownRefresh:function() {
     this.init();
-    wx.stopPullDownRefresh();
   },
   onShareAppMessage: function () {
 

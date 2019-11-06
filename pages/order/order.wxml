@@ -1,32 +1,32 @@
-<view style=''>
-  <view class='searchClass' wx:if="{{List.length>0}}">
-    <input class='seachTo' bindtap='bindSearch' disabled placeholder='订单号/账户号'></input>
-  </view>
-  <view class='nohasLog' wx:if="{{List.length<=0}}">
+<view class='searchClass' wx:if="{{List.length>0}}">
+  <input class='seachTo' bindtap='bindSearch' disabled placeholder='订单号/账户号'></input>
+</view>
+<view wx:if="{{List.length<=0}}">
+  <view class='nohasLog'>
     <image src='../../img/zanwu.png' mode='widthFix' class='noList'></image>
-  <view class='notext'>暂无订单</view>
+    <view class='notext'>暂无订单</view>
   </view>
-  <view class='List List1' wx:else>
-    <view class='item column' wx:for="{{List}}" data-id="{{item.OrderId}}" bindtap='bindDetail' wx:key>
-      <view class='between'>
-        <view class='ft28'>订单号：{{item.OrderSN}}</view>
-        <view class='ft28' wx:if="{{item.OrderStatus==1}}">未使用</view>
-        <view class='ft28' wx:if="{{item.OrderStatus==2}}">部分使用</view>
-        <view class='ft28' wx:if="{{item.OrderStatus==3}}">已完成</view>
-        <view class='ft28' wx:if="{{item.OrderStatus==4}}">已过期</view>
-      </view>
-      <view class='ft28'>购买时间：{{item.BuyTime}}</view>
-      <view class='ft28'>购买账户：{{item.BuyAccountName}}({{item.BuyAccountMobile==''?'空':item.BuyAccountMobile}})</view>
-      <view class='between klp' wx:for="{{item.ItemList}}" wx:key wx:for-item="k">
-        <view class='start'>
-          <view class='center'>
-            <image class='icon mr5' src='../../img/b2.png' mode='widthFix'></image>
-          </view>
-          <view class='ft28'>{{k.ItemName}} ({{k.StoreName}})</view>
-        </view>
+</view>
+<view class='List List1' wx:else>
+  <view class='item column' wx:for="{{List}}" data-id="{{item.OrderId}}" bindtap='bindDetail' wx:key>
+    <view class='between'>
+      <view class='ft28'>订单号：{{item.OrderSN}}</view>
+      <view class='ft28' wx:if="{{item.OrderStatus==1}}">未使用</view>
+      <view class='ft28' wx:if="{{item.OrderStatus==2}}">部分使用</view>
+      <view class='ft28' wx:if="{{item.OrderStatus==3}}">已完成</view>
+      <view class='ft28' wx:if="{{item.OrderStatus==4}}">已过期</view>
+    </view>
+    <view class='ft28'>购买时间：{{item.BuyTime}}</view>
+    <view class='ft28'>购买账户：{{item.BuyAccountName}}({{item.BuyAccountMobile==''?'空':item.BuyAccountMobile}})</view>
+    <view class='between klp' wx:for="{{item.ItemList}}" wx:key wx:for-item="k">
+      <view class='start'>
         <view class='center'>
-          <image class='icon' wx:if="{{item.OrderStatus==2 || item.OrderStatus==3}}" src='../../img/gou.png' mode='widthFix'></image>
+          <image class='icon mr5' src='../../img/b2.png' mode='widthFix'></image>
         </view>
+        <view class='ft28'>{{k.ItemName}} ({{k.StoreName}})</view>
+      </view>
+      <view class='center'>
+        <image class='icon' wx:if="{{item.OrderStatus==2 || item.OrderStatus==3}}" src='../../img/gou.png' mode='widthFix'></image>
       </view>
     </view>
   </view>

@@ -1,6 +1,8 @@
-<view class='noHas' wx:if="{{items.length<=0}}">
+<view class='rela' wx:if="{{items.length<=0}}">
+<view class='noHas'>
   <image src='../../img/zanwu.png' mode='widthFix' class='noList'></image>
   <view class='notext'>暂无师资</view>
+</view>
 </view>
 <view wx:else>
   <view class="container">

@@ -25,9 +25,11 @@
       </view>
     </view>
   </view>
-  <view class='nohasLog' wx:if="{{modelList[navbarActiveIndex].list.length<=0}}">
-    <image class='noImg' src='../../img/zanwu.png' mode='widthFix' lazy-load='true'></image>
-    <view class='notext'>暂无预约记录</view>
+  <view class='rela' wx:if="{{modelList[navbarActiveIndex].list.length<=0}}">
+    <view class='nohasLog'>
+      <image class='noImg' src='../../img/zanwu.png' mode='widthFix' lazy-load='true'></image>
+      <view class='notext'>暂无预约记录</view>
+    </view>
   </view>
   <view wx:else>
     <view class='reserList'>
@@ -47,8 +49,8 @@
         </view>
         <view class='start ft28 bb'>
           <view>手机号码: {{item.AppointmentMobile}}</view>
-          <view class='ml20'>孩子信息: 
-          <span wx:if="{{item.ChildName}}">{{item.ChildName}}</span>
+          <view class='ml20'>孩子信息:
+            <span wx:if="{{item.ChildName}}">{{item.ChildName}}</span>
             <span wx:if="{{item.ChildAge}}">({{item.ChildAge}}岁)</span>
           </view>
         </view>
@@ -101,7 +103,7 @@
 <!--确认预约弹窗-->
 <view class='dialogMask' hidden="{{!showConfirm}}" catchtouchmove="true">
   <view class='dialog-container'>
-  <!-- <cover-image src='../../img/cha.png' bindtap='closeConfirm' class='cha' mode='aspectFill'></cover-image> -->
+    <!-- <cover-image src='../../img/cha.png' bindtap='closeConfirm' class='cha' mode='aspectFill'></cover-image> -->
     <view class='dialog-title'>{{type==1?'修改预约':'确认预约'}}</view>
     <scroll-view scroll-y="true" class='dialog-content'>
       <calendar bindnextMonth="next" bindprevMonth="prev" year="{{year1}}" month="{{month1}}" day="{{day1}}" binddateChange="dateChange" binddayClick="dayClick" weeks-type="cn" active-type="rounded" pitch_on="circle" days-color="{{dayStyle}}" board-style="board"

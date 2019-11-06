@@ -42,7 +42,7 @@ Page({
       that.setData({
         List: arr1,
       })
-    })
+    },null,true,true,true,true)
   },
   init: function() {
     let that = this;
@@ -66,7 +66,6 @@ Page({
       page: 1
     })
     this.getOrderList();
-    wx.stopPullDownRefresh();
   },
 
   onReachBottom: function () {

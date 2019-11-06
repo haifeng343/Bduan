@@ -1,15 +1,15 @@
 /**
  * 供外部post请求调用
  */
-function post(url, params, onSuccess, onFailed, isShowLoading = true, isShowError = true, isnavigateToLogin = true) {
-  request(url, params, "POST", onSuccess, onFailed, isShowLoading, isShowError, isnavigateToLogin);
+function post(url, params, onSuccess, onFailed, isShowLoading = true, isShowError = true, isnavigateToLogin = true, isStopPullDown=false) {
+  request(url, params, "POST", onSuccess, onFailed, isShowLoading, isShowError, isnavigateToLogin, isStopPullDown);
 }
 
 /**
  * 供外部get请求调用
  */
-function get(url, params, onSuccess, onFailed, isShowLoading = true, isShowError = true, isnavigateToLogin = true) {
-  request(url, params, "GET", onSuccess, onFailed, isShowLoading, isShowError, isnavigateToLogin);
+function get(url, params, onSuccess, onFailed, isShowLoading = true, isShowError = true, isnavigateToLogin = true, isStopPullDown = false) {
+  request(url, params, "GET", onSuccess, onFailed, isShowLoading, isShowError, isnavigateToLogin, isStopPullDown);
 }
 
 /**
@@ -22,10 +22,10 @@ function get(url, params, onSuccess, onFailed, isShowLoading = true, isShowError
  * @onFailed  失败回调
  */
 
-// const baseUrl = "https://qxbseller.guditech.com/";
-const baseUrl = "https://test.guditech.com/rocketseller/";
+const baseUrl = "https://qxbseller.guditech.com/";
+// const baseUrl = "https://test.guditech.com/rocketseller/";
 
-function request(url, params, method, onSuccess, onFailed, isShowLoading, isShowError, isnavigateToLogin) {
+function request(url, params, method, onSuccess, onFailed, isShowLoading, isShowError, isnavigateToLogin, isStopPullDown) {
   if (isShowLoading) {
     wx.showLoading({
       title: '玩命加载中...',
@@ -81,6 +81,10 @@ function request(url, params, method, onSuccess, onFailed, isShowLoading, isShow
         }
         /** end 处理结束*/
       }
+
+      if (isStopPullDown) {
+        wx.stopPullDownRefresh();
+      }
     },
 
     fail: function(error) {
@@ -97,6 +101,10 @@ function request(url, params, method, onSuccess, onFailed, isShowLoading, isShow
 
       if (onFailed) {
         onFailed(error);
+      }
+
+      if (isStopPullDown) {
+        wx.stopPullDownRefresh();
       }
     }
   })

@@ -47,7 +47,7 @@
     <scroll-view scroll-y="true" class='dialog-content'>
       <view class='waitContainer'>
         <image src='../../img/wait.png' class='waitTime' mode='aspectFill'></image>
-        <view class='ft28 mt20'>等待家长确认课程成交信息</view>
+        <view class='ft28 mt20'>等待确认课程成交信息</view>
       </view>
     </scroll-view>
     <view class='dialog-footer'>
@@ -61,7 +61,7 @@
 <view class='dialogMask' hidden="{{!showPay}}" catchtouchmove="true">
   <view class='dialog-container'>
     <scroll-view scroll-y="true" class='dialog-content'>
-      <view class='classContent'>课程{{gotoPayClassName}}实付{{gotoPayAmount*1.0/100}}元，需支付渠道费{{gotoPayCanalAmount*1.0/100}}元</view>
+      <view class='classContent'>课程 “{{gotoPayClassName}} ”实付{{gotoPayAmount*1.0/100}}元，需支付渠道费{{gotoPayCanalAmount*1.0/100}}元</view>
     </scroll-view>
     <view class='dialog-footer'>
       <view class='dialog-btn' bindtap='payEor'>取消</view>
@@ -76,7 +76,7 @@
   <image src='../../img/navback.png' mode='aspectFill' class='closeImg' bindtap='closePayDialog'></image>
     <view class='dialog-title'>请输入支付密码</view>
     <view class='moneyContent bort borb'>
-      <span class="ft24">￥</span>
+      <span class="ft24">需支付渠道费￥</span>
       <span class="moneyNumber">{{gotoPayAmount*1.0/100}}</span>
     </view>
     <view class='relative'>
@@ -118,7 +118,7 @@
     <scroll-view scroll-y="true" class='dialog-content'>
       <view class='waitContainer'>
         <image src='../../img/success1.png' class='waitTime' mode='aspectFill'></image>
-        <view class='ft28 mt20'>支付成功，课程已提交</view>
+        <view class='ft28 mt20'>已成功支付课程渠道费！</view>
       </view>
       <view class='zhidaoBtn' bindtap='payOkEor'>知道了</view>
     </scroll-view>

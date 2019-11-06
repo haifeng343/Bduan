@@ -45,7 +45,7 @@ Page({
       that.setData({
         List: res.Data,
       })
-    })
+    }, null, true, true, true, true)
   },
   //获取商户账户列表
   getAccountList: function() {
@@ -122,7 +122,6 @@ Page({
   },
   onPullDownRefresh: function() {
     this.init();
-    wx.stopPullDownRefresh();
   },
   onShareAppMessage: function() {
 

@@ -338,7 +338,7 @@ Page({
       that.setData({
         modelList: tempModelList
       });
-    });
+      }, null, true, true, true, true);
   },
 
   initPicker: function() {
@@ -435,7 +435,6 @@ Page({
   onPullDownRefresh: function() {
     let that = this;
     that.getData(1);
-    wx.stopPullDownRefresh();
   },
   //上拉加载更多
   onReachBottom: function() {

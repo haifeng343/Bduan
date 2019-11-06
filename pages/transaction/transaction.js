@@ -17,6 +17,7 @@ Page({
     showId: 0, //选中门店下标
     storeName: "全部门店", //默认
   },
+
   initPicker: function() {
     var date = new Date();
     let arr = [],
@@ -27,6 +28,7 @@ Page({
     for (var i = year; i > 1970; i--) {
       arr.push(i)
     }
+
     arr1 = ['全部', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
     this.setData({
       array: [arr, arr1],
@@ -34,11 +36,13 @@ Page({
       date2: [arr.indexOf(this.data.year), arr1.indexOf(this.data.month + '')],
     })
   },
+
   onLoad: function() {
     this.initPicker();
     this.init();
     this.getStore();
   },
+
   //获取所有门店列表
   getStore: function() {
     let that = this;
@@ -50,17 +54,20 @@ Page({
         StoreId: 0,
         StoreName: "全部门店"
       })
+
       that.setData({
         storeList: arr
       })
     })
   },
+
   //弹出门店下拉选择
   changeSelect: function() {
     this.setData({
       showSelect: true
     })
   },
+
   //点击全部门店
   allStore: function() {
     this.setData({
@@ -69,6 +76,7 @@ Page({
       showSelect: false
     })
   },
+
   //更换门店
   changeStore: function(e) {
     let that = this;
@@ -78,11 +86,14 @@ Page({
       storeName: e.currentTarget.dataset.name,
       showSelect: false
     })
+
     this.getData();
   },
+
   init: function() {
     this.getData();
   },
+
   getData: function() {
     let that = this;
     var url = 'account/basesubsidy/record/list';
@@ -99,31 +110,32 @@ Page({
       arr.forEach(item => {
         item.Amount = Number(item.Amount / 100).toFixed(2)
       })
+
       if (that.data.page == 1) {
         arr1 = arr;
       } else {
         arr1 = that.data.List;
         arr1 = arr1.concat(res.Data);
       }
+
       that.setData({
         List: arr1
       })
-    })
+    }, null, true, true, true, true);
   },
+
   getCode: function(e) {
     let that = this;
     let item = e.currentTarget.dataset.item;
-
-
     if (item.Status == 2) {
       item.Status = 0;
     }
-    console.log(item)
-    if (that.selectComponent('#pop')) {
-      that.selectComponent('#pop')._showClassDialog(item);
-    }
 
+    wx.navigateTo({
+      url: '/pages/qrClassPage/qrClassPage?TempResult=' + JSON.stringify(item),
+    })
   },
+
   bindDateChange: function(e) {
     // console.log('picker发送选择改变，携带值为', e.detail.value)
     let index = e.detail.value;
@@ -142,36 +154,31 @@ Page({
         page: 1
       })
     }
+
     this.getData();
   },
 
   //上拉加载更多
   onReachBottom: function() {
     let that = this;
-    wx.showLoading({
-      title: '玩命加载中',
-    });
     var temp_page = this.data.page;
     temp_page++;
     this.setData({
       page: temp_page
     });
-    that.getData();
 
+    that.getData();
   },
+
   //下拉刷新
   onPullDownRefresh: function() {
-    wx.showLoading({
-      title: "玩命加载中",
-    });
     this.setData({
       page: 1
     });
+    
     this.getData();
-    // 停止下拉动作
-    wx.stopPullDownRefresh();
   },
-  onShareAppMessage: function() {
 
+  onShareAppMessage: function() {
   }
 })

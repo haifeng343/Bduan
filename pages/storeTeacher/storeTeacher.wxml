@@ -1,6 +1,8 @@
-<view class='noHas' wx:if="{{List.length<=0}}">
-  <image src='../../img/zanwu.png' mode='widthFix' class='noList'></image>
-  <view class='zanwu'>暂无师资</view>
+<view class='rela' wx:if="{{List.length<=0}}">
+  <view class='noHas' wx:if="{{List.length<=0}}">
+    <image src='../../img/zanwu.png' mode='widthFix' class='noList'></image>
+    <view class='zanwu'>暂无师资</view>
+  </view>
 </view>
 <view class='storeContainer' wx:else>
   <view class='storeItem pd20 start' wx:for="{{List}}" wx:key>

@@ -10,10 +10,12 @@
   <view class="movie-content-wrapper">
     <view wx:if="{{usertoken}}">
       <view>
-        <view class='nohasLog' wx:if="{{modelList[navbarActiveIndex].list.length==0}}">
+       <view class='rela' wx:if="{{modelList[navbarActiveIndex].list.length==0}}">
+        <view class='nohasLog'>
           <image class='noImg' src='../../img/zanwu.png' mode='widthFix' lazy-load='true'></image>
           <view class='notext'>暂无活动组</view>
         </view>
+       </view>
         <view wx:else>
           <view class='List'>
             <view class='item column' data-id="{{item.ActivityGroupId}}" bindtap='bindDetail' wx:for="{{modelList[navbarActiveIndex].list}}" wx:key wx:hidden='{{navbarActiveIndex == index}}'>

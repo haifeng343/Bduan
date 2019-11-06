@@ -1,8 +1,10 @@
 <view class='bg'>
-  <view class='noHas' wx:if="{{storeItemList.length<=0}}">
+ <view class='rela' wx:if="{{storeItemList.length<=0}}">
+  <view class='noHas'>
     <image src='../../img/zanwu.png' mode='widthFix' class='noList'></image>
     <view class='notext'>暂无课程</view>
   </view>
+ </view>
   <view wx:else class="storeContainer">
     <view class='storeItem' wx:for="{{storeItemList}}" wx:key>
       <view class='start'>

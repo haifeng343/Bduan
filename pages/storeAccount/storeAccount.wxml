@@ -1,6 +1,8 @@
-<view class='noHas' wx:if="{{List.length<=0}}">
-  <image src='../../img/zanwu.png' mode='widthFix' class='noList'></image>
-  <view class='zanwu'>暂无账户</view>
+<view class='rela' wx:if="{{List.length<=0}}">
+  <view class='noHas'>
+    <image src='../../img/zanwu.png' mode='widthFix' class='noList'></image>
+    <view class='zanwu'>暂无账户</view>
+  </view>
 </view>
 <view class="storeContainer {{showLog==true?'hidden':''}}" wx:else>
   <view class='storeItem start' wx:for="{{List}}" wx:key bindtouchmove='move'>

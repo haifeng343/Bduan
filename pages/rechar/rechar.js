@@ -181,7 +181,7 @@ Page({
     if (that.data.price <= 0) {
       wx.showToast({
         icon: 'none',
-        title: '请输入正确的金额',
+        title: '请输入有效的充值金额',
       })
       return false;
     }

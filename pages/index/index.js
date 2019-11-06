@@ -92,7 +92,7 @@ Page({
       that.setData({
         storeList: arr
       })
-    })
+    }, null, true, true, true, true)
   },
   //获取未处理预约数量
   _getCount: function() {
@@ -105,7 +105,7 @@ Page({
           count: res.Data.AppointmentCount
         })
       }
-    })
+    }, null, true, true, true, true)
   },
 
   //更换门店
@@ -144,7 +144,7 @@ Page({
         date1: res.Data.StartTime,
         date2: res.Data.EndTime,
       })
-    })
+    }, null, true, true, true, true)
   },
   //正在参与的活动
   getGroupList: function() {
@@ -159,7 +159,7 @@ Page({
       that.setData({
         activeList: res.Data,
       })
-    })
+    }, null, true, true, true, true)
   },
   //订单列表
   getOrderList: function() {
@@ -176,7 +176,7 @@ Page({
       that.setData({
         orderList: res.Data,
       })
-    })
+    }, null, true, true, true, true)
   },
 
   //验证记录
@@ -225,9 +225,16 @@ Page({
           code: res.result
         });
         that.getCode();
+        
       }
     })
   },
+  // getCode:function() {
+  //   let that = this;
+  //   wx.navigateTo({
+  //     url: '/pages/qrClassPage/qrClassPage?code=' + that.data.code,
+  //   })
+  // },
   //获取到二维码确定
   getCode: function() {
     let that = this;
@@ -241,21 +248,23 @@ Page({
             url: '/pages/yancode/yancode?Info=' + JSON.stringify(res.Data),
           })
         } else{
-          if (that.selectComponent('#pop')) {
-            that.selectComponent('#pop')._showClassDialog(res.Data.TempResult);
-          }
+          wx.navigateTo({
+            url: '/pages/qrClassPage/qrClassPage?TempResult=' + JSON.stringify(res.Data.TempResult),
+          })
         }
       });
-    }else {
+
+      that.setData({
+        showLog: true
+      })
+    } else {
       wx.showToast({
         icon: 'none',
-        title: '券码有误',
+        title: '无效的券码',
       })
     }
-    that.setData({
-      showLog: true
-    })
   },
+
   //获取代金券验券详情
   _getCheckInfo: function(onSuccess) {
     let that = this;
@@ -267,6 +276,7 @@ Page({
       onSuccess(res);
     })
   },
+
   //输入订单号搜索
   bindOrderCode: function(code) {
     let that = this;
@@ -282,6 +292,7 @@ Page({
       })
     })
   },
+
   //勾选
   checkdChange: function(e) {
     let arrs = []
@@ -289,6 +300,7 @@ Page({
       checkList: e.detail.value
     })
   },
+  
   //关闭订单验券弹窗
   closeCodeLog: function() {
     this.setData({
@@ -402,6 +414,5 @@ Page({
   },
   onPullDownRefresh: function() {
     this.init();
-    wx.stopPullDownRefresh();
   }
 })
