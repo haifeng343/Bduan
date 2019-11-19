@@ -29,7 +29,9 @@ input{
   box-sizing: border-box;
   padding-top: 0;
 }
-
+.classContentText{
+  line-height: 50rpx;
+}
 .dialog-title {
   width: 100%;
   height: 80rpx;
@@ -46,7 +48,7 @@ input{
   height: auto;
   max-height: 800rpx;
   box-sizing: border-box;
-  padding: 20rpx 5%;
+  padding: 20rpx 50rpx;
 }
 
 .dialog-footer {

@@ -156,18 +156,18 @@
           <view class='ft28 left pl5 h60 pr5'>购买时间：{{QuanInfo.BuyTime}}</view>
         </view>
         <view class='List noBg'>
-          <checkbox-group bindchange="checkdChange">
+          <radio-group bindchange="checkdChange">
             <view class=' start h80 pl5 pr5 bort between' wx:for="{{QuanInfo.ItemList}}" wx:key wx:for-item="k">
               <view class='start h80'>
-                <view>
+                <view class='centers'>
                   <image class='icon1' src='../../img/k1.png' mode='widthFix'></image>
                 </view>
                 <view class="{{k.UseStatus==2?'cc':''}} ft28">{{k.ItemName}}（{{k.StoreName}}）</view>
               </view>
-              <checkbox value='{{k.RelId}}' wx:if='{{QuanInfo.OrderStatus!=3 && !QuanInfo.OrderStatus!=4 && k.UseStatus!=2}}'></checkbox>
+              <radio value='{{k.RelId}}' wx:if='{{QuanInfo.OrderStatus!=3 && !QuanInfo.OrderStatus!=4 && k.UseStatus!=2}}'></radio>
               <image src='../../img/expire.png' wx:if="{{QuanInfo.OrderStatus==4}}" mode='widthFix' class='expire'></image>
             </view>
-          </checkbox-group>
+          </radio-group>
         </view>
       </view>
     </scroll-view>

@@ -13,7 +13,6 @@ Component({
    * 组件的初始数据
    */
   data: {
-    showSureClass: false, //提交课程信息
     showClass: false, //等待确认课程成交
     showPassword: false, //输入支付密码
     showPay: false, //支付
@@ -38,20 +37,15 @@ Component({
     gotoPayClassName: '', //去支付的课程名称
     gotoPayCanalAmount: "", //需支付取到金额
 
+    
     num: '', //支付密码
+    onStatus:null,
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    //等待家张确认课程  showSureClass
-    closeClassClick: function() {
-      this.setData({
-        showSureClass: false,
-      })
-    },
-
     //获取课程原价
     bindChangePrice: function(e) {
       this.setData({
@@ -82,10 +76,20 @@ Component({
       })
     },
 
-    sureWaitClass: function() {
+    statusCallback: function (status){
+      if (this.data.onStatus != null) {
+        this.data.onStatus(status);
+      }
+    },
+
+    sureWaitClass: function(onStatus) {
       let that = this;
       that._basesubsidyDealConfirm(function(res) {
-        if (res.Status == 0) {
+        console.log(res)
+        let data1 = { waitClassRecordId: res.RecordId };
+        that.triggerEvent("getRecordId", data1);
+        
+        if (res.Status == 2) {
           that.showDlgErrorInfo();
         } else if (res.Status == 3) {
           that.gotoPay(res);
@@ -94,6 +98,8 @@ Component({
         that.setData({
           showClass: false,
         })
+
+        that.statusCallback(res.Status);
       });
     },
 
@@ -180,16 +186,18 @@ Component({
     },
 
     //弹出选择课程
-    _showClassDialog: function(temp) {
+    _showClassDialog: function(temp, onStatus) {
       let that = this;
+      that.setData({
+         onStatus: onStatus,
+      });
+
       if (temp.Status == 0) {
-        if (temp.StoreId != 0) {
-          that.showDlgErrorInfo();
-        }
+
       } else if (temp.Status == 1) {
         that.waitClass(temp);
       } else if (temp.Status == 2) {
-        
+        that.showDlgErrorInfo();
       } else if (temp.Status == 3) {
         that.gotoPay(temp);
       } else if (temp.Status == 4) {
@@ -201,29 +209,23 @@ Component({
     },
 
     //去支付初始化
-    gotoPay: function(tempInfo) {
+    gotoPay: function (tempInfo) {
       let that = this;
-      that.setData({
-        showPay: true
-      });
-
       that.setData({
         gotoPayRecordId: tempInfo.RecordId,
         gotoPayAmount: tempInfo.PayAmount,
         gotoPayCanalAmount: tempInfo.CanalAmount,
-        gotoPayClassName: tempInfo.ItemName
+        gotoPayClassName: tempInfo.ItemName,
+        showPay: true,
       });
     },
 
     //等待课程确认初始化
-    waitClass: function(tempInfo) {
+    waitClass: function (tempInfo) {
       let that = this;
       that.setData({
-        showClass: true
-      });
-
-      that.setData({
-        waitClassRecordId: tempInfo.RecordId
+        waitClassRecordId: tempInfo.RecordId, 
+        showClass: true,
       });
     },
 

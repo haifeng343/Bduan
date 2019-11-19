@@ -16,6 +16,8 @@ Page({
     storeList: [], //门店列表
     showId: 0, //选中门店下标
     storeName: "全部门店", //默认
+    recordId:"",
+    status:'',
   },
 
   initPicker: function() {
@@ -36,11 +38,26 @@ Page({
       date2: [arr.indexOf(this.data.year), arr1.indexOf(this.data.month + '')],
     })
   },
-
   onLoad: function() {
     this.initPicker();
     this.init();
     this.getStore();
+  },
+
+  onChangeStatus: function (recordId, status) {
+    console.log(recordId + "___" + status);
+
+    let that = this;
+    let tempArr = that.data.List;
+    tempArr.forEach(item=>{
+      if (item.RecordId==recordId){
+        item.Status=status;
+        return;
+      }
+    })
+    that.setData({
+      List: tempArr
+    })
   },
 
   //获取所有门店列表
@@ -127,12 +144,8 @@ Page({
   getCode: function(e) {
     let that = this;
     let item = e.currentTarget.dataset.item;
-    if (item.Status == 2) {
-      item.Status = 0;
-    }
-
     wx.navigateTo({
-      url: '/pages/qrClassPage/qrClassPage?TempResult=' + JSON.stringify(item),
+      url: '/pages/qrClassPage/qrClassPage?TempResult=' + JSON.stringify(item) +'&fromRecord=true',
     })
   },
 

@@ -1,45 +1,3 @@
-<!--提交课程信息-->
-<view class='dialogMask' hidden="{{!showSureClass}}" catchtouchmove="true">
-  <view class='dialog-container'>
-    <view class='dialog-title'>成交课程信息</view>
-    <scroll-view scroll-y="true" class='dialog-content'>
-      <view class='classItem'>
-        <view class='start centers'>
-          <label>机构名称: </label>
-          <picker class='picker' mode="selector" bindchange="bindPickerStoreChange" range-key="StoreName" value="{{storeIndex}}" range="{{storeList}}">
-            <input type='text' disabled value='{{selectPicker.StoreName}}' class='flex borRight'></input>
-            <image src='../../img/select.png' class='InputIcon'></image>
-          </picker>
-        </view>
-      </view>
-      <view class='classItem mt20'>
-        <view class='start centers'>
-          <label>课程名称: </label>
-          <picker disabled="{{(selectPicker && classList && classList.length>0)?false:true}}" class='picker' mode="selector" bindchange="bindPickeClassrChange" range-key="ItemName" value="{{itemIndex}}" range="{{classList}}">
-            <input type='text' disabled value='{{selectClass.ItemName}}' class='flex borRight'></input>
-            <image src='../../img/select.png' class='InputIcon'></image>
-          </picker>
-        </view>
-      </view>
-      <view class='classItem mt20'>
-        <view class='start centers'>
-          <label>课程原价: </label>
-          <input type='number' value='{{price}}' cursor-spacing='80' bindinput='bindChangePrice' class='flex borRight'></input>
-        </view>
-      </view>
-      <view class='classItem mt20'>
-        <view class='start centers'>
-          <label>实付价格: </label>
-          <input type='number' value='{{payAmount}}' cursor-spacing='80' bindinput='bindChangeAmount' cursor-spacing='60' class='flex borRight'></input>
-        </view>
-      </view>
-    </scroll-view>
-    <view class='dialog-footer'>
-      <view class='dialog-btn' bindtap='closeClassClick'>取消</view>
-      <view class='dialog-btn' bindtap='sureClassClick'>确认</view>
-    </view>
-  </view>
-</view>
 
 <!--等待确认课程成交-->
 <view class='dialogMask' hidden="{{!showClass}}" catchtouchmove="true">
@@ -60,12 +18,17 @@
 <!-- 支付 -->
 <view class='dialogMask' hidden="{{!showPay}}" catchtouchmove="true">
   <view class='dialog-container'>
+    <view class='dialog-title'>请确认支付金额</view>
     <scroll-view scroll-y="true" class='dialog-content'>
-      <view class='classContent'>课程 “{{gotoPayClassName}} ”实付{{gotoPayAmount*1.0/100}}元，需支付渠道费{{gotoPayCanalAmount*1.0/100}}元</view>
+      <view class='column'>
+        <view class='classContentText'>课程名:{{gotoPayClassName}}</view>
+        <view class='classContentText'>实付:{{gotoPayAmount*1.0/100}}元</view>
+        <view class='classContentText'>需支付渠道费:{{gotoPayCanalAmount*1.0/100}}元</view>
+      </view>
     </scroll-view>
     <view class='dialog-footer'>
       <view class='dialog-btn' bindtap='payEor'>取消</view>
-      <view class='dialog-btn' bindtap='payOK'>确认</view>
+      <view class='dialog-btn' bindtap='payOK'>去支付</view>
     </view>
   </view>
 </view>

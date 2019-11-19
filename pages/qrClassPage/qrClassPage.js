@@ -16,19 +16,32 @@ Page({
     price: "", //原价
     payAmount: "", //实付价格
     TempResult: "", //
+    fromRecord: false,
+    status:'',
   },
 
   onLoad: function(options) {
     let that = this;
     that.setData({
         TempResult: (options.TempResult ? JSON.parse(options.TempResult) : ''),
+        fromRecord: options.fromRecord || '',
       }),
 
     that._getStore();
     that.sureClass(that.data.TempResult);
     if (that.selectComponent('#pop')) {
-      that.selectComponent('#pop')._showClassDialog(that.data.TempResult);
+      that.selectComponent('#pop')._showClassDialog(that.data.TempResult, that._onStatus);
     }
+  },
+
+  onUnload:function() {
+    let that = this;
+    if (!that.data.fromRecord) {
+      return;
+    }
+
+    let pages = getCurrentPages();
+    pages[pages.length - 2].onChangeStatus(that.data.TempResult.RecordId,that.data.TempResult.Status);
   },
 
   //成交课表信息弹出框初始化
@@ -90,7 +103,6 @@ Page({
     that.setData({
       sureClassRecordId: tempInfo.RecordId,
       qrCode: tempInfo.QrCode,
-      showSureClass: true
     });
   },
 
@@ -103,10 +115,23 @@ Page({
         that.selectComponent('#pop').gotoPay(res);
       }
 
-      that.setData({
-        showSureClass: false
-      })
+      that._onStatus(res.Status);
     });
+  },
+
+  _onStatus: function(status) {
+    let temp = this.data.TempResult;
+    temp.Status = status;
+    this.setData({
+      TempResult: temp
+    });
+  },
+
+  //获取从子组件传递过来的recorldId
+  getRecordId: function (e) {
+    this.setData({
+      sureClassRecordId: e.detail.waitClassRecordId,
+    })
   },
 
   // 补贴宝确认课程信息

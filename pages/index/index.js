@@ -37,7 +37,7 @@ Page({
     QuanInfo: {}, //订单信息
     activeList: [], //正在参与的活动
     checked: false,
-    checkList: [], //勾选的数组
+    checkList: '', //勾选的数据
     groupList: [], //活动组列表
     orderList: [], //订单列表
     storeId: '0', //门店Id
@@ -295,7 +295,7 @@ Page({
 
   //勾选
   checkdChange: function(e) {
-    let arrs = []
+    console.log(e.detail.value);
     this.setData({
       checkList: e.detail.value
     })
@@ -320,13 +320,13 @@ Page({
     var url = 'account/order/check';
     var params = {
       TicketNumber: that.data.code,
-      RelId: this.data.checkList[0]
+      RelId: this.data.checkList
     }
     netUtil.postRequest(url, params, function(res) { //onSuccess成功回调
       that.setData({
         showSure: true,
         code: '',
-        checkList: [],
+        checkList: '',
       })
       wx.showModal({
         title: '验券成功',
